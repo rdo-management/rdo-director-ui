@@ -1,3 +1,6 @@
+var React = require('react');
+var classNames = require('classnames');
+
 var data = [
   {
     name: 'Baremetal',
@@ -22,7 +25,7 @@ var data = [
   }
 ];
 
-var BoxesApp = React.createClass({
+var Boxes = React.createClass({
   render: function() {
     return (
       <div className="container">
@@ -30,6 +33,7 @@ var BoxesApp = React.createClass({
           <PageHeader text="Overcloud Deployment"/>
           <FlavorPanelList data={data}/>
           <NodePicker nodeCount={6}/>
+          <NodePicker nodeCount={109}/>
           <NodeStack nodeCount={6}/>
         </div>
       </div>
@@ -137,8 +141,15 @@ var NodePicker = React.createClass({
 
 var NodeStack = React.createClass({
   render: function() {
+    var classes = classNames({
+      'node-stack': true,
+      'single-stack': this.props.nodeCount == 2,
+      'double-stack': this.props.nodeCount > 2
+    });
     return (
-      <div className="node-stack-3">{this.props.nodeCount}</div>
+      <div className="stack-wrap">
+        <div className={classes}>{this.props.nodeCount}</div>
+      </div>
     );
   }
 });
@@ -153,4 +164,4 @@ var PickerArrow = React.createClass({
   }
 });
 
-React.render(<BoxesApp/>, document.body);
+module.exports = Boxes;

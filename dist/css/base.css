@@ -2,17 +2,20 @@
   border-color: #a6442e;
   background-color: #ebbfb5;
 }
-.panel .role-panel.controller .node-stack-3 {
+.panel .role-panel.controller .node-stack {
   background-color: #d47a66;
   border-color: #a6442e;
+  color: white;
 }
 .panel .role-panel.compute {
   border-color: #264773;
   background-color: #8cadd9;
+  z-index: -3;
 }
-.panel .role-panel.compute .node-stack-3 {
+.panel .role-panel.compute .node-stack {
   background-color: #3f76c0;
   border-color: #264773;
+  color: white;
 }
 .panel .role-panel:last-child {
   margin-bottom: 0;
@@ -33,25 +36,25 @@
   text-shadow: none;
   color: #838383;
 }
-.node-stack-1,
-.node-stack-2,
-.node-stack-3 {
+.stack-wrap {
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+}
+.stack-wrap .node-stack {
   position: relative;
   display: inline-block;
-  width: 50px;
-  height: 50px;
-  line-height: 50px;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
   text-align: center;
   border: 1px solid gray;
   background: white;
-  margin: 0 6px;
+  margin: 0 18px;
 }
-.node-stack-1:before,
-.node-stack-2:before,
-.node-stack-3:before,
-.node-stack-1:after,
-.node-stack-2:after,
-.node-stack-3:after {
+.stack-wrap .node-stack:before,
+.stack-wrap .node-stack:after {
+  display: none;
   content: "";
   position: absolute;
   width: 100%;
@@ -59,17 +62,20 @@
   border: inherit;
   background: inherit;
 }
-.node-stack-1:before,
-.node-stack-2:before,
-.node-stack-3:before {
-  left: -6px;
-  top: -6px;
+.stack-wrap .node-stack:before {
+  left: -4px;
+  top: -4px;
   z-index: -1;
 }
-.node-stack-1:after,
-.node-stack-2:after,
-.node-stack-3:after {
-  left: -11px;
-  top: -11px;
+.stack-wrap .node-stack:after {
+  left: -7px;
+  top: -7px;
   z-index: -2;
+}
+.stack-wrap .node-stack.single-stack:before {
+  display: block;
+}
+.stack-wrap .node-stack.double-stack:before,
+.stack-wrap .node-stack.double-stack:after {
+  display: block;
 }
