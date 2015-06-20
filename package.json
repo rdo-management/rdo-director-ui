@@ -1,0 +1,25 @@
+{
+  "name": "boxes_react",
+  "version": "0.0.0",
+  "description": "Node Boxes from Tuskar-UI rewritten in ReactJS",
+  "main": "index.js",
+  "dependencies": {
+    "gulp": "~3.9.0"
+  },
+  "devDependencies": {
+    "gulp": "~3.9.0"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "tbd"
+  },
+  "keywords": [
+    "tuskar-ui-extras",
+    "tuskar-ui"
+  ],
+  "author": "Jiri Tomasek tomasek.jirka@gmail.com",
+  "license": "MIT"
+}
