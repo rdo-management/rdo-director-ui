@@ -1,0 +1,75 @@
+.panel .role-panel.controller {
+  border-color: #a6442e;
+  background-color: #ebbfb5;
+}
+.panel .role-panel.controller .node-stack-3 {
+  background-color: #d47a66;
+  border-color: #a6442e;
+}
+.panel .role-panel.compute {
+  border-color: #264773;
+  background-color: #8cadd9;
+}
+.panel .role-panel.compute .node-stack-3 {
+  background-color: #3f76c0;
+  border-color: #264773;
+}
+.panel .role-panel:last-child {
+  margin-bottom: 0;
+}
+.node-selector {
+  display: inline-block;
+}
+.node-selector button.picker-arrow {
+  border: none;
+  background: transparent;
+  outline: none;
+  text-shadow: 1px 1px 2px gray;
+}
+.node-selector button.picker-arrow:hover {
+  cursor: pointer;
+}
+.node-selector button.picker-arrow:active {
+  text-shadow: none;
+  color: #838383;
+}
+.node-stack-1,
+.node-stack-2,
+.node-stack-3 {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  border: 1px solid gray;
+  background: white;
+  margin: 0 6px;
+}
+.node-stack-1:before,
+.node-stack-2:before,
+.node-stack-3:before,
+.node-stack-1:after,
+.node-stack-2:after,
+.node-stack-3:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: inherit;
+  background: inherit;
+}
+.node-stack-1:before,
+.node-stack-2:before,
+.node-stack-3:before {
+  left: -6px;
+  top: -6px;
+  z-index: -1;
+}
+.node-stack-1:after,
+.node-stack-2:after,
+.node-stack-3:after {
+  left: -11px;
+  top: -11px;
+  z-index: -2;
+}
