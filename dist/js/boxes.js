@@ -24423,24 +24423,8 @@
 	
 	var React = __webpack_require__(95);
 	var classNames = __webpack_require__(251);
-	
-	var data = [{
-	  name: 'Baremetal',
-	  hwSpecs: '1CPU, 40GB RAM, HDD 500GB',
-	  roles: [{
-	    name: 'Controller',
-	    nodeCount: 2
-	  }, {
-	    name: 'Compute',
-	    nodeCount: 0
-	  }],
-	  freenodeCount: 20
-	}, {
-	  name: 'Flavor2',
-	  hwSpecs: '1CPU, 20GB RAM, HDD 250GB',
-	  roles: [],
-	  freenodeCount: 10
-	}];
+	var Flavors = __webpack_require__(252);
+	var Roles = __webpack_require__(253);
 	
 	var Boxes = React.createClass({
 	  displayName: 'Boxes',
@@ -24453,10 +24437,7 @@
 	        'div',
 	        { className: 'row' },
 	        React.createElement(PageHeader, { text: 'Overcloud Deployment' }),
-	        React.createElement(FlavorPanelList, { data: data }),
-	        React.createElement(NodePicker, { nodeCount: 6 }),
-	        React.createElement(NodePicker, { nodeCount: 109 }),
-	        React.createElement(NodeStack, { nodeCount: 6 })
+	        React.createElement(FlavorPanelList, { data: Flavors })
 	      )
 	    );
 	  }
@@ -24477,6 +24458,19 @@
 	    );
 	  }
 	});
+	
+	// var FreeRolesList = React.createClass({
+	//   render: function() {
+	//     var freeRoles = this.props.data.filter(function(role, index) {
+	//       return role;
+	//     });
+	//     return (
+	//       <div className="row">
+	//         <RoleList roles={freeRoles}/>
+	//       </div>
+	//     );
+	//   }
+	// });
 	
 	var FlavorPanelList = React.createClass({
 	  displayName: 'FlavorPanelList',
@@ -24499,7 +24493,7 @@
 	  render: function render() {
 	    return React.createElement(
 	      'div',
-	      { className: 'panel panel-default' },
+	      { className: 'panel panel-default flavor-panel' },
 	      React.createElement(
 	        'div',
 	        { className: 'panel-heading' },
@@ -24525,15 +24519,16 @@
 	        React.createElement(
 	          'div',
 	          { className: 'row' },
+	          React.createElement(RoleList, { roles: this.props.flavor.roles }),
 	          React.createElement(
 	            'div',
-	            { className: 'col-sm-9' },
-	            React.createElement(RoleList, { roles: this.props.flavor.roles })
+	            { className: 'col-sm-4' },
+	            React.createElement(FreeNodesPanel, { nodeCount: this.props.flavor.freeNodeCount })
 	          ),
 	          React.createElement(
 	            'div',
-	            { className: 'col-sm-3' },
-	            React.createElement(NodeStack, { nodeCount: this.props.flavor.freenodeCount })
+	            { className: 'col-sm-4' },
+	            React.createElement(DropZonePanel, null)
 	          )
 	        )
 	      )
@@ -24546,12 +24541,66 @@
 	
 	  render: function render() {
 	    var roles = this.props.roles.map(function (role, index) {
-	      return React.createElement(RolePanel, { role: role, key: index });
+	      return React.createElement(
+	        'div',
+	        { className: 'col-sm-4', key: index },
+	        React.createElement(RolePanel, { role: role })
+	      );
 	    });
 	    return React.createElement(
 	      'div',
 	      null,
 	      roles
+	    );
+	  }
+	});
+	
+	var FreeNodesPanel = React.createClass({
+	  displayName: 'FreeNodesPanel',
+	
+	  render: function render() {
+	    return React.createElement(
+	      'div',
+	      { className: 'panel panel-default role-panel free-nodes-panel' },
+	      React.createElement(
+	        'div',
+	        { className: 'panel-heading' },
+	        React.createElement(
+	          'h3',
+	          { className: 'panel-title' },
+	          'Free Nodes'
+	        )
+	      ),
+	      React.createElement(
+	        'div',
+	        { className: 'panel-body clearfix' },
+	        React.createElement(NodeStack, { nodeCount: this.props.nodeCount })
+	      )
+	    );
+	  }
+	});
+	
+	var DropZonePanel = React.createClass({
+	  displayName: 'DropZonePanel',
+	
+	  render: function render() {
+	    return React.createElement(
+	      'div',
+	      { className: 'panel panel-default role-panel drop-zone-panel' },
+	      React.createElement(
+	        'div',
+	        { className: 'panel-heading' },
+	        React.createElement(
+	          'h3',
+	          { className: 'panel-title' },
+	          'Add Role'
+	        )
+	      ),
+	      React.createElement(
+	        'div',
+	        { className: 'panel-body clearfix' },
+	        React.createElement('span', { className: 'glyphicon glyphicon-plus' })
+	      )
 	    );
 	  }
 	});
@@ -24565,13 +24614,17 @@
 	      { className: 'panel panel-default role-panel ' + this.props.role.name.toLowerCase() },
 	      React.createElement(
 	        'div',
-	        { className: 'panel-body' },
-	        this.props.role.name,
+	        { className: 'panel-heading' },
 	        React.createElement(
-	          'div',
-	          { className: 'pull-right' },
-	          React.createElement(NodePicker, { nodeCount: this.props.role.nodeCount })
+	          'h3',
+	          { className: 'panel-title' },
+	          this.props.role.name
 	        )
+	      ),
+	      React.createElement(
+	        'div',
+	        { className: 'panel-body clearfix' },
+	        React.createElement(NodePicker, { nodeCount: this.props.role.nodeCount })
 	      )
 	    );
 	  }
@@ -24686,6 +24739,57 @@
 	
 	}());
 
+
+/***/ },
+/* 252 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	var Flavors = [{
+	  name: 'Baremetal',
+	  hwSpecs: '1CPU, 40GB RAM, HDD 500GB',
+	  roles: [{
+	    name: 'Controller',
+	    nodeCount: 2
+	  }, {
+	    name: 'Compute',
+	    nodeCount: 0
+	  }],
+	  freeNodeCount: 20
+	}, {
+	  name: 'Flavor2',
+	  hwSpecs: '1CPU, 20GB RAM, HDD 250GB',
+	  roles: [],
+	  freeNodeCount: 10
+	}];
+	
+	module.exports = Flavors;
+
+/***/ },
+/* 253 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	var Roles = [{
+	  name: 'Controller',
+	  flavor: null
+	}, {
+	  name: 'Compute',
+	  flavor: null
+	}, {
+	  name: 'Ceph-Storage',
+	  flavor: null
+	}, {
+	  name: 'Cinder-Storage',
+	  flavor: null
+	}, {
+	  name: 'Swift-Storage',
+	  flavor: null
+	}];
+	
+	module.exports = Roles;
 
 /***/ }
 /******/ ]);

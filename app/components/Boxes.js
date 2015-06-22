@@ -1,29 +1,7 @@
 var React = require('react');
 var classNames = require('classnames');
-
-var data = [
-  {
-    name: 'Baremetal',
-    hwSpecs: '1CPU, 40GB RAM, HDD 500GB',
-    roles: [
-      {
-        name: 'Controller',
-        nodeCount: 2
-      },
-      {
-        name: 'Compute',
-        nodeCount: 0
-      },
-    ],
-    freenodeCount: 20
-  },
-  {
-    name: 'Flavor2',
-    hwSpecs: '1CPU, 20GB RAM, HDD 250GB',
-    roles: [],
-    freenodeCount: 10
-  }
-];
+var Flavors = require('../data/Flavors');
+var Roles = require('../data/Roles');
 
 var Boxes = React.createClass({
   render: function() {
@@ -31,10 +9,7 @@ var Boxes = React.createClass({
       <div className="container">
         <div className="row">
           <PageHeader text="Overcloud Deployment"/>
-          <FlavorPanelList data={data}/>
-          <NodePicker nodeCount={6}/>
-          <NodePicker nodeCount={109}/>
-          <NodeStack nodeCount={6}/>
+          <FlavorPanelList data={Flavors}/>
         </div>
       </div>
     );
@@ -50,6 +25,19 @@ var PageHeader = React.createClass({
     );
   }
 });
+
+// var FreeRolesList = React.createClass({
+//   render: function() {
+//     var freeRoles = this.props.data.filter(function(role, index) {
+//       return role;
+//     });
+//     return (
+//       <div className="row">
+//         <RoleList roles={freeRoles}/>
+//       </div>
+//     );
+//   }
+// });
 
 var FlavorPanelList = React.createClass({
   render: function() {
@@ -69,7 +57,7 @@ var FlavorPanelList = React.createClass({
 var FlavorPanel = React.createClass({
   render: function() {
     return (
-      <div className="panel panel-default">
+      <div className="panel panel-default flavor-panel">
         <div className="panel-heading">
           <h3 className="panel-title">
             <strong>{this.props.flavor.name}</strong>
@@ -78,11 +66,12 @@ var FlavorPanel = React.createClass({
         </div>
         <div className="panel-body">
           <div className="row">
-            <div className="col-sm-9">
-              <RoleList roles={this.props.flavor.roles}/>
+            <RoleList roles={this.props.flavor.roles}/>
+            <div className="col-sm-4">
+              <FreeNodesPanel nodeCount={this.props.flavor.freeNodeCount} />
             </div>
-            <div className="col-sm-3">
-              <NodeStack nodeCount={this.props.flavor.freenodeCount}/>
+            <div className="col-sm-4">
+              <DropZonePanel />
             </div>
           </div>
         </div>
@@ -95,7 +84,9 @@ var RoleList = React.createClass({
   render: function() {
     var roles = this.props.roles.map(function(role, index) {
       return (
-        <RolePanel role={role} key={index}/>
+        <div className="col-sm-4" key={index}>
+          <RolePanel role={role}/>
+        </div>
       );
     });
     return (
@@ -106,15 +97,45 @@ var RoleList = React.createClass({
   }
 });
 
+var FreeNodesPanel = React.createClass({
+  render: function() {
+    return (
+      <div className="panel panel-default role-panel free-nodes-panel">
+        <div className="panel-heading">
+          <h3 className="panel-title">Free Nodes</h3>
+        </div>
+        <div className="panel-body clearfix">
+          <NodeStack nodeCount={this.props.nodeCount}/>
+        </div>
+      </div>
+    );
+  }
+});
+
+var DropZonePanel = React.createClass({
+  render: function() {
+    return (
+      <div className="panel panel-default role-panel drop-zone-panel">
+        <div className="panel-heading">
+          <h3 className="panel-title">Add Role</h3>
+        </div>
+        <div className="panel-body clearfix">
+          <span className="glyphicon glyphicon-plus"></span>
+        </div>
+      </div>
+    );
+  }
+});
+
 var RolePanel = React.createClass({
   render: function() {
     return (
       <div className={"panel panel-default role-panel " + this.props.role.name.toLowerCase()}>
-        <div className="panel-body">
-          {this.props.role.name}
-          <div className="pull-right">
-            <NodePicker nodeCount={this.props.role.nodeCount}/>
-          </div>
+        <div className="panel-heading">
+          <h3 className="panel-title">{this.props.role.name}</h3>
+        </div>
+        <div className="panel-body clearfix">
+          <NodePicker nodeCount={this.props.role.nodeCount}/>
         </div>
       </div>
     );

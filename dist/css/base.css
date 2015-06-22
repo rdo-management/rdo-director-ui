@@ -1,24 +1,43 @@
-.panel .role-panel.controller {
-  border-color: #a6442e;
-  background-color: #ebbfb5;
+.panel.flavor-panel > .panel-body {
+  padding-bottom: 0;
 }
-.panel .role-panel.controller .node-stack {
-  background-color: #d47a66;
-  border-color: #a6442e;
+.panel.role-panel {
+  text-align: center;
+  margin-bottom: 15px;
+}
+.panel.role-panel.controller {
+  border-color: #e2944b;
+}
+.panel.role-panel.controller > .panel-heading {
+  background-color: #f4d5b9;
+  border-bottom-color: #e2944b;
+}
+.panel.role-panel.controller .node-stack {
+  background-color: #f0c8a3;
+  border-color: #e2944b;
   color: white;
 }
-.panel .role-panel.compute {
-  border-color: #264773;
-  background-color: #8cadd9;
-  z-index: -3;
+.panel.role-panel.compute {
+  border-color: #7bb544;
 }
-.panel .role-panel.compute .node-stack {
-  background-color: #3f76c0;
-  border-color: #264773;
+.panel.role-panel.compute > .panel-heading {
+  background-color: #bbdb9e;
+  border-bottom-color: #7bb544;
+}
+.panel.role-panel.compute .node-stack {
+  background-color: #afd48b;
+  border-color: #7bb544;
   color: white;
 }
-.panel .role-panel:last-child {
-  margin-bottom: 0;
+.panel.role-panel.drop-zone-panel {
+  border-style: dashed;
+}
+.panel.role-panel.drop-zone-panel > .panel-heading {
+  background: transparent;
+  border-bottom-style: dashed;
+}
+.panel.role-panel.drop-zone-panel > .panel-body {
+  line-height: 40px;
 }
 .node-selector {
   display: inline-block;

@@ -1,27 +1,34 @@
-.panel .role-panel{
-  &.controller{
-    @colour: #a6442e;
-    border-color: @colour;
-    background-color: lighten(@colour, 40%);
-    .node-stack {
-      background-color: lighten(@colour, 20%);
-      border-color: @colour;
-      color: white;
-    }
+.panel.flavor-panel > .panel-body{
+  padding-bottom: 0;
+}
+
+.role-panel-mixin(@colour) {
+  border-color: @colour;
+  & > .panel-heading {
+    background-color: lighten(@colour, 25%);
+    border-bottom-color: @colour;
   }
-  &.compute{
-    @colour: #264773;
+  .node-stack {
+    background-color: lighten(@colour, 20%);
     border-color: @colour;
-    background-color: lighten(@colour, 40%);
-    z-index: -3;
-    .node-stack {
-      background-color: lighten(@colour, 20%);
-      border-color: @colour;
-      color: white;
-    }
+    color: white;
   }
-  &:last-child {
-    margin-bottom: 0;
+}
+
+.panel.role-panel{
+  text-align: center;
+  margin-bottom: 15px;
+  &.controller{ .role-panel-mixin(#e2944b); }
+  &.compute{ .role-panel-mixin(#7bb544); }
+  &.drop-zone-panel {
+    border-style: dashed;
+    & > .panel-heading {
+      background: transparent;
+      border-bottom-style: dashed;
+    }
+    & > .panel-body {
+      line-height: 40px;
+    }
   }
 }
 
