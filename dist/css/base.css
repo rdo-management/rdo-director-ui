@@ -15,7 +15,7 @@
 .panel.role-panel.controller .node-stack {
   background-color: #f0c8a3;
   border-color: #e2944b;
-  color: white;
+  color: #955518;
 }
 .panel.role-panel.compute {
   border-color: #7bb544;
@@ -27,7 +27,7 @@
 .panel.role-panel.compute .node-stack {
   background-color: #afd48b;
   border-color: #7bb544;
-  color: white;
+  color: #3c5821;
 }
 .panel.role-panel.drop-zone-panel {
   border-style: dashed;

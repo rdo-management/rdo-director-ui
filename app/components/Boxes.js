@@ -1,15 +1,32 @@
 var React = require('react');
+var Fluxxor = require('fluxxor');
 var classNames = require('classnames');
 var Flavors = require('../data/Flavors');
 var Roles = require('../data/Roles');
 
+var FluxMixin = Fluxxor.FluxMixin(React),
+    StoreWatchMixin = Fluxxor.StoreWatchMixin;
+
 var Boxes = React.createClass({
+  mixins: [FluxMixin, StoreWatchMixin('FlavorStore')],
+
+  // getInitialState: function() {
+  //   return {data: []};
+  // },
+
+  getStateFromFlux: function() {
+    var state = {
+      flavors: this.getFlux().store('FlavorStore').getState()
+    };
+    return state;
+  },
+
   render: function() {
     return (
       <div className="container">
         <div className="row">
           <PageHeader text="Overcloud Deployment"/>
-          <FlavorPanelList data={Flavors}/>
+          <FlavorPanelList flavors={this.state.flavors.Flavors}/>
         </div>
       </div>
     );
@@ -41,7 +58,7 @@ var PageHeader = React.createClass({
 
 var FlavorPanelList = React.createClass({
   render: function() {
-    var flavors = this.props.data.map(function(flavor, index) {
+    var flavors = this.props.flavors.map(function(flavor, index) {
       return (
         <FlavorPanel flavor={flavor} key={index}/>
       );
@@ -66,11 +83,11 @@ var FlavorPanel = React.createClass({
         </div>
         <div className="panel-body">
           <div className="row">
-            <RoleList roles={this.props.flavor.roles}/>
-            <div className="col-sm-4">
+            <div className="col-sm-4 col-md-3">
               <FreeNodesPanel nodeCount={this.props.flavor.freeNodeCount} />
             </div>
-            <div className="col-sm-4">
+            <RoleList roles={this.props.flavor.roles}/>
+            <div className="col-sm-4 col-md-3">
               <DropZonePanel />
             </div>
           </div>
@@ -84,7 +101,7 @@ var RoleList = React.createClass({
   render: function() {
     var roles = this.props.roles.map(function(role, index) {
       return (
-        <div className="col-sm-4" key={index}>
+        <div className="col-sm-4 col-md-3" key={index}>
           <RolePanel role={role}/>
         </div>
       );
@@ -135,7 +152,7 @@ var RolePanel = React.createClass({
           <h3 className="panel-title">{this.props.role.name}</h3>
         </div>
         <div className="panel-body clearfix">
-          <NodePicker nodeCount={this.props.role.nodeCount}/>
+          <NodePicker nodeCount={this.props.role.nodeCount} roleName={this.props.role.name}/>
         </div>
       </div>
     );
@@ -143,17 +160,17 @@ var RolePanel = React.createClass({
 });
 
 var NodePicker = React.createClass({
-  getInitialState: function() {
-    return {nodeCount: this.props.nodeCount};
-  },
+  mixins: [FluxMixin],
+
   updateCount: function(increment) {
-    this.setState({nodeCount: this.state.nodeCount + increment});
+    this.getFlux().actions.updateRole(this.props.roleName, this.props.nodeCount + increment);
   },
+
   render: function() {
     return (
       <div className="node-selector">
         <PickerArrow direction="left" increment={this.updateCount.bind(this, -1)}/>
-        <NodeStack nodeCount={this.state.nodeCount}/>
+        <NodeStack nodeCount={this.props.nodeCount}/>
         <PickerArrow direction="right" increment={this.updateCount.bind(this, 1)}/>
       </div>
     );
