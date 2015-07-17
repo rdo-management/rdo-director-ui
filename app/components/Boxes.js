@@ -1,8 +1,9 @@
 var React = require('react');
 var Fluxxor = require('fluxxor');
-var classNames = require('classnames');
 var Flavors = require('../data/Flavors');
 var Roles = require('../data/Roles');
+var NodePicker = require('./NodePicker');
+var NodeStack = require('./NodeStack');
 
 var FluxMixin = Fluxxor.FluxMixin(React),
     StoreWatchMixin = Fluxxor.StoreWatchMixin;
@@ -122,7 +123,7 @@ var FreeNodesPanel = React.createClass({
           <h3 className="panel-title">Free Nodes</h3>
         </div>
         <div className="panel-body clearfix">
-          <NodeStack nodeCount={this.props.nodeCount}/>
+          <NodeStack nodeCount={this.props.nodeCount} />
         </div>
       </div>
     );
@@ -145,6 +146,12 @@ var DropZonePanel = React.createClass({
 });
 
 var RolePanel = React.createClass({
+  mixins: [FluxMixin],
+
+  updateCount: function(increment) {
+    this.getFlux().actions.updateRole(this.props.role.name, this.props.role.nodeCount + increment);
+  },
+
   render: function() {
     return (
       <div className={"panel panel-default role-panel " + this.props.role.name.toLowerCase()}>
@@ -152,52 +159,9 @@ var RolePanel = React.createClass({
           <h3 className="panel-title">{this.props.role.name}</h3>
         </div>
         <div className="panel-body clearfix">
-          <NodePicker nodeCount={this.props.role.nodeCount} roleName={this.props.role.name}/>
+          <NodePicker onIncrement={this.updateCount} nodeCount={this.props.role.nodeCount} roleName={this.props.role.name}/>
         </div>
       </div>
-    );
-  }
-});
-
-var NodePicker = React.createClass({
-  mixins: [FluxMixin],
-
-  updateCount: function(increment) {
-    this.getFlux().actions.updateRole(this.props.roleName, this.props.nodeCount + increment);
-  },
-
-  render: function() {
-    return (
-      <div className="node-selector">
-        <PickerArrow direction="left" increment={this.updateCount.bind(this, -1)}/>
-        <NodeStack nodeCount={this.props.nodeCount}/>
-        <PickerArrow direction="right" increment={this.updateCount.bind(this, 1)}/>
-      </div>
-    );
-  }
-});
-
-var NodeStack = React.createClass({
-  render: function() {
-    var classes = classNames({
-      'node-stack': true,
-      'single-stack': this.props.nodeCount == 2,
-      'double-stack': this.props.nodeCount > 2
-    });
-    return (
-      <div className="stack-wrap">
-        <div className={classes}>{this.props.nodeCount}</div>
-      </div>
-    );
-  }
-});
-
-var PickerArrow = React.createClass({
-  render: function() {
-    return (
-      <button className="picker-arrow" onClick={this.props.increment}>
-        <span className={"glyphicon glyphicon-chevron-"+this.props.direction} aria-hidden="true"></span>
-      </button>
     );
   }
 });
