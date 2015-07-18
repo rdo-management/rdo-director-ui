@@ -5,9 +5,19 @@ var NodePicker = React.createClass({
   /*
     Component that implements Node Count Picker expects onIncrement function
     (that expects increment parameter) passed through props from owner.
-    TODO(jtomasek): catch this in exception/prop definition
-    TODO(jtomasek): make increment number configurable via prop, default to 1/-1
   */
+
+  propTypes: {
+    onIncrement: React.PropTypes.func.isRequired,
+    nodeCount: React.PropTypes.number.isRequired,
+    incrementValue: React.PropTypes.number
+  },
+
+  getDefaultProps: function() {
+    return {
+      incrementValue: 1
+    }
+  },
 
   increment: function(increment) {
     this.props.onIncrement(increment);
@@ -15,16 +25,21 @@ var NodePicker = React.createClass({
 
   render: function() {
     return (
-      <div className="node-selector">
-        <PickerArrow direction="left" increment={this.increment.bind(this, -1)}/>
-        <NodeStack nodeCount={this.props.nodeCount}/>
-        <PickerArrow direction="right" increment={this.increment.bind(this, 1)}/>
+      <div className="node-picker">
+        <PickerArrow direction="left" increment={this.increment.bind(this, -this.props.incrementValue)}/>
+        <NodeStack count={this.props.nodeCount}/>
+        <PickerArrow direction="right" increment={this.increment.bind(this, this.props.incrementValue)}/>
       </div>
     );
   }
 });
 
 var PickerArrow = React.createClass({
+  propTypes: {
+    increment: React.PropTypes.func.isRequired,
+    direction: React.PropTypes.oneOf(['left', 'right']).isRequired
+  },
+
   render: function() {
     return (
       <button className="picker-arrow" onClick={this.props.increment}>

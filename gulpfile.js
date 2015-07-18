@@ -45,7 +45,7 @@ gulp.task('serve', ['webpack-app', 'less'], function(){
 });
 
 gulp.task('less', function () {
-  return gulp.src('./app/less/**/*.less')
+  return gulp.src('./app/less/base.less')
     .pipe(less())
     .pipe(gulp.dest('./dist/css'))
     .pipe(browserSync.stream());

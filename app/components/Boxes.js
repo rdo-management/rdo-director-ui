@@ -123,7 +123,7 @@ var FreeNodesPanel = React.createClass({
           <h3 className="panel-title">Free Nodes</h3>
         </div>
         <div className="panel-body clearfix">
-          <NodeStack nodeCount={this.props.nodeCount} />
+          <NodeStack count={this.props.nodeCount} />
         </div>
       </div>
     );
@@ -159,7 +159,7 @@ var RolePanel = React.createClass({
           <h3 className="panel-title">{this.props.role.name}</h3>
         </div>
         <div className="panel-body clearfix">
-          <NodePicker onIncrement={this.updateCount} nodeCount={this.props.role.nodeCount} roleName={this.props.role.name}/>
+          <NodePicker onIncrement={this.updateCount} nodeCount={this.props.role.nodeCount} />
         </div>
       </div>
     );

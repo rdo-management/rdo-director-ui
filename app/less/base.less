@@ -1,3 +1,6 @@
+@import "components/NodeStack";
+@import "components/NodePicker";
+
 .panel.flavor-panel > .panel-body{
   padding-bottom: 0;
 }
@@ -7,8 +10,9 @@
   & > .panel-heading {
     background-color: lighten(@colour, 25%);
     border-bottom-color: @colour;
+    color: darken(@colour, 25%);
   }
-  .node-stack {
+  .node-stack .stack {
     background-color: lighten(@colour, 20%);
     border-color: @colour;
     color: darken(@colour, 25%);
@@ -32,62 +36,3 @@
   }
 }
 
-.node-selector {
-  display: inline-block;
-  button.picker-arrow {
-    border: none;
-    background: transparent;
-    outline: none;
-    text-shadow: 1px 1px 2px gray;
-    &:hover {
-      cursor: pointer;
-    }
-    &:active {
-      text-shadow: none;
-      color: lighten(gray, 1%);
-    }
-  }
-}
-
-.stack-wrap {
-  // this element is required to achieve correct stack effect
-  // http://stackoverflow.com/questions/3032856/z-index-of-before-or-after-to-be-below-the-element-is-that-possible
-  display: inline-block;
-  position: relative;
-  z-index: 1;
-  .node-stack {
-    @node-size: 40px;
-    position: relative;
-    display: inline-block;
-    width: @node-size;
-    height: @node-size;
-    line-height: @node-size;
-    text-align: center;
-    border: 1px solid gray;
-    background: white;
-    margin: 0 18px;
-    &:before, &:after {
-      display: none;
-      content: "";
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      border: inherit;
-      background: inherit;
-    }
-    &:before {
-      left: -4px;
-      top: -4px;
-      z-index: -1;
-    }
-    &:after {
-      left: -7px;
-      top: -7px;
-      z-index: -2;
-    }
-    &.single-stack:before { display: block; }
-    &.double-stack {
-      &:before, &:after { display: block; }
-    }
-  }
-}

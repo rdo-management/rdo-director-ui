@@ -1,3 +1,62 @@
+.node-stack {
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+}
+.node-stack .stack {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  border: 1px solid gray;
+  background: white;
+  margin: 0 18px;
+}
+.node-stack .stack:before,
+.node-stack .stack:after {
+  display: none;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: inherit;
+  background: inherit;
+}
+.node-stack .stack:before {
+  left: -4px;
+  top: -4px;
+  z-index: -1;
+}
+.node-stack .stack:after {
+  left: -7px;
+  top: -7px;
+  z-index: -2;
+}
+.node-stack .stack.single-stack:before {
+  display: block;
+}
+.node-stack .stack.double-stack:before,
+.node-stack .stack.double-stack:after {
+  display: block;
+}
+.node-picker {
+  display: inline-block;
+}
+.node-picker button.picker-arrow {
+  border: none;
+  background: transparent;
+  outline: none;
+  text-shadow: 1px 1px 2px gray;
+}
+.node-picker button.picker-arrow:hover {
+  cursor: pointer;
+}
+.node-picker button.picker-arrow:active {
+  text-shadow: none;
+  color: #838383;
+}
 .panel.flavor-panel > .panel-body {
   padding-bottom: 0;
 }
@@ -11,8 +70,9 @@
 .panel.role-panel.controller > .panel-heading {
   background-color: #f4d5b9;
   border-bottom-color: #e2944b;
+  color: #955518;
 }
-.panel.role-panel.controller .node-stack {
+.panel.role-panel.controller .node-stack .stack {
   background-color: #f0c8a3;
   border-color: #e2944b;
   color: #955518;
@@ -23,8 +83,9 @@
 .panel.role-panel.compute > .panel-heading {
   background-color: #bbdb9e;
   border-bottom-color: #7bb544;
+  color: #3c5821;
 }
-.panel.role-panel.compute .node-stack {
+.panel.role-panel.compute .node-stack .stack {
   background-color: #afd48b;
   border-color: #7bb544;
   color: #3c5821;
@@ -38,63 +99,4 @@
 }
 .panel.role-panel.drop-zone-panel > .panel-body {
   line-height: 40px;
-}
-.node-selector {
-  display: inline-block;
-}
-.node-selector button.picker-arrow {
-  border: none;
-  background: transparent;
-  outline: none;
-  text-shadow: 1px 1px 2px gray;
-}
-.node-selector button.picker-arrow:hover {
-  cursor: pointer;
-}
-.node-selector button.picker-arrow:active {
-  text-shadow: none;
-  color: #838383;
-}
-.stack-wrap {
-  display: inline-block;
-  position: relative;
-  z-index: 1;
-}
-.stack-wrap .node-stack {
-  position: relative;
-  display: inline-block;
-  width: 40px;
-  height: 40px;
-  line-height: 40px;
-  text-align: center;
-  border: 1px solid gray;
-  background: white;
-  margin: 0 18px;
-}
-.stack-wrap .node-stack:before,
-.stack-wrap .node-stack:after {
-  display: none;
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border: inherit;
-  background: inherit;
-}
-.stack-wrap .node-stack:before {
-  left: -4px;
-  top: -4px;
-  z-index: -1;
-}
-.stack-wrap .node-stack:after {
-  left: -7px;
-  top: -7px;
-  z-index: -2;
-}
-.stack-wrap .node-stack.single-stack:before {
-  display: block;
-}
-.stack-wrap .node-stack.double-stack:before,
-.stack-wrap .node-stack.double-stack:after {
-  display: block;
 }

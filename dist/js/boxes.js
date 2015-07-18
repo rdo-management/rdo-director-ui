@@ -240,7 +240,7 @@
 	      React.createElement(
 	        'div',
 	        { className: 'panel-body clearfix' },
-	        React.createElement(NodeStack, { nodeCount: this.props.nodeCount })
+	        React.createElement(NodeStack, { count: this.props.nodeCount })
 	      )
 	    );
 	  }
@@ -296,7 +296,7 @@
 	      React.createElement(
 	        'div',
 	        { className: 'panel-body clearfix' },
-	        React.createElement(NodePicker, { onIncrement: this.updateCount, nodeCount: this.props.role.nodeCount, roleName: this.props.role.name })
+	        React.createElement(NodePicker, { onIncrement: this.updateCount, nodeCount: this.props.role.nodeCount })
 	      )
 	    );
 	  }
@@ -25360,9 +25360,19 @@
 	  /*
 	    Component that implements Node Count Picker expects onIncrement function
 	    (that expects increment parameter) passed through props from owner.
-	    TODO(jtomasek): catch this in exception/prop definition
-	    TODO(jtomasek): make increment number configurable via prop, default to 1/-1
 	  */
+	
+	  propTypes: {
+	    onIncrement: React.PropTypes.func.isRequired,
+	    nodeCount: React.PropTypes.number.isRequired,
+	    incrementValue: React.PropTypes.number
+	  },
+	
+	  getDefaultProps: function getDefaultProps() {
+	    return {
+	      incrementValue: 1
+	    };
+	  },
 	
 	  increment: function increment(_increment) {
 	    this.props.onIncrement(_increment);
@@ -25371,16 +25381,21 @@
 	  render: function render() {
 	    return React.createElement(
 	      'div',
-	      { className: 'node-selector' },
-	      React.createElement(PickerArrow, { direction: 'left', increment: this.increment.bind(this, -1) }),
-	      React.createElement(NodeStack, { nodeCount: this.props.nodeCount }),
-	      React.createElement(PickerArrow, { direction: 'right', increment: this.increment.bind(this, 1) })
+	      { className: 'node-picker' },
+	      React.createElement(PickerArrow, { direction: 'left', increment: this.increment.bind(this, -this.props.incrementValue) }),
+	      React.createElement(NodeStack, { count: this.props.nodeCount }),
+	      React.createElement(PickerArrow, { direction: 'right', increment: this.increment.bind(this, this.props.incrementValue) })
 	    );
 	  }
 	});
 	
 	var PickerArrow = React.createClass({
 	  displayName: 'PickerArrow',
+	
+	  propTypes: {
+	    increment: React.PropTypes.func.isRequired,
+	    direction: React.PropTypes.oneOf(['left', 'right']).isRequired
+	  },
 	
 	  render: function render() {
 	    return React.createElement(
@@ -25405,19 +25420,23 @@
 	var NodeStack = React.createClass({
 	  displayName: 'NodeStack',
 	
+	  propTypes: {
+	    count: React.PropTypes.number.isRequired
+	  },
+	
 	  render: function render() {
 	    var classes = ClassNames({
-	      'node-stack': true,
-	      'single-stack': this.props.nodeCount == 2,
-	      'double-stack': this.props.nodeCount > 2
+	      'stack': true,
+	      'single-stack': this.props.count == 2,
+	      'double-stack': this.props.count > 2
 	    });
 	    return React.createElement(
 	      'div',
-	      { className: 'stack-wrap' },
+	      { className: 'node-stack' },
 	      React.createElement(
 	        'div',
 	        { className: classes },
-	        this.props.nodeCount
+	        this.props.count
 	      )
 	    );
 	  }
