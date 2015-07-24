@@ -4,6 +4,7 @@ var Flavors = require('../data/Flavors');
 var Roles = require('../data/Roles');
 var NodePicker = require('./NodePicker');
 var NodeStack = require('./NodeStack');
+import Login from './Login';
 
 var FluxMixin = Fluxxor.FluxMixin(React),
     StoreWatchMixin = Fluxxor.StoreWatchMixin;
@@ -25,6 +26,10 @@ var Boxes = React.createClass({
   render: function() {
     return (
       <div className="container">
+        <div className="row">
+          <PageHeader text="Login"/>
+          <Login />
+        </div>
         <div className="row">
           <PageHeader text="Overcloud Deployment"/>
           <FlavorPanelList flavors={this.state.flavors.Flavors}/>
