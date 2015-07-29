@@ -1,13 +1,16 @@
 import React from 'react/addons';
 import ReactMixin from 'react-mixin';
 
+import LoginActions from '../actions/LoginActions';
+import LoginStore from '../stores/LoginStore';
+
 export default class Login extends React.Component {
   constructor() {
     super()
     this.state = {
       'username': '',
       'password': ''
-    }
+    };
   }
 
   handleLogin(e) {
@@ -15,10 +18,7 @@ export default class Login extends React.Component {
     console.log("Submitted");
     console.log(this.state.username);
     console.log(this.state.password);
-    // Auth.login(this.state.username, this.state.password)
-    //   .catch(function(err){
-    //     console.log("Error logging in", err);
-    //   });
+    LoginActions.authenticateUser(this.state.username, this.state.password);
   }
 
   render() {
