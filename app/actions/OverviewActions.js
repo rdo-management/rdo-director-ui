@@ -4,7 +4,7 @@ export default {
   updateRole(roleName, newCount) {
     AppDispatcher.dispatch({
       actionType: "CHANGE_NODE_COUNT",
-      roleData: {roleName: roleName, newCount: newCount}
+      roleData: { roleName: roleName, newCount: newCount }
     });
   },
 }

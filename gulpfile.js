@@ -9,8 +9,8 @@ var less = require('gulp-less');
 var configApp = {
   devtool: 'source-map',
   output: {
-    filename: 'boxes.js',
-    sourceMapFilename: '../js/boxes.js.map'
+    filename: 'tuskar_ui.js',
+    sourceMapFilename: '../js/tuskar_ui.js.map'
   },
   module: {
     loaders: [

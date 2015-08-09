@@ -1,4 +1,4 @@
-var Roles = [
+export default [
   {
     name: 'Controller',
     flavor: null
@@ -20,5 +20,3 @@ var Roles = [
     flavor: null
   }
 ];
-
-module.exports = Roles;

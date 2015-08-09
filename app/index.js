@@ -4,12 +4,12 @@ import React from 'react';
 import * as Router from 'react-router';
 
 import Login from './components/Login';
-import Boxes from './components/Boxes';
+import Overview from './components/Overview';
 
-var Route = Router.Route;
-var RouteHandler = Router.RouteHandler;
-var DefaultRoute = Router.DefaultRoute;
-var Link = Router.Link;
+let Route = Router.Route;
+let RouteHandler = Router.RouteHandler;
+let DefaultRoute = Router.DefaultRoute;
+let Link = Router.Link;
 
 export default class App extends React.Component {
   render() {
@@ -27,9 +27,9 @@ export default class App extends React.Component {
   }
 }
 
-var routes = (
+let routes = (
   <Route handler={App}>
-    <DefaultRoute name="overview" handler={Boxes}/>
+    <DefaultRoute name="overview" handler={Overview}/>
     <Route name="login" path="login" handler={Login}/>
   </Route>
 );

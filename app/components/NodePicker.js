@@ -1,4 +1,5 @@
 import React from 'react';
+
 import NodeStack from './NodeStack';
 
 export default class NodePicker extends React.Component {

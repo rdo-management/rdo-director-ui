@@ -1,15 +1,13 @@
 import React from 'react';
 
-import Actions from '../actions/Actions';
+import OverviewActions from '../actions/OverviewActions';
 import FlavorStore from '../stores/FlavorStore';
 
-import Flavors from '../data/Flavors';
-import Roles from '../data/Roles';
 import NodePicker from './NodePicker';
 import NodeStack from './NodeStack';
 
 
-export default class Boxes extends React.Component {
+export default class Overview extends React.Component {
   constructor(props) {
     super(props);
     this.state = FlavorStore.getState();
@@ -158,7 +156,7 @@ export class DropZonePanel extends React.Component {
 
 export class RolePanel extends React.Component {
   updateCount(increment) {
-    Actions.updateRole(this.props.role.name, this.props.role.nodeCount + increment);
+    OverviewActions.updateRole(this.props.role.name, this.props.role.nodeCount + increment);
   }
 
   render() {

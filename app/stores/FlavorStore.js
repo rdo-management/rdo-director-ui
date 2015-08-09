@@ -1,5 +1,5 @@
-import Flavors from '../data/Flavors';
 import BaseStore from './BaseStore';
+import Flavors from '../data/Flavors';
 
 class FlavorStore extends BaseStore {
   constructor() {
