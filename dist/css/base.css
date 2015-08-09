@@ -65,17 +65,17 @@
   margin-bottom: 15px;
 }
 .panel.role-panel.controller {
-  border-color: #e2944b;
+  border-color: #fdc800;
 }
 .panel.role-panel.controller > .panel-heading {
-  background-color: #f4d5b9;
-  border-bottom-color: #e2944b;
-  color: #955518;
+  background-color: #ffe47e;
+  border-bottom-color: #fdc800;
+  color: #7e6300;
 }
 .panel.role-panel.controller .node-stack .stack {
-  background-color: #f0c8a3;
-  border-color: #e2944b;
-  color: #955518;
+  background-color: #ffdf64;
+  border-color: #fdc800;
+  color: #7e6300;
 }
 .panel.role-panel.compute {
   border-color: #7bb544;
