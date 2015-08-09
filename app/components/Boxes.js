@@ -1,51 +1,57 @@
 import React from 'react';
-import Fluxxor from 'fluxxor';
+
+import Actions from '../actions/Actions';
+import FlavorStore from '../stores/FlavorStore';
 
 import Flavors from '../data/Flavors';
 import Roles from '../data/Roles';
 import NodePicker from './NodePicker';
 import NodeStack from './NodeStack';
 
-var FluxMixin = Fluxxor.FluxMixin(React),
-    StoreWatchMixin = Fluxxor.StoreWatchMixin;
 
-var Boxes = React.createClass({
-  mixins: [FluxMixin, StoreWatchMixin('FlavorStore')],
+export default class Boxes extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = FlavorStore.getState();
+  }
 
-  // getInitialState: function() {
-  //   return {data: []};
-  // },
+  componentDidMount() {
+    FlavorStore.addChangeListener(this._onChange.bind(this));
+  }
 
-  getStateFromFlux: function() {
-    var state = {
-      flavors: this.getFlux().store('FlavorStore').getState()
-    };
-    return state;
-  },
+  componentWillUnmount() {
+    FlavorStore.removeChangeListener(this._onChange.bind(this));
+  }
 
-  render: function() {
+  _onChange() {
+    this.setState(FlavorStore.getState());
+  }
+
+  render() {
     return (
       <div className="row">
         <PageHeader text="Overcloud Deployment"/>
-        <FlavorPanelList flavors={this.state.flavors.Flavors}/>
+        <FlavorPanelList flavors={this.state.flavors}/>
       </div>
     );
   }
-});
+}
 
-var PageHeader = React.createClass({
-  render: function() {
+
+export class PageHeader extends React.Component {
+  render() {
     return (
       <div className="page-header">
         <h1>{this.props.text}</h1>
       </div>
     );
   }
-});
+}
 
-// var FreeRolesList = React.createClass({
-//   render: function() {
-//     var freeRoles = this.props.data.filter(function(role, index) {
+
+// export class FreeRolesList extends React.Component {
+//   render() {
+//     let freeRoles = this.props.data.filter((role, index) => {
 //       return role;
 //     });
 //     return (
@@ -54,11 +60,12 @@ var PageHeader = React.createClass({
 //       </div>
 //     );
 //   }
-// });
+// }
 
-var FlavorPanelList = React.createClass({
-  render: function() {
-    var flavors = this.props.flavors.map(function(flavor, index) {
+
+export class FlavorPanelList extends React.Component {
+  render() {
+    let flavors = this.props.flavors.map((flavor, index) => {
       return (
         <FlavorPanel flavor={flavor} key={index}/>
       );
@@ -69,10 +76,11 @@ var FlavorPanelList = React.createClass({
       </div>
     );
   }
-});
+}
 
-var FlavorPanel = React.createClass({
-  render: function() {
+
+export class FlavorPanel extends React.Component {
+  render() {
     return (
       <div className="panel panel-default flavor-panel">
         <div className="panel-heading">
@@ -95,11 +103,12 @@ var FlavorPanel = React.createClass({
       </div>
     );
   }
-});
+}
 
-var RoleList = React.createClass({
-  render: function() {
-    var roles = this.props.roles.map(function(role, index) {
+
+export class RoleList extends React.Component {
+  render() {
+    let roles = this.props.roles.map((role, index) => {
       return (
         <div className="col-sm-4 col-md-3" key={index}>
           <RolePanel role={role}/>
@@ -112,10 +121,11 @@ var RoleList = React.createClass({
       </div>
     );
   }
-});
+}
 
-var FreeNodesPanel = React.createClass({
-  render: function() {
+
+export class FreeNodesPanel extends React.Component {
+  render() {
     return (
       <div className="panel panel-default role-panel free-nodes-panel">
         <div className="panel-heading">
@@ -127,10 +137,11 @@ var FreeNodesPanel = React.createClass({
       </div>
     );
   }
-});
+}
 
-var DropZonePanel = React.createClass({
-  render: function() {
+
+export class DropZonePanel extends React.Component {
+  render() {
     return (
       <div className="panel panel-default role-panel drop-zone-panel">
         <div className="panel-heading">
@@ -142,27 +153,24 @@ var DropZonePanel = React.createClass({
       </div>
     );
   }
-});
+}
 
-var RolePanel = React.createClass({
-  mixins: [FluxMixin],
 
-  updateCount: function(increment) {
-    this.getFlux().actions.updateRole(this.props.role.name, this.props.role.nodeCount + increment);
-  },
+export class RolePanel extends React.Component {
+  updateCount(increment) {
+    Actions.updateRole(this.props.role.name, this.props.role.nodeCount + increment);
+  }
 
-  render: function() {
+  render() {
     return (
       <div className={"panel panel-default role-panel " + this.props.role.name.toLowerCase()}>
         <div className="panel-heading">
           <h3 className="panel-title">{this.props.role.name}</h3>
         </div>
         <div className="panel-body clearfix">
-          <NodePicker onIncrement={this.updateCount} nodeCount={this.props.role.nodeCount} />
+          <NodePicker onIncrement={this.updateCount.bind(this)} nodeCount={this.props.role.nodeCount} />
         </div>
       </div>
     );
   }
-});
-
-module.exports = Boxes;
+}

@@ -6,21 +6,17 @@ export default class NodePicker extends React.Component {
     Component that implements Node Count Picker expects onIncrement function
     (that expects increment parameter) passed through props from owner.
   */
-  increment(increment) {
-    this.props.onIncrement(increment);
-  }
 
   render() {
     return (
       <div className="node-picker">
-        <PickerArrow direction="left" increment={this.increment.bind(this, -this.props.incrementValue)}/>
+        <PickerArrow direction="left" increment={this.props.onIncrement.bind(this, -this.props.incrementValue)}/>
         <NodeStack count={this.props.nodeCount}/>
-        <PickerArrow direction="right" increment={this.increment.bind(this, this.props.incrementValue)}/>
+        <PickerArrow direction="right" increment={this.props.onIncrement.bind(this, this.props.incrementValue)}/>
       </div>
     );
   }
 }
-
 NodePicker.propTypes = {
   onIncrement: React.PropTypes.func.isRequired,
   nodeCount: React.PropTypes.number.isRequired,
@@ -38,7 +34,6 @@ export class PickerArrow extends React.Component {
     );
   }
 }
-
 PickerArrow.propTypes = {
   increment: React.PropTypes.func.isRequired,
   direction: React.PropTypes.oneOf(['left', 'right']).isRequired

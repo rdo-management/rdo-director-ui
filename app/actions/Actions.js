@@ -1,7 +1,10 @@
-var Actions = {
-  updateRole: function(roleName, newCount) {
-    this.dispatch("CHANGE_NODE_COUNT", {roleName: roleName, newCount: newCount});
-  },
-};
+import AppDispatcher from '../dispatchers/AppDispatcher.js';
 
-module.exports = Actions;
+export default {
+  updateRole(roleName, newCount) {
+    AppDispatcher.dispatch({
+      actionType: "CHANGE_NODE_COUNT",
+      roleData: {roleName: roleName, newCount: newCount}
+    });
+  },
+}

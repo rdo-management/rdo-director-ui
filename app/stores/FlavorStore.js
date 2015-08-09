@@ -1,26 +1,34 @@
-var Fluxxor = require('fluxxor');
-var Flavors = require('../data/Flavors');
+import Flavors from '../data/Flavors';
+import BaseStore from './BaseStore';
 
-var FlavorStore = Fluxxor.createStore({
-  actions: {
-    "CHANGE_NODE_COUNT": "onNodeCountChange"
-  },
-
-  initialize: function(options) {
+class FlavorStore extends BaseStore {
+  constructor() {
+    super();
+    this.subscribe(() => this._registerToActions.bind(this));
     this.state = {
-      Flavors
+      flavors: Flavors,
     };
-  },
+  }
 
-  onNodeCountChange: function(payload) {
-    this.state.Flavors[0].roles[0].nodeCount = payload.newCount;
-    this.state.Flavors[0].freeNodeCount = 20 - payload.newCount;
-    this.emit("change");
-  },
+  _registerToActions(payload) {
+    switch(payload.actionType) {
+      case "CHANGE_NODE_COUNT":
+        this.onNodeCountChange(payload.roleData);
+        break;
+      default:
+        break;
+    }
+  }
 
-  getState: function() {
+  onNodeCountChange(roleData) {
+    this.state.flavors[0].roles[0].nodeCount = roleData.newCount;
+    this.state.flavors[0].freeNodeCount = 20 - roleData.newCount;
+    this.emitChange();
+  }
+
+  getState() {
     return this.state;
   }
-});
+}
 
-module.exports = FlavorStore;
+export default new FlavorStore();

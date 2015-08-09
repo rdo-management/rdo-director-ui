@@ -1,4 +1,4 @@
-var Flavors = [
+export default [
   {
     name: 'Baremetal',
     hwSpecs: '1CPU, 40GB RAM, HDD 500GB',
@@ -21,5 +21,3 @@ var Flavors = [
     freeNodeCount: 10
   }
 ];
-
-module.exports = Flavors;
