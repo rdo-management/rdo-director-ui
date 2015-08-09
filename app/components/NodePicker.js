@@ -1,29 +1,16 @@
-var React = require('react');
-var NodeStack = require('./NodeStack')
+import React from 'react';
+import NodeStack from './NodeStack';
 
-var NodePicker = React.createClass({
+export default class NodePicker extends React.Component {
   /*
     Component that implements Node Count Picker expects onIncrement function
     (that expects increment parameter) passed through props from owner.
   */
-
-  propTypes: {
-    onIncrement: React.PropTypes.func.isRequired,
-    nodeCount: React.PropTypes.number.isRequired,
-    incrementValue: React.PropTypes.number
-  },
-
-  getDefaultProps: function() {
-    return {
-      incrementValue: 1
-    }
-  },
-
-  increment: function(increment) {
+  increment(increment) {
     this.props.onIncrement(increment);
-  },
+  }
 
-  render: function() {
+  render() {
     return (
       <div className="node-picker">
         <PickerArrow direction="left" increment={this.increment.bind(this, -this.props.incrementValue)}/>
@@ -32,21 +19,27 @@ var NodePicker = React.createClass({
       </div>
     );
   }
-});
+}
 
-var PickerArrow = React.createClass({
-  propTypes: {
-    increment: React.PropTypes.func.isRequired,
-    direction: React.PropTypes.oneOf(['left', 'right']).isRequired
-  },
+NodePicker.propTypes = {
+  onIncrement: React.PropTypes.func.isRequired,
+  nodeCount: React.PropTypes.number.isRequired,
+  incrementValue: React.PropTypes.number
+};
+NodePicker.defaultProps = { incrementValue: 1 };
 
-  render: function() {
+
+export class PickerArrow extends React.Component {
+  render() {
     return (
       <button className="picker-arrow" onClick={this.props.increment}>
         <span className={"glyphicon glyphicon-chevron-"+this.props.direction} aria-hidden="true"></span>
       </button>
     );
   }
-});
+}
 
-module.exports = NodePicker;
+PickerArrow.propTypes = {
+  increment: React.PropTypes.func.isRequired,
+  direction: React.PropTypes.oneOf(['left', 'right']).isRequired
+};

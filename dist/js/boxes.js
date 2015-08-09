@@ -174,17 +174,36 @@
 
 	'use strict';
 	
-	var React = __webpack_require__(3);
-	var Fluxxor = __webpack_require__(159);
-	var Flavors = __webpack_require__(256);
-	var Roles = __webpack_require__(2);
-	var NodePicker = __webpack_require__(257);
-	var NodeStack = __webpack_require__(258);
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
-	var FluxMixin = Fluxxor.FluxMixin(React),
-	    StoreWatchMixin = Fluxxor.StoreWatchMixin;
+	var _react = __webpack_require__(3);
 	
-	var Boxes = React.createClass({
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _fluxxor = __webpack_require__(159);
+	
+	var _fluxxor2 = _interopRequireDefault(_fluxxor);
+	
+	var _dataFlavors = __webpack_require__(256);
+	
+	var _dataFlavors2 = _interopRequireDefault(_dataFlavors);
+	
+	var _dataRoles = __webpack_require__(2);
+	
+	var _dataRoles2 = _interopRequireDefault(_dataRoles);
+	
+	var _NodePicker = __webpack_require__(257);
+	
+	var _NodePicker2 = _interopRequireDefault(_NodePicker);
+	
+	var _NodeStack = __webpack_require__(258);
+	
+	var _NodeStack2 = _interopRequireDefault(_NodeStack);
+	
+	var FluxMixin = _fluxxor2['default'].FluxMixin(_react2['default']),
+	    StoreWatchMixin = _fluxxor2['default'].StoreWatchMixin;
+	
+	var Boxes = _react2['default'].createClass({
 	  displayName: 'Boxes',
 	
 	  mixins: [FluxMixin, StoreWatchMixin('FlavorStore')],
@@ -201,23 +220,23 @@
 	  },
 	
 	  render: function render() {
-	    return React.createElement(
+	    return _react2['default'].createElement(
 	      'div',
 	      { className: 'row' },
-	      React.createElement(PageHeader, { text: 'Overcloud Deployment' }),
-	      React.createElement(FlavorPanelList, { flavors: this.state.flavors.Flavors })
+	      _react2['default'].createElement(PageHeader, { text: 'Overcloud Deployment' }),
+	      _react2['default'].createElement(FlavorPanelList, { flavors: this.state.flavors.Flavors })
 	    );
 	  }
 	});
 	
-	var PageHeader = React.createClass({
+	var PageHeader = _react2['default'].createClass({
 	  displayName: 'PageHeader',
 	
 	  render: function render() {
-	    return React.createElement(
+	    return _react2['default'].createElement(
 	      'div',
 	      { className: 'page-header' },
-	      React.createElement(
+	      _react2['default'].createElement(
 	        'h1',
 	        null,
 	        this.props.text
@@ -239,14 +258,14 @@
 	//   }
 	// });
 	
-	var FlavorPanelList = React.createClass({
+	var FlavorPanelList = _react2['default'].createClass({
 	  displayName: 'FlavorPanelList',
 	
 	  render: function render() {
 	    var flavors = this.props.flavors.map(function (flavor, index) {
-	      return React.createElement(FlavorPanel, { flavor: flavor, key: index });
+	      return _react2['default'].createElement(FlavorPanel, { flavor: flavor, key: index });
 	    });
-	    return React.createElement(
+	    return _react2['default'].createElement(
 	      'div',
 	      null,
 	      flavors
@@ -254,25 +273,25 @@
 	  }
 	});
 	
-	var FlavorPanel = React.createClass({
+	var FlavorPanel = _react2['default'].createClass({
 	  displayName: 'FlavorPanel',
 	
 	  render: function render() {
-	    return React.createElement(
+	    return _react2['default'].createElement(
 	      'div',
 	      { className: 'panel panel-default flavor-panel' },
-	      React.createElement(
+	      _react2['default'].createElement(
 	        'div',
 	        { className: 'panel-heading' },
-	        React.createElement(
+	        _react2['default'].createElement(
 	          'h3',
 	          { className: 'panel-title' },
-	          React.createElement(
+	          _react2['default'].createElement(
 	            'strong',
 	            null,
 	            this.props.flavor.name
 	          ),
-	          React.createElement(
+	          _react2['default'].createElement(
 	            'small',
 	            { className: 'subheader' },
 	            ' ',
@@ -280,22 +299,22 @@
 	          )
 	        )
 	      ),
-	      React.createElement(
+	      _react2['default'].createElement(
 	        'div',
 	        { className: 'panel-body' },
-	        React.createElement(
+	        _react2['default'].createElement(
 	          'div',
 	          { className: 'row' },
-	          React.createElement(
+	          _react2['default'].createElement(
 	            'div',
 	            { className: 'col-sm-4 col-md-3' },
-	            React.createElement(FreeNodesPanel, { nodeCount: this.props.flavor.freeNodeCount })
+	            _react2['default'].createElement(FreeNodesPanel, { nodeCount: this.props.flavor.freeNodeCount })
 	          ),
-	          React.createElement(RoleList, { roles: this.props.flavor.roles }),
-	          React.createElement(
+	          _react2['default'].createElement(RoleList, { roles: this.props.flavor.roles }),
+	          _react2['default'].createElement(
 	            'div',
 	            { className: 'col-sm-4 col-md-3' },
-	            React.createElement(DropZonePanel, null)
+	            _react2['default'].createElement(DropZonePanel, null)
 	          )
 	        )
 	      )
@@ -303,18 +322,18 @@
 	  }
 	});
 	
-	var RoleList = React.createClass({
+	var RoleList = _react2['default'].createClass({
 	  displayName: 'RoleList',
 	
 	  render: function render() {
 	    var roles = this.props.roles.map(function (role, index) {
-	      return React.createElement(
+	      return _react2['default'].createElement(
 	        'div',
 	        { className: 'col-sm-4 col-md-3', key: index },
-	        React.createElement(RolePanel, { role: role })
+	        _react2['default'].createElement(RolePanel, { role: role })
 	      );
 	    });
-	    return React.createElement(
+	    return _react2['default'].createElement(
 	      'div',
 	      null,
 	      roles
@@ -322,57 +341,57 @@
 	  }
 	});
 	
-	var FreeNodesPanel = React.createClass({
+	var FreeNodesPanel = _react2['default'].createClass({
 	  displayName: 'FreeNodesPanel',
 	
 	  render: function render() {
-	    return React.createElement(
+	    return _react2['default'].createElement(
 	      'div',
 	      { className: 'panel panel-default role-panel free-nodes-panel' },
-	      React.createElement(
+	      _react2['default'].createElement(
 	        'div',
 	        { className: 'panel-heading' },
-	        React.createElement(
+	        _react2['default'].createElement(
 	          'h3',
 	          { className: 'panel-title' },
 	          'Free Nodes'
 	        )
 	      ),
-	      React.createElement(
+	      _react2['default'].createElement(
 	        'div',
 	        { className: 'panel-body clearfix' },
-	        React.createElement(NodeStack, { count: this.props.nodeCount })
+	        _react2['default'].createElement(_NodeStack2['default'], { count: this.props.nodeCount })
 	      )
 	    );
 	  }
 	});
 	
-	var DropZonePanel = React.createClass({
+	var DropZonePanel = _react2['default'].createClass({
 	  displayName: 'DropZonePanel',
 	
 	  render: function render() {
-	    return React.createElement(
+	    return _react2['default'].createElement(
 	      'div',
 	      { className: 'panel panel-default role-panel drop-zone-panel' },
-	      React.createElement(
+	      _react2['default'].createElement(
 	        'div',
 	        { className: 'panel-heading' },
-	        React.createElement(
+	        _react2['default'].createElement(
 	          'h3',
 	          { className: 'panel-title' },
 	          'Add Role'
 	        )
 	      ),
-	      React.createElement(
+	      _react2['default'].createElement(
 	        'div',
 	        { className: 'panel-body clearfix' },
-	        React.createElement('span', { className: 'glyphicon glyphicon-plus' })
+	        _react2['default'].createElement('span', { className: 'glyphicon glyphicon-plus' })
 	      )
 	    );
 	  }
 	});
 	
-	var RolePanel = React.createClass({
+	var RolePanel = _react2['default'].createClass({
 	  displayName: 'RolePanel',
 	
 	  mixins: [FluxMixin],
@@ -382,22 +401,22 @@
 	  },
 	
 	  render: function render() {
-	    return React.createElement(
+	    return _react2['default'].createElement(
 	      'div',
 	      { className: 'panel panel-default role-panel ' + this.props.role.name.toLowerCase() },
-	      React.createElement(
+	      _react2['default'].createElement(
 	        'div',
 	        { className: 'panel-heading' },
-	        React.createElement(
+	        _react2['default'].createElement(
 	          'h3',
 	          { className: 'panel-title' },
 	          this.props.role.name
 	        )
 	      ),
-	      React.createElement(
+	      _react2['default'].createElement(
 	        'div',
 	        { className: 'panel-body clearfix' },
-	        React.createElement(NodePicker, { onIncrement: this.updateCount, nodeCount: this.props.role.nodeCount })
+	        _react2['default'].createElement(_NodePicker2['default'], { onIncrement: this.updateCount, nodeCount: this.props.role.nodeCount })
 	      )
 	    );
 	  }
@@ -25452,62 +25471,103 @@
 
 	'use strict';
 	
-	var React = __webpack_require__(3);
-	var NodeStack = __webpack_require__(258);
-	
-	var NodePicker = React.createClass({
-	  displayName: 'NodePicker',
-	
-	  /*
-	    Component that implements Node Count Picker expects onIncrement function
-	    (that expects increment parameter) passed through props from owner.
-	  */
-	
-	  propTypes: {
-	    onIncrement: React.PropTypes.func.isRequired,
-	    nodeCount: React.PropTypes.number.isRequired,
-	    incrementValue: React.PropTypes.number
-	  },
-	
-	  getDefaultProps: function getDefaultProps() {
-	    return {
-	      incrementValue: 1
-	    };
-	  },
-	
-	  increment: function increment(_increment) {
-	    this.props.onIncrement(_increment);
-	  },
-	
-	  render: function render() {
-	    return React.createElement(
-	      'div',
-	      { className: 'node-picker' },
-	      React.createElement(PickerArrow, { direction: 'left', increment: this.increment.bind(this, -this.props.incrementValue) }),
-	      React.createElement(NodeStack, { count: this.props.nodeCount }),
-	      React.createElement(PickerArrow, { direction: 'right', increment: this.increment.bind(this, this.props.incrementValue) })
-	    );
-	  }
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
 	});
 	
-	var PickerArrow = React.createClass({
-	  displayName: 'PickerArrow',
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 	
-	  propTypes: {
-	    increment: React.PropTypes.func.isRequired,
-	    direction: React.PropTypes.oneOf(['left', 'right']).isRequired
-	  },
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
-	  render: function render() {
-	    return React.createElement(
-	      'button',
-	      { className: 'picker-arrow', onClick: this.props.increment },
-	      React.createElement('span', { className: 'glyphicon glyphicon-chevron-' + this.props.direction, 'aria-hidden': 'true' })
-	    );
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; }
+	
+	var _react = __webpack_require__(3);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _NodeStack = __webpack_require__(258);
+	
+	var _NodeStack2 = _interopRequireDefault(_NodeStack);
+	
+	var NodePicker = (function (_React$Component) {
+	  function NodePicker() {
+	    _classCallCheck(this, NodePicker);
+	
+	    if (_React$Component != null) {
+	      _React$Component.apply(this, arguments);
+	    }
 	  }
-	});
 	
-	module.exports = NodePicker;
+	  _inherits(NodePicker, _React$Component);
+	
+	  _createClass(NodePicker, [{
+	    key: 'increment',
+	
+	    /*
+	      Component that implements Node Count Picker expects onIncrement function
+	      (that expects increment parameter) passed through props from owner.
+	    */
+	    value: function increment(_increment) {
+	      this.props.onIncrement(_increment);
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2['default'].createElement(
+	        'div',
+	        { className: 'node-picker' },
+	        _react2['default'].createElement(PickerArrow, { direction: 'left', increment: this.increment.bind(this, -this.props.incrementValue) }),
+	        _react2['default'].createElement(_NodeStack2['default'], { count: this.props.nodeCount }),
+	        _react2['default'].createElement(PickerArrow, { direction: 'right', increment: this.increment.bind(this, this.props.incrementValue) })
+	      );
+	    }
+	  }]);
+	
+	  return NodePicker;
+	})(_react2['default'].Component);
+	
+	exports['default'] = NodePicker;
+	
+	NodePicker.propTypes = {
+	  onIncrement: _react2['default'].PropTypes.func.isRequired,
+	  nodeCount: _react2['default'].PropTypes.number.isRequired,
+	  incrementValue: _react2['default'].PropTypes.number
+	};
+	NodePicker.defaultProps = { incrementValue: 1 };
+	
+	var PickerArrow = (function (_React$Component2) {
+	  function PickerArrow() {
+	    _classCallCheck(this, PickerArrow);
+	
+	    if (_React$Component2 != null) {
+	      _React$Component2.apply(this, arguments);
+	    }
+	  }
+	
+	  _inherits(PickerArrow, _React$Component2);
+	
+	  _createClass(PickerArrow, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2['default'].createElement(
+	        'button',
+	        { className: 'picker-arrow', onClick: this.props.increment },
+	        _react2['default'].createElement('span', { className: 'glyphicon glyphicon-chevron-' + this.props.direction, 'aria-hidden': 'true' })
+	      );
+	    }
+	  }]);
+	
+	  return PickerArrow;
+	})(_react2['default'].Component);
+	
+	exports.PickerArrow = PickerArrow;
+	
+	PickerArrow.propTypes = {
+	  increment: _react2['default'].PropTypes.func.isRequired,
+	  direction: _react2['default'].PropTypes.oneOf(['left', 'right']).isRequired
+	};
 
 /***/ },
 /* 258 */
@@ -25515,35 +25575,66 @@
 
 	'use strict';
 	
-	var React = __webpack_require__(3);
-	var ClassNames = __webpack_require__(259);
-	
-	var NodeStack = React.createClass({
-	  displayName: 'NodeStack',
-	
-	  propTypes: {
-	    count: React.PropTypes.number.isRequired
-	  },
-	
-	  render: function render() {
-	    var classes = ClassNames({
-	      'stack': true,
-	      'single-stack': this.props.count == 2,
-	      'double-stack': this.props.count > 2
-	    });
-	    return React.createElement(
-	      'div',
-	      { className: 'node-stack' },
-	      React.createElement(
-	        'div',
-	        { className: classes },
-	        this.props.count
-	      )
-	    );
-	  }
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
 	});
 	
-	module.exports = NodeStack;
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; }
+	
+	var _react = __webpack_require__(3);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _classnames = __webpack_require__(259);
+	
+	var _classnames2 = _interopRequireDefault(_classnames);
+	
+	var NodeStack = (function (_React$Component) {
+	  function NodeStack() {
+	    _classCallCheck(this, NodeStack);
+	
+	    if (_React$Component != null) {
+	      _React$Component.apply(this, arguments);
+	    }
+	  }
+	
+	  _inherits(NodeStack, _React$Component);
+	
+	  _createClass(NodeStack, [{
+	    key: 'render',
+	    value: function render() {
+	      var classes = (0, _classnames2['default'])({
+	        'stack': true,
+	        'single-stack': this.props.count == 2,
+	        'double-stack': this.props.count > 2
+	      });
+	      return _react2['default'].createElement(
+	        'div',
+	        { className: 'node-stack' },
+	        _react2['default'].createElement(
+	          'div',
+	          { className: classes },
+	          this.props.count
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return NodeStack;
+	})(_react2['default'].Component);
+	
+	exports['default'] = NodeStack;
+	
+	NodeStack.propTypes = {
+	  count: _react2['default'].PropTypes.number.isRequired
+	};
+	module.exports = exports['default'];
 
 /***/ },
 /* 259 */

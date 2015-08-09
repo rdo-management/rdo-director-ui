@@ -1,13 +1,9 @@
-var React = require('react');
-var ClassNames = require('classnames');
+import React from 'react';
+import ClassNames from 'classnames';
 
-var NodeStack = React.createClass({
-  propTypes: {
-    count: React.PropTypes.number.isRequired
-  },
-
-  render: function() {
-    var classes = ClassNames({
+export default class NodeStack extends React.Component {
+  render() {
+    let classes = ClassNames({
       'stack': true,
       'single-stack': this.props.count == 2,
       'double-stack': this.props.count > 2
@@ -18,6 +14,8 @@ var NodeStack = React.createClass({
       </div>
     );
   }
-});
+}
+NodeStack.propTypes = {
+  count: React.PropTypes.number.isRequired
+};
 
-module.exports = NodeStack;

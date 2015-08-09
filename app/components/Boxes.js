@@ -1,9 +1,10 @@
-var React = require('react');
-var Fluxxor = require('fluxxor');
-var Flavors = require('../data/Flavors');
-var Roles = require('../data/Roles');
-var NodePicker = require('./NodePicker');
-var NodeStack = require('./NodeStack');
+import React from 'react';
+import Fluxxor from 'fluxxor';
+
+import Flavors from '../data/Flavors';
+import Roles from '../data/Roles';
+import NodePicker from './NodePicker';
+import NodeStack from './NodeStack';
 
 var FluxMixin = Fluxxor.FluxMixin(React),
     StoreWatchMixin = Fluxxor.StoreWatchMixin;
