@@ -12,12 +12,12 @@ export default [
         nodeCount: 0
       },
     ],
-    freeNodeCount: 20
+    nodeCount: 20
   },
   {
     name: 'Flavor2',
     hwSpecs: '1CPU, 20GB RAM, HDD 250GB',
     roles: [],
-    freeNodeCount: 10
+    nodeCount: 10
   }
 ];

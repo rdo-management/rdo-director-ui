@@ -12,21 +12,28 @@ class FlavorStore extends BaseStore {
 
   _registerToActions(payload) {
     switch(payload.actionType) {
-      case "CHANGE_NODE_COUNT":
-        this.onNodeCountChange(payload.roleData);
+      case "UPDATE_FLAVOR_ROLE":
+        this.updateFlavorRole(payload.role);
         break;
       default:
         break;
     }
   }
 
-  onNodeCountChange(roleData) {
-    this.state.flavors[0].roles[0].nodeCount = roleData.newCount;
-    this.state.flavors[0].freeNodeCount = 20 - roleData.newCount;
+  updateFlavorRole(role) {
+    this.state.flavors[0].roles.filter((r) => {r.name == role.name})[0] = role;
+    this.state.flavors[0].freeNodeCount = this._calculateFreeNodes(this.state.flavors[0]);
     this.emitChange();
   }
 
+  _calculateFreeNodes(flavor) {
+    let reserved = 0;
+    flavor.roles.forEach((role) => { reserved += role.nodeCount; });
+    return flavor.nodeCount - reserved;
+  }
+
   getState() {
+    this.state.flavors.forEach((flavor) => { flavor.freeNodeCount = this._calculateFreeNodes(flavor); });
     return this.state;
   }
 }

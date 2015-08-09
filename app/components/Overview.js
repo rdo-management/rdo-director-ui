@@ -2,9 +2,9 @@ import React from 'react';
 
 import OverviewActions from '../actions/OverviewActions';
 import FlavorStore from '../stores/FlavorStore';
-
 import NodePicker from './NodePicker';
 import NodeStack from './NodeStack';
+import { PageHeader } from './Layout';
 
 
 export default class Overview extends React.Component {
@@ -28,19 +28,8 @@ export default class Overview extends React.Component {
   render() {
     return (
       <div className="row">
-        <PageHeader text="Overcloud Deployment"/>
+        <PageHeader>Overcloud Deployment</PageHeader>
         <FlavorPanelList flavors={this.state.flavors}/>
-      </div>
-    );
-  }
-}
-
-
-export class PageHeader extends React.Component {
-  render() {
-    return (
-      <div className="page-header">
-        <h1>{this.props.text}</h1>
       </div>
     );
   }
@@ -156,7 +145,9 @@ export class DropZonePanel extends React.Component {
 
 export class RolePanel extends React.Component {
   updateCount(increment) {
-    OverviewActions.updateRole(this.props.role.name, this.props.role.nodeCount + increment);
+    let updatedRole = this.props.role;
+    updatedRole.nodeCount = this.props.role.nodeCount + increment;
+    OverviewActions.updateRole(updatedRole);
   }
 
   render() {
