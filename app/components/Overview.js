@@ -67,6 +67,9 @@ export class FlavorPanelList extends React.Component {
     );
   }
 }
+FlavorPanelList.propTypes = {
+  'flavors': React.PropTypes.array.isRequired
+};
 
 
 export class FlavorPanel extends React.Component {
@@ -94,6 +97,9 @@ export class FlavorPanel extends React.Component {
     );
   }
 }
+FlavorPanel.propTypes = {
+  'flavor': React.PropTypes.object.isRequired
+};
 
 
 export class RoleList extends React.Component {
@@ -112,6 +118,9 @@ export class RoleList extends React.Component {
     );
   }
 }
+RoleList.propTypes = {
+  'roles': React.PropTypes.array.isRequired
+};
 
 
 export class FreeNodesPanel extends React.Component {
@@ -128,6 +137,9 @@ export class FreeNodesPanel extends React.Component {
     );
   }
 }
+FreeNodesPanel.propTypes = {
+  'nodeCount': React.PropTypes.number.isRequired
+};
 
 
 export class DropZonePanel extends React.Component {
@@ -155,14 +167,17 @@ export class RolePanel extends React.Component {
 
   render() {
     return (
-      <div className={"panel panel-default role-panel " + this.props.role.name.toLowerCase()}>
+      <div className={'panel panel-default role-panel ' + this.props.role.name.toLowerCase()}>
         <div className="panel-heading">
           <h3 className="panel-title">{this.props.role.name}</h3>
         </div>
         <div className="panel-body clearfix">
-          <NodePicker onIncrement={this.updateCount.bind(this)} nodeCount={this.props.role.nodeCount} />
+          <NodePicker nodeCount={this.props.role.nodeCount} onIncrement={this.updateCount.bind(this)}/>
         </div>
       </div>
     );
   }
 }
+RolePanel.propTypes = {
+  'role': React.PropTypes.object.isRequired
+};

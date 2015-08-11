@@ -19,9 +19,9 @@ export default class NodePicker extends React.Component {
   }
 }
 NodePicker.propTypes = {
-  onIncrement: React.PropTypes.func.isRequired,
+  incrementValue: React.PropTypes.number,
   nodeCount: React.PropTypes.number.isRequired,
-  incrementValue: React.PropTypes.number
+  onIncrement: React.PropTypes.func.isRequired
 };
 NodePicker.defaultProps = { incrementValue: 1 };
 
@@ -30,12 +30,12 @@ export class PickerArrow extends React.Component {
   render() {
     return (
       <button className="picker-arrow" onClick={this.props.increment}>
-        <span className={"glyphicon glyphicon-chevron-"+this.props.direction} aria-hidden="true"></span>
+        <span className={'glyphicon glyphicon-chevron-' + this.props.direction} aria-hidden="true"></span>
       </button>
     );
   }
 }
 PickerArrow.propTypes = {
-  increment: React.PropTypes.func.isRequired,
-  direction: React.PropTypes.oneOf(['left', 'right']).isRequired
+  direction: React.PropTypes.oneOf(['left', 'right']).isRequired,
+  increment: React.PropTypes.func.isRequired
 };

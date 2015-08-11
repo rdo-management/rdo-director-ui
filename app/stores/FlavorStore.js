@@ -6,22 +6,22 @@ class FlavorStore extends BaseStore {
     super();
     this.subscribe(() => this._registerToActions.bind(this));
     this.state = {
-      flavors: Flavors,
+      flavors: Flavors
     };
   }
 
   _registerToActions(payload) {
     switch(payload.actionType) {
-      case "UPDATE_FLAVOR_ROLE":
-        this.updateFlavorRole(payload.role);
-        break;
-      default:
-        break;
+    case 'UPDATE_FLAVOR_ROLE':
+      this.updateFlavorRole(payload.role);
+      break;
+    default:
+      break;
     }
   }
 
   updateFlavorRole(role) {
-    this.state.flavors[0].roles.filter((r) => {r.name == role.name})[0] = role;
+    this.state.flavors[0].roles.filter((r) => { r.name == role.name; })[0] = role;
     this.state.flavors[0].freeNodeCount = this._calculateFreeNodes(this.state.flavors[0]);
     this.emitChange();
   }

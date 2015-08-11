@@ -12,27 +12,26 @@ class AuthService {
       crossOrigin: true,
       type: 'json',
       data: {
-        "auth": {
-          "passwordCredentials": {
-            "username": username,
-            "password": password
+        'auth': {
+          'passwordCredentials': {
+            'username': username,
+            'password': password
           },
-          "tenantName": "admin"
+          'tenantName': 'admin'
         }
       }
     })));
   }
 
   handleAuth(loginPromise) {
-    return loginPromise.then(function(response) {
-      var jwt = response;
-      console.log(response);
+    return loginPromise.then((response) => {
+      let token = response;
       LoginActions.loginUser();
       return true;
-    }).catch(function(err){
-      console.log("Error in handleAuth", err);
+    }).catch((err) => {
+      console.log('Error in handleAuth', err);
     });
   }
 }
 
-export default new AuthService()
+export default new AuthService();

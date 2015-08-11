@@ -13,21 +13,20 @@ class LoginStore extends BaseStore {
 
   _registerToActions(payload) {
     switch(payload.actionType) {
-      case "USER_AUTH_STARTED":
-        break;
-      case "LOGIN_USER":
-        this.onLoginUser();
-        break;
-      case "LOGOUT_USER":
-        this.onLogoutUser();
-        break;
-      default:
-        break;
+    case 'USER_AUTH_STARTED':
+      break;
+    case 'LOGIN_USER':
+      this.onLoginUser();
+      break;
+    case 'LOGOUT_USER':
+      this.onLogoutUser();
+      break;
+    default:
+      break;
     }
   }
 
   onLoginUser() {
-    console.log("Login has started also gotten into LoginStore.");
     this.emitChange();
   }
 
@@ -35,7 +34,7 @@ class LoginStore extends BaseStore {
     this.state = {
       user: null,
       jwt: null
-    }
+    };
     this.emitChange();
   }
 

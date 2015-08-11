@@ -1,4 +1,4 @@
-require('babel/polyfill');
+import 'babel/polyfill';
 
 import React from 'react';
 import * as Router from 'react-router';
@@ -29,8 +29,8 @@ export default class App extends React.Component {
 
 let routes = (
   <Route handler={App}>
-    <DefaultRoute name="overview" handler={Overview}/>
-    <Route name="login" path="login" handler={Login}/>
+    <DefaultRoute handler={Overview} name="overview"/>
+    <Route handler={Login} name="login" path="login"/>
   </Route>
 );
 

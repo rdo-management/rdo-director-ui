@@ -10,7 +10,7 @@ export default [
       {
         name: 'Compute',
         nodeCount: 0
-      },
+      }
     ],
     nodeCount: 20
   },
