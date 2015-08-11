@@ -30286,7 +30286,9 @@
 	    _classCallCheck(this, Overview);
 	
 	    _get(Object.getPrototypeOf(Overview.prototype), 'constructor', this).call(this, props);
-	    this.state = _storesFlavorStore2['default'].getState();
+	    this.state = {
+	      flavors: []
+	    };
 	  }
 	
 	  _inherits(Overview, _React$Component);
@@ -30294,6 +30296,7 @@
 	  _createClass(Overview, [{
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
+	      this.setState(_storesFlavorStore2['default'].getState());
 	      _storesFlavorStore2['default'].addChangeListener(this._onChange.bind(this));
 	    }
 	  }, {

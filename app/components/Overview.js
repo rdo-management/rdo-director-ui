@@ -10,10 +10,13 @@ import { PageHeader } from './Layout';
 export default class Overview extends React.Component {
   constructor(props) {
     super(props);
-    this.state = FlavorStore.getState();
+    this.state = {
+      flavors: []
+    };
   }
 
   componentDidMount() {
+    this.setState(FlavorStore.getState());
     FlavorStore.addChangeListener(this._onChange.bind(this));
   }
 
