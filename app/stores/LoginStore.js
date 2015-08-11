@@ -4,11 +4,7 @@ class LoginStore extends BaseStore {
   constructor() {
     super();
     this.subscribe(() => this._registerToActions.bind(this));
-    // this.dispatchToken = AppDispatcher.register(this._registerToActions.bind(this));
-    this.state = {
-      user: null,
-      jwt: null
-    };
+    this.state = {};
   }
 
   _registerToActions(payload) {
@@ -16,7 +12,7 @@ class LoginStore extends BaseStore {
     case 'USER_AUTH_STARTED':
       break;
     case 'LOGIN_USER':
-      this.onLoginUser();
+      this.onLoginUser(payload.keystoneAccess);
       break;
     case 'LOGOUT_USER':
       this.onLogoutUser();
@@ -26,15 +22,18 @@ class LoginStore extends BaseStore {
     }
   }
 
-  onLoginUser() {
+  onLoginUser(keystoneAccess) {
+    this.state = {
+      token: keystoneAccess.token,
+      user: keystoneAccess.user,
+      serviceCatalog: keystoneAccess.serviceCatalog,
+      metadata: keystoneAccess.metadata
+    };
     this.emitChange();
   }
 
   onLogoutUser() {
-    this.state = {
-      user: null,
-      jwt: null
-    };
+    this.state = {};
     this.emitChange();
   }
 

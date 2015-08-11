@@ -2,15 +2,28 @@ import React from 'react/addons';
 import ReactMixin from 'react-mixin';
 
 import LoginActions from '../actions/LoginActions';
-// import LoginStore from '../stores/LoginStore';
+import LoginStore from '../stores/LoginStore';
 
 export default class Login extends React.Component {
   constructor() {
     super();
-    this.state = {
-      'username': '',
-      'password': ''
-    };
+    this.state = LoginStore.getState();
+  }
+
+  componentDidMount() {
+    LoginStore.addChangeListener(this._onChange.bind(this));
+    this.setState(LoginStore.getState());
+  }
+
+  componentWillUnmount() {
+    LoginStore.removeChangeListener(this._onChange.bind(this));
+  }
+
+  _onChange() {
+    this.setState(LoginStore.getState());
+    if (LoginStore.isLoggedIn()) {
+        console.log("User is logged in.");
+    }
   }
 
   handleLogin(e) {

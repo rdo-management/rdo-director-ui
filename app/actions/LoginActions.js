@@ -9,9 +9,11 @@ export default {
     AuthService.authenticateUser(username, password);
   },
 
-  loginUser() {
+  loginUser(keystoneAccess) {
+    localStorage.setItem('keystoneAccess', keystoneAccess);
     AppDispatcher.dispatch({
-      actionType: 'LOGIN_USER'
+      actionType: 'LOGIN_USER',
+      keystoneAccess: keystoneAccess
     });
   }
 };

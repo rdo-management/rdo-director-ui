@@ -10,25 +10,27 @@ class AuthService {
       url: AUTH_URL,
       method: 'POST',
       crossOrigin: true,
+      contentType: 'application/json',
       type: 'json',
-      data: {
-        'auth': {
-          'passwordCredentials': {
-            'username': username,
-            'password': password
-          },
-          'tenantName': 'admin'
+      data: JSON.stringify({
+        auth: {
+          tenantName: 'admin',
+          passwordCredentials: {
+            username: username,
+            password: password
+          }
         }
-      }
+      })
     })));
   }
 
   handleAuth(loginPromise) {
     return loginPromise.then((response) => {
-      let token = response;
-      LoginActions.loginUser();
+      let keystoneAccess = response.access;
+      LoginActions.loginUser(keystoneAccess);
       return true;
     }).catch((err) => {
+      // TODO(jtomasek): launch notification action/form errors etc.
       console.log('Error in handleAuth', err);
     });
   }
