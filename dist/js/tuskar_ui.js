@@ -27684,7 +27684,7 @@
 	    value: function _onChange() {
 	      this.setState(_storesLoginStore2['default'].getState());
 	      if (_storesLoginStore2['default'].isLoggedIn()) {
-	        console.log('User is logged in.');
+	        this.context.router.transitionTo('overview');
 	      }
 	    }
 	  }, {
@@ -27761,6 +27761,10 @@
 	})(_reactAddons2['default'].Component);
 	
 	exports['default'] = Login;
+	
+	Login.contextTypes = {
+	  router: _reactAddons2['default'].PropTypes.func
+	};
 	
 	(0, _reactMixin2['default'])(Login.prototype, _reactAddons2['default'].addons.LinkedStateMixin);
 	module.exports = exports['default'];

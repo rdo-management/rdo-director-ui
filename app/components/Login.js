@@ -22,7 +22,7 @@ export default class Login extends React.Component {
   _onChange() {
     this.setState(LoginStore.getState());
     if (LoginStore.isLoggedIn()) {
-        console.log("User is logged in.");
+      this.context.router.transitionTo('overview');
     }
   }
 
@@ -64,5 +64,8 @@ export default class Login extends React.Component {
     );
   }
 }
+Login.contextTypes = {
+  router: React.PropTypes.func
+};
 
 ReactMixin(Login.prototype, React.addons.LinkedStateMixin);
