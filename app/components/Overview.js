@@ -1,5 +1,6 @@
 import React from 'react';
 
+import AuthenticatedComponent from './AuthenticatedComponent';
 import OverviewActions from '../actions/OverviewActions';
 import FlavorStore from '../stores/FlavorStore';
 import NodePicker from './NodePicker';
@@ -7,7 +8,7 @@ import NodeStack from './NodeStack';
 import { PageHeader } from './Layout';
 
 
-export default class Overview extends React.Component {
+export default AuthenticatedComponent(class OverviewActions extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -31,12 +32,12 @@ export default class Overview extends React.Component {
   render() {
     return (
       <div className="row">
-        <PageHeader>Overcloud Deployment</PageHeader>
+        <PageHeader>Overcloud Deployment {this.props.user.name}</PageHeader>
         <FlavorPanelList flavors={this.state.flavors}/>
       </div>
     );
   }
-}
+});
 
 
 // export class FreeRolesList extends React.Component {

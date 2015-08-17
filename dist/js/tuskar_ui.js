@@ -34259,37 +34259,41 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _actionsOverviewActions = __webpack_require__(347);
+	var _AuthenticatedComponent = __webpack_require__(344);
+	
+	var _AuthenticatedComponent2 = _interopRequireDefault(_AuthenticatedComponent);
+	
+	var _actionsOverviewActions = __webpack_require__(345);
 	
 	var _actionsOverviewActions2 = _interopRequireDefault(_actionsOverviewActions);
 	
-	var _storesFlavorStore = __webpack_require__(348);
+	var _storesFlavorStore = __webpack_require__(346);
 	
 	var _storesFlavorStore2 = _interopRequireDefault(_storesFlavorStore);
 	
-	var _NodePicker = __webpack_require__(344);
+	var _NodePicker = __webpack_require__(348);
 	
 	var _NodePicker2 = _interopRequireDefault(_NodePicker);
 	
-	var _NodeStack = __webpack_require__(345);
+	var _NodeStack = __webpack_require__(349);
 	
 	var _NodeStack2 = _interopRequireDefault(_NodeStack);
 	
-	var _Layout = __webpack_require__(350);
+	var _Layout = __webpack_require__(351);
 	
-	var Overview = (function (_React$Component) {
-	  function Overview(props) {
-	    _classCallCheck(this, Overview);
+	exports['default'] = (0, _AuthenticatedComponent2['default'])((function (_React$Component) {
+	  function OverviewActions(props) {
+	    _classCallCheck(this, OverviewActions);
 	
-	    _get(Object.getPrototypeOf(Overview.prototype), 'constructor', this).call(this, props);
+	    _get(Object.getPrototypeOf(OverviewActions.prototype), 'constructor', this).call(this, props);
 	    this.state = {
 	      flavors: []
 	    };
 	  }
 	
-	  _inherits(Overview, _React$Component);
+	  _inherits(OverviewActions, _React$Component);
 	
-	  _createClass(Overview, [{
+	  _createClass(OverviewActions, [{
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
 	      this.setState(_storesFlavorStore2['default'].getState());
@@ -34314,17 +34318,16 @@
 	        _react2['default'].createElement(
 	          _Layout.PageHeader,
 	          null,
-	          'Overcloud Deployment'
+	          'Overcloud Deployment ',
+	          this.props.user.name
 	        ),
 	        _react2['default'].createElement(FlavorPanelList, { flavors: this.state.flavors })
 	      );
 	    }
 	  }]);
 	
-	  return Overview;
-	})(_react2['default'].Component);
-	
-	exports['default'] = Overview;
+	  return OverviewActions;
+	})(_react2['default'].Component));
 	
 	// export class FreeRolesList extends React.Component {
 	//   render() {
@@ -34624,6 +34627,240 @@
 	  value: true
 	});
 	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+	
+	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; }
+	
+	var _react = __webpack_require__(95);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _storesLoginStore = __webpack_require__(340);
+	
+	var _storesLoginStore2 = _interopRequireDefault(_storesLoginStore);
+	
+	exports['default'] = function (ComposedComponent) {
+	  return (function (_React$Component) {
+	    function AuthenticatedComponent() {
+	      _classCallCheck(this, AuthenticatedComponent);
+	
+	      _get(Object.getPrototypeOf(AuthenticatedComponent.prototype), 'constructor', this).call(this);
+	      this.state = this._getLoginState();
+	    }
+	
+	    _inherits(AuthenticatedComponent, _React$Component);
+	
+	    _createClass(AuthenticatedComponent, [{
+	      key: '_getLoginState',
+	      value: function _getLoginState() {
+	        return {
+	          userLoggedIn: _storesLoginStore2['default'].isLoggedIn(),
+	          user: _storesLoginStore2['default'].getState().user,
+	          authToken: _storesLoginStore2['default'].getState().token
+	        };
+	      }
+	    }, {
+	      key: 'componentDidMount',
+	      value: function componentDidMount() {
+	        _storesLoginStore2['default'].addChangeListener(this._onChange.bind(this));
+	      }
+	    }, {
+	      key: '_onChange',
+	      value: function _onChange() {
+	        this.setState(this._getLoginState());
+	      }
+	    }, {
+	      key: 'componentWillUnmount',
+	      value: function componentWillUnmount() {
+	        _storesLoginStore2['default'].removeChangeListener(this._onChange.bind(this));
+	      }
+	    }, {
+	      key: 'render',
+	      value: function render() {
+	        return _react2['default'].createElement(ComposedComponent, _extends({}, this.props, {
+	          user: this.state.user,
+	          authToken: this.state.authToken,
+	          userLoggedIn: this.state.userLoggedIn }));
+	      }
+	    }], [{
+	      key: 'willTransitionTo',
+	      value: function willTransitionTo(transition) {
+	        if (!_storesLoginStore2['default'].isLoggedIn()) {
+	          transition.redirect('/login', {}, { 'nextPath': transition.path });
+	        }
+	      }
+	    }]);
+	
+	    return AuthenticatedComponent;
+	  })(_react2['default'].Component);
+	};
+	
+	module.exports = exports['default'];
+
+/***/ },
+/* 345 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+	var _dispatchersAppDispatcherJs = __webpack_require__(312);
+	
+	var _dispatchersAppDispatcherJs2 = _interopRequireDefault(_dispatchersAppDispatcherJs);
+	
+	exports['default'] = {
+	  updateRole: function updateRole(role) {
+	    _dispatchersAppDispatcherJs2['default'].dispatch({
+	      actionType: 'UPDATE_FLAVOR_ROLE',
+	      role: role
+	    });
+	  }
+	};
+	module.exports = exports['default'];
+
+/***/ },
+/* 346 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+	
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+	
+	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; }
+	
+	var _BaseStore2 = __webpack_require__(341);
+	
+	var _BaseStore3 = _interopRequireDefault(_BaseStore2);
+	
+	var _dataFlavors = __webpack_require__(347);
+	
+	var _dataFlavors2 = _interopRequireDefault(_dataFlavors);
+	
+	var FlavorStore = (function (_BaseStore) {
+	  function FlavorStore() {
+	    var _this = this;
+	
+	    _classCallCheck(this, FlavorStore);
+	
+	    _get(Object.getPrototypeOf(FlavorStore.prototype), 'constructor', this).call(this);
+	    this.subscribe(function () {
+	      return _this._registerToActions.bind(_this);
+	    });
+	    this.state = {
+	      flavors: _dataFlavors2['default']
+	    };
+	  }
+	
+	  _inherits(FlavorStore, _BaseStore);
+	
+	  _createClass(FlavorStore, [{
+	    key: '_registerToActions',
+	    value: function _registerToActions(payload) {
+	      switch (payload.actionType) {
+	        case 'UPDATE_FLAVOR_ROLE':
+	          this.updateFlavorRole(payload.role);
+	          break;
+	        default:
+	          break;
+	      }
+	    }
+	  }, {
+	    key: 'updateFlavorRole',
+	    value: function updateFlavorRole(role) {
+	      this.state.flavors[0].roles.filter(function (r) {
+	        r.name == role.name;
+	      })[0] = role;
+	      this.state.flavors[0].freeNodeCount = this._calculateFreeNodes(this.state.flavors[0]);
+	      this.emitChange();
+	    }
+	  }, {
+	    key: '_calculateFreeNodes',
+	    value: function _calculateFreeNodes(flavor) {
+	      var reserved = 0;
+	      flavor.roles.forEach(function (role) {
+	        reserved += role.nodeCount;
+	      });
+	      return flavor.nodeCount - reserved;
+	    }
+	  }, {
+	    key: 'getState',
+	    value: function getState() {
+	      var _this2 = this;
+	
+	      this.state.flavors.forEach(function (flavor) {
+	        flavor.freeNodeCount = _this2._calculateFreeNodes(flavor);
+	      });
+	      return this.state;
+	    }
+	  }]);
+	
+	  return FlavorStore;
+	})(_BaseStore3['default']);
+	
+	exports['default'] = new FlavorStore();
+	module.exports = exports['default'];
+
+/***/ },
+/* 347 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+	exports['default'] = [{
+	  name: 'Baremetal',
+	  hwSpecs: '1CPU, 40GB RAM, HDD 500GB',
+	  roles: [{
+	    name: 'Controller',
+	    nodeCount: 2
+	  }, {
+	    name: 'Compute',
+	    nodeCount: 0
+	  }],
+	  nodeCount: 20
+	}, {
+	  name: 'Flavor2',
+	  hwSpecs: '1CPU, 20GB RAM, HDD 250GB',
+	  roles: [],
+	  nodeCount: 10
+	}];
+	module.exports = exports['default'];
+
+/***/ },
+/* 348 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+	
 	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
@@ -34636,7 +34873,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _NodeStack = __webpack_require__(345);
+	var _NodeStack = __webpack_require__(349);
 	
 	var _NodeStack2 = _interopRequireDefault(_NodeStack);
 	
@@ -34715,7 +34952,7 @@
 	};
 
 /***/ },
-/* 345 */
+/* 349 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34732,7 +34969,7 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; }
 	
-	var _classnames = __webpack_require__(346);
+	var _classnames = __webpack_require__(350);
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
@@ -34782,7 +35019,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 346 */
+/* 350 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -34837,153 +35074,7 @@
 
 
 /***/ },
-/* 347 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-	
-	var _dispatchersAppDispatcherJs = __webpack_require__(312);
-	
-	var _dispatchersAppDispatcherJs2 = _interopRequireDefault(_dispatchersAppDispatcherJs);
-	
-	exports['default'] = {
-	  updateRole: function updateRole(role) {
-	    _dispatchersAppDispatcherJs2['default'].dispatch({
-	      actionType: 'UPDATE_FLAVOR_ROLE',
-	      role: role
-	    });
-	  }
-	};
-	module.exports = exports['default'];
-
-/***/ },
-/* 348 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
-	
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-	
-	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; }
-	
-	var _BaseStore2 = __webpack_require__(341);
-	
-	var _BaseStore3 = _interopRequireDefault(_BaseStore2);
-	
-	var _dataFlavors = __webpack_require__(349);
-	
-	var _dataFlavors2 = _interopRequireDefault(_dataFlavors);
-	
-	var FlavorStore = (function (_BaseStore) {
-	  function FlavorStore() {
-	    var _this = this;
-	
-	    _classCallCheck(this, FlavorStore);
-	
-	    _get(Object.getPrototypeOf(FlavorStore.prototype), 'constructor', this).call(this);
-	    this.subscribe(function () {
-	      return _this._registerToActions.bind(_this);
-	    });
-	    this.state = {
-	      flavors: _dataFlavors2['default']
-	    };
-	  }
-	
-	  _inherits(FlavorStore, _BaseStore);
-	
-	  _createClass(FlavorStore, [{
-	    key: '_registerToActions',
-	    value: function _registerToActions(payload) {
-	      switch (payload.actionType) {
-	        case 'UPDATE_FLAVOR_ROLE':
-	          this.updateFlavorRole(payload.role);
-	          break;
-	        default:
-	          break;
-	      }
-	    }
-	  }, {
-	    key: 'updateFlavorRole',
-	    value: function updateFlavorRole(role) {
-	      this.state.flavors[0].roles.filter(function (r) {
-	        r.name == role.name;
-	      })[0] = role;
-	      this.state.flavors[0].freeNodeCount = this._calculateFreeNodes(this.state.flavors[0]);
-	      this.emitChange();
-	    }
-	  }, {
-	    key: '_calculateFreeNodes',
-	    value: function _calculateFreeNodes(flavor) {
-	      var reserved = 0;
-	      flavor.roles.forEach(function (role) {
-	        reserved += role.nodeCount;
-	      });
-	      return flavor.nodeCount - reserved;
-	    }
-	  }, {
-	    key: 'getState',
-	    value: function getState() {
-	      var _this2 = this;
-	
-	      this.state.flavors.forEach(function (flavor) {
-	        flavor.freeNodeCount = _this2._calculateFreeNodes(flavor);
-	      });
-	      return this.state;
-	    }
-	  }]);
-	
-	  return FlavorStore;
-	})(_BaseStore3['default']);
-	
-	exports['default'] = new FlavorStore();
-	module.exports = exports['default'];
-
-/***/ },
-/* 349 */
-/***/ function(module, exports) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
-	exports['default'] = [{
-	  name: 'Baremetal',
-	  hwSpecs: '1CPU, 40GB RAM, HDD 500GB',
-	  roles: [{
-	    name: 'Controller',
-	    nodeCount: 2
-	  }, {
-	    name: 'Compute',
-	    nodeCount: 0
-	  }],
-	  nodeCount: 20
-	}, {
-	  name: 'Flavor2',
-	  hwSpecs: '1CPU, 20GB RAM, HDD 250GB',
-	  roles: [],
-	  nodeCount: 10
-	}];
-	module.exports = exports['default'];
-
-/***/ },
-/* 350 */
+/* 351 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
