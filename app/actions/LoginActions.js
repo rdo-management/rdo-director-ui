@@ -9,11 +9,22 @@ export default {
     AuthService.authenticateUser(username, password);
   },
 
+  authenticateUserViaToken(keystoneAuthTokenId) {
+    AuthService.authenticateUserViaToken(keystoneAuthTokenId);
+  },
+
   loginUser(keystoneAccess) {
-    localStorage.setItem('keystoneAccess', keystoneAccess);
+    localStorage.setItem('keystoneAuthTokenId', keystoneAccess.token.id);
     AppDispatcher.dispatch({
       actionType: 'LOGIN_USER',
       keystoneAccess: keystoneAccess
+    });
+  },
+
+  logoutUser() {
+    localStorage.removeItem('keystoneAuthTokenId');
+    AppDispatcher.dispatch({
+      actionType: 'LOGOUT_USER'
     });
   }
 };

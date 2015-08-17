@@ -22,7 +22,8 @@ export default class Login extends React.Component {
   _onChange() {
     this.setState(LoginStore.getState());
     if (LoginStore.isLoggedIn()) {
-      this.context.router.transitionTo('overview');
+      let nextPath = this.context.router.getCurrentQuery().nextPath || 'overview';
+      this.context.router.transitionTo(nextPath);
     }
   }
 

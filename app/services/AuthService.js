@@ -24,6 +24,24 @@ class AuthService {
     })));
   }
 
+  authenticateUserViaToken(keystoneAuthTokenId) {
+    return this.handleAuth(when(request({
+      url: AUTH_URL,
+      method: 'POST',
+      crossOrigin: true,
+      contentType: 'application/json',
+      type: 'json',
+      data: JSON.stringify({
+        auth: {
+          tenantName: 'admin',
+          token: {
+            id: keystoneAuthTokenId
+          }
+        }
+      })
+    })));
+  }
+
   handleAuth(loginPromise) {
     return loginPromise.then((response) => {
       let keystoneAccess = response.access;

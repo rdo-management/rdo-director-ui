@@ -3,29 +3,13 @@ import 'babel/polyfill';
 import React from 'react';
 import * as Router from 'react-router';
 
+import App from './components/App';
 import Login from './components/Login';
+import LoginActions from './actions/LoginActions';
 import Overview from './components/Overview';
 
 let Route = Router.Route;
-let RouteHandler = Router.RouteHandler;
 let DefaultRoute = Router.DefaultRoute;
-let Link = Router.Link;
-
-export default class App extends React.Component {
-  render() {
-    return (
-      <div className="container">
-        <div className="row">
-          <ul className="nav nav-tabs">
-            <li><Link to="overview">Overview</Link></li>
-            <li className="pull-right"><Link to="login">Login</Link></li>
-          </ul>
-        </div>
-        <RouteHandler/>
-      </div>
-    );
-  }
-}
 
 let routes = (
   <Route handler={App}>
@@ -34,8 +18,12 @@ let routes = (
   </Route>
 );
 
+// Login user on page refresh if logged in previously
+let keystoneAuthTokenId = localStorage.getItem('keystoneAuthTokenId');
+if (keystoneAuthTokenId) {
+  LoginActions.authenticateUserViaToken(keystoneAuthTokenId);
+}
+
 Router.run(routes, Router.HashLocation, (Root) => {
   React.render(<Root/>, document.body);
 });
-
-// React.render(<App/>, document.body);

@@ -32,7 +32,7 @@ export default AuthenticatedComponent(class OverviewActions extends React.Compon
   render() {
     return (
       <div className="row">
-        <PageHeader>Overcloud Deployment {this.props.user.name}</PageHeader>
+        <PageHeader>Overcloud Deployment</PageHeader>
         <FlavorPanelList flavors={this.state.flavors}/>
       </div>
     );
