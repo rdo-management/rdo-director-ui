@@ -2,7 +2,7 @@
 
 ## Prerequisities
 
-1. Install RDO Manager https://repos.fedorapeople.org/repos/openstack-m/docs/internal/master/environments/virtual.html
+1. Install RDO Manager https://repos.fedorapeople.org/repos/openstack-m/docs/master/environments/virtual.html
 2. install nodejs and npm ```sudo yum install -y nodejs npm```
 
 
