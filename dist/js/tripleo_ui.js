@@ -72,7 +72,7 @@
 	
 	var _actionsLoginActions2 = _interopRequireDefault(_actionsLoginActions);
 	
-	var _componentsOverview = __webpack_require__(346);
+	var _componentsOverview = __webpack_require__(347);
 	
 	var _componentsOverview2 = _interopRequireDefault(_componentsOverview);
 	
@@ -185,14 +185,14 @@
 	          { className: 'col-md-6 col-xs-8 col-md-offset-3 col-xs-offset-2' },
 	          _reactAddons2['default'].createElement(
 	            'div',
-	            { className: 'panel panel-default' },
+	            { className: 'panel panel-default panel-login' },
 	            _reactAddons2['default'].createElement(
 	              'div',
 	              { className: 'panel-heading' },
 	              _reactAddons2['default'].createElement(
 	                'h1',
 	                { className: 'panel-title' },
-	                'Login'
+	                'TripleO UI Login'
 	              )
 	            ),
 	            _reactAddons2['default'].createElement(
@@ -34307,19 +34307,19 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _utilsAuthenticatedComponent = __webpack_require__(345);
+	
+	var _utilsAuthenticatedComponent2 = _interopRequireDefault(_utilsAuthenticatedComponent);
+	
 	var _actionsLoginActions = __webpack_require__(178);
 	
 	var _actionsLoginActions2 = _interopRequireDefault(_actionsLoginActions);
 	
-	var _storesLoginStore = __webpack_require__(207);
-	
-	var _storesLoginStore2 = _interopRequireDefault(_storesLoginStore);
-	
-	var _NavTab = __webpack_require__(345);
+	var _NavTab = __webpack_require__(346);
 	
 	var _NavTab2 = _interopRequireDefault(_NavTab);
 	
-	var NavBar = (function (_React$Component) {
+	exports['default'] = (0, _utilsAuthenticatedComponent2['default'])((function (_React$Component) {
 	  function NavBar() {
 	    _classCallCheck(this, NavBar);
 	
@@ -34339,7 +34339,7 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      if (_storesLoginStore2['default'].isLoggedIn()) {
+	      if (this.props.userLoggedIn) {
 	        return _react2['default'].createElement(
 	          'nav',
 	          { className: 'navbar navbar-default' },
@@ -34348,7 +34348,9 @@
 	            { className: 'navbar-header' },
 	            _react2['default'].createElement(
 	              'button',
-	              { type: 'button', className: 'navbar-toggle collapsed', 'data-toggle': 'collapse', 'data-target': '#bs-example-navbar-collapse-1', 'aria-expanded': 'false' },
+	              { type: 'button', className: 'navbar-toggle collapsed',
+	                'data-toggle': 'collapse', 'data-target': '#bs-example-navbar-collapse-1',
+	                'aria-expanded': 'false' },
 	              _react2['default'].createElement(
 	                'span',
 	                { className: 'sr-only' },
@@ -34361,7 +34363,7 @@
 	            _react2['default'].createElement(
 	              'a',
 	              { className: 'navbar-brand', href: '#' },
-	              'OpenStack'
+	              'TripleO UI'
 	            )
 	          ),
 	          _react2['default'].createElement(
@@ -34396,6 +34398,17 @@
 	                'li',
 	                null,
 	                _react2['default'].createElement(
+	                  'p',
+	                  { className: 'navbar-text' },
+	                  _react2['default'].createElement('span', { className: 'glyphicon glyphicon-user', 'aria-hidden': 'true' }),
+	                  ' ',
+	                  this.props.user.username
+	                )
+	              ),
+	              _react2['default'].createElement(
+	                'li',
+	                null,
+	                _react2['default'].createElement(
 	                  'a',
 	                  { href: '#', onClick: this.logout },
 	                  'Logout'
@@ -34411,13 +34424,115 @@
 	  }]);
 	
 	  return NavBar;
-	})(_react2['default'].Component);
-	
-	exports['default'] = NavBar;
+	})(_react2['default'].Component));
 	module.exports = exports['default'];
 
 /***/ },
 /* 345 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+	
+	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; }
+	
+	var _react = __webpack_require__(303);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _storesLoginStore = __webpack_require__(207);
+	
+	var _storesLoginStore2 = _interopRequireDefault(_storesLoginStore);
+	
+	exports['default'] = function (ComposedComponent) {
+	  var AuthenticatedComponent = (function (_React$Component) {
+	    function AuthenticatedComponent() {
+	      _classCallCheck(this, AuthenticatedComponent);
+	
+	      _get(Object.getPrototypeOf(AuthenticatedComponent.prototype), 'constructor', this).call(this);
+	      this.state = this._getLoginState();
+	      this.changeListener = this._onChange.bind(this);
+	    }
+	
+	    _inherits(AuthenticatedComponent, _React$Component);
+	
+	    _createClass(AuthenticatedComponent, [{
+	      key: 'componentDidMount',
+	      value: function componentDidMount() {
+	        _storesLoginStore2['default'].addChangeListener(this.changeListener);
+	      }
+	    }, {
+	      key: 'componentWillUpdate',
+	      value: function componentWillUpdate() {
+	        if (!_storesLoginStore2['default'].isLoggedIn()) {
+	          this.context.router.transitionTo('/login');
+	        }
+	      }
+	    }, {
+	      key: 'componentWillUnmount',
+	      value: function componentWillUnmount() {
+	        _storesLoginStore2['default'].removeChangeListener(this.changeListener);
+	      }
+	    }, {
+	      key: '_onChange',
+	      value: function _onChange() {
+	        this.setState(this._getLoginState());
+	      }
+	    }, {
+	      key: '_getLoginState',
+	      value: function _getLoginState() {
+	        return {
+	          userLoggedIn: _storesLoginStore2['default'].isLoggedIn(),
+	          user: _storesLoginStore2['default'].getState().user
+	        };
+	      }
+	    }, {
+	      key: 'render',
+	      value: function render() {
+	        return _react2['default'].createElement(ComposedComponent, _extends({}, this.props, {
+	          user: this.state.user,
+	          userLoggedIn: this.state.userLoggedIn }));
+	      }
+	    }], [{
+	      key: 'willTransitionTo',
+	      value: function willTransitionTo(transition) {
+	        if (!_storesLoginStore2['default'].isLoggedIn()) {
+	          transition.redirect('/login', {}, { 'nextPath': transition.path });
+	        }
+	      }
+	    }]);
+	
+	    return AuthenticatedComponent;
+	  })(_react2['default'].Component);
+	
+	  AuthenticatedComponent.propTypes = {
+	    user: _react2['default'].PropTypes.object,
+	    userLoggedIn: _react2['default'].PropTypes.func
+	  };
+	  AuthenticatedComponent.contextTypes = {
+	    router: _react2['default'].PropTypes.func
+	  };
+	
+	  return AuthenticatedComponent;
+	};
+	
+	module.exports = exports['default'];
+
+/***/ },
+/* 346 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34488,7 +34603,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 346 */
+/* 347 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34511,7 +34626,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _utilsAuthenticatedComponent = __webpack_require__(347);
+	var _utilsAuthenticatedComponent = __webpack_require__(345);
 	
 	var _utilsAuthenticatedComponent2 = _interopRequireDefault(_utilsAuthenticatedComponent);
 	
@@ -34870,110 +34985,6 @@
 	};
 
 /***/ },
-/* 347 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
-	
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-	
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-	
-	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; }
-	
-	var _react = __webpack_require__(303);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _storesLoginStore = __webpack_require__(207);
-	
-	var _storesLoginStore2 = _interopRequireDefault(_storesLoginStore);
-	
-	exports['default'] = function (ComposedComponent) {
-	  var AuthenticatedComponent = (function (_React$Component) {
-	    function AuthenticatedComponent() {
-	      _classCallCheck(this, AuthenticatedComponent);
-	
-	      _get(Object.getPrototypeOf(AuthenticatedComponent.prototype), 'constructor', this).call(this);
-	      this.state = this._getLoginState();
-	      this.changeListener = this._onChange.bind(this);
-	    }
-	
-	    _inherits(AuthenticatedComponent, _React$Component);
-	
-	    _createClass(AuthenticatedComponent, [{
-	      key: 'componentDidMount',
-	      value: function componentDidMount() {
-	        _storesLoginStore2['default'].addChangeListener(this.changeListener);
-	      }
-	    }, {
-	      key: 'componentWillUpdate',
-	      value: function componentWillUpdate() {
-	        if (!_storesLoginStore2['default'].isLoggedIn()) {
-	          this.context.router.transitionTo('/login');
-	        }
-	      }
-	    }, {
-	      key: 'componentWillUnmount',
-	      value: function componentWillUnmount() {
-	        _storesLoginStore2['default'].removeChangeListener(this.changeListener);
-	      }
-	    }, {
-	      key: '_onChange',
-	      value: function _onChange() {
-	        this.setState(this._getLoginState());
-	      }
-	    }, {
-	      key: '_getLoginState',
-	      value: function _getLoginState() {
-	        return {
-	          userLoggedIn: _storesLoginStore2['default'].isLoggedIn(),
-	          user: _storesLoginStore2['default'].getState().user
-	        };
-	      }
-	    }, {
-	      key: 'render',
-	      value: function render() {
-	        return _react2['default'].createElement(ComposedComponent, _extends({}, this.props, {
-	          user: this.state.user,
-	          userLoggedIn: this.state.userLoggedIn }));
-	      }
-	    }], [{
-	      key: 'willTransitionTo',
-	      value: function willTransitionTo(transition) {
-	        if (!_storesLoginStore2['default'].isLoggedIn()) {
-	          transition.redirect('/login', {}, { 'nextPath': transition.path });
-	        }
-	      }
-	    }]);
-	
-	    return AuthenticatedComponent;
-	  })(_react2['default'].Component);
-	
-	  AuthenticatedComponent.propTypes = {
-	    user: _react2['default'].PropTypes.object,
-	    userLoggedIn: _react2['default'].PropTypes.func
-	  };
-	  AuthenticatedComponent.contextTypes = {
-	    router: _react2['default'].PropTypes.func
-	  };
-	
-	  return AuthenticatedComponent;
-	};
-	
-	module.exports = exports['default'];
-
-/***/ },
 /* 348 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -35327,13 +35338,13 @@
 			return classes.substr(1);
 		}
 	
-		if (typeof module !== 'undefined' && module.exports) {
-			module.exports = classNames;
-		} else if (true){
+		if (true) {
 			// AMD. Register as an anonymous module.
 			!(__WEBPACK_AMD_DEFINE_RESULT__ = function () {
 				return classNames;
 			}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+		} else if (typeof module !== 'undefined' && module.exports) {
+			module.exports = classNames;
 		} else {
 			window.classNames = classNames;
 		}
@@ -35420,7 +35431,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _utilsAuthenticatedComponent = __webpack_require__(347);
+	var _utilsAuthenticatedComponent = __webpack_require__(345);
 	
 	var _utilsAuthenticatedComponent2 = _interopRequireDefault(_utilsAuthenticatedComponent);
 	

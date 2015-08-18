@@ -57,6 +57,9 @@
   text-shadow: none;
   color: #838383;
 }
+.panel-login {
+  margin-top: 100px;
+}
 .panel.flavor-panel > .panel-body {
   padding-bottom: 0;
 }

@@ -37,9 +37,9 @@ export default class Login extends React.Component {
     return (
       <div className="row">
         <div className="col-md-6 col-xs-8 col-md-offset-3 col-xs-offset-2">
-          <div className="panel panel-default">
+          <div className="panel panel-default panel-login">
             <div className="panel-heading">
-              <h1 className="panel-title">Login</h1>
+              <h1 className="panel-title">TripleO UI Login</h1>
             </div>
             <div className="panel-body">
               <form role="form" onSubmit={this.handleLogin.bind(this)}>
