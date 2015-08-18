@@ -92,7 +92,7 @@
 	);
 	
 	// Login user on page refresh if logged in previously
-	var keystoneAuthTokenId = localStorage.getItem('keystoneAuthTokenId');
+	var keystoneAuthTokenId = sessionStorage.getItem('keystoneAuthTokenId');
 	if (keystoneAuthTokenId) {
 	  _actionsLoginActions2['default'].authenticateUserViaToken(keystoneAuthTokenId);
 	}
@@ -23130,7 +23130,7 @@
 	  },
 	
 	  loginUser: function loginUser(keystoneAccess) {
-	    localStorage.setItem('keystoneAuthTokenId', keystoneAccess.token.id);
+	    sessionStorage.setItem('keystoneAuthTokenId', keystoneAccess.token.id);
 	    _dispatchersAppDispatcherJs2['default'].dispatch({
 	      actionType: 'LOGIN_USER',
 	      keystoneAccess: keystoneAccess
@@ -23138,7 +23138,7 @@
 	  },
 	
 	  logoutUser: function logoutUser() {
-	    localStorage.removeItem('keystoneAuthTokenId');
+	    sessionStorage.removeItem('keystoneAuthTokenId');
 	    _dispatchersAppDispatcherJs2['default'].dispatch({
 	      actionType: 'LOGOUT_USER'
 	    });
@@ -35410,8 +35410,6 @@
 	
 	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 	
-	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
@@ -35426,41 +35424,20 @@
 	
 	var _AuthenticatedComponent2 = _interopRequireDefault(_AuthenticatedComponent);
 	
-	var _storesFlavorStore = __webpack_require__(349);
-	
-	var _storesFlavorStore2 = _interopRequireDefault(_storesFlavorStore);
-	
 	var _Layout = __webpack_require__(354);
 	
 	exports['default'] = (0, _AuthenticatedComponent2['default'])((function (_React$Component) {
-	  function Nodes(props) {
+	  function Nodes() {
 	    _classCallCheck(this, Nodes);
 	
-	    _get(Object.getPrototypeOf(Nodes.prototype), 'constructor', this).call(this, props);
-	    this.state = {
-	      flavors: []
-	    };
+	    if (_React$Component != null) {
+	      _React$Component.apply(this, arguments);
+	    }
 	  }
 	
 	  _inherits(Nodes, _React$Component);
 	
 	  _createClass(Nodes, [{
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-	      this.setState(_storesFlavorStore2['default'].getState());
-	      _storesFlavorStore2['default'].addChangeListener(this._onChange.bind(this));
-	    }
-	  }, {
-	    key: 'componentWillUnmount',
-	    value: function componentWillUnmount() {
-	      _storesFlavorStore2['default'].removeChangeListener(this._onChange.bind(this));
-	    }
-	  }, {
-	    key: '_onChange',
-	    value: function _onChange() {
-	      this.setState(_storesFlavorStore2['default'].getState());
-	    }
-	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2['default'].createElement(

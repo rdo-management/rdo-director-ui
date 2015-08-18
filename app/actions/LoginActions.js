@@ -14,7 +14,7 @@ export default {
   },
 
   loginUser(keystoneAccess) {
-    localStorage.setItem('keystoneAuthTokenId', keystoneAccess.token.id);
+    sessionStorage.setItem('keystoneAuthTokenId', keystoneAccess.token.id);
     AppDispatcher.dispatch({
       actionType: 'LOGIN_USER',
       keystoneAccess: keystoneAccess
@@ -22,7 +22,7 @@ export default {
   },
 
   logoutUser() {
-    localStorage.removeItem('keystoneAuthTokenId');
+    sessionStorage.removeItem('keystoneAuthTokenId');
     AppDispatcher.dispatch({
       actionType: 'LOGOUT_USER'
     });

@@ -21,7 +21,7 @@ let routes = (
 );
 
 // Login user on page refresh if logged in previously
-let keystoneAuthTokenId = localStorage.getItem('keystoneAuthTokenId');
+let keystoneAuthTokenId = sessionStorage.getItem('keystoneAuthTokenId');
 if (keystoneAuthTokenId) {
   LoginActions.authenticateUserViaToken(keystoneAuthTokenId);
 }
