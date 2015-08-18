@@ -9,8 +9,8 @@ var less = require('gulp-less');
 var configApp = {
   devtool: 'source-map',
   output: {
-    filename: 'tuskar_ui.js',
-    sourceMapFilename: '../js/tuskar_ui.js.map'
+    filename: 'tripleo_ui.js',
+    sourceMapFilename: '../js/ripleo_ui.js.map'
   },
   module: {
     loaders: [
@@ -27,7 +27,7 @@ var configApp = {
 };
 
 gulp.task('webpack-app', function() {
-  return gulp.src('./app/index.js')
+  return gulp.src('./src/js/index.js')
     .pipe(webpack(configApp))
     .pipe(gulp.dest('dist/js'))
     .pipe(browserSync.stream());
@@ -39,13 +39,13 @@ gulp.task('serve', ['webpack-app', 'less'], function(){
     server: "./dist"
   });
 
-  gulp.watch("app/less/*.less", ['less']);
-  gulp.watch("app/**/*.js", ['webpack-app']);
-  gulp.watch("app/*.html").on('change', browserSync.reload);
+  gulp.watch("src/less/*.less", ['less']);
+  gulp.watch("src/js/**/*.js", ['webpack-app']);
+  gulp.watch("src/*.html").on('change', browserSync.reload);
 });
 
 gulp.task('less', function () {
-  return gulp.src('./app/less/base.less')
+  return gulp.src('./src/less/base.less')
     .pipe(less())
     .pipe(gulp.dest('./dist/css'))
     .pipe(browserSync.stream());

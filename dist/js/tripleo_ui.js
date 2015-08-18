@@ -35458,4 +35458,4 @@
 
 /***/ }
 /******/ ]);
-//# sourceMappingURL=../js/tuskar_ui.js.map
+//# sourceMappingURL=../js/ripleo_ui.js.map
