@@ -3,16 +3,17 @@
 ## Prerequisities
 
 1. Install RDO Manager https://repos.fedorapeople.org/repos/openstack-m/docs/master/environments/virtual.html
-2. install nodejs and npm ```sudo yum install -y nodejs npm```
+2. install nodejs and npm ```sudo yum install nodejs``` (probably requires EPEL)
 
 
 ## Running the App
 
 1. ```git clone https://github.com/jtomasek/tripleo_ui.git```
 2. ```cd tripleo_ui```
-3. ```npm install```
-4. ```gulp```
-5. Navigate to ```http://<machine_hostname>:3000/```
+3. Install dependencies ```npm install --dev```
+4. Install Gulp globally ```sudo npm install -g gulp```
+5. Serve the App ```gulp```
+6. Navigate to ```http://<machine_hostname>:3000/```
 
 ## Runing Lint
 
@@ -23,11 +24,8 @@ run ```npm run lint``` to run ESLint
 
 ## Make Undercloud API Services available when running app from laptop
 
+UI requires the openstack API services to be publicly accessible. To mimic this use this guide:
 https://wiki.openstack.org/wiki/Tuskar/Instack#Connecting_to_Undercloud_from_external_place_.28e.g._your_laptop.29
-
-## Basic OpenStack API Usage
-
-http://docs.openstack.org/api/quick-start/content/index.html#authenticate
 
 
 ## Enable Keystone CORS (temporary solution)
@@ -37,7 +35,7 @@ https://ianunruh.com/2014/11/openstack-cors.html
 keystone-paste.ini is at /usr/share/keystone/keystone-dist-paste.ini
 on Undercloud VM
 
-systemctl restart openstack-keystone
+```systemctl restart openstack-keystone```
 
 
 ### Official CORS Support in progress
@@ -47,6 +45,11 @@ http://specs.openstack.org/openstack/openstack-specs/specs/cors-support.html
 
 Ironic: https://review.openstack.org/#/c/199769/
 ...
+
+## Basic OpenStack API Usage
+
+http://docs.openstack.org/api/quick-start/content/index.html#authenticate
+
 
 
 
