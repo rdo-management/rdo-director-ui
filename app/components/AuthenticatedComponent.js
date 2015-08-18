@@ -51,6 +51,10 @@ export default (ComposedComponent) => {
     }
 
   }
+  AuthenticatedComponent.propTypes = {
+    user: React.PropTypes.object,
+    userLoggedIn: React.PropTypes.func
+  };
   AuthenticatedComponent.contextTypes = {
     router: React.PropTypes.func
   };
