@@ -1,6 +1,6 @@
 import React from 'react';
 
-import AuthenticatedComponent from './AuthenticatedComponent';
+import AuthenticatedComponent from './utils/AuthenticatedComponent';
 import OverviewActions from '../actions/OverviewActions';
 import FlavorStore from '../stores/FlavorStore';
 import NodePicker from './NodePicker';

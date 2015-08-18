@@ -34511,9 +34511,9 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _AuthenticatedComponent = __webpack_require__(347);
+	var _utilsAuthenticatedComponent = __webpack_require__(347);
 	
-	var _AuthenticatedComponent2 = _interopRequireDefault(_AuthenticatedComponent);
+	var _utilsAuthenticatedComponent2 = _interopRequireDefault(_utilsAuthenticatedComponent);
 	
 	var _actionsOverviewActions = __webpack_require__(348);
 	
@@ -34533,7 +34533,7 @@
 	
 	var _Layout = __webpack_require__(354);
 	
-	exports['default'] = (0, _AuthenticatedComponent2['default'])((function (_React$Component) {
+	exports['default'] = (0, _utilsAuthenticatedComponent2['default'])((function (_React$Component) {
 	  function Overview(props) {
 	    _classCallCheck(this, Overview);
 	
@@ -35420,13 +35420,13 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _AuthenticatedComponent = __webpack_require__(347);
+	var _utilsAuthenticatedComponent = __webpack_require__(347);
 	
-	var _AuthenticatedComponent2 = _interopRequireDefault(_AuthenticatedComponent);
+	var _utilsAuthenticatedComponent2 = _interopRequireDefault(_utilsAuthenticatedComponent);
 	
 	var _Layout = __webpack_require__(354);
 	
-	exports['default'] = (0, _AuthenticatedComponent2['default'])((function (_React$Component) {
+	exports['default'] = (0, _utilsAuthenticatedComponent2['default'])((function (_React$Component) {
 	  function Nodes() {
 	    _classCallCheck(this, Nodes);
 	
