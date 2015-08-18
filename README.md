@@ -4,7 +4,8 @@
 
 1. Install RDO Manager https://repos.fedorapeople.org/repos/openstack-m/docs/master/environments/virtual.html
 2. install nodejs and npm ```sudo yum install nodejs``` (probably requires EPEL)
-
+3. To compile and install native addons from npm you may also need to install build tools:
+   ```yum install gcc-c++ make```
 
 ## Running the App
 
