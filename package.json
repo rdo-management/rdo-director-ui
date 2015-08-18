@@ -1,7 +1,7 @@
 {
-  "name": "boxes_react",
+  "name": "tripleo_ui",
   "version": "0.0.1",
-  "description": "Node Boxes from Tuskar-UI rewritten in ReactJS",
+  "description": "TripleO UI - TripleO-based OpenStack deployment UI",
   "main": "index.js",
   "dependencies": {
     "babel": "~5.5.8",
@@ -33,7 +33,7 @@
   },
   "scripts": {
     "test": "jest",
-    "lint": "eslint app"
+    "lint": "eslint src/js"
   },
   "repository": {
     "type": "git",
@@ -43,6 +43,6 @@
     "tuskar-ui-extras",
     "tuskar-ui"
   ],
-  "author": "Jiri Tomasek tomasek.jirka@gmail.com",
+  "author": "Jiri Tomasek jtomasek@redhat.com",
   "license": "MIT"
 }
