@@ -1,10 +1,9 @@
 import React from 'react';
-import * as Router from 'react-router';
 
 import LoginActions from '../actions/LoginActions';
 import LoginStore from '../stores/LoginStore';
+import NavTab from './NavTab';
 
-let Link = Router.Link;
 
 export default class NavBar extends React.Component {
   logout(e) {
@@ -28,7 +27,8 @@ export default class NavBar extends React.Component {
 
           <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul className="nav navbar-nav">
-              <li className="active"><Link to="overview">Overview</Link></li>
+              <li><NavTab to="overview">Overview</NavTab></li>
+              <li><NavTab to="nodes">Nodes</NavTab></li>
             </ul>
             <ul className="nav navbar-nav navbar-right">
               <li><a href="#" onClick={this.logout}>Logout</a></li>

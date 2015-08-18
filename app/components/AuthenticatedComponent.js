@@ -1,4 +1,5 @@
 import React from 'react';
+
 import LoginStore from '../stores/LoginStore';
 
 export default (ComposedComponent) => {
@@ -7,10 +8,11 @@ export default (ComposedComponent) => {
     constructor() {
       super();
       this.state = this._getLoginState();
+      this.changeListener = this._onChange.bind(this);
     }
 
     componentDidMount() {
-      LoginStore.addChangeListener(this._onChange.bind(this));
+      LoginStore.addChangeListener(this.changeListener);
     }
 
     componentWillUpdate () {
@@ -20,13 +22,12 @@ export default (ComposedComponent) => {
     }
 
     componentWillUnmount() {
-      LoginStore.removeChangeListener(this._onChange.bind(this));
+      LoginStore.removeChangeListener(this.changeListener);
     }
 
     _onChange() {
       this.setState(this._getLoginState());
     }
-
 
     _getLoginState() {
       return {

@@ -8,21 +8,22 @@ import NodeStack from './NodeStack';
 import { PageHeader } from './Layout';
 
 
-export default AuthenticatedComponent(class OverviewActions extends React.Component {
+export default AuthenticatedComponent(class Overview extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       flavors: []
     };
+    this.changeListener = this._onChange.bind(this);
   }
 
   componentDidMount() {
     this.setState(FlavorStore.getState());
-    FlavorStore.addChangeListener(this._onChange.bind(this));
+    FlavorStore.addChangeListener(this.changeListener);
   }
 
   componentWillUnmount() {
-    FlavorStore.removeChangeListener(this._onChange.bind(this));
+    FlavorStore.removeChangeListener(this.changeListener);
   }
 
   _onChange() {

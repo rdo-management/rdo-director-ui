@@ -8,15 +8,16 @@ export default class Login extends React.Component {
   constructor() {
     super();
     this.state = LoginStore.getState();
+    this.changeListener = this._onChange.bind(this);
   }
 
   componentDidMount() {
-    LoginStore.addChangeListener(this._onChange.bind(this));
     this.setState(LoginStore.getState());
+    LoginStore.addChangeListener(this.changeListener);
   }
 
   componentWillUnmount() {
-    LoginStore.removeChangeListener(this._onChange.bind(this));
+    LoginStore.removeChangeListener(this.changeListener);
   }
 
   _onChange() {

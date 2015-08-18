@@ -7,6 +7,7 @@ import App from './components/App';
 import Login from './components/Login';
 import LoginActions from './actions/LoginActions';
 import Overview from './components/Overview';
+import Nodes from './components/Nodes';
 
 let Route = Router.Route;
 let DefaultRoute = Router.DefaultRoute;
@@ -14,6 +15,7 @@ let DefaultRoute = Router.DefaultRoute;
 let routes = (
   <Route handler={App}>
     <DefaultRoute handler={Overview} name="overview"/>
+    <Route handler={Nodes} name="nodes" path="nodes"/>
     <Route handler={Login} name="login" path="login"/>
   </Route>
 );
