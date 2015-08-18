@@ -1,16 +1,20 @@
 # Environment setup
 
 ## Prerequisities
-install nodejs and npm
+
+1. Install RDO Manager https://repos.fedorapeople.org/repos/openstack-m/docs/internal/master/environments/virtual.html
+2. install nodejs and npm ```sudo yum install -y nodejs npm```
 
 
-## Running the app
+## Running the App
 
-1. run ```npm install```
-2. run ```gulp```
+1. ```git clone https://github.com/jtomasek/tripleo_ui.git```
+2. ```cd tripleo_ui```
+3. ```npm install```
+4. ```gulp```
+5. Navigate to ```http://<machine_hostname>:3000/```
 
-
-## Runnng Lint
+## Runing Lint
 
 run ```npm run lint``` to run ESLint
 
