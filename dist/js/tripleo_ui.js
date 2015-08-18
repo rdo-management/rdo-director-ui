@@ -92,7 +92,7 @@
 	);
 	
 	// Login user on page refresh if logged in previously
-	var keystoneAuthTokenId = sessionStorage.getItem('keystoneAuthTokenId');
+	var keystoneAuthTokenId = localStorage.getItem('keystoneAuthTokenId');
 	if (keystoneAuthTokenId) {
 	  _actionsLoginActions2['default'].authenticateUserViaToken(keystoneAuthTokenId);
 	}
@@ -23130,7 +23130,7 @@
 	  },
 	
 	  loginUser: function loginUser(keystoneAccess) {
-	    sessionStorage.setItem('keystoneAuthTokenId', keystoneAccess.token.id);
+	    localStorage.setItem('keystoneAuthTokenId', keystoneAccess.token.id);
 	    _dispatchersAppDispatcherJs2['default'].dispatch({
 	      actionType: 'LOGIN_USER',
 	      keystoneAccess: keystoneAccess
@@ -23138,7 +23138,7 @@
 	  },
 	
 	  logoutUser: function logoutUser() {
-	    sessionStorage.removeItem('keystoneAuthTokenId');
+	    localStorage.removeItem('keystoneAuthTokenId');
 	    _dispatchersAppDispatcherJs2['default'].dispatch({
 	      actionType: 'LOGOUT_USER'
 	    });
@@ -35327,13 +35327,13 @@
 			return classes.substr(1);
 		}
 	
-		if (true) {
+		if (typeof module !== 'undefined' && module.exports) {
+			module.exports = classNames;
+		} else if (true){
 			// AMD. Register as an anonymous module.
 			!(__WEBPACK_AMD_DEFINE_RESULT__ = function () {
 				return classNames;
 			}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-		} else if (typeof module !== 'undefined' && module.exports) {
-			module.exports = classNames;
 		} else {
 			window.classNames = classNames;
 		}
