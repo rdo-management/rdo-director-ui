@@ -4,7 +4,7 @@ import when from 'when';
 import { AUTH_URL } from '../constants/LoginConstants';
 import LoginActions from '../actions/LoginActions';
 
-class AuthService {
+class KeystoneApiService {
   authenticateUser(username, password) {
     return this.handleAuth(when(request({
       url: AUTH_URL,
@@ -54,4 +54,4 @@ class AuthService {
   }
 }
 
-export default new AuthService();
+export default new KeystoneApiService();

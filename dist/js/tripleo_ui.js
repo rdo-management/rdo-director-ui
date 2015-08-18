@@ -23113,20 +23113,20 @@
 	
 	var _dispatchersAppDispatcherJs2 = _interopRequireDefault(_dispatchersAppDispatcherJs);
 	
-	var _servicesAuthService = __webpack_require__(183);
+	var _servicesKeystoneApiService = __webpack_require__(183);
 	
-	var _servicesAuthService2 = _interopRequireDefault(_servicesAuthService);
+	var _servicesKeystoneApiService2 = _interopRequireDefault(_servicesKeystoneApiService);
 	
 	exports['default'] = {
 	  authenticateUser: function authenticateUser(username, password) {
 	    _dispatchersAppDispatcherJs2['default'].dispatch({
 	      actionType: 'USER_AUTH_STARTED'
 	    });
-	    _servicesAuthService2['default'].authenticateUser(username, password);
+	    _servicesKeystoneApiService2['default'].authenticateUser(username, password);
 	  },
 	
 	  authenticateUserViaToken: function authenticateUserViaToken(keystoneAuthTokenId) {
-	    _servicesAuthService2['default'].authenticateUserViaToken(keystoneAuthTokenId);
+	    _servicesKeystoneApiService2['default'].authenticateUserViaToken(keystoneAuthTokenId);
 	  },
 	
 	  loginUser: function loginUser(keystoneAccess) {
@@ -23522,12 +23522,12 @@
 	
 	var _actionsLoginActions2 = _interopRequireDefault(_actionsLoginActions);
 	
-	var AuthService = (function () {
-	  function AuthService() {
-	    _classCallCheck(this, AuthService);
+	var KeystoneApiService = (function () {
+	  function KeystoneApiService() {
+	    _classCallCheck(this, KeystoneApiService);
 	  }
 	
-	  _createClass(AuthService, [{
+	  _createClass(KeystoneApiService, [{
 	    key: 'authenticateUser',
 	    value: function authenticateUser(username, password) {
 	      return this.handleAuth((0, _when2['default'])((0, _reqwest2['default'])({
@@ -23580,10 +23580,10 @@
 	    }
 	  }]);
 	
-	  return AuthService;
+	  return KeystoneApiService;
 	})();
 	
-	exports['default'] = new AuthService();
+	exports['default'] = new KeystoneApiService();
 	module.exports = exports['default'];
 
 /***/ },

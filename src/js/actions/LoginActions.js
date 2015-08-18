@@ -1,16 +1,16 @@
 import AppDispatcher from '../dispatchers/AppDispatcher.js';
-import AuthService from '../services/AuthService';
+import KeystoneApiService from '../services/KeystoneApiService';
 
 export default {
   authenticateUser(username, password) {
     AppDispatcher.dispatch({
       actionType: 'USER_AUTH_STARTED'
     });
-    AuthService.authenticateUser(username, password);
+    KeystoneApiService.authenticateUser(username, password);
   },
 
   authenticateUserViaToken(keystoneAuthTokenId) {
-    AuthService.authenticateUserViaToken(keystoneAuthTokenId);
+    KeystoneApiService.authenticateUserViaToken(keystoneAuthTokenId);
   },
 
   loginUser(keystoneAccess) {
