@@ -15,18 +15,15 @@ export default (ComposedComponent) => {
       LoginStore.addChangeListener(this.changeListener);
     }
 
-    componentWillUpdate () {
-      if (!LoginStore.isLoggedIn()) {
-        this.context.router.transitionTo('/login');
-      }
-    }
-
     componentWillUnmount() {
       LoginStore.removeChangeListener(this.changeListener);
     }
 
     _onChange() {
       this.setState(this._getLoginState());
+      if (this.state.userLoggedIn) {
+        this.context.router.transitionTo('/login');
+      }
     }
 
     _getLoginState() {

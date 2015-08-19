@@ -34475,13 +34475,6 @@
 	        _storesLoginStore2['default'].addChangeListener(this.changeListener);
 	      }
 	    }, {
-	      key: 'componentWillUpdate',
-	      value: function componentWillUpdate() {
-	        if (!_storesLoginStore2['default'].isLoggedIn()) {
-	          this.context.router.transitionTo('/login');
-	        }
-	      }
-	    }, {
 	      key: 'componentWillUnmount',
 	      value: function componentWillUnmount() {
 	        _storesLoginStore2['default'].removeChangeListener(this.changeListener);
@@ -34490,6 +34483,9 @@
 	      key: '_onChange',
 	      value: function _onChange() {
 	        this.setState(this._getLoginState());
+	        if (this.state.userLoggedIn) {
+	          this.context.router.transitionTo('/login');
+	        }
 	      }
 	    }, {
 	      key: '_getLoginState',
