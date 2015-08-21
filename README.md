@@ -18,12 +18,12 @@
 6. Navigate to ```http://<machine_hostname>:3000/```
 
 
-## Runing Tests
+## Tests
 
-run ```npm test``` to run Tests (alternatively run ```gulp jest```)
-run ```npm run lint``` to run ESLint
-run ```npm test && npm run lint``` to run Tests and ESLint
-run ```gulp test``` to start watcher that runs tests everytime any js file changes
+- ```npm test``` to run tests (alternatively run ```gulp jest```)
+- ```npm run lint``` to run ESLint
+- ```npm test && npm run lint``` to run Tests and ESLint
+- ```gulp test``` to start watcher that runs tests everytime any js file changes
 
 (Info on Linting setup here: https://medium.com/@dan_abramov/lint-like-it-s-2015-6987d44c5b48)
 
@@ -56,7 +56,3 @@ Ironic: https://review.openstack.org/#/c/199769/
 ## Basic OpenStack API Usage
 
 http://docs.openstack.org/api/quick-start/content/index.html#authenticate
-
-
-
-
