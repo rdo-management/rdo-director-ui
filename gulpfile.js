@@ -1,10 +1,11 @@
 var gulp = require('gulp');
 
 var browserSync = require('browser-sync');
-var webpack = require('gulp-webpack');
-var uglify = require('gulp-uglify');
-var rename = require('gulp-rename');
 var less = require('gulp-less');
+var rename = require('gulp-rename');
+var shell = require('gulp-shell');
+var uglify = require('gulp-uglify');
+var webpack = require('gulp-webpack');
 
 var configApp = {
   devtool: 'source-map',
@@ -49,6 +50,15 @@ gulp.task('less', function () {
     .pipe(less())
     .pipe(gulp.dest('./dist/css'))
     .pipe(browserSync.stream());
+});
+
+gulp.task('jest', shell.task('npm test', {
+  // Task doesn't error when tests fail
+  ignoreErrors: true
+}));
+
+gulp.task('test', ['jest'], function() {
+  gulp.watch(['src/js/**/*.js','src/__tests__/**/*.js'], ['jest']);
 });
 
 gulp.task('default', [ 'serve' ], function() {

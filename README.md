@@ -7,6 +7,7 @@
 3. To compile and install native addons from npm you may also need to install build tools:
    ```yum install gcc-c++ make```
 
+
 ## Running the App
 
 1. ```git clone https://github.com/jtomasek/tripleo_ui.git```
@@ -16,9 +17,13 @@
 5. Serve the App ```gulp```
 6. Navigate to ```http://<machine_hostname>:3000/```
 
-## Runing Lint
 
+## Runing Tests
+
+run ```npm test``` to run Tests (alternatively run ```gulp jest```)
 run ```npm run lint``` to run ESLint
+run ```npm test && npm run lint``` to run Tests and ESLint
+run ```gulp test``` to start watcher that runs tests everytime any js file changes
 
 (Info on Linting setup here: https://medium.com/@dan_abramov/lint-like-it-s-2015-6987d44c5b48)
 
@@ -46,6 +51,7 @@ http://specs.openstack.org/openstack/openstack-specs/specs/cors-support.html
 
 Ironic: https://review.openstack.org/#/c/199769/
 ...
+
 
 ## Basic OpenStack API Usage
 
