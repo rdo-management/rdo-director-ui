@@ -24,6 +24,7 @@
 - ```npm run lint``` to run ESLint
 - ```npm test && npm run lint``` to run Tests and ESLint
 - ```gulp test``` to start watcher that runs tests everytime any js file changes
+- ```npm run testdbg``` to debug tests (http://ttrmw.co.uk/code/debugging_jest_tests.html)
 
 (Info on Linting setup here: https://medium.com/@dan_abramov/lint-like-it-s-2015-6987d44c5b48)
 

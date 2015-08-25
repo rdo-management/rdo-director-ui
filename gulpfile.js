@@ -2,9 +2,9 @@ var gulp = require('gulp');
 
 var browserSync = require('browser-sync');
 var less = require('gulp-less');
-var rename = require('gulp-rename');
+// var rename = require('gulp-rename');
 var shell = require('gulp-shell');
-var uglify = require('gulp-uglify');
+// var uglify = require('gulp-uglify');
 var webpack = require('gulp-webpack');
 
 var configApp = {
@@ -37,12 +37,12 @@ gulp.task('webpack-app', function() {
 gulp.task('serve', ['webpack-app', 'less'], function(){
   browserSync.init({
     open: false,
-    server: "./dist"
+    server: './dist'
   });
 
-  gulp.watch("src/less/*.less", ['less']);
-  gulp.watch("src/js/**/*.js", ['webpack-app']);
-  gulp.watch("src/*.html").on('change', browserSync.reload);
+  gulp.watch('src/less/*.less', ['less']);
+  gulp.watch('src/js/**/*.js', ['webpack-app']);
+  gulp.watch('src/*.html').on('change', browserSync.reload);
 });
 
 gulp.task('less', function () {

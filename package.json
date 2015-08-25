@@ -35,6 +35,7 @@
   },
   "scripts": {
     "test": "jest",
+    "testdbg": "node debug --harmony ./node_modules/jest-cli/bin/jest.js --runInBand",
     "lint": "eslint src/js"
   },
   "jest": {

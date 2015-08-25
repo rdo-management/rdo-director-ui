@@ -7,8 +7,12 @@ import LoginStore from '../stores/LoginStore';
 export default class Login extends React.Component {
   constructor() {
     super();
-    this.state = LoginStore.getState();
+    this.state = {};
     this.changeListener = this._onChange.bind(this);
+  }
+
+  componentWillMount() {
+    this._shouldRedirect();
   }
 
   componentDidMount() {
@@ -22,6 +26,10 @@ export default class Login extends React.Component {
 
   _onChange() {
     this.setState(LoginStore.getState());
+    this._shouldRedirect();
+  }
+
+  _shouldRedirect() {
     if (LoginStore.isLoggedIn()) {
       let nextPath = this.context.router.getCurrentQuery().nextPath || 'overview';
       this.context.router.transitionTo(nextPath);
