@@ -6,6 +6,7 @@ jest.mock('../../js/services/KeystoneApiService');
 const AppDispatcher = require('../../js/dispatchers/AppDispatcher');
 const KeystoneApiService = require('../../js/services/KeystoneApiService');
 const LoginActions = require('../../js/actions/LoginActions');
+const LoginConstants = require('../../js/constants/LoginConstants');
 
 let mockKeystoneAccess = {
   token: {
@@ -36,7 +37,7 @@ describe('LoginActions', () => {
     LoginActions.loginUser(mockKeystoneAccess);
     expect(localStorage.setItem).toBeCalledWith('keystoneAuthTokenId', mockKeystoneAccess.token.id);
     expect(AppDispatcher.dispatch).toBeCalledWith({
-      actionType: 'LOGIN_USER',
+      actionType: LoginConstants.LOGIN_USER,
       keystoneAccess: mockKeystoneAccess
     });
   });
@@ -46,7 +47,7 @@ describe('LoginActions', () => {
     LoginActions.logoutUser();
     expect(localStorage.removeItem).toBeCalledWith('keystoneAuthTokenId');
     expect(AppDispatcher.dispatch).toBeCalledWith({
-      actionType: 'LOGOUT_USER'
+      actionType: LoginConstants.LOGOUT_USER
     });
   });
 });

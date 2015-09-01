@@ -1,7 +1,7 @@
 import request from 'reqwest';
 import when from 'when';
 
-import { AUTH_URL } from '../constants/LoginConstants';
+import { AUTH_URL } from '../constants/KeystoneApiConstants';
 import LoginActions from '../actions/LoginActions';
 
 class KeystoneApiService {

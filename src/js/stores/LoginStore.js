@@ -1,4 +1,5 @@
 import BaseStore from './BaseStore';
+import LoginConstants from '../constants/LoginConstants';
 
 class LoginStore extends BaseStore {
   constructor() {
@@ -9,12 +10,12 @@ class LoginStore extends BaseStore {
 
   _registerToActions(payload) {
     switch(payload.actionType) {
-    case 'USER_AUTH_STARTED':
+    case LoginConstants.USER_AUTH_STARTED:
       break;
-    case 'LOGIN_USER':
+    case LoginConstants.LOGIN_USER:
       this.onLoginUser(payload.keystoneAccess);
       break;
-    case 'LOGOUT_USER':
+    case LoginConstants.LOGOUT_USER:
       this.onLogoutUser();
       break;
     default:

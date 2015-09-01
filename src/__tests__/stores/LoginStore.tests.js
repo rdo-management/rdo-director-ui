@@ -4,6 +4,7 @@ jest.mock('../../js/dispatchers/AppDispatcher');
 
 const AppDispatcher = require('../../js/dispatchers/AppDispatcher');
 const LoginStore = require('../../js/stores/LoginStore');
+const LoginConstants = require('../../js/constants/LoginConstants');
 
 let callback;
 
@@ -16,12 +17,12 @@ let loggedInState = {
 
 // mock actions
 let loginUserAction = {
-  actionType:'LOGIN_USER',
+  actionType: LoginConstants.LOGIN_USER,
   keystoneAccess: loggedInState
 };
 
 let logoutUserAction = {
-  actionType: 'LOGOUT_USER'
+  actionType: LoginConstants.LOGOUT_USER
 };
 
 describe('LoginStore', () => {
