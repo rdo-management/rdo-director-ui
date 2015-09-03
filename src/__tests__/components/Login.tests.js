@@ -35,6 +35,11 @@ describe('Login component', () => {
       expect(loginInstance._shouldRedirect).toBeCalled();
     });
 
+    it('should check if User is logged in when testing for redirection', () => {
+      loginInstance._shouldRedirect();
+      expect(LoginStore.isLoggedIn).toBeCalled();
+    });
+
     it('should render with expected markup', () => {
       expect(TestUtils.isCompositeComponent(loginInstance)).toBeTruthy();
 
@@ -51,11 +56,6 @@ describe('Login component', () => {
       let submitButton = TestUtils.findRenderedDOMComponentWithTag(loginInstance, 'button');
       expect(submitButton.props.children).toBe('Submit');
       expect(submitButton.props.type).toBe('submit');
-    });
-
-    it('should get state when rendered', () => {
-      expect(LoginStore.isLoggedIn).toBeCalled();
-      expect(LoginStore.getState).toBeCalled();
     });
 
     it('updates the component state when user fills the form', function() {
