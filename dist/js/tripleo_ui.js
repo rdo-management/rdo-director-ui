@@ -23588,7 +23588,7 @@
 	        _actionsLoginActions2['default'].loginUser(keystoneAccess);
 	        return true;
 	      })['catch'](function (err) {
-	        // TODO(jtomasek): launch notification action/form errors etc.
+	        // TODO(jtomasek): launch notification action/form errors based on error.code etc.
 	        console.log('Error in handleAuth', err);
 	      });
 	    }
