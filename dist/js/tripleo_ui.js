@@ -178,12 +178,12 @@
 	  }, {
 	    key: '_onUsernameChange',
 	    value: function _onUsernameChange(event) {
-	      this.setState({ username: event.target.value });
+	      this.setState({ username: event.currentTarget.value });
 	    }
 	  }, {
 	    key: '_onPasswordChange',
 	    value: function _onPasswordChange(event) {
-	      this.setState({ password: event.target.value });
+	      this.setState({ password: event.currentTarget.value });
 	    }
 	  }, {
 	    key: 'handleLogin',

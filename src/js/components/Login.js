@@ -37,11 +37,11 @@ export default class Login extends React.Component {
   }
 
   _onUsernameChange(event) {
-    this.setState({ username: event.target.value });
+    this.setState({ username: event.currentTarget.value });
   }
 
   _onPasswordChange(event) {
-    this.setState({ password: event.target.value });
+    this.setState({ password: event.currentTarget.value });
   }
 
   handleLogin(e) {
