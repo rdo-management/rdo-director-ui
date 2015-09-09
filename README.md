@@ -13,10 +13,14 @@
 1. ```git clone https://github.com/jtomasek/tripleo_ui.git```
 2. ```cd tripleo_ui```
 3. Install Gulp globally ```sudo npm install -g gulp```
-4. Install dependencies ```npm install --dev```
+4. Install dependencies ```npm install```
 5. Serve the App ```gulp```
 6. Navigate to ```http://<machine_hostname>:3000/```
 
+## NPM install troubleshooting
+
+In case of errors during ```npm install```, remove node_modules dir and clean npm cache
+```npm cache clean```. Then run ```npm install``` again.
 
 ## Tests
 
