@@ -1,3 +1,7 @@
+form .form-group.required .control-label:after {
+  content: " *";
+  color: red;
+}
 .node-stack {
   display: inline-block;
   position: relative;

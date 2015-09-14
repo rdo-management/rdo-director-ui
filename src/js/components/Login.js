@@ -1,5 +1,10 @@
+import Formsy from 'formsy-react';
 import React from 'react/addons';
 
+import FormErrorList from './forms/FormErrorList';
+import GenericInput from './forms/GenericInput';
+import KeystoneApiErrorHandler from '../services/KeystoneApiErrorHandler';
+import KeystoneApiService from '../services/KeystoneApiService';
 import LoginActions from '../actions/LoginActions';
 import LoginStore from '../stores/LoginStore';
 
@@ -7,8 +12,8 @@ export default class Login extends React.Component {
   constructor() {
     super();
     this.state = {
-      username: '',
-      password: ''
+      canSubmit: false,
+      formErrors: []
     };
     this.changeListener = this._onChange.bind(this);
   }
@@ -36,17 +41,28 @@ export default class Login extends React.Component {
     }
   }
 
-  _onUsernameChange(event) {
-    this.setState({ username: event.currentTarget.value });
+  _enableButton() {
+    this.setState({ canSubmit: true });
   }
 
-  _onPasswordChange(event) {
-    this.setState({ password: event.currentTarget.value });
+  _disableButton() {
+    this.setState({ canSubmit: false });
   }
 
-  handleLogin(e) {
-    e.preventDefault();
-    LoginActions.authenticateUser(this.state.username, this.state.password);
+  handleLogin(formData, resetForm, invalidateForm) {
+    this._disableButton();
+    KeystoneApiService.authenticateUser(formData.username, formData.password).then((response) => {
+      let keystoneAccess = response.access;
+      LoginActions.loginUser(keystoneAccess);
+    }).catch((error) => {
+      this._enableButton();
+      console.log('Error in handleLogin', error);
+      let errorHandler = new KeystoneApiErrorHandler(error, Object.keys(this.refs.form.inputs));
+      invalidateForm(errorHandler.formFieldErrors);
+      this.setState({
+        formErrors: errorHandler.errors
+      });
+    });
   }
 
   render() {
@@ -58,27 +74,26 @@ export default class Login extends React.Component {
               <h1 className="panel-title">TripleO UI Login</h1>
             </div>
             <div className="panel-body">
-              <form role="form" onSubmit={this.handleLogin.bind(this)}>
-                <div className="form-group">
-                  <label htmlFor="username">Username</label>
-                  <input type="text" className="form-control" id="username"
-                         ref="username"
-                         value={this.state.username}
-                         onChange={this._onUsernameChange.bind(this)}
-                         placeholder="Username" />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="password">Password</label>
-                  <input type="password" className="form-control" id="password"
-                         ref="password"
-                         value={this.state.password}
-                         onChange={this._onPasswordChange.bind(this)}
-                         placeholder="Password" />
-                </div>
-                <button type="submit" className="btn btn-primary">
+              <FormErrorList errors={this.state.formErrors}/>
+              <Formsy.Form ref="form" role="form"
+                           onSubmit={this.handleLogin.bind(this)}
+                           onValid={this._enableButton.bind(this)}
+                           onInvalid={this._disableButton.bind(this)}>
+                <GenericInput name="username"
+                              placeholder="Username"
+                              title="Username"
+                              validationError="Username is required"
+                              required/>
+                <GenericInput type="password"
+                              name="password"
+                              placeholder="Password"
+                              title="Password"
+                              validationError="Password is required"
+                              required/>
+                <button type="submit" disabled={!this.state.canSubmit} className="btn btn-primary">
                   Submit
                 </button>
-              </form>
+              </Formsy.Form>
             </div>
           </div>
         </div>

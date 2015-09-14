@@ -18,7 +18,7 @@
         ],
         "strict": 0,
         "react/display-name": [1, { "acceptTranspilerName": true }],
-        "react/jsx-boolean-value": [1, "always"],
+        "react/jsx-boolean-value": [1, "never"],
         "react/jsx-curly-spacing": [1, "never"],
         "react/jsx-no-duplicate-props": 1,
         "react/jsx-no-undef": 1,

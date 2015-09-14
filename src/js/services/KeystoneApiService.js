@@ -6,7 +6,7 @@ import LoginActions from '../actions/LoginActions';
 
 class KeystoneApiService {
   authenticateUser(username, password) {
-    return this.handleAuth(when(request({
+    return when(request({
       url: AUTH_URL,
       method: 'POST',
       crossOrigin: true,
@@ -21,7 +21,7 @@ class KeystoneApiService {
           }
         }
       })
-    })));
+    }));
   }
 
   authenticateUserViaToken(keystoneAuthTokenId) {
@@ -48,7 +48,6 @@ class KeystoneApiService {
       LoginActions.loginUser(keystoneAccess);
       return true;
     }).catch((err) => {
-      // TODO(jtomasek): launch notification action/form errors based on error.code etc.
       console.log('Error in handleAuth', err);
     });
   }
