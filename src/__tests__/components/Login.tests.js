@@ -1,9 +1,9 @@
 /* Disable Jest Auto mocking, as Login module uses 'import' which won't get
    automatically mocked (rather then 'require') */
-jest.autoMockOff();
+// jest.autoMockOff();
 
-jest.mock('../../js/actions/LoginActions');
-jest.mock('../../js/stores/LoginStore');
+// jest.mock('../../js/actions/LoginActions');
+// jest.mock('../../js/stores/LoginStore');
 
 const React = require('react/addons');
 const Login = require('../../js/components/Login');
@@ -30,7 +30,7 @@ describe('Login component', () => {
     });
 
     it('should check for redirection prior to mounting', () => {
-      loginInstance._shouldRedirect = jest.genMockFunction();
+      // loginInstance._shouldRedirect = jest.genMockFunction();
       loginInstance.componentWillMount();
       expect(loginInstance._shouldRedirect).toBeCalled();
     });
@@ -89,7 +89,7 @@ describe('Login component', () => {
           }
         }
       };
-      loginInstance.context.router.transitionTo = jest.genMockFunction();
+      // loginInstance.context.router.transitionTo = jest.genMockFunction();
       loginInstance.componentWillMount();
       expect(loginInstance.context.router.transitionTo).toBeCalledWith('nodes');
     });

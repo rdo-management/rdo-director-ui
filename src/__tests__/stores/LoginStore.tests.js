@@ -1,6 +1,6 @@
-jest.autoMockOff();
+// jest.autoMockOff();
 
-jest.mock('../../js/dispatchers/AppDispatcher');
+// jest.mock('../../js/dispatchers/AppDispatcher');
 
 const AppDispatcher = require('../../js/dispatchers/AppDispatcher');
 const LoginStore = require('../../js/stores/LoginStore');
@@ -35,7 +35,7 @@ describe('LoginStore', () => {
   });
 
   it('sets state to keystoneAccess data when user logs in', () => {
-    LoginStore.emitChange = jest.genMockFunction();
+    // LoginStore.emitChange = jest.genMockFunction();
     callback(loginUserAction);
     expect(LoginStore.state).toEqual({
       token: 'token',
@@ -47,7 +47,7 @@ describe('LoginStore', () => {
   });
 
   it('cleans the state when user logs out', () => {
-    LoginStore.emitChange = jest.genMockFunction();
+    // LoginStore.emitChange = jest.genMockFunction();
     callback(logoutUserAction);
     expect(LoginStore.state).toEqual({});
     expect(LoginStore.emitChange).toBeCalled();

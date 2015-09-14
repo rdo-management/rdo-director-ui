@@ -1,6 +1,6 @@
-jest.autoMockOff();
+// jest.autoMockOff();
 
-jest.mock('../../js/actions/LoginActions');
+// jest.mock('../../js/actions/LoginActions');
 
 const KeystoneApiService = require('../../js/services/KeystoneApiService');
 const LoginActions = require('../../js/actions/LoginActions');
@@ -17,18 +17,18 @@ describe('KeystoneApiService', () => {
       }
     };
     KeystoneApiService.handleAuth(when(mockApiRequestResponse));
-    jest.runAllTicks();
+    // jest.runAllTicks();
     expect(LoginActions.loginUser).toBeCalledWith(mockApiRequestResponse.access);
   });
 
   it('fails when request response is error', () => {
-    console.error = jest.genMockFunction();
+    // console.log = jest.genMockFunction();
     let expectedError = new Error('I threw some error');
-    let wrongApiRequest = jest.genMockFunction().mockImplementation(() => {
-      return when.reject(expectedError);
-    });
+    // let wrongApiRequest = jest.genMockFunction().mockImplementation(() => {
+      // return when.reject(expectedError);
+    // });
     KeystoneApiService.handleAuth(when(wrongApiRequest()));
-    jest.runAllTicks();
+    // jest.runAllTicks();
     expect(console.error).toBeCalledWith('Error in handleAuth', expectedError);
   });
 });
