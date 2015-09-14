@@ -33,7 +33,7 @@ gulp.task('less', function () {
     .pipe(browserSync.stream());
 });
 
-gulp.task('test', shell.task('karma start', {
+gulp.task('test', shell.task('karma start --single-run', {
   // Task doesn't error when tests fail
 }));
 
