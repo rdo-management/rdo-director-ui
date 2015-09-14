@@ -4,6 +4,7 @@ module.exports = function(config) {
   config.set({
 
     // Add any browsers here
+    // browsers: ['PhantomJS', 'Chrome'], // if you have karma-chrome-launcher installed
     browsers: ['PhantomJS'],
     frameworks: ['jasmine'],
 
@@ -23,7 +24,7 @@ module.exports = function(config) {
     },
 
     reporters: ['dots'],
-    singleRun: true, // exit after tests have completed
+    singleRun: false, // exit after tests have completed
 
     webpackMiddleware: {
       noInfo: true
