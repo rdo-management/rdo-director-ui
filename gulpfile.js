@@ -1,7 +1,6 @@
 var gulp = require('gulp');
 
-var browserSync = require('browser-sync');
-var less = require('gulp-less');
+var browserSync = require('browser-sync'); var less = require('gulp-less');
 // var rename = require('gulp-rename');
 var shell = require('gulp-shell');
 // var uglify = require('gulp-uglify');
@@ -22,7 +21,10 @@ gulp.task('serve', ['webpack-app', 'less'], function(){
   });
 
   gulp.watch('src/less/**/*.less', ['less']);
-  gulp.watch('src/js/**/*.js', ['webpack-app']);
+  // Re-build app and run tests on app change.
+  gulp.watch('src/js/**/*.js', ['webpack-app', 'test-run']);
+  // Run tests on test change.
+  gulp.watch('src/__tests__/**/*.js', ['test-run']);
   gulp.watch('src/*.html').on('change', browserSync.reload);
 });
 
@@ -33,10 +35,13 @@ gulp.task('less', function () {
     .pipe(browserSync.stream());
 });
 
-gulp.task('test', shell.task('karma start --single-run', {
-  // Task doesn't error when tests fail
-}));
+// Start test server, run tests once, then quit.
+gulp.task('test', shell.task('karma start --single-run'));
 
+// Start test server, run tests, keep server running..
+gulp.task('test-start', shell.task('karma start'));
 
-gulp.task('default', [ 'serve' ], function() {
-});
+// Do a single test run (expects Karma server to be running).
+gulp.task('test-run', shell.task('karma run'));
+
+gulp.task('default', [ 'serve', 'test-start' ], function() {});

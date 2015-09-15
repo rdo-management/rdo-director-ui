@@ -26,12 +26,18 @@ In case of errors during ```npm install```, remove node_modules dir and clean np
 
 Single test run:
 
-- ```karma start --single-run```
+-- ```npm test``` (alternatively run ```karma start --single-run```)
+-- ```npm run lint``` to run ESLint
+-- ```npm test && npm run lint``` to run Tests and ESLint
+
+(Info on Linting setup here: https://medium.com/@dan_abramov/lint-like-it-s-2015-6987d44c5b48)
 
 During development:
 
-- ```karma start``` to start the server
-- ```karma run``` to run the tests (new terminal window)
+-- ```karma start``` to start the server
+-- ```karma run``` to run the tests (new terminal window)
+
+
 
 
 ## Make Undercloud API Services available when running app from laptop
