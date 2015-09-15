@@ -1,5 +1,5 @@
 import Formsy from 'formsy-react';
-import React from 'react/addons';
+import React from 'react';
 
 import FormErrorList from './forms/FormErrorList';
 import GenericInput from './forms/GenericInput';
@@ -7,6 +7,7 @@ import KeystoneApiErrorHandler from '../services/KeystoneApiErrorHandler';
 import KeystoneApiService from '../services/KeystoneApiService';
 import LoginActions from '../actions/LoginActions';
 import LoginStore from '../stores/LoginStore';
+import NotificationActions from '../actions/NotificationActions';
 
 export default class Login extends React.Component {
   constructor() {
@@ -54,9 +55,14 @@ export default class Login extends React.Component {
     KeystoneApiService.authenticateUser(formData.username, formData.password).then((response) => {
       let keystoneAccess = response.access;
       LoginActions.loginUser(keystoneAccess);
+      NotificationActions.notify({
+        title: 'Login Successful',
+        message: 'The user was logged in successfully',
+        type: 'success'
+      });
     }).catch((error) => {
       this._enableButton();
-      console.log('Error in handleLogin', error);
+      console.error('Error in handleLogin', error);
       let errorHandler = new KeystoneApiErrorHandler(error, Object.keys(this.refs.form.inputs));
       invalidateForm(errorHandler.formFieldErrors);
       this.setState({

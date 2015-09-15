@@ -1,0 +1,25 @@
+.notification-list {
+  position: absolute;
+  left:0;
+  padding: 15px;
+  z-index: 100;
+  width: 100%;
+
+  // hide close button on non-dismissable alerts
+  button.close {
+    display: none;
+  }
+  .alert-dismissable{
+    button.close {
+      display: block;
+    }
+  }
+
+  .alert {
+    opacity: .95;
+    transition: opacity .2s ease-in-out;
+    &:hover {
+      opacity: 1;
+    }
+  }
+}

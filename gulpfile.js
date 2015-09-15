@@ -40,7 +40,7 @@ gulp.task('serve', ['webpack-app', 'less'], function(){
     server: './dist'
   });
 
-  gulp.watch('src/less/*.less', ['less']);
+  gulp.watch('src/less/**/*.less', ['less']);
   gulp.watch('src/js/**/*.js', ['webpack-app']);
   gulp.watch('src/*.html').on('change', browserSync.reload);
 });

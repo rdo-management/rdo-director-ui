@@ -40,7 +40,7 @@ export class FormError extends React.Component {
 
     return (
       <div className={classes} role="alert">
-        <strong>{this.props.title} </strong>
+        <strong>{this.props.title}</strong><br/>
         {this.props.message}
       </div>
     );

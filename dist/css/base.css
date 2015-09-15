@@ -61,6 +61,26 @@ form .form-group.required .control-label:after {
   text-shadow: none;
   color: #838383;
 }
+.notification-list {
+  position: absolute;
+  left: 0;
+  padding: 15px;
+  z-index: 100;
+  width: 100%;
+}
+.notification-list button.close {
+  display: none;
+}
+.notification-list .alert-dismissable button.close {
+  display: block;
+}
+.notification-list .alert {
+  opacity: .95;
+  transition: opacity 0.2s ease-in-out;
+}
+.notification-list .alert:hover {
+  opacity: 1;
+}
 .panel-login {
   margin-top: 100px;
 }

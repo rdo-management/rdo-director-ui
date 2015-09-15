@@ -2,7 +2,9 @@ import request from 'reqwest';
 import when from 'when';
 
 import { AUTH_URL } from '../constants/KeystoneApiConstants';
+import KeystoneApiErrorHandler from './KeystoneApiErrorHandler';
 import LoginActions from '../actions/LoginActions';
+import NotificationActions from '../actions/NotificationActions';
 
 class KeystoneApiService {
   authenticateUser(username, password) {
@@ -47,8 +49,12 @@ class KeystoneApiService {
       let keystoneAccess = response.access;
       LoginActions.loginUser(keystoneAccess);
       return true;
-    }).catch((err) => {
-      console.log('Error in handleAuth', err);
+    }).catch((error) => {
+      console.error('Error in handleAuth', error);
+      let errorHandler = new KeystoneApiErrorHandler(error);
+      errorHandler.errors.forEach((error) => {
+        NotificationActions.notify(error);
+      });
     });
   }
 }
