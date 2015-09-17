@@ -24,21 +24,30 @@ In case of errors during ```npm install```, remove node_modules dir and clean np
 
 ## Tests
 
-Single test run:
+#### Single test run:
 
--- ```npm test``` (alternatively run ```karma start --single-run```)
--- ```npm run lint``` to run ESLint
--- ```npm test && npm run lint``` to run Tests and ESLint
+- ```npm test``` (alternatively run ```karma start --single-run```)
+- ```npm run lint``` to run ESLint
+- ```npm test && npm run lint``` to run Tests and ESLint
 
 (Info on Linting setup here: https://medium.com/@dan_abramov/lint-like-it-s-2015-6987d44c5b48)
 
-During development:
+#### Tests during development:
 
--- ```karma start``` to start the server
--- ```karma run``` to run the tests (new terminal window)
+By running ```gulp serve``` (or ```gulp``` as a shortcut), karma server is also started, and tests are run every time any .js file is saved. In case you want to explicitly run the tests, run ```gulp test-run```.
 
+#### Debugging test
 
-
+1. option:
+  - use ```console.log``` in the test and see the output in karma server output
+2. option:
+  - install karma-chrome-launcher npm module ```npm install karma-chrome-launcher --save-dev```
+  - replace/add 'Chrome' to browsers in ```karma.conf.js```
+  - now Karma will launch Chrome to run the tests
+  - use ```debugger;``` statement in test code to add breakpoints
+  - in Karma Chrome window click 'debug' button and debug in chrome developer tools as usual
+  - optionally you can use karma-jasmine-html-reporter for better test output (https://www.npmjs.com/package/karma-jasmine-html-reporter)
+  - make sure you don't push those changes to ```karma.conf.js``` and ```package.json``` as part of your patch
 
 ## Make Undercloud API Services available when running app from laptop
 

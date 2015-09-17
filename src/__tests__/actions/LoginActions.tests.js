@@ -1,8 +1,3 @@
-//jest.autoMockOff();
-
-//jest.mock('../../js/dispatchers/AppDispatcher');
-//jest.mock('../../js/services/KeystoneApiService');
-
 const AppDispatcher = require('../../js/dispatchers/AppDispatcher');
 const KeystoneApiService = require('../../js/services/KeystoneApiService');
 const LoginActions = require('../../js/actions/LoginActions');
@@ -22,31 +17,29 @@ let mockKeystoneAccess = {
 localStorage = {};
 
 describe('LoginActions', () => {
-  xit('creates action to authenticate user via username and password', () => {
-    LoginActions.authenticateUser('admin', 'somepassword');
-    expect(KeystoneApiService.authenticateUser).toBeCalledWith('admin', 'somepassword');
-  });
-
-  xit('creates action to authenticate user via keystone token', () => {
+  it('creates action to authenticate user via keystone token', () => {
+    spyOn(KeystoneApiService, 'authenticateUserViaToken');
     LoginActions.authenticateUserViaToken('someTokenIdString');
-    expect(KeystoneApiService.authenticateUserViaToken).toBeCalledWith('someTokenIdString');
+    expect(KeystoneApiService.authenticateUserViaToken).toHaveBeenCalledWith('someTokenIdString');
   });
 
-  xit('creates action to login user with keystoneAccess response', () => {
-    // localStorage.setItem = jest.genMockFunction();
+  it('creates action to login user with keystoneAccess response', () => {
+    spyOn(localStorage, 'setItem');
+    spyOn(AppDispatcher, 'dispatch');
     LoginActions.loginUser(mockKeystoneAccess);
-    expect(localStorage.setItem).toBeCalledWith('keystoneAuthTokenId', mockKeystoneAccess.token.id);
-    expect(AppDispatcher.dispatch).toBeCalledWith({
+    expect(localStorage.setItem).toHaveBeenCalledWith('keystoneAuthTokenId', mockKeystoneAccess.token.id);
+    expect(AppDispatcher.dispatch).toHaveBeenCalledWith({
       actionType: LoginConstants.LOGIN_USER,
       keystoneAccess: mockKeystoneAccess
     });
   });
 
-  xit('creates action to logout user', () => {
-    // localStorage.removeItem = jest.genMockFunction();
+  it('creates action to logout user', () => {
+    spyOn(localStorage, 'removeItem');
+    spyOn(AppDispatcher, 'dispatch');
     LoginActions.logoutUser();
-    expect(localStorage.removeItem).toBeCalledWith('keystoneAuthTokenId');
-    expect(AppDispatcher.dispatch).toBeCalledWith({
+    expect(localStorage.removeItem).toHaveBeenCalledWith('keystoneAuthTokenId');
+    expect(AppDispatcher.dispatch).toHaveBeenCalledWith({
       actionType: LoginConstants.LOGOUT_USER
     });
   });

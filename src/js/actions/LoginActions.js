@@ -3,13 +3,6 @@ import KeystoneApiService from '../services/KeystoneApiService';
 import LoginConstants from '../constants/LoginConstants';
 
 export default {
-  authenticateUser(username, password) {
-    AppDispatcher.dispatch({
-      actionType: LoginConstants.USER_AUTH_STARTED
-    });
-    KeystoneApiService.authenticateUser(username, password);
-  },
-
   authenticateUserViaToken(keystoneAuthTokenId) {
     KeystoneApiService.authenticateUserViaToken(keystoneAuthTokenId);
   },
