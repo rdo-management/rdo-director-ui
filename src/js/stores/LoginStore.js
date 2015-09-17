@@ -2,6 +2,7 @@ import BaseStore from './BaseStore';
 import LoginConstants from '../constants/LoginConstants';
 
 class LoginStore extends BaseStore {
+
   constructor() {
     super();
     this.subscribe(() => this._registerToActions.bind(this));
