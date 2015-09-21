@@ -14,7 +14,8 @@
     "reqwest": "~2.0.1",
     "xhr2": "~0.1.2",
     "lodash": "~3.10.1",
-    "formsy-react": "~0.14.1"
+    "formsy-react": "~0.14.1",
+    "bootstrap": "~3.3.5"
   },
   "devDependencies": {
     "gulp": "~3.9.0",

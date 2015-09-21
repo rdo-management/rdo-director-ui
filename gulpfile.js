@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 
-var browserSync = require('browser-sync'); var less = require('gulp-less');
+var browserSync = require('browser-sync');
+var less = require('gulp-less');
 // var rename = require('gulp-rename');
 var shell = require('gulp-shell');
 // var uglify = require('gulp-uglify');
@@ -14,7 +15,7 @@ gulp.task('webpack-app', function() {
     .pipe(browserSync.stream());
 });
 
-gulp.task('serve', ['webpack-app', 'less'], function(){
+gulp.task('serve', ['webpack-app', 'less', 'fonts'], function(){
   browserSync.init({
     open: false,
     server: './dist'
@@ -33,6 +34,12 @@ gulp.task('less', function () {
     .pipe(less())
     .pipe(gulp.dest('./dist/css'))
     .pipe(browserSync.stream());
+});
+
+gulp.task('fonts', function() {
+  var bootstrapFonts = 'node_modules/bootstrap/fonts/*';
+  return gulp.src([bootstrapFonts])
+    .pipe(gulp.dest('./dist/fonts'));
 });
 
 // Start test server, run tests once, then quit.
