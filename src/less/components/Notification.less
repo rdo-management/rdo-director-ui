@@ -1,0 +1,11 @@
+.alert{
+  // hide close button on non-dismissable alerts
+  button.close {
+    display: none;
+  }
+  &.alert-dismissable{
+    button.close {
+      display: block;
+    }
+  }
+}
