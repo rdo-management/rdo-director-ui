@@ -31,6 +31,15 @@ export default class Login extends React.Component {
     LoginStore.removeChangeListener(this.changeListener);
   }
 
+  static willTransitionTo() {
+    React.findDOMNode(document).documentElement.className = 'login-pf';
+  }
+
+  static willTransitionFrom() {
+    React.findDOMNode(document).documentElement.className = '';
+  }
+
+
   _onChange() {
     this._shouldRedirect();
   }
@@ -73,34 +82,36 @@ export default class Login extends React.Component {
   render() {
     return (
       <div className="row">
-        <div className="col-md-6 col-sm-8 col-xs-12 col-md-offset-3 col-sm-offset-2">
-          <div className="panel panel-default panel-login">
-            <div className="panel-heading">
-              <h1 className="panel-title">TripleO UI Login</h1>
-            </div>
-            <div className="panel-body">
-              <FormErrorList errors={this.state.formErrors}/>
-              <Formsy.Form ref="form" role="form"
-                           onSubmit={this.handleLogin.bind(this)}
-                           onValid={this._enableButton.bind(this)}
-                           onInvalid={this._disableButton.bind(this)}>
-                <GenericInput name="username"
-                              placeholder="Username"
-                              title="Username"
-                              validationError="Username is required"
-                              required/>
-                <GenericInput type="password"
-                              name="password"
-                              placeholder="Password"
-                              title="Password"
-                              validationError="Password is required"
-                              required/>
-                <button type="submit" disabled={!this.state.canSubmit} className="btn btn-primary">
-                  Submit
-                </button>
-              </Formsy.Form>
-            </div>
+        <div className="col-sm-12">
+          <div id="brand">
+            <img src="img/brand.svg" alt="TripleO UI Enterprise Application"/>
           </div>
+        </div>
+        <div className="col-sm-7 col-md-6 col-lg-5 login">
+          <FormErrorList errors={this.state.formErrors}/>
+          <Formsy.Form ref="form" role="form"
+                       onSubmit={this.handleLogin.bind(this)}
+                       onValid={this._enableButton.bind(this)}
+                       onInvalid={this._disableButton.bind(this)}>
+            <GenericInput name="username"
+                          placeholder="Username"
+                          title="Username"
+                          validationError="Username is required"
+                          required/>
+            <GenericInput type="password"
+                          name="password"
+                          placeholder="Password"
+                          title="Password"
+                          validationError="Password is required"
+                          required/>
+            <button type="submit" disabled={!this.state.canSubmit} className="btn btn-primary">
+              Submit
+            </button>
+          </Formsy.Form>
+        </div>
+        <div className="col-sm-5 col-md-6 col-lg-7 details">
+          <p><strong>Welcome to PatternFly! </strong>
+          This is placeholder text, only. Use this area to place any information or introductory message about your application that may be relevant for users. For example, you might include news or information about the latest release of your product here—such as a version number.</p>
         </div>
       </div>
     );

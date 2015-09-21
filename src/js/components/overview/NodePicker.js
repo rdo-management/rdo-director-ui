@@ -32,8 +32,7 @@ export class PickerArrow extends React.Component {
   render() {
     return (
       <button className="picker-arrow" onClick={this.props.increment}>
-        <span className={'glyphicon glyphicon-chevron-' + this.props.direction}
-              aria-hidden="true"></span>
+        <span className={'fa fa-angle-' + this.props.direction} aria-hidden="true"></span>
       </button>
     );
   }

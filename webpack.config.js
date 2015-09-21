@@ -2,7 +2,10 @@ module.exports = {
   devtool: 'source-map',
   output: {
     filename: 'tripleo_ui.js',
-    sourceMapFilename: '../js/ripleo_ui.js.map'
+    sourceMapFilename: '../js/ripleo_ui.js.map',
+    library: 'tripleo_ui',
+    libraryTarget: 'umd',
+    umdNamedDefine: true
   },
   module: {
     loaders: [

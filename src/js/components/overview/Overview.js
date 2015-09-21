@@ -8,7 +8,7 @@ import NodeStack from './NodeStack';
 import { PageHeader } from '../ui/PageHeader';
 
 
-export default AuthenticatedComponent(class Overview extends React.Component {
+export default class Overview extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -38,7 +38,7 @@ export default AuthenticatedComponent(class Overview extends React.Component {
       </div>
     );
   }
-});
+};
 
 
 // export class FreeRolesList extends React.Component {

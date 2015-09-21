@@ -11,13 +11,19 @@ export default class Notification extends React.Component {
       'alert-info': this.props.type === 'info',
       'alert-dismissable': this.props.dismissable
     });
+    let iconClass = ClassNames({
+      'pficon': true,
+      'pficon-ok': this.props.type === 'success',
+      'pficon-info': this.props.type === 'info',
+      'pficon-warning-triangle-o': this.props.type === 'warning',
+      'pficon-error-circle-o': this.props.type === 'error'
+    });
+
     return (
       <div className={classes} role="alert">
-        <button type="button"
-                className="close"
-                aria-label="Close"
-                onClick={this.props.removeNotification}>
-          <span aria-hidden="true">&times;</span>
+        <span className={iconClass} aria-hidden="true"></span>
+        <button type="button" className="close" aria-label="Close" onClick={this.props.removeNotification}>
+          <span className="pficon pficon-close" aria-hidden="true"></span>
         </button>
         <strong>{this.props.title}</strong><br/>
         {this.props.message}

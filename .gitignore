@@ -2,3 +2,5 @@ node_modules
 dist/js
 dist/css
 dist/fonts
+dist/img
+dist/overview
