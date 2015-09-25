@@ -53,8 +53,7 @@ export default class Login extends React.Component {
   handleLogin(formData, resetForm, invalidateForm) {
     this._disableButton();
     KeystoneApiService.authenticateUser(formData.username, formData.password).then((response) => {
-      let keystoneAccess = response.access;
-      LoginActions.loginUser(keystoneAccess);
+      LoginActions.loginUser(response.access);
       NotificationActions.notify({
         title: 'Login Successful',
         message: 'The user was logged in successfully',

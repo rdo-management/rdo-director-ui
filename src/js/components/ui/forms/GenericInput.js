@@ -60,3 +60,7 @@ module.exports = GenericInput;
 
 
 // ReactMixin(GenericInput.prototype, Formsy.Mixin);
+
+// TODO(jtomasek): This class needs to be defined using createClass because
+// the Formsy.Mixin uses getDefaultProps and getInitialState methods. Fix this
+// when Formsy fixes it
