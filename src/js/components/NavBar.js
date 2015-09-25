@@ -2,7 +2,7 @@ import React from 'react';
 
 import AuthenticatedComponent from './utils/AuthenticatedComponent';
 import LoginActions from '../actions/LoginActions';
-import NavTab from './NavTab';
+import NavTab from './ui/NavTab';
 
 
 export default AuthenticatedComponent(class NavBar extends React.Component {

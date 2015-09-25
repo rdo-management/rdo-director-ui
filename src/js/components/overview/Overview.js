@@ -1,11 +1,11 @@
 import React from 'react';
 
-import AuthenticatedComponent from './utils/AuthenticatedComponent';
-import OverviewActions from '../actions/OverviewActions';
-import FlavorStore from '../stores/FlavorStore';
+import AuthenticatedComponent from '../utils/AuthenticatedComponent';
+import OverviewActions from '../../actions/OverviewActions';
+import FlavorStore from '../../stores/FlavorStore';
 import NodePicker from './NodePicker';
 import NodeStack from './NodeStack';
-import { PageHeader } from './Layout';
+import { PageHeader } from '../ui/PageHeader';
 
 
 export default AuthenticatedComponent(class Overview extends React.Component {

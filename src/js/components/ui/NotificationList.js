@@ -1,8 +1,8 @@
 import React from 'react';
 
 import Notification from './Notification';
-import NotificationActions from '../actions/NotificationActions';
-import NotificationStore from '../stores/NotificationStore';
+import NotificationActions from '../../actions/NotificationActions';
+import NotificationStore from '../../stores/NotificationStore';
 
 export default class NotificationList extends React.Component {
   constructor() {

@@ -1,8 +1,8 @@
 import Formsy from 'formsy-react';
 import React from 'react';
 
-import FormErrorList from './forms/FormErrorList';
-import GenericInput from './forms/GenericInput';
+import FormErrorList from './ui/forms/FormErrorList';
+import GenericInput from './ui/forms/GenericInput';
 import KeystoneApiErrorHandler from '../services/KeystoneApiErrorHandler';
 import KeystoneApiService from '../services/KeystoneApiService';
 import LoginActions from '../actions/LoginActions';

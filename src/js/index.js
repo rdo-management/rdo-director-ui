@@ -7,8 +7,8 @@ import App from './components/App';
 import AuthTokenStorage from './services/AuthTokenStorage.js';
 import Login from './components/Login';
 import LoginActions from './actions/LoginActions';
-import Overview from './components/Overview';
-import Nodes from './components/Nodes';
+import Overview from './components/overview/Overview';
+import Nodes from './components/nodes/Nodes';
 
 let Route = Router.Route;
 let DefaultRoute = Router.DefaultRoute;

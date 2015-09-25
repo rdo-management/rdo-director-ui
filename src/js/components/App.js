@@ -2,7 +2,7 @@ import React from 'react';
 import * as Router from 'react-router';
 
 import NavBar from './NavBar';
-import NotificationList from './NotificationList';
+import NotificationList from './ui/NotificationList';
 
 let RouteHandler = Router.RouteHandler;
 
