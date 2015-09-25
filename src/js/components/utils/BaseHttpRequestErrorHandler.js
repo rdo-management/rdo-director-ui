@@ -7,7 +7,8 @@ export default class BaseHttpRequestErrorHandler{
     this.xmlHttpRequestError = xmlHttpRequestError;
     this.formInputFieldNames = formInputFieldNames || [];
     this._errors = this._generateErrors(this.xmlHttpRequestError);
-    this._formFieldErrors = this._generateFormFieldErrors(this.xmlHttpRequestError, this.formInputFieldNames);
+    this._formFieldErrors = this._generateFormFieldErrors(this.xmlHttpRequestError,
+                                                          this.formInputFieldNames);
   }
 
   /**
@@ -15,7 +16,7 @@ export default class BaseHttpRequestErrorHandler{
     @param {object} xmlHttpRequestError - The Error object
     @returns {array} array of error objects with type, title and message properties
   */
-  _generateErrors() {
+  _generateErrors(xmlHttpRequestError) {
     return [];
   }
 
@@ -26,7 +27,7 @@ export default class BaseHttpRequestErrorHandler{
     @returns {object} object with with form field names as keys and error messages as
       values. e.g. {'username': 'Username does not exist'}
   */
-  _generateFormFieldErrors() {
+  _generateFormFieldErrors(xmlHttpRequestError, formInputFieldNames) {
     return {};
   }
 

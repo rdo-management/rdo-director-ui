@@ -43,7 +43,8 @@ export default class NotificationList extends React.Component {
     return (
       <div className="container-fluid">
         <div className="row">
-          <div className="col-lg-3 col-lg-offset-9 col-md-4 col-md-offset-8 col-sm-6 col-sm-offset-6">
+          <div className="col-lg-3 col-lg-offset-9 col-md-4
+                          col-md-offset-8 col-sm-6 col-sm-offset-6">
             <div className="notification-list">
               {notifications}
             </div>

@@ -13,7 +13,10 @@ export default class Notification extends React.Component {
     });
     return (
       <div className={classes} role="alert">
-        <button type="button" className="close" aria-label="Close" onClick={this.props.removeNotification}>
+        <button type="button"
+                className="close"
+                aria-label="Close"
+                onClick={this.props.removeNotification}>
           <span aria-hidden="true">&times;</span>
         </button>
         <strong>{this.props.title}</strong><br/>

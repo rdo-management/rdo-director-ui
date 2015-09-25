@@ -11,9 +11,11 @@ export default class NodePicker extends React.Component {
   render() {
     return (
       <div className="node-picker">
-        <PickerArrow direction="left" increment={this.props.onIncrement.bind(this, -this.props.incrementValue)}/>
+        <PickerArrow direction="left"
+                     increment={this.props.onIncrement.bind(this, -this.props.incrementValue)}/>
         <NodeStack count={this.props.nodeCount}/>
-        <PickerArrow direction="right" increment={this.props.onIncrement.bind(this, this.props.incrementValue)}/>
+        <PickerArrow direction="right"
+                     increment={this.props.onIncrement.bind(this, this.props.incrementValue)}/>
       </div>
     );
   }
@@ -30,7 +32,8 @@ export class PickerArrow extends React.Component {
   render() {
     return (
       <button className="picker-arrow" onClick={this.props.increment}>
-        <span className={'glyphicon glyphicon-chevron-' + this.props.direction} aria-hidden="true"></span>
+        <span className={'glyphicon glyphicon-chevron-' + this.props.direction}
+              aria-hidden="true"></span>
       </button>
     );
   }

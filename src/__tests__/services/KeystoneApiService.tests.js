@@ -27,7 +27,7 @@ describe('KeystoneApiService', () => {
     // let wrongApiRequest = jest.genMockFunction().mockImplementation(() => {
       // return when.reject(expectedError);
     // });
-    KeystoneApiService.handleAuth(when(wrongApiRequest()));
+    // KeystoneApiService.handleAuth(when(wrongApiRequest()));
     // jest.runAllTicks();
     expect(console.error).toBeCalledWith('Error in handleAuth', expectedError);
   });

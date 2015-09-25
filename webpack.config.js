@@ -6,8 +6,8 @@ module.exports = {
   },
   module: {
     loaders: [
-      { test: /\.js$/, include: /src/, exclude: /(node_modules|src\/js\/workers)/, loader: 'babel-loader' }//,
-      // { test: /disqus-thread.js$/, loader: 'babel-loader' },
+      { test: /\.js$/, include: /src/,
+        exclude: /src\/js\/workers/, loader: 'babel-loader' }
       // { test: /\.json$/, loader: 'json-loader' }
     ]
   },
@@ -15,5 +15,5 @@ module.exports = {
     fs: 'empty',
     net: 'empty',
     tls: 'empty'
-  },
+  }
 };

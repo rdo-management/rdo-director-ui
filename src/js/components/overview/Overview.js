@@ -70,7 +70,7 @@ export class FlavorPanelList extends React.Component {
   }
 }
 FlavorPanelList.propTypes = {
-  'flavors': React.PropTypes.array.isRequired
+  flavors: React.PropTypes.array.isRequired
 };
 
 
@@ -100,7 +100,7 @@ export class FlavorPanel extends React.Component {
   }
 }
 FlavorPanel.propTypes = {
-  'flavor': React.PropTypes.object.isRequired
+  flavor: React.PropTypes.object.isRequired
 };
 
 
@@ -121,7 +121,7 @@ export class RoleList extends React.Component {
   }
 }
 RoleList.propTypes = {
-  'roles': React.PropTypes.array.isRequired
+  roles: React.PropTypes.array.isRequired
 };
 
 
@@ -140,7 +140,7 @@ export class FreeNodesPanel extends React.Component {
   }
 }
 FreeNodesPanel.propTypes = {
-  'nodeCount': React.PropTypes.number.isRequired
+  nodeCount: React.PropTypes.number.isRequired
 };
 
 
@@ -174,12 +174,13 @@ export class RolePanel extends React.Component {
           <h3 className="panel-title">{this.props.role.name}</h3>
         </div>
         <div className="panel-body clearfix">
-          <NodePicker nodeCount={this.props.role.nodeCount} onIncrement={this.updateCount.bind(this)}/>
+          <NodePicker nodeCount={this.props.role.nodeCount}
+                      onIncrement={this.updateCount.bind(this)}/>
         </div>
       </div>
     );
   }
 }
 RolePanel.propTypes = {
-  'role': React.PropTypes.object.isRequired
+  role: React.PropTypes.object.isRequired
 };
