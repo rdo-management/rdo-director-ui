@@ -7,8 +7,9 @@ var shell = require('gulp-shell');
 // var uglify = require('gulp-uglify');
 var webpack = require('gulp-webpack');
 var webpackConfig = require('./webpack.config.js');
+var tokenWorkerConfig = require('./tokenworker.webpack.config.js');
 
-gulp.task('webpack-app', function() {
+gulp.task('webpack-app', ['webpack-token-worker'], function() {
   return gulp.src('./src/js/index.js')
     .pipe(webpack(webpackConfig))
     .pipe(gulp.dest('dist/js'))
@@ -40,6 +41,13 @@ gulp.task('fonts', function() {
   var bootstrapFonts = 'node_modules/bootstrap/fonts/*';
   return gulp.src([bootstrapFonts])
     .pipe(gulp.dest('./dist/fonts'));
+});
+
+gulp.task('webpack-token-worker', function() {
+    return gulp.src('./src/js/workers/TokenWorker.js')
+        .pipe(webpack(tokenWorkerConfig))
+        .pipe(gulp.dest('./dist/js'))
+        .pipe(browserSync.stream());
 });
 
 // Start test server, run tests once, then quit.

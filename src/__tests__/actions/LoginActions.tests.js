@@ -2,6 +2,7 @@ const AppDispatcher = require('../../js/dispatchers/AppDispatcher');
 const KeystoneApiService = require('../../js/services/KeystoneApiService');
 const LoginActions = require('../../js/actions/LoginActions');
 const LoginConstants = require('../../js/constants/LoginConstants');
+const AuthTokenStorage = require('../../js/services/AuthTokenStorage.js');
 
 let mockKeystoneAccess = {
   token: {
@@ -12,10 +13,6 @@ let mockKeystoneAccess = {
   metadata: 'some metadata'
 };
 
-// Create an empty global `localStorage` variable.
-/*global localStorage:true*/
-localStorage = {};
-
 describe('LoginActions', () => {
   it('creates action to authenticate user via keystone token', () => {
     spyOn(KeystoneApiService, 'authenticateUserViaToken');
@@ -24,10 +21,10 @@ describe('LoginActions', () => {
   });
 
   it('creates action to login user with keystoneAccess response', () => {
-    spyOn(localStorage, 'setItem');
-    spyOn(AppDispatcher, 'dispatch');
+    spyOn(AuthTokenStorage, 'storeTokenId');
+    spyOn(AppDispatcher, 'dispatch').and.callThrough();
     LoginActions.loginUser(mockKeystoneAccess);
-    expect(localStorage.setItem).toHaveBeenCalledWith('keystoneAuthTokenId', mockKeystoneAccess.token.id);
+    expect(AuthTokenStorage.storeTokenId).toHaveBeenCalledWith(mockKeystoneAccess.token.id);
     expect(AppDispatcher.dispatch).toHaveBeenCalledWith({
       actionType: LoginConstants.LOGIN_USER,
       keystoneAccess: mockKeystoneAccess
@@ -35,10 +32,10 @@ describe('LoginActions', () => {
   });
 
   it('creates action to logout user', () => {
-    spyOn(localStorage, 'removeItem');
-    spyOn(AppDispatcher, 'dispatch');
+    spyOn(AuthTokenStorage, 'removeTokenId');
+    spyOn(AppDispatcher, 'dispatch').and.callThrough();
     LoginActions.logoutUser();
-    expect(localStorage.removeItem).toHaveBeenCalledWith('keystoneAuthTokenId');
+    expect(AuthTokenStorage.removeTokenId).toHaveBeenCalled();
     expect(AppDispatcher.dispatch).toHaveBeenCalledWith({
       actionType: LoginConstants.LOGOUT_USER
     });
