@@ -33,7 +33,9 @@ class FlavorStore extends BaseStore {
   }
 
   getState() {
-    this.state.flavors.forEach((flavor) => { flavor.freeNodeCount = this._calculateFreeNodes(flavor); });
+    this.state.flavors.forEach((flavor) => {
+      flavor.freeNodeCount = this._calculateFreeNodes(flavor);
+    });
     return this.state;
   }
 }

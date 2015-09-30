@@ -14,7 +14,7 @@ module.exports = function(config) {
     files: ['webpack.tests.js'],
     preprocessors: {
       // Run this through webpack, and enable inline sourcemaps
-      'webpack.tests.js': ['webpack', 'sourcemap'],
+      'webpack.tests.js': ['webpack', 'sourcemap']
     },
 
     webpack: webpackConfig,
@@ -32,8 +32,7 @@ module.exports = function(config) {
 
     // Webpack takes a little while to compile -- this manifests as a really
     // long load time while webpack blocks on serving the request.
-    browserNoActivityTimeout: 60000, // 60 seconds
+    browserNoActivityTimeout: 60000 // 60 seconds
 
   });
 };
-

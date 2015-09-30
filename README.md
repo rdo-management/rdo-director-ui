@@ -30,7 +30,10 @@ In case of errors during ```npm install```, remove node_modules dir and clean np
 - ```npm run lint``` to run ESLint
 - ```npm test && npm run lint``` to run Tests and ESLint
 
-(Info on Linting setup here: https://medium.com/@dan_abramov/lint-like-it-s-2015-6987d44c5b48)
+(Info on Linting setup here: https://medium.com/@dan_abramov/lint-like-it-s-2015-6987d44c5b48,
+.eslintrc rules tweaks here: http://blog.javascripting.com/2015/09/07/fine-tuning-airbnbs-eslint-config/)
+
+Style guide: https://github.com/airbnb/javascript
 
 #### Tests during development:
 

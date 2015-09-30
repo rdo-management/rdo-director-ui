@@ -1,7 +1,7 @@
 import React from 'react';
 
-import AuthenticatedComponent from './utils/AuthenticatedComponent';
-import { PageHeader } from './Layout';
+import AuthenticatedComponent from '../utils/AuthenticatedComponent';
+import { PageHeader } from '../ui/PageHeader';
 
 
 export default AuthenticatedComponent(class Nodes extends React.Component {

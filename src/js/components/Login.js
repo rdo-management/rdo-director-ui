@@ -1,8 +1,8 @@
 import Formsy from 'formsy-react';
 import React from 'react';
 
-import FormErrorList from './forms/FormErrorList';
-import GenericInput from './forms/GenericInput';
+import FormErrorList from './ui/forms/FormErrorList';
+import GenericInput from './ui/forms/GenericInput';
 import KeystoneApiErrorHandler from '../services/KeystoneApiErrorHandler';
 import KeystoneApiService from '../services/KeystoneApiService';
 import LoginActions from '../actions/LoginActions';
@@ -53,8 +53,7 @@ export default class Login extends React.Component {
   handleLogin(formData, resetForm, invalidateForm) {
     this._disableButton();
     KeystoneApiService.authenticateUser(formData.username, formData.password).then((response) => {
-      let keystoneAccess = response.access;
-      LoginActions.loginUser(keystoneAccess);
+      LoginActions.loginUser(response.access);
       NotificationActions.notify({
         title: 'Login Successful',
         message: 'The user was logged in successfully',
@@ -74,7 +73,7 @@ export default class Login extends React.Component {
   render() {
     return (
       <div className="row">
-        <div className="col-md-6 col-xs-8 col-md-offset-3 col-xs-offset-2">
+        <div className="col-md-6 col-sm-8 col-xs-12 col-md-offset-3 col-sm-offset-2">
           <div className="panel panel-default panel-login">
             <div className="panel-heading">
               <h1 className="panel-title">TripleO UI Login</h1>

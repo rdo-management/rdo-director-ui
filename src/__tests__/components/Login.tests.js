@@ -24,20 +24,20 @@ let notLoggedInState = {};
 describe('Login component', () => {
   describe('When user is not logged in', () => {
     beforeEach(() => {
-        spyOn(LoginStore, 'getState').and.returnValue(notLoggedInState);
-        spyOn(LoginStore, 'isLoggedIn').and.returnValue(false);
-        loginInstance = TestUtils.renderIntoDocument(<Login/>);
+      spyOn(LoginStore, 'getState').and.returnValue(notLoggedInState);
+      spyOn(LoginStore, 'isLoggedIn').and.returnValue(false);
+      loginInstance = TestUtils.renderIntoDocument(<Login/>);
     });
 
     it('should check for redirection prior to mounting', () => {
-        spyOn(loginInstance, '_shouldRedirect').and.callThrough();
-        loginInstance.componentWillMount();
-        expect(loginInstance._shouldRedirect).toHaveBeenCalled();
+      spyOn(loginInstance, '_shouldRedirect').and.callThrough();
+      loginInstance.componentWillMount();
+      expect(loginInstance._shouldRedirect).toHaveBeenCalled();
     });
 
     it('should check if User is logged in when testing for redirection', () => {
-        loginInstance._shouldRedirect();
-        expect(LoginStore.isLoggedIn).toHaveBeenCalled();
+      loginInstance._shouldRedirect();
+      expect(LoginStore.isLoggedIn).toHaveBeenCalled();
     });
 
     it('should render with expected markup', () => {
