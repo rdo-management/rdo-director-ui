@@ -10,8 +10,8 @@
 
 ## Running the App
 
-1. ```git clone https://github.com/jtomasek/tripleo_ui.git```
-2. ```cd tripleo_ui```
+1. ```git clone ssh://jtomasek@review.gerrithub.io:29418/rdo-management/rdo-director-ui```
+2. ```cd rdo-director-ui```
 3. Install Gulp globally ```sudo npm install -g gulp```
 4. Install dependencies ```npm install```
 5. Serve the App ```gulp```
@@ -21,6 +21,23 @@
 
 In case of errors during ```npm install```, remove node_modules dir and clean npm cache
 ```npm cache clean```. Then run ```npm install``` again.
+
+Temporary:
+reqwest has a temporary issue in latest version. Downgrade to 2.0.2 to work around ```npm install reqwest@2.0.2```.
+(https://github.com/ded/reqwest/issues/204#issuecomment-145295384)
+
+
+## Contributing
+
+Use GerritHub for patches and reviews (https://gerrit-review.googlesource.com/Documentation/).
+
+1. ```git clone ssh://jtomasek@review.gerrithub.io:29418/rdo-management/rdo-director-ui```
+2. Install git-review ```sudo dnf install git-review```
+3. Setup Gerrit by running ```git review -s```
+4. Develop on feature-branch locally
+5. run ```git review``` to push patch for review.
+6. Review and merge patches on GerritHub: https://review.gerrithub.io/#/q/project:rdo-management/rdo-director-ui
+
 
 ## Tests
 
