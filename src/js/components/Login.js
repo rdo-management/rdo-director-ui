@@ -76,7 +76,7 @@ export default class Login extends React.Component {
         <div className="col-md-6 col-sm-8 col-xs-12 col-md-offset-3 col-sm-offset-2">
           <div className="panel panel-default panel-login">
             <div className="panel-heading">
-              <h1 className="panel-title">TripleO UI Login</h1>
+              <h1 className="panel-title">RDO Director Login</h1>
             </div>
             <div className="panel-body">
               <FormErrorList errors={this.state.formErrors}/>
