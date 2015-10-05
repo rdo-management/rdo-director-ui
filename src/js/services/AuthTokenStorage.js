@@ -6,7 +6,7 @@ class AuthTokenStorage {
 
   _createWorkerInstance() {
     if(window && window.SharedWorker) {
-      this.worker = new window.SharedWorker('/js/tripleo_ui_token_worker.js');
+      this.worker = new window.SharedWorker('/js/rdo_director_ui_token_worker.js');
       this.worker.port.start();
     }
   }
