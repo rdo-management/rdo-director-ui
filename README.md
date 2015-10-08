@@ -2,22 +2,108 @@
 
 ## Prerequisities
 
-1. Install RDO Manager https://repos.fedorapeople.org/repos/openstack-m/docs/master/environments/virtual.html
+1. Setup TripleO http://docs.openstack.org/developer/tripleo-docs/index.html
 2. install nodejs and npm ```sudo yum install nodejs``` (probably requires EPEL)
 3. To compile and install native addons from npm you may also need to install build tools:
    ```yum install gcc-c++ make```
 
+In case of problems refer to https://github.com/nodejs/node-v0.x-archive/wiki/Installing-Node.js-via-package-manager#enterprise-linux-and-fedora
+
+### Make Undercloud API services available when running app from laptop
+
+UI requires the openstack API services to be publicly accessible.
+
+#### On virt host (lab machine)
+```
+BM_NETWORK_CIDR=192.0.2.0/24
+ROUTE_DEV=virbr0
+SEED_IP=<UNDERCLOUD_VM_IP>
+sudo ip route replace $BM_NETWORK_CIDR dev $ROUTE_DEV via $SEED_IP
+```
+
+#### On laptop
+```
+export VIRT_IP=<VIRT_HOST_IP>
+export UNDERCLOUD_IP=192.0.2.1
+sudo iptables -t nat -A OUTPUT -d $UNDERCLOUD_IP -j DNAT --to-destination 127.0.0.1
+```
+
+#### Setup ssh tunnel for OpenStack API Services
+
+```ssh stack@$VIRT_IP -L 8774:$UNDERCLOUD_IP:8774 -L 9292:$UNDERCLOUD_IP:9292 -L 8777:$UNDERCLOUD_IP:8777 -L 9696:$UNDERCLOUD_IP:9696 -L 6385:$UNDERCLOUD_IP:6385 -L 8004:$UNDERCLOUD_IP:8004 -L 5000:$UNDERCLOUD_IP:5000 -L 8080:$UNDERCLOUD_IP:8080 -L 8585:$UNDERCLOUD_IP:8585  -L 35357:$UNDERCLOUD_IP:35357```
+
+Note that those ports need to be enabled in Undercloud VM's iptables:
+
+```
+ssh root@<undercloud_vm_ip>
+vi /etc/sysconfig/iptables
+```
+add
+```
+-A INPUT -p tcp -m tcp --dport 9696 -j ACCEPT
+-A INPUT -p tcp -m tcp --dport 8777 -j ACCEPT
+-A INPUT -p tcp -m tcp --dport 8080 -j ACCEPT
+...
+```
+below 8585 rule.
+
+
+Original guide:
+https://wiki.openstack.org/wiki/Tuskar/Instack#Connecting_to_Undercloud_from_external_place_.28e.g._your_laptop.29
+
+
+### Configure CORS for OpenStack services
+
+http://docs.openstack.org/developer/oslo.middleware/cors.html#configuration-for-oslo-config
+
+#### Example (Keystone):
+
+```
+ssh root@<undercloud_vm_ip>
+vi /etc/keystone/keystone.conf
+```
+
+add
+
+```
+[cors]                                                                                   
+allowed_origin=http://localhost:3000                                                                     
+max_age=3600                                                                                             
+allow_methods=GET,POST,PUT,DELETE                                                                        
+allow_headers=Content-Type,Cache-Control,Content-Language,Expires,Last-Modified,Pragma,X-Custom-Header   
+expose_headers=Content-Type,Cache-Control,Content-Language,Expires,Last-Modified,Pragma,X-Custom-Header  
+```
+and restart keystone ```systemctl restart openstack-keystone```
+
+
+
+#### Official CORS Support progress
+
+Spec: http://specs.openstack.org/openstack/openstack-specs/specs/cors-support.html
+
+Ironic: https://review.openstack.org/#/c/199769/
+...
+
+#### Enable Keystone CORS for services that don't use official CORS middleware (temporary solution)
+
+https://ianunruh.com/2014/11/openstack-cors.html
+
+keystone-paste.ini is at /usr/share/keystone/keystone-dist-paste.ini
+on Undercloud VM
+
+```systemctl restart openstack-keystone```
+
 
 ## Running the App
 
-1. ```git clone ssh://jtomasek@review.gerrithub.io:29418/rdo-management/rdo-director-ui```
+1. ```git clone https://github.com/rdo-management/rdo-director-ui.git```
 2. ```cd rdo-director-ui```
 3. Install Gulp globally ```sudo npm install -g gulp```
 4. Install dependencies ```npm install```
 5. Serve the App ```gulp```
 6. Navigate to ```http://<machine_hostname>:3000/```
 
-## NPM install troubleshooting
+#### NPM install troubleshooting
 
 In case of errors during ```npm install```, remove node_modules dir and clean npm cache
 ```npm cache clean```. Then run ```npm install``` again.
@@ -31,7 +117,7 @@ reqwest has a temporary issue in latest version. Downgrade to 2.0.2 to work arou
 
 Use GerritHub for patches and reviews (http://docs.openstack.org/infra/manual/developers.html).
 
-1. ```git clone ssh://jtomasek@review.gerrithub.io:29418/rdo-management/rdo-director-ui```
+1. ```git clone https://github.com/rdo-management/rdo-director-ui.git``` (if you didn't already)
 2. Install git-review ```sudo dnf install git-review```
 3. Setup Gerrit by running ```git review -s```
 4. Develop on feature-branch locally
@@ -56,7 +142,7 @@ Style guide: https://github.com/airbnb/javascript
 
 By running ```gulp serve``` (or ```gulp``` as a shortcut), karma server is also started, and tests are run every time any .js file is saved. In case you want to explicitly run the tests, run ```gulp test-run```.
 
-#### Debugging test
+#### Debugging tests
 
 1. option:
   - use ```console.log``` in the test and see the output in karma server output
@@ -69,29 +155,6 @@ By running ```gulp serve``` (or ```gulp``` as a shortcut), karma server is also 
   - optionally you can use karma-jasmine-html-reporter for better test output (https://www.npmjs.com/package/karma-jasmine-html-reporter)
   - make sure you don't push those changes to ```karma.conf.js``` and ```package.json``` as part of your patch
 
-## Make Undercloud API Services available when running app from laptop
-
-UI requires the openstack API services to be publicly accessible. To mimic this use this guide:
-https://wiki.openstack.org/wiki/Tuskar/Instack#Connecting_to_Undercloud_from_external_place_.28e.g._your_laptop.29
-
-
-## Enable Keystone CORS (temporary solution)
-
-https://ianunruh.com/2014/11/openstack-cors.html
-
-keystone-paste.ini is at /usr/share/keystone/keystone-dist-paste.ini
-on Undercloud VM
-
-```systemctl restart openstack-keystone```
-
-
-### Official CORS Support in progress
-
-http://docs.openstack.org/developer/oslo.middleware/cors.html#configuration-for-oslo-config
-http://specs.openstack.org/openstack/openstack-specs/specs/cors-support.html
-
-Ironic: https://review.openstack.org/#/c/199769/
-...
 
 
 ## Basic OpenStack API Usage
