@@ -2,22 +2,24 @@
 
 ## Prerequisities
 
-1. Install RDO Manager https://repos.fedorapeople.org/repos/openstack-m/docs/master/environments/virtual.html
+1. Setup TripleO http://docs.openstack.org/developer/tripleo-docs/index.html
 2. install nodejs and npm ```sudo yum install nodejs``` (probably requires EPEL)
 3. To compile and install native addons from npm you may also need to install build tools:
    ```yum install gcc-c++ make```
 
+In case of problems refer to https://github.com/nodejs/node-v0.x-archive/wiki/Installing-Node.js-via-package-manager#enterprise-linux-and-fedora
+
 
 ## Running the App
 
-1. ```git clone ssh://jtomasek@review.gerrithub.io:29418/rdo-management/rdo-director-ui```
+1. ```git clone https://github.com/rdo-management/rdo-director-ui.git```
 2. ```cd rdo-director-ui```
 3. Install Gulp globally ```sudo npm install -g gulp```
 4. Install dependencies ```npm install```
 5. Serve the App ```gulp```
 6. Navigate to ```http://<machine_hostname>:3000/```
 
-## NPM install troubleshooting
+#### NPM install troubleshooting
 
 In case of errors during ```npm install```, remove node_modules dir and clean npm cache
 ```npm cache clean```. Then run ```npm install``` again.
@@ -31,7 +33,7 @@ reqwest has a temporary issue in latest version. Downgrade to 2.0.2 to work arou
 
 Use GerritHub for patches and reviews (http://docs.openstack.org/infra/manual/developers.html).
 
-1. ```git clone ssh://jtomasek@review.gerrithub.io:29418/rdo-management/rdo-director-ui```
+1. ```git clone https://github.com/rdo-management/rdo-director-ui.git``` (if you didn't already)
 2. Install git-review ```sudo dnf install git-review```
 3. Setup Gerrit by running ```git review -s```
 4. Develop on feature-branch locally
