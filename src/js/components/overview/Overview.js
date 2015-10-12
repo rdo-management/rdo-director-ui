@@ -33,8 +33,10 @@ export default AuthenticatedComponent(class Overview extends React.Component {
   render() {
     return (
       <div className="row">
-        <PageHeader>Overcloud Deployment</PageHeader>
-        <FlavorPanelList flavors={this.state.flavors}/>
+        <div className="col-sm-12">
+          <PageHeader>Overcloud Deployment</PageHeader>
+          <FlavorPanelList flavors={this.state.flavors}/>
+        </div>
       </div>
     );
   }

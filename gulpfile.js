@@ -46,8 +46,7 @@ gulp.task('fonts', function() {
 gulp.task('webpack-token-worker', function() {
   return gulp.src('./src/js/workers/TokenWorker.js')
     .pipe(webpack(tokenWorkerConfig))
-    .pipe(gulp.dest('./dist/js'))
-    .pipe(browserSync.stream());
+    .pipe(gulp.dest('./dist/js'));
 });
 
 // Start test server, run tests once, then quit.

@@ -8,14 +8,16 @@
     "react": "~0.13.3",
     "classnames": "~2.1.2",
     "react-mixin": "~1.6.0",
-    "react-router": "~0.13.3",
+    "react-router": "~1.0.0",
     "flux": "~2.0.3",
     "when": "~3.7.3",
     "reqwest": "~2.0.1",
     "xhr2": "~0.1.2",
     "lodash": "~3.10.1",
     "formsy-react": "~0.14.1",
-    "bootstrap": "~3.3.5"
+    "bootstrap": "~3.3.5",
+    "invariant": "~2.1.1",
+    "history": "~1.12.6"
   },
   "devDependencies": {
     "gulp": "~3.9.0",
