@@ -73,7 +73,8 @@ export default class Login extends React.Component {
   render() {
     return (
       <div className="row">
-        <div className="col-md-6 col-sm-8 col-xs-12 col-md-offset-3 col-sm-offset-2">
+        <div className="col-lg-4 col-md-6 col-sm-8 col-xs-12
+                        col-lg-offset-4 col-md-offset-3 col-sm-offset-2">
           <div className="panel panel-default panel-login">
             <div className="panel-heading">
               <h1 className="panel-title">RDO Director Login</h1>

@@ -29,8 +29,8 @@ export default AuthenticatedComponent(class NavBar extends React.Component {
 
           <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul className="nav navbar-nav">
-              <li><NavTab to="overview">Overview</NavTab></li>
-              <li><NavTab to="nodes">Nodes</NavTab></li>
+              <NavTab to="overview">Overview</NavTab>
+              <NavTab to="nodes">Nodes</NavTab>
             </ul>
             <ul className="nav navbar-nav navbar-right">
               <li>

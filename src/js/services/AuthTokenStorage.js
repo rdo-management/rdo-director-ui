@@ -33,6 +33,10 @@ class AuthTokenStorage {
     this.worker.port.postMessage(null);
   }
 
+  getStoredTokenId() {
+    return sessionStorage.getItem('keystoneAuthTokenId');
+  }
+
   storeTokenId(tokenId) {
     sessionStorage.setItem('keystoneAuthTokenId', tokenId);
     this.worker.port.postMessage(tokenId);

@@ -12,7 +12,7 @@ export default class App extends React.Component {
       <div>
         <NotificationList/>
         <NavBar/>
-        <div className="container">
+        <div className="container-fluid">
           <RouteHandler/>
         </div>
       </div>
