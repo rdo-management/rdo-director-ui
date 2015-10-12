@@ -1,10 +1,7 @@
 import React from 'react';
-import * as Router from 'react-router';
 
 import NavBar from './NavBar';
 import NotificationList from './ui/NotificationList';
-
-let RouteHandler = Router.RouteHandler;
 
 export default class App extends React.Component {
   render() {
@@ -12,10 +9,13 @@ export default class App extends React.Component {
       <div>
         <NotificationList/>
         <NavBar/>
-        <div className="container">
-          <RouteHandler/>
+        <div className="container-fluid">
+          {this.props.children}
         </div>
       </div>
     );
   }
 }
+App.propTypes = {
+  children: React.PropTypes.element
+};

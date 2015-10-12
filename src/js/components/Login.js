@@ -37,8 +37,8 @@ export default class Login extends React.Component {
 
   _shouldRedirect() {
     if (LoginStore.isLoggedIn()) {
-      let nextPath = this.context.router.getCurrentQuery().nextPath || 'overview';
-      this.context.router.transitionTo(nextPath);
+      let nextPath = this.props.location.query.nextPath || '/';
+      this.props.history.pushState(null, nextPath);
     }
   }
 
@@ -73,7 +73,8 @@ export default class Login extends React.Component {
   render() {
     return (
       <div className="row">
-        <div className="col-md-6 col-sm-8 col-xs-12 col-md-offset-3 col-sm-offset-2">
+        <div className="col-lg-4 col-md-6 col-sm-8 col-xs-12
+                        col-lg-offset-4 col-md-offset-3 col-sm-offset-2">
           <div className="panel panel-default panel-login">
             <div className="panel-heading">
               <h1 className="panel-title">RDO Director Login</h1>
@@ -106,6 +107,7 @@ export default class Login extends React.Component {
     );
   }
 }
-Login.contextTypes = {
-  router: React.PropTypes.func
+Login.propTypes = {
+  history: React.PropTypes.object,
+  location: React.PropTypes.object
 };

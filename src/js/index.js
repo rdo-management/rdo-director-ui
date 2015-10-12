@@ -1,7 +1,7 @@
 import 'babel/polyfill';
 
 import React from 'react';
-import * as Router from 'react-router';
+import { Router, Route, IndexRoute } from 'react-router';
 
 import App from './components/App';
 import TempStorage from './services/TempStorage.js';
@@ -9,15 +9,29 @@ import Login from './components/Login';
 import LoginActions from './actions/LoginActions';
 import Overview from './components/overview/Overview';
 import Nodes from './components/nodes/Nodes';
+import RegisteredNodesTabPane from './components/nodes/RegisteredNodesTabPane';
+import DiscoveredNodesTabPane from './components/nodes/DiscoveredNodesTabPane';
+import ProvisionedNodesTabPane from './components/nodes/ProvisionedNodesTabPane';
+import MaintenanceNodesTabPane from './components/nodes/MaintenanceNodesTabPane';
 
-let Route = Router.Route;
-let DefaultRoute = Router.DefaultRoute;
+import LoginStore from './stores/LoginStore';
+
+function checkAuth(nextState, replaceState) {
+  if (!LoginStore.isLoggedIn()) {
+    replaceState(null, '/login', { nextPath: nextState.location.pathname });
+  }
+}
 
 let routes = (
-  <Route handler={App}>
-    <DefaultRoute handler={Overview} name="overview"/>
-    <Route handler={Nodes} name="nodes" path="nodes"/>
-    <Route handler={Login} name="login" path="login"/>
+  <Route path="/" component={App}>
+    <IndexRoute component={Overview} onEnter={checkAuth}/>
+    <Route path="nodes" component={Nodes} onEnter={checkAuth}>
+      <IndexRoute component={RegisteredNodesTabPane}/>
+      <Route path="discovered" component={DiscoveredNodesTabPane}/>
+      <Route path="provisioned" component={ProvisionedNodesTabPane}/>
+      <Route path="maintenance" component={MaintenanceNodesTabPane}/>
+    </Route>
+    <Route path="login" component={Login}/>
   </Route>
 );
 
@@ -28,6 +42,4 @@ TempStorage.initialized.then(() => {
   }
 });
 
-Router.run(routes, Router.HashLocation, (Root) => {
-  React.render(<Root/>, document.body);
-});
+React.render(<Router>{routes}</Router>, document.body);

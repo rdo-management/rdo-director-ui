@@ -46,8 +46,7 @@ gulp.task('fonts', function() {
 gulp.task('webpack-tempstorage-worker', function() {
   return gulp.src('./src/js/workers/TempStorageWorker.js')
     .pipe(webpack(tempStorageWorkerConfig))
-    .pipe(gulp.dest('./dist/js'))
-    .pipe(browserSync.stream());
+    .pipe(gulp.dest('./dist/js'));
 });
 
 // Start test server, run tests once, then quit.
