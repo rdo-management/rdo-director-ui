@@ -1,10 +1,3 @@
-/* Disable Jest Auto mocking, as Login module uses 'import' which won't get
-   automatically mocked (rather then 'require') */
-// jest.autoMockOff();
-
-// jest.mock('../../js/actions/LoginActions');
-// jest.mock('../../js/stores/LoginStore');
-
 const React = require('react/addons');
 const Login = require('../../js/components/Login');
 const LoginActions = require('../../js/actions/LoginActions');

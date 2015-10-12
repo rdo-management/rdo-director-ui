@@ -20,9 +20,14 @@ export default (ComposedComponent) => {
     }
 
     _onChange() {
-      this.setState(this._getLoginState());
-      if (this.state.userLoggedIn) {
-        this.context.router.transitionTo('/login');
+      this.setState(this._getLoginState(), () => {
+        this._shouldRedirectToLogin();
+      });
+    }
+
+    _shouldRedirectToLogin() {
+      if (!this.state.userLoggedIn) {
+        this.context.history.pushState(null, '/login');
       }
     }
 
@@ -31,12 +36,6 @@ export default (ComposedComponent) => {
         userLoggedIn: LoginStore.isLoggedIn(),
         user: LoginStore.getState().user
       };
-    }
-
-    static willTransitionTo(transition) {
-      if (!LoginStore.isLoggedIn()) {
-        transition.redirect('/login', {}, { nextPath: transition.path });
-      }
     }
 
     render() {
@@ -54,7 +53,7 @@ export default (ComposedComponent) => {
     userLoggedIn: React.PropTypes.func
   };
   AuthenticatedComponent.contextTypes = {
-    router: React.PropTypes.func
+    history: React.PropTypes.object
   };
 
   return AuthenticatedComponent;

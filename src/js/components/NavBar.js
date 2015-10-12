@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 import AuthenticatedComponent from './utils/AuthenticatedComponent';
 import LoginActions from '../actions/LoginActions';
@@ -24,13 +25,13 @@ export default AuthenticatedComponent(class NavBar extends React.Component {
               <span className="icon-bar"></span>
               <span className="icon-bar"></span>
             </button>
-            <a className="navbar-brand" href="#">RDO Director</a>
+            <Link className="navbar-brand" to="/">RDO Director</Link>
           </div>
 
           <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul className="nav navbar-nav">
-              <li><NavTab to="overview">Overview</NavTab></li>
-              <li><NavTab to="nodes">Nodes</NavTab></li>
+              <NavTab to="/" onlyActiveOnIndex>Overview</NavTab>
+              <NavTab to="/nodes">Nodes</NavTab>
             </ul>
             <ul className="nav navbar-nav navbar-right">
               <li>

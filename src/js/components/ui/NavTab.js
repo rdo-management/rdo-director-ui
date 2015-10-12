@@ -1,24 +1,25 @@
 import React from 'react';
-import * as Router from 'react-router';
-
-let Link = Router.Link;
+import { Link } from 'react-router';
 
 export default class NavTab extends Link {
   render() {
-    let router = this.context.router;
-    let isActive = router.isActive(this.props.to, this.props.params, this.props.query);
+    let history = this.context.history;
+    let isActive = history.isActive(this.props.to, this.props.query, this.props.onlyActiveOnIndex);
     let className = isActive ? 'active' : '';
     let link = (
-      <Link {...this.props} />
+      <Link {...this.props}/>
     );
     return <li className={className}>{link}</li>;
   }
 }
 NavTab.propTypes = {
-  params: React.PropTypes.object,
+  onlyActiveOnIndex: React.PropTypes.bool.isRequired,
   query: React.PropTypes.object,
   to: React.PropTypes.oneOfType([ React.PropTypes.string, React.PropTypes.route ]).isRequired
 };
+NavTab.defaultProps = {
+  onlyActiveOnIndex: false
+};
 NavTab.contextTypes = {
-  router: React.PropTypes.func
+  history: React.PropTypes.object
 };
