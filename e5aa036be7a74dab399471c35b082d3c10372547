@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baada198_c4883bc9",
+        "filename": "src/js/constants/APIEndpointUrls.js",
+        "patchSetId": 7
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1004021
+      },
+      "writtenOn": "2015-10-14T09:21:50Z",
+      "side": 1,
+      "message": "Can\u0027t you get the Swift and Ironic endpoints from Keystone?",
+      "revId": "e5aa036be7a74dab399471c35b082d3c10372547",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
