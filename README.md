@@ -67,8 +67,8 @@ paste.filter_factory = oslo_middleware.cors:filter_factory
 allowed_origin=http://localhost:3000
 max_age=3600
 allow_methods=GET,POST,PUT,DELETE
-allow_headers=Content-Type,Cache-Control,Content-Language,Expires,Last-Modified,Pragma,X-Custom-Header
-expose_headers=Content-Type,Cache-Control,Content-Language,Expires,Last-Modified,Pragma,X-Custom-Header
+allow_headers=Content-Type,Cache-Control,Content-Language,Expires,Last-Modified,Pragma,X-Auth-Token
+expose_headers=Content-Type,Cache-Control,Content-Language,Expires,Last-Modified,Pragma
 ```
 and run the filter on all pipelines like this example:
 ```
