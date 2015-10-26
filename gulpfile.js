@@ -16,7 +16,7 @@ gulp.task('webpack-app', ['webpack-token-worker'], function() {
     .pipe(browserSync.stream());
 });
 
-gulp.task('serve', ['webpack-app', 'less', 'fonts'], function(){
+gulp.task('serve', ['webpack-app', 'less', 'fonts', 'images'], function(){
   browserSync.init({
     open: false,
     server: './dist'
@@ -39,9 +39,19 @@ gulp.task('less', function () {
 
 gulp.task('fonts', function() {
   var bootstrapFonts = 'node_modules/bootstrap/fonts/*';
-  return gulp.src([bootstrapFonts])
+  var patternflyFonts = 'node_modules/patternfly/dist/fonts/*';
+  var fontAwesomeFonts = 'node_modules/patternfly/components/font-awesome/fonts/*';
+  return gulp.src([bootstrapFonts, patternflyFonts, fontAwesomeFonts])
     .pipe(gulp.dest('./dist/fonts'));
 });
+
+gulp.task('images', function() {
+  var imagesPath = 'src/img/*';
+  var patternFlyImagesPath = 'node_modules/patternfly/dist/img/*';
+  return gulp.src([imagesPath, patternFlyImagesPath])
+    .pipe(gulp.dest('./dist/img'));
+});
+
 
 gulp.task('webpack-token-worker', function() {
   return gulp.src('./src/js/workers/TokenWorker.js')
