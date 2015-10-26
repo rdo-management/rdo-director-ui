@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "9ab29df4_39410b3a",
+        "filename": "src/js/components/Login.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-10-26T13:22:25Z",
+      "side": 1,
+      "message": "This is the hackery I\u0027d like to avoid, but I don\u0027t think there is another solution. Adding class to \u003chtml\u003e is not very convenient for clientside js apps",
+      "revId": "63a2b944ac34887f1ef1c16c35d8eee9dae2b066",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab29df4_b926fbb8",
         "filename": "src/less/base.less",
         "patchSetId": 1
