@@ -1,14 +1,10 @@
-@import "utils/bootstrapAndOverrides";
+// @import "utils/bootstrapAndOverrides";
 
 @import "forms/Forms";
 @import "components/NodeStack";
 @import "components/NodePicker";
 @import "components/NotificationList";
 @import "components/Notification";
-
-.panel-login {
-  margin-top: 100px;
-}
 
 .panel.flavor-panel > .panel-body{
   padding-bottom: 0;
@@ -44,4 +40,11 @@
     }
   }
 }
+
+@import "../../node_modules/patternfly/less/patternfly-additions.less";
+@import "../../node_modules/patternfly/less/patternfly.less";
+@import "../../node_modules/patternfly/less/navbar.less";
+@import "../../node_modules/patternfly/less/navbar-alt.less";
+@icon-font-path: "../fonts/";
+@fa-font-path: "../fonts/";
 

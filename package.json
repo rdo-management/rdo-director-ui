@@ -17,7 +17,8 @@
     "formsy-react": "~0.14.1",
     "bootstrap": "~3.3.5",
     "invariant": "~2.1.1",
-    "history": "~1.12.6"
+    "history": "~1.12.6",
+    "patternfly": "~2.4.0"
   },
   "devDependencies": {
     "gulp": "~3.9.0",
