@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ab29df4_b926fbb8",
+        "filename": "src/less/base.less",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-10-26T13:14:26Z",
+      "side": 1,
+      "message": "If I uncomment this, I get some cyclic imports leading to toasting my laptop.",
+      "revId": "63a2b944ac34887f1ef1c16c35d8eee9dae2b066",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_991a176d",
+        "filename": "src/less/base.less",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-10-26T13:14:26Z",
+      "side": 1,
+      "message": "I think this block should go to the top.",
+      "revId": "63a2b944ac34887f1ef1c16c35d8eee9dae2b066",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
