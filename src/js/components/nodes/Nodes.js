@@ -2,7 +2,6 @@ import React from 'react';
 
 import AuthenticatedComponent from '../utils/AuthenticatedComponent';
 import { PageHeader } from '../ui/PageHeader';
-import IronicApiService from '../../services/IronicApiService';
 import NavTab from '../ui/NavTab';
 import NodesStore from '../../stores/NodesStore';
 
@@ -10,19 +9,12 @@ export default AuthenticatedComponent(class Nodes extends React.Component {
   constructor() {
     super();
     this.state = {
-      nodes: {
-        all: [],
-        registered: [],
-        discovered: [],
-        provisioned: [],
-        maintenance: []
-      }
+      nodes: NodesStore.getState().nodes
     };
     this.changeListener = this._onChange.bind(this);
   }
 
   componentDidMount() {
-    IronicApiService.getNodes();
     NodesStore.addChangeListener(this.changeListener);
   }
 
@@ -32,21 +24,6 @@ export default AuthenticatedComponent(class Nodes extends React.Component {
 
   _onChange() {
     this.setState({ nodes: NodesStore.getState().nodes });
-  }
-
-  _filterNodes() {
-    switch(this.props.children.type.name) {
-    case 'RegisteredNodesTabPane':
-      return this.state.nodes.registered;
-    case 'DiscoveredNodesTabPane':
-      return this.state.nodes.discovered;
-    case 'ProvisionedNodesTabPane':
-      return this.state.nodes.provisioned;
-    case 'MaintenanceNodesTabPane':
-      return this.state.nodes.maintenance;
-    default:
-      return this.state.nodes;
-    }
   }
 
   render() {
@@ -61,7 +38,7 @@ export default AuthenticatedComponent(class Nodes extends React.Component {
             <NavTab to="/nodes/maintenance">Maintenance</NavTab>
           </ul>
           <div className="tab-pane">
-            {React.cloneElement(this.props.children, {nodes: this._filterNodes()})}
+            {React.cloneElement(this.props.children, {nodes: this.state.nodes})}
           </div>
         </div>
       </div>

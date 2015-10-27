@@ -7,7 +7,13 @@ class NodesStore extends BaseStore {
     super();
     this.subscribe(() => this._registerToActions.bind(this));
     this.state = {
-      nodes: {}
+      nodes: {
+        all: [],
+        registered: [],
+        discovered: [],
+        provisioned: [],
+        maintenance: []
+      }
     };
   }
 

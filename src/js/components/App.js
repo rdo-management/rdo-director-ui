@@ -8,7 +8,7 @@ export default class App extends React.Component {
   render() {
     let containerClass = ClassNames({
       'container': this.props.children.type.name === 'Login',
-      'container-fluid': this.props.children.type.name != 'Login'
+      'container-fluid': this.props.children.type.name !== 'Login'
     });
     return (
       <div>
