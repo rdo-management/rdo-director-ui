@@ -1,5 +1,5 @@
 import AppDispatcher from '../dispatchers/AppDispatcher.js';
-import AuthTokenStorage from '../services/AuthTokenStorage.js';
+import TempStorage from '../services/TempStorage.js';
 import KeystoneApiService from '../services/KeystoneApiService';
 import LoginConstants from '../constants/LoginConstants';
 
@@ -9,7 +9,7 @@ export default {
   },
 
   loginUser(keystoneAccess) {
-    AuthTokenStorage.storeTokenId(keystoneAccess.token.id);
+    TempStorage.setItem('keystoneAuthTokenId', keystoneAccess.token.id);
     AppDispatcher.dispatch({
       actionType: LoginConstants.LOGIN_USER,
       keystoneAccess: keystoneAccess
@@ -17,7 +17,7 @@ export default {
   },
 
   logoutUser() {
-    AuthTokenStorage.removeTokenId();
+    TempStorage.removeItem('keystoneAuthTokenId');
     AppDispatcher.dispatch({
       actionType: LoginConstants.LOGOUT_USER
     });
