@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ab29df4_a2c5e45c",
+        "filename": "src/js/components/App.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2015-10-27T10:05:14Z",
+      "side": 1,
+      "message": "Nitpicking/convention: Any reason why strict comparison isn\u0027t used here? (\"!\u003d\u003d \u0027Login\u0027\")",
+      "revId": "5b622b8247d121e6afcaaea5de9fa6c3ee01b4db",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_e2a6fcc0",
+        "filename": "src/js/components/Login.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2015-10-27T10:05:14Z",
+      "side": 1,
+      "message": "Will this URL be changed to point to a locally hosted image?",
+      "revId": "5b622b8247d121e6afcaaea5de9fa6c3ee01b4db",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_4295e83e",
+        "filename": "src/js/components/NavBar.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2015-10-27T10:05:14Z",
+      "side": 1,
+      "message": "Same as in the Login component: Can\u0027t we host this image locally?",
+      "revId": "5b622b8247d121e6afcaaea5de9fa6c3ee01b4db",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
