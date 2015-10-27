@@ -7,9 +7,9 @@ var shell = require('gulp-shell');
 // var uglify = require('gulp-uglify');
 var webpack = require('gulp-webpack');
 var webpackConfig = require('./webpack.config.js');
-var tokenWorkerConfig = require('./tokenworker.webpack.config.js');
+var tempStorageWorkerConfig = require('./tempstorageworker.webpack.config.js');
 
-gulp.task('webpack-app', ['webpack-token-worker'], function() {
+gulp.task('webpack-app', ['webpack-tempstorage-worker'], function() {
   return gulp.src('./src/js/index.js')
     .pipe(webpack(webpackConfig))
     .pipe(gulp.dest('dist/js'))
@@ -43,9 +43,9 @@ gulp.task('fonts', function() {
     .pipe(gulp.dest('./dist/fonts'));
 });
 
-gulp.task('webpack-token-worker', function() {
-  return gulp.src('./src/js/workers/TokenWorker.js')
-    .pipe(webpack(tokenWorkerConfig))
+gulp.task('webpack-tempstorage-worker', function() {
+  return gulp.src('./src/js/workers/TempStorageWorker.js')
+    .pipe(webpack(tempStorageWorkerConfig))
     .pipe(gulp.dest('./dist/js'))
     .pipe(browserSync.stream());
 });

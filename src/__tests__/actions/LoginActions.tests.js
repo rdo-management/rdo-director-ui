@@ -2,7 +2,7 @@ const AppDispatcher = require('../../js/dispatchers/AppDispatcher');
 const KeystoneApiService = require('../../js/services/KeystoneApiService');
 const LoginActions = require('../../js/actions/LoginActions');
 const LoginConstants = require('../../js/constants/LoginConstants');
-const AuthTokenStorage = require('../../js/services/AuthTokenStorage.js');
+const TempStorage = require('../../js/services/TempStorage.js');
 
 let mockKeystoneAccess = {
   token: {
@@ -21,10 +21,10 @@ describe('LoginActions', () => {
   });
 
   it('creates action to login user with keystoneAccess response', () => {
-    spyOn(AuthTokenStorage, 'storeTokenId');
+    spyOn(TempStorage, 'setItem');
     spyOn(AppDispatcher, 'dispatch').and.callThrough();
     LoginActions.loginUser(mockKeystoneAccess);
-    expect(AuthTokenStorage.storeTokenId).toHaveBeenCalledWith(mockKeystoneAccess.token.id);
+    expect(TempStorage.setItem).toHaveBeenCalledWith('keystoneAuthTokenId', mockKeystoneAccess.token.id);
     expect(AppDispatcher.dispatch).toHaveBeenCalledWith({
       actionType: LoginConstants.LOGIN_USER,
       keystoneAccess: mockKeystoneAccess
@@ -32,10 +32,10 @@ describe('LoginActions', () => {
   });
 
   it('creates action to logout user', () => {
-    spyOn(AuthTokenStorage, 'removeTokenId');
+    spyOn(TempStorage, 'removeItem');
     spyOn(AppDispatcher, 'dispatch').and.callThrough();
     LoginActions.logoutUser();
-    expect(AuthTokenStorage.removeTokenId).toHaveBeenCalled();
+    expect(TempStorage.removeItem).toHaveBeenCalled();
     expect(AppDispatcher.dispatch).toHaveBeenCalledWith({
       actionType: LoginConstants.LOGOUT_USER
     });
