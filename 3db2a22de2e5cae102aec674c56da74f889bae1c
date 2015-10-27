@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ab29df4_c2049880",
+        "filename": "src/__tests__/components/Nodes.tests.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2015-10-27T10:36:24Z",
+      "side": 1,
+      "message": "The test case isn\u0027t executed at the moment, but once it is: \"toBeDefined\" is a method \u003d\u003e toBeDefined().",
+      "revId": "3db2a22de2e5cae102aec674c56da74f889bae1c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_623cac30",
+        "filename": "src/js/components/nodes/DiscoveredNodesTabPane.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2015-10-27T10:36:24Z",
+      "side": 1,
+      "message": "The *NodesTabPane components all look alike. How about making them extend a common base class?",
+      "revId": "3db2a22de2e5cae102aec674c56da74f889bae1c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_e2bb5cc2",
+        "filename": "src/js/components/overview/Overview.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2015-10-27T10:36:24Z",
+      "side": 1,
+      "message": "I think 12 cols is the default, so the className can probably go away...",
+      "revId": "3db2a22de2e5cae102aec674c56da74f889bae1c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
