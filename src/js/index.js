@@ -4,7 +4,7 @@ import React from 'react';
 import * as Router from 'react-router';
 
 import App from './components/App';
-import AuthTokenStorage from './services/AuthTokenStorage.js';
+import TempStorage from './services/TempStorage.js';
 import Login from './components/Login';
 import LoginActions from './actions/LoginActions';
 import Overview from './components/overview/Overview';
@@ -21,8 +21,8 @@ let routes = (
   </Route>
 );
 
-
-AuthTokenStorage.getTokenId((keystoneAuthTokenId) => {
+TempStorage.initialized.then(() => {
+  let keystoneAuthTokenId = TempStorage.getItem('keystoneAuthTokenId');
   if (keystoneAuthTokenId) {
     LoginActions.authenticateUserViaToken(keystoneAuthTokenId);
   }
