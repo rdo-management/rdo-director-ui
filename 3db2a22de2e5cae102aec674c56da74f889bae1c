@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9ab29df4_0d45e16f",
+        "filename": "src/__tests__/components/Nodes.tests.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-10-27T14:53:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ab29df4_c2049880",
+      "revId": "3db2a22de2e5cae102aec674c56da74f889bae1c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab29df4_623cac30",
         "filename": "src/js/components/nodes/DiscoveredNodesTabPane.js",
         "patchSetId": 2
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "9ab29df4_2dd705c3",
+        "filename": "src/js/components/nodes/DiscoveredNodesTabPane.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-10-27T14:53:22Z",
+      "side": 1,
+      "message": "I am keeping it separate for now, I could easily put it into single component, but the tables might eventually be different in the end.",
+      "parentUuid": "9ab29df4_623cac30",
+      "revId": "3db2a22de2e5cae102aec674c56da74f889bae1c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab29df4_e2bb5cc2",
         "filename": "src/js/components/overview/Overview.js",
         "patchSetId": 2
@@ -47,6 +83,24 @@
       "writtenOn": "2015-10-27T10:36:24Z",
       "side": 1,
       "message": "I think 12 cols is the default, so the className can probably go away...",
+      "revId": "3db2a22de2e5cae102aec674c56da74f889bae1c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_6dd81df0",
+        "filename": "src/js/components/overview/Overview.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-10-27T14:53:22Z",
+      "side": 1,
+      "message": "Bootstrap requires column to be specified inside row, so this is the minimum what needs to be there",
+      "parentUuid": "9ab29df4_e2bb5cc2",
       "revId": "3db2a22de2e5cae102aec674c56da74f889bae1c",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
