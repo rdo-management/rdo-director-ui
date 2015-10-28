@@ -26,9 +26,38 @@ let logoutUserAction = {
 };
 
 describe('LoginStore', () => {
-  beforeEach(() => {
-    callback = AppDispatcher.register.mock.calls[0][0];
+
+  describe('An API endpoint URL', () => {
+    beforeEach(() => {
+      LoginStore.onLoginUser({
+        serviceCatalog: [
+          {
+            name: 'keystone',
+            endpoints: [
+              {publicURL: 'http://192.0.2.1:5000/v2.0'}
+            ]
+          },
+          {
+            name: 'swift',
+            endpoints: [
+              {publicURL: 'http://192.0.2.1:8080/v1/AUTH_fb6ecfdf792241718144254ed3ccf34a'}
+            ]
+          }
+        ]
+      });
+    });
+
+    it('is accessible through the ``getServiceUrl(<name>)`` method', () => {
+      expect(LoginStore.getServiceUrl('keystone'))
+        .toBe('http://192.0.2.1:5000/v2.0');
+      expect(LoginStore.getServiceUrl('swift'))
+        .toBe('http://192.0.2.1:8080/v1/AUTH_fb6ecfdf792241718144254ed3ccf34a');
+    });
   });
+
+  // beforeEach(() => {
+  //   callback = AppDispatcher.register.mock.calls[0][0];
+  // });
 
   xit('registers a callback with the dispatcher', function() {
     expect(AppDispatcher.register.mock.calls.length).toBe(1);
