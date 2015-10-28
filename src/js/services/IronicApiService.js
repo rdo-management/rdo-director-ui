@@ -2,8 +2,9 @@ import request from 'reqwest';
 import when from 'when';
 
 import TempStorage from './TempStorage';
-import { GET_NODES_URL } from '../constants/IronicApiConstants';
+import { GET_NODES_URL_PATH } from '../constants/IronicApiConstants';
 import IronicApiErrorHandler from './IronicApiErrorHandler';
+import LoginStore from '../stores/LoginStore';
 import NodesActions from '../actions/NodesActions';
 import NotificationActions from '../actions/NotificationActions';
 
@@ -14,7 +15,7 @@ class IronicApiService {
    */
   getNodes(keystoneAuthTokenId) {
     return when(request({
-      url: GET_NODES_URL,
+      url: LoginStore.getServiceUrl('ironic') + GET_NODES_URL_PATH,
       method: 'GET',
       headers: { 'X-Auth-Token': TempStorage.getItem('keystoneAuthTokenId') },
       crossOrigin: true,

@@ -46,6 +46,22 @@ class LoginStore extends BaseStore {
   isLoggedIn() {
     return !!this.state.user;
   }
+
+  /**
+   * Returns the public url of an openstack API,
+   * determined by the service's name.
+   */
+  getServiceUrl(name) {
+    let url;
+    if(this.state && this.state.serviceCatalog) {
+      this.state.serviceCatalog.forEach(item => {
+        if(item.name === name) {
+          url = item.endpoints[0].publicURL;
+        }
+      });
+    }
+    return url;
+  }
 }
 
 export default new LoginStore();
