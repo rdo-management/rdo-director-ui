@@ -1,3 +1,5 @@
+/* global _ */
+
 import BaseStore from './BaseStore';
 import LoginConstants from '../constants/LoginConstants';
 
@@ -45,6 +47,14 @@ class LoginStore extends BaseStore {
 
   isLoggedIn() {
     return !!this.state.user;
+  }
+
+  /**
+   * Returns the public url of an openstack API,
+   * determined by the service's name.
+   */
+  getServiceUrl(name) {
+    return _.result(_.find(this.state.serviceCatalog, 'name', name), 'endpoints[0].publicURL');
   }
 }
 
