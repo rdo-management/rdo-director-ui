@@ -6,6 +6,7 @@ import CapabilitiesMap from '../../data/CapabilitiesMap';
 import EnvironmentConfigurationTopic from './EnvironmentConfigurationTopic';
 import FormErrorList from '../ui/forms/FormErrorList';
 import NotificationActions from '../../actions/NotificationActions';
+import PlansStore from '../../stores/PlansStore';
 import TripleOApiService from '../../services/TripleOApiService';
 import TripleOApiErrorHandler from '../../services/TripleOApiErrorHandler';
 
@@ -35,6 +36,10 @@ export default class EnvironmentConfiguration extends React.Component {
 
   disableButton() {
     this.setState({ canSubmit: false });
+  }
+
+  componentDidMount() {
+    this.setState({plan: PlansStore.getPlan()});
   }
 
   handleSubmit(formData, resetForm, invalidateForm) {
