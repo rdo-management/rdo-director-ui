@@ -6,8 +6,10 @@ import CapabilitiesMap from '../../data/CapabilitiesMap';
 import EnvironmentConfigurationTopic from './EnvironmentConfigurationTopic';
 import FormErrorList from '../ui/forms/FormErrorList';
 import NotificationActions from '../../actions/NotificationActions';
+import PlansStore from '../../stores/PlansStore';
 import TripleOApiService from '../../services/TripleOApiService';
 import TripleOApiErrorHandler from '../../services/TripleOApiErrorHandler';
+import PlanRedirect from '../utils/PlanRedirect';
 
 export default class EnvironmentConfiguration extends React.Component {
   constructor() {
@@ -35,6 +37,14 @@ export default class EnvironmentConfiguration extends React.Component {
 
   disableButton() {
     this.setState({ canSubmit: false });
+  }
+
+  componentWillMount() {
+    PlanRedirect.choosePlanOrRedirect(this.props);
+  }
+
+  componentDidMount() {
+    this.setState({plan: PlansStore.getPlan()});
   }
 
   handleSubmit(formData, resetForm, invalidateForm) {

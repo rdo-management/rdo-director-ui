@@ -3,12 +3,39 @@ import { Link } from 'react-router';
 
 import LoginActions from '../actions/LoginActions';
 import NavTab from './ui/NavTab';
+import PlansStore from '../stores/PlansStore';
 
 
 export default class NavBar extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      plan: {},
+      planNames: []
+    }
+    this.changeListener = this._onPlanChange.bind(this);
+  }
+
   logout(e) {
     e.preventDefault();
     LoginActions.logoutUser();
+  }
+
+  componentDidMount() {
+    PlansStore.addChangeListener(this.changeListener);
+  }
+
+  componentWillUnmount() {
+    PlansStore.removeChangeListener(this.changeListener);
+  }
+
+  _onPlanChange() {
+    this.setState({plan: PlansStore.getPlan()});
+  }
+
+  _getPlanUrl(page) {
+    let plan = this.state.plan || {};
+    return plan.name ? `/plan/${plan.name}/${page}` : `/plan/${page}`;
   }
 
   render() {
@@ -41,10 +68,10 @@ export default class NavBar extends React.Component {
             <NavTab to="/" onlyActiveOnIndex>Overview</NavTab>
             <NavTab to="/images">Images</NavTab>
             <NavTab to="/nodes">Nodes</NavTab>
-            <NavTab to="/flavors">Flavors</NavTab>
-            <NavTab to="/plan/environment">Environment</NavTab>
-            <NavTab to="/plan/roles">Roles</NavTab>
-            <NavTab to="/plan/parameters">Service Configuration</NavTab>
+            <NavTab to="plans/list">Plans</NavTab>
+            <NavTab to={this._getPlanUrl.bind(this)('environment')}>Environment</NavTab>
+            <NavTab to={this._getPlanUrl.bind(this)('roles')}>Roles</NavTab>
+            <NavTab to={this._getPlanUrl.bind(this)('parameters')}>Service Configuration</NavTab>
           </ul>
         </div>
       </nav>

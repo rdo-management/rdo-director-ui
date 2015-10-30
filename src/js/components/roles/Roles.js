@@ -4,6 +4,7 @@ import RolesActions from '../../actions/RolesActions';
 import FlavorStore from '../../stores/FlavorStore';
 import NodePicker from './NodePicker';
 import NodeStack from './NodeStack';
+import PlanRedirect from '../utils/PlanRedirect';
 
 export default class Roles extends React.Component {
   constructor(props) {
@@ -12,6 +13,10 @@ export default class Roles extends React.Component {
       flavors: []
     };
     this.changeListener = this._onChange.bind(this);
+  }
+
+  componentWillMount() {
+    PlanRedirect.choosePlanOrRedirect(this.props);
   }
 
   componentDidMount() {
