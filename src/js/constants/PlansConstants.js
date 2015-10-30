@@ -1,5 +1,7 @@
 import keyMirror from 'keymirror';
 
 export default keyMirror({
-  LIST_PLANS: null
+  LIST_PLANS: null,
+  GET_PLAN: null,
+  PLAN_CREATED: null
 });
