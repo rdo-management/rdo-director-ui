@@ -18,6 +18,7 @@ import Overview from './components/Overview';
 import Parameters from './components/plan/Parameters.js';
 import Plan from './components/plan/Plan.js';
 import ProvisionedNodesTabPane from './components/nodes/ProvisionedNodesTabPane';
+import Plans from './components/plans/Plans';
 import RegisteredNodesTabPane from './components/nodes/RegisteredNodesTabPane';
 import Roles from './components/roles/Roles.js';
 import TempStorage from './services/TempStorage.js';
@@ -45,6 +46,7 @@ let routes = (
         <Route path="plan/roles" component={Roles}/>
         <Route path="plan/parameters" component={Parameters}/>
         <Route path="plan/validations" component={Validations}/>
+        <Route path="plan/create" component={Plans} onEnter={checkAuth}/>
       </Route>
     </Route>
     <Route path="login" component={Login}/>
