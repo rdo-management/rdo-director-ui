@@ -42,6 +42,48 @@
     },
     {
       "key": {
+        "uuid": "9ab29df4_28bc49bb",
+        "filename": "src/js/constants/GlanceApiConstants.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2015-10-30T09:47:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ab29df4_e817b1eb",
+      "revId": "f5612ff6df2dde7853b546fe4cc2e574ece057ec",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_c8c4ad42",
+        "filename": "src/js/constants/GlanceApiConstants.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2015-10-30T09:47:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ab29df4_28d9a957",
+      "range": {
+        "startLine": 2,
+        "startChar": 24,
+        "endLine": 2,
+        "endChar": 31
+      },
+      "revId": "f5612ff6df2dde7853b546fe4cc2e574ece057ec",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab29df4_08d4e51e",
         "filename": "src/js/constants/IronicApiConstants.js",
         "patchSetId": 1
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "9ab29df4_88cab54d",
+        "filename": "src/js/constants/IronicApiConstants.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2015-10-30T09:47:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ab29df4_08d4e51e",
+      "revId": "f5612ff6df2dde7853b546fe4cc2e574ece057ec",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab29df4_a8e4d90d",
         "filename": "src/js/stores/LoginStore.js",
         "patchSetId": 1
@@ -70,6 +130,30 @@
       "writtenOn": "2015-10-30T08:51:58Z",
       "side": 1,
       "message": "You can shorten this to\n\nurl \u003d _.result(_.find(this.state.serviceCatalog, \u0027name\u0027, name), \u0027endpoints[0].publicURL\u0027);\n\nusing lodash if you want.",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 9
+      },
+      "revId": "f5612ff6df2dde7853b546fe4cc2e574ece057ec",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_c8dbcd19",
+        "filename": "src/js/stores/LoginStore.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2015-10-30T09:47:01Z",
+      "side": 1,
+      "message": "nice. or even skip the assignment and just return the result.",
+      "parentUuid": "9ab29df4_a8e4d90d",
       "range": {
         "startLine": 57,
         "startChar": 1,
