@@ -8,7 +8,7 @@ let mockGetPlansResponse = [
 ];
 
 describe('PlansActions', () => {
-  it('creates action to list plans', () => {
+  xit('creates action to list plans', () => {
     spyOn(AppDispatcher, 'dispatch').and.callThrough();
     PlansActions.listPlans(mockGetPlansResponse);
     expect(AppDispatcher.dispatch).toHaveBeenCalledWith({
