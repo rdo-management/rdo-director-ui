@@ -14,6 +14,7 @@ import RegisteredNodesTabPane from './components/nodes/RegisteredNodesTabPane';
 import DiscoveredNodesTabPane from './components/nodes/DiscoveredNodesTabPane';
 import ProvisionedNodesTabPane from './components/nodes/ProvisionedNodesTabPane';
 import MaintenanceNodesTabPane from './components/nodes/MaintenanceNodesTabPane';
+import Plans from './components/plans/Plans';
 
 import LoginStore from './stores/LoginStore';
 
@@ -33,6 +34,7 @@ let routes = (
       <Route path="maintenance" component={MaintenanceNodesTabPane}/>
     </Route>
     <Route path="login" component={Login}/>
+    <Route path="plans" component={Plans} onEnter={checkAuth}/>
   </Route>
 );
 
