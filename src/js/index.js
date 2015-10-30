@@ -14,6 +14,7 @@ import MaintenanceNodesTabPane from './components/nodes/MaintenanceNodesTabPane'
 import Nodes from './components/nodes/Nodes';
 import Overview from './components/overview/Overview';
 import ProvisionedNodesTabPane from './components/nodes/ProvisionedNodesTabPane';
+import Plans from './components/plans/Plans';
 import RegisteredNodesTabPane from './components/nodes/RegisteredNodesTabPane';
 import TempStorage from './services/TempStorage.js';
 
@@ -33,6 +34,7 @@ let routes = (
         <Route path="provisioned" component={ProvisionedNodesTabPane}/>
         <Route path="maintenance" component={MaintenanceNodesTabPane}/>
       </Route>
+      <Route path="plans" component={Plans} onEnter={checkAuth}/>
     </Route>
     <Route path="login" component={Login}/>
   </Route>
