@@ -3,6 +3,7 @@ import BaseHttpRequestErrorHandler from '../components/utils/BaseHttpRequestErro
 export default class TripleOApiErrorHandler extends BaseHttpRequestErrorHandler {
   _generateErrors(xmlHttpRequestError) {
     let errors = [];
+    let error;
     switch(xmlHttpRequestError.status) {
     case 0:
       errors.push({
@@ -11,9 +12,16 @@ export default class TripleOApiErrorHandler extends BaseHttpRequestErrorHandler 
       });
       break;
     case 401:
-      let error = JSON.parse(xmlHttpRequestError.responseText).error;
+      error = JSON.parse(xmlHttpRequestError.responseText).error;
       errors.push({
         title: 'Unauthorized',
+        message: error.message
+      });
+      break;
+    case 404:
+      error = JSON.parse(xmlHttpRequestError.responseText).error;
+      errors.push({
+        title: 'Not found',
         message: error.message
       });
       break;
