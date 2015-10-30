@@ -39,7 +39,6 @@ let GenericInput = React.createClass({
         <input type={this.props.type}
                name={this.props.name}
                id={this.props.name}
-               ref="username"
                className="form-control"
                onChange={this.changeValue}
                value={this.getValue()}

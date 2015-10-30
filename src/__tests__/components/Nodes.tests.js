@@ -1,5 +1,5 @@
-const React = require('react/addons');
-const TestUtils = React.addons.TestUtils;
+import React from 'react';
+import TestUtils from 'react-addons-test-utils';
 
 const IronicApiService = require('../../js/services/IronicApiService');
 const Nodes = require('../../js/components/nodes/Nodes');
@@ -32,4 +32,3 @@ describe('Nodes component', () => {
     expect(nodesNavTabs).toBeDefined;
   });
 });
-

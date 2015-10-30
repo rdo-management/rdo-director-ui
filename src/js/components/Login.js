@@ -1,5 +1,6 @@
 import Formsy from 'formsy-react';
 import React from 'react';
+import ReactDOM from 'react-dom';
 
 import FormErrorList from './ui/forms/FormErrorList';
 import GenericInput from './ui/forms/GenericInput';
@@ -20,7 +21,7 @@ export default class Login extends React.Component {
   }
 
   componentWillMount() {
-    React.findDOMNode(document).documentElement.className = 'login-pf';
+    ReactDOM.findDOMNode(document.documentElement).className = 'login-pf';
     this._shouldRedirect();
   }
 
@@ -29,7 +30,7 @@ export default class Login extends React.Component {
   }
 
   componentWillUnmount() {
-    React.findDOMNode(document).documentElement.className = '';
+    ReactDOM.findDOMNode(document.documentElement).className = '';
     LoginStore.removeChangeListener(this.changeListener);
   }
 
@@ -83,7 +84,7 @@ export default class Login extends React.Component {
         </div>
         <div className="col-sm-7 col-md-6 col-lg-5 login">
           <FormErrorList errors={this.state.formErrors}/>
-          <Formsy.Form ref="form" role="form"
+          <Formsy.Form role="form"
                        onSubmit={this.handleLogin.bind(this)}
                        onValid={this._enableButton.bind(this)}
                        onInvalid={this._disableButton.bind(this)}>

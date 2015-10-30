@@ -1,6 +1,7 @@
 import 'babel/polyfill';
 
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { Router, Route, IndexRoute } from 'react-router';
 
 import App from './components/App';
@@ -42,4 +43,4 @@ TempStorage.initialized.then(() => {
   }
 });
 
-React.render(<Router>{routes}</Router>, document.body);
+ReactDOM.render(<Router>{routes}</Router>, document.getElementById('react-app-index'));

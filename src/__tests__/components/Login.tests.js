@@ -1,8 +1,9 @@
-const React = require('react/addons');
+import React from 'react';
+import TestUtils from 'react-addons-test-utils';
+
 const Login = require('../../js/components/Login');
 const LoginActions = require('../../js/actions/LoginActions');
 const LoginStore = require('../../js/stores/LoginStore');
-const TestUtils = React.addons.TestUtils;
 
 let loginInstance;
 
@@ -36,19 +37,14 @@ describe('Login component', () => {
     it('should render with expected markup', () => {
       expect(TestUtils.isCompositeComponent(loginInstance)).toBeTruthy();
 
-      let loginForm = TestUtils.findRenderedDOMComponentWithTag(loginInstance, 'form');
-      expect(loginForm.props.onSubmit).toBeDefined();
-
       let inputs = TestUtils.scryRenderedDOMComponentsWithTag(loginInstance, 'input');
       expect(inputs.length).toBe(2);
-      expect(inputs[0].props.id).toBe('username');
-      expect(inputs[1].props.id).toBe('password');
-      // alternatively dom node can be tested:
-      // expect(React.findDOMNode(inputs[0]).id).toBe('username');
+      expect(inputs[0].id).toBe('username');
+      expect(inputs[1].id).toBe('password');
 
       let submitButton = TestUtils.findRenderedDOMComponentWithTag(loginInstance, 'button');
-      expect(submitButton.props.children).toBe('Submit');
-      expect(submitButton.props.type).toBe('submit');
+      expect(submitButton.textContent).toBe('Submit');
+      expect(submitButton.type).toBe('submit');
     });
 
     xit('updates the component state when user fills the form', function() {

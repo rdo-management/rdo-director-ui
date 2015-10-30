@@ -5,7 +5,8 @@
   "main": "index.js",
   "dependencies": {
     "babel": "~5.5.8",
-    "react": "~0.13.3",
+    "react": "~0.14.1",
+    "react-dom": "~0.14.1",
     "classnames": "~2.1.2",
     "react-mixin": "~1.6.0",
     "react-router": "~1.0.0",
@@ -14,11 +15,12 @@
     "reqwest": "~2.0.1",
     "xhr2": "~0.1.2",
     "lodash": "~3.10.1",
-    "formsy-react": "~0.14.1",
+    "formsy-react": "~0.17.0",
     "bootstrap": "~3.3.5",
     "invariant": "~2.1.1",
     "history": "~1.12.6",
-    "patternfly": "~2.4.0"
+    "patternfly": "~2.4.0",
+    "keymirror": "~0.1.1"
   },
   "devDependencies": {
     "gulp": "~3.9.0",
@@ -43,7 +45,8 @@
     "phantomjs": "~1.9.18",
     "karma-phantomjs-launcher": "~0.2.1",
     "karma-sourcemap-loader": "~0.3.5",
-    "karma-cli": "~0.1.0"
+    "karma-cli": "~0.1.0",
+    "react-addons-test-utils": "~0.14.1"
   },
   "scripts": {
     "test": "karma start --single-run",
