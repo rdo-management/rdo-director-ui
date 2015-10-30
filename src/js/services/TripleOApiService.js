@@ -23,13 +23,23 @@ class TripleOApiService {
 
   /**
    * TripleO API: GET /v1/plans/
-   * @returns {array} of plans.
+   * @returns {Promise} resolving with {array} of plans.
    */
   getPlans() {
+    // TODO(flfuchs): Replace with real API call once it's ready:
+    let def = when.defer();
+    (def => {
+      setTimeout(() => {
+        def.resolve(['overcloud', 'planb']);
+      }, 500);
+    }(def))
+    return def.promise;
+    /*
     return when(request(_.merge(
       this.defaultGetRequest,
       { url: TRIPLEOAPI_URL + GET_PLANS_PATH }
     )));
+    */
   }
 
   /**
@@ -121,6 +131,29 @@ class TripleOApiService {
         NotificationActions.notify(error);
       });
     });
+  }
+
+  /**
+   * TripleO API: POST /v1/plans
+   */
+  createPlan(name, files) {
+    let planFiles = {};
+    files.forEach(item => {
+      planFiles[item.name] = {};
+      planFiles[item.name].contents = item.content;
+    });
+    planFiles = JSON.stringify(planFiles);
+
+    // TODO(flfuchs): Replace with real API call once it's ready:
+    let def = when.defer();
+    ((name, planFiles, def) => {
+      setTimeout(() => {
+        console.log(name);
+        console.log(planFiles);
+        def.resolve('add status message of http request');
+      }, 100);
+    }(name, planFiles, def))
+    return def.promise;
   }
 }
 

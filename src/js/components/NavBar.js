@@ -3,6 +3,7 @@ import { Link } from 'react-router';
 
 import LoginActions from '../actions/LoginActions';
 import NavTab from './ui/NavTab';
+import PlansStore from '../stores/PlansStore';
 
 
 export default class NavBar extends React.Component {
@@ -11,7 +12,16 @@ export default class NavBar extends React.Component {
     LoginActions.logoutUser();
   }
 
+  getPlanBasepath() {
+    let planName = PlansStore.getPlanName();
+    return planName ? '/plans/' + planName : '/plans';
+  }
+
+  // TODO(flfuchs) Add changelistener to check for plan activation
+  // and update the navbar links accordingly.
+
   render() {
+    let planBasepath = this.getPlanBasepath();
     return (
       <nav className="navbar navbar-default navbar-pf navbar-fixed-top" role="navigation">
         <div className="navbar-header">
@@ -40,9 +50,11 @@ export default class NavBar extends React.Component {
           <ul className="nav navbar-nav navbar-primary">
             <NavTab to="/" onlyActiveOnIndex>Overview</NavTab>
             <NavTab to="/nodes">Nodes</NavTab>
-            <NavTab to="/plan/environment">Environment</NavTab>
-            <NavTab to="/plan/roles">Roles</NavTab>
-            <NavTab to="/plan/parameters">Service Configuration</NavTab>
+            <NavTab to={planBasepath + "/list"}>Plans</NavTab>
+            <NavTab to={planBasepath + "/environment"}>Environment</NavTab>
+            <NavTab to={planBasepath + "/roles"}>Roles</NavTab>
+            <NavTab to={planBasepath + "/parameters"}>Service Configuration</NavTab>
+            <NavTab to={planBasepath + "/validations"}>Validations</NavTab>
           </ul>
         </div>
       </nav>
