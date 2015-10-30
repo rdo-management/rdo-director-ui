@@ -11,14 +11,17 @@ import EnvironmentConfiguration from
   './components/environment_configuration/EnvironmentConfiguration.js';
 import Flavors from './components/flavors/Flavors';
 import Images from './components/images/Images';
+import ListPlans from './components/plan/ListPlans';
 import Login from './components/Login';
 import LoginActions from './actions/LoginActions';
 import LoginStore from './stores/LoginStore';
 import MaintenanceNodesTabPane from './components/nodes/MaintenanceNodesTabPane';
+import NewPlan from './components/plan/NewPlan';
 import Nodes from './components/nodes/Nodes';
 import Overview from './components/Overview';
 import Parameters from './components/plan/Parameters.js';
 import Plan from './components/plan/Plan.js';
+import Plans from './components/plan/Plans.js';
 import ProvisionedNodesTabPane from './components/nodes/ProvisionedNodesTabPane';
 import RegisteredNodesTabPane from './components/nodes/RegisteredNodesTabPane';
 import Roles from './components/roles/Roles.js';
@@ -43,8 +46,15 @@ let routes = (
         <Route path="maintenance" component={MaintenanceNodesTabPane}/>
       </Route>
       <Route path="flavors" component={Flavors}/>
+
+      <Redirect from="plans" to="plans/list"/>
+      <Route path="plans" component={Plans}>
+        <Route path="list" component={ListPlans}/>
+        <Route path="new" component={NewPlan}/>
+      </Route>
+
       <Redirect from="plan" to="plan/environment"/>
-      <Route path="plan" component={Plan}>
+      <Route path="plan/" component={Plan}>
         <Route path="environment" component={EnvironmentConfiguration}/>
         <Route path="roles" component={Roles}/>
         <Route path="parameters" component={Parameters}/>

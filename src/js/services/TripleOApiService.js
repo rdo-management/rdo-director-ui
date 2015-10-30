@@ -19,17 +19,40 @@ class TripleOApiService {
       contentType: 'application/json',
       type: 'json'
     };
+    this.defaultPostRequest = {
+      method: 'POST',
+      headers: { 'X-Auth-Token': TempStorage.getItem('keystoneAuthTokenId') },
+      crossOrigin: true,
+      contentType: 'application/json',
+      type: 'json'
+    };
   }
 
   /**
    * TripleO API: GET /v1/plans/
-   * @returns {array} of plans.
+   * @returns {Promise} resolving with {array} of plans.
    */
   getPlans() {
+    // TODO(flfuchs): Replace with real API call once it's ready:
+    let def = when.defer();
+    (def => {
+      setTimeout(() => {
+        def.resolve(['overcloud', 'planb']);
+      }, 500);
+    }(def))
+    return def.promise;
+    /*
     return when(request(_.merge(
       this.defaultGetRequest,
       { url: TRIPLEOAPI_URL + GET_PLANS_PATH }
-    )));
+    ))).catch(error => {
+      console.error('Error retrieving plans', error);
+      let errorHandler = new TripleOApiErrorHandler(error);
+      errorHandler.errors.forEach((error) => {
+        NotificationActions.notify(error);
+      });
+    });
+    */
   }
 
   /**
@@ -40,7 +63,13 @@ class TripleOApiService {
     return when(request(_.merge(
       this.defaultGetRequest,
       { url: `${TRIPLEOAPI_URL}${GET_PLANS_PATH}/${planName}` }
-    )));
+    ))).catch(error => {
+      console.error('Error retrieving plan', error);
+      let errorHandler = new TripleOApiErrorHandler(error);
+      errorHandler.errors.forEach((error) => {
+        NotificationActions.notify(error);
+      });
+    });
   }
 
   /**
@@ -109,16 +138,36 @@ class TripleOApiService {
   }
 
   /**
-  * Handles getPlans
-  */
-  handleGetPlans() {
-    this.getPlans().then((response) => {
-      PlansActions.listPlans(response);
-    }).catch((error) => {
-      console.error('Error in handleGetPlans', error);
-      let errorHandler = new TripleOApiErrorHandler(error);
-      errorHandler.errors.forEach((error) => {
-        NotificationActions.notify(error);
+   * TripleO API: POST /v1/plans
+   */
+  createPlan(name, files) {
+    let planFiles = {};
+    files.forEach(item => {
+      planFiles[item.name] = {};
+      planFiles[item.name].contents = item.content;
+    });
+    let payload = {
+      name: name,
+      files: planFiles
+    };
+    return when(request(_.merge(
+      this.defaultPostRequest,
+      {
+        url: `${TRIPLEOAPI_URL}${GET_PLANS_PATH}`,
+        data: payload
+      }
+    ))).then(result => {
+      NotificationActions.notify({
+        title: 'Plan Created',
+        message: 'The plan ' + name + ' was successfully created.',
+        type: 'success'
+      });
+    }).catch(err => {
+      console.log('Error Creating Plan');
+      NotificationActions.notify({
+        title: 'Error Creating Plan',
+        message: 'The plan ' + name + ' could not be created',
+        type: 'error'
       });
     });
   }
