@@ -7,7 +7,8 @@ class PlansStore extends BaseStore {
     super();
     this.subscribe(() => this._registerToActions.bind(this));
     this.state = {
-      plans: []
+      plans: [],
+      currentPlan: undefined
     };
   }
 
@@ -16,6 +17,9 @@ class PlansStore extends BaseStore {
     case PlansConstants.LIST_PLANS:
       this.onListPlans(payload.plans);
       break;
+    case PlansConstants.GET_PLAN:
+      this.onGetPlan(payload.plan);
+      break;
     default:
       break;
     }
@@ -23,6 +27,11 @@ class PlansStore extends BaseStore {
 
   onListPlans(plans) {
     this.state.plans = plans;
+    this.emitChange();
+  }
+
+  onGetPlan(plan) {
+    this.state.currentPlan = plan;
     this.emitChange();
   }
 
