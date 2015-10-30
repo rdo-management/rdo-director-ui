@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ab29df4_c8fcad41",
+        "filename": "src/js/stores/LoginStore.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-10-30T09:49:55Z",
+      "side": 1,
+      "message": "It is better to import it\nimport * as _ from \u0027lodash\u0027;",
+      "revId": "e008d64eb6a1a8569a6d47aa55c5013f9b138ac6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
