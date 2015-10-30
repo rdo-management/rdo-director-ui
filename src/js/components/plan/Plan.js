@@ -28,6 +28,8 @@ export default class Plan extends React.Component {
   }
 
   render() {
+    // TODO(flfuchs) receive plan data by planName
+    console.log('planName', this.props.params.planName);
     return (
       <div className="row">
         <div className="col-sm-12">

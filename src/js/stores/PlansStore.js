@@ -7,27 +7,31 @@ class PlansStore extends BaseStore {
     super();
     this.subscribe(() => this._registerToActions.bind(this));
     this.state = {
-      plans: []
+      plan: undefined
     };
   }
 
   _registerToActions(payload) {
     switch(payload.actionType) {
-    case PlansConstants.LIST_PLANS:
-      this.onListPlans(payload.plans);
+    case PlansConstants.GET_PLAN:
+      this.onGetPlan(payload.plan);
       break;
     default:
       break;
     }
   }
 
-  onListPlans(plans) {
-    this.state.plans = plans;
+  onGetPlan(plan) {
+    this.state.plan = plan;
     this.emitChange();
   }
 
   getState() {
     return this.state;
+  }
+
+  getPlan() {
+    return this.state.plan;
   }
 }
 

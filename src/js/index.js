@@ -9,10 +9,12 @@ import AuthenticatedContent from './components/AuthenticatedContent';
 import DiscoveredNodesTabPane from './components/nodes/DiscoveredNodesTabPane';
 import EnvironmentConfiguration from
   './components/environment_configuration/EnvironmentConfiguration.js';
+import ListPlans from './components/plan/ListPlans';
 import Login from './components/Login';
 import LoginActions from './actions/LoginActions';
 import LoginStore from './stores/LoginStore';
 import MaintenanceNodesTabPane from './components/nodes/MaintenanceNodesTabPane';
+import NewPlan from './components/plan/NewPlan';
 import Nodes from './components/nodes/Nodes';
 import Overview from './components/Overview';
 import Parameters from './components/plan/Parameters.js';
@@ -40,11 +42,18 @@ let routes = (
         <Route path="maintenance" component={MaintenanceNodesTabPane}/>
       </Route>
       <Route component={Plan}>
-        <Redirect from="plan" to="plan/environment"/>
-        <Route path="plan/environment" component={EnvironmentConfiguration}/>
-        <Route path="plan/roles" component={Roles}/>
-        <Route path="plan/parameters" component={Parameters}/>
-        <Route path="plan/validations" component={Validations}/>
+        // TODO(flfuchs) remove non-named routes
+        <Redirect from="plans" to="plan/environment"/>
+        <Route path="plans/list" component={ListPlans}/>
+        <Route path="plans/new" component={NewPlan} onEnter={checkAuth}/>
+        <Route path="plans/environment" component={EnvironmentConfiguration}/>
+        <Route path="plans/roles" component={Roles}/>
+        <Route path="plans/parameters" component={Parameters}/>
+        <Route path="plans/validations" component={Validations}/>
+        <Route path="plans/:planName/environment" component={EnvironmentConfiguration}/>
+        <Route path="plans/:planName/roles" component={Roles}/>
+        <Route path="plans/:planName/parameters" component={Parameters}/>
+        <Route path="plans/:planName/validations" component={Validations}/>
       </Route>
     </Route>
     <Route path="login" component={Login}/>
