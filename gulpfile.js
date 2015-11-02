@@ -16,7 +16,7 @@ gulp.task('webpack-app', ['webpack-tempstorage-worker'], function() {
     .pipe(browserSync.stream());
 });
 
-gulp.task('serve', ['webpack-app', 'less', 'fonts', 'images'], function(){
+gulp.task('serve', ['webpack-app', 'less', 'fonts', 'images', 'patternfly'], function(){
   browserSync.init({
     open: false,
     server: './dist'
@@ -38,7 +38,7 @@ gulp.task('less', function () {
 });
 
 gulp.task('fonts', function() {
-  var bootstrapFonts = 'node_modules/bootstrap/fonts/*';
+  var bootstrapFonts = 'node_modules/patternfly/components/bootstrap/fonts/*';
   var patternflyFonts = 'node_modules/patternfly/dist/fonts/*';
   var fontAwesomeFonts = 'node_modules/patternfly/components/font-awesome/fonts/*';
   return gulp.src([bootstrapFonts, patternflyFonts, fontAwesomeFonts])
@@ -50,6 +50,14 @@ gulp.task('images', function() {
   var patternFlyImagesPath = 'node_modules/patternfly/dist/img/*';
   return gulp.src([imagesPath, patternFlyImagesPath])
     .pipe(gulp.dest('./dist/img'));
+});
+
+gulp.task('patternfly', function() {
+  var jqueryJsPath = 'node_modules/patternfly/components/jquery/dist/jquery.min.js';
+  var bootstrapJsPath = 'node_modules/patternfly/components/bootstrap/dist/js/bootstrap.min.js';
+  var patternflyJsPath = 'node_modules/patternfly/dist/js/patternfly.min.js';
+  return gulp.src([jqueryJsPath, bootstrapJsPath, patternflyJsPath])
+    .pipe(gulp.dest('./dist/js'));
 });
 
 gulp.task('webpack-tempstorage-worker', function() {

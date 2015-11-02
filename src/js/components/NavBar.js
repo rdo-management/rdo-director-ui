@@ -15,34 +15,27 @@ export default AuthenticatedComponent(class NavBar extends React.Component {
   render() {
     if (this.props.userLoggedIn) {
       return (
-        <nav className="navbar navbar-default navbar-pf">
+        <nav className="navbar navbar-default navbar-pf navbar-fixed-top" role="navigation">
           <div className="navbar-header">
-            <button type="button" className="navbar-toggle collapsed"
-                    data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
-                    aria-expanded="false">
-              <span className="sr-only">Toggle navigation</span>
-              <span className="icon-bar"></span>
-              <span className="icon-bar"></span>
-              <span className="icon-bar"></span>
-            </button>
-            <Link className="navbar-brand" to="/">
-              <img src="https://www.patternfly.org/wp-content/themes/patternfly/library/components/patternfly/dist/img/brand.svg"/>
-            </Link>
+            <a className="navbar-brand" href="/">
+              <img src="img/brand.svg" alt="RDO Director" />
+            </a>
           </div>
-
-          <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <div className="collapse navbar-collapse navbar-collapse-1">
+            <ul className="nav navbar-nav navbar-utility">
+              <li className="dropdown">
+                <a className="dropdown-toggle navbar-item" data-toggle="dropdown" data-target="#" id="drop1">
+                  <span className="pficon pficon-user"></span>
+                  {this.props.user.username} <b className="caret"></b>
+                </a>
+                <ul className="dropdown-menu" aria-labelledby="drop1">
+                  <li role="presentation"><a role="menuitem" tabIndex="-1" onClick={this.logout}>Log Out</a></li>
+                </ul>
+              </li>
+            </ul>
             <ul className="nav navbar-nav navbar-primary">
               <NavTab to="/" onlyActiveOnIndex>Overview</NavTab>
-              <NavTab to="/nodes">Nodes</NavTab>
-            </ul>
-            <ul className="nav navbar-nav navbar-utility">
-              <li>
-                <a>
-                  <span className="glyphicon glyphicon-user" aria-hidden="true">
-                  </span> {this.props.user.username}
-                </a>
-              </li>
-              <li><a href="#" onClick={this.logout}>Logout</a></li>
+              <NavTab to="nodes">Nodes</NavTab>
             </ul>
           </div>
         </nav>

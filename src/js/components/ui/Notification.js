@@ -28,8 +28,8 @@ export default class Notification extends React.Component {
                 onClick={this.props.removeNotification}>
           <span className="pficon pficon-close" aria-hidden="true"></span>
         </button>
-        <strong>{this.props.title}</strong><br/>
-        {this.props.message}
+        <span className={iconClass}></span>
+        <strong>{this.props.title}</strong> {this.props.message}
       </div>
     );
   }
