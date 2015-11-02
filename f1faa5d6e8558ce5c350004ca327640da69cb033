@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9ab29df4_5a9f7b52",
+        "filename": "src/js/components/nodes/NodesTable.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-02T11:39:37Z",
+      "side": 1,
+      "message": "Yeah, I was thinking about finding an universal solution, which would overlay the component which triggers async api call with loading spinner. I am going to have a look into this.",
+      "parentUuid": "9ab29df4_ba6c179e",
+      "revId": "f1faa5d6e8558ce5c350004ca327640da69cb033",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab29df4_5a885b1f",
         "filename": "src/js/stores/NodesStore.js",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2015-11-02T11:20:30Z",
       "side": 1,
       "message": "Always returns true.",
+      "revId": "f1faa5d6e8558ce5c350004ca327640da69cb033",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_baadf78a",
+        "filename": "src/js/stores/NodesStore.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-02T11:39:37Z",
+      "side": 1,
+      "message": "Yah, those are just placeholders for logic that will eventually filter the nodes appropriately if needed. The logic of filtering nodes will probably go into tripleo-common as it is not very trivial. The data for nodes listing are combination of listing nodes from ironic and nova, and the state is calculated based on the combination of the parameters retrieved. So we\u0027ll end up either having separate api calls for nodes in each state, or we\u0027ll have single api call retrieving all nodes and filter them here by state attribute.",
+      "parentUuid": "9ab29df4_5a885b1f",
       "revId": "f1faa5d6e8558ce5c350004ca327640da69cb033",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
