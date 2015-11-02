@@ -93,8 +93,8 @@ add
 allowed_origin=http://localhost:3000
 max_age=3600
 allow_methods=GET,POST,PUT,DELETE
-allow_headers=Content-Type,Cache-Control,Content-Language,Expires,Last-Modified,Pragma,X-Custom-Header
-expose_headers=Content-Type,Cache-Control,Content-Language,Expires,Last-Modified,Pragma,X-Custom-Header
+allow_headers=Content-Type,Cache-Control,Content-Language,Expires,Last-Modified,Pragma,X-Auth-Token
+expose_headers=Content-Type,Cache-Control,Content-Language,Expires,Last-Modified,Pragma
 ```
 
 Temporary: set ```auth_strategy=noauth```
