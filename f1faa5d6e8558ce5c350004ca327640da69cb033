@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ab29df4_ba6c179e",
+        "filename": "src/js/components/nodes/NodesTable.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2015-11-02T11:20:30Z",
+      "side": 1,
+      "message": "This is displayed while the request to ironic is still pending, which is misleading, especially if the request takes a longer. The default text should probably express the loading state and get replaced once the request is finished.",
+      "revId": "f1faa5d6e8558ce5c350004ca327640da69cb033",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_5a885b1f",
+        "filename": "src/js/stores/NodesStore.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2015-11-02T11:20:30Z",
+      "side": 1,
+      "message": "Always returns true.",
+      "revId": "f1faa5d6e8558ce5c350004ca327640da69cb033",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_7a7c3f21",
+        "filename": "src/js/stores/NodesStore.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2015-11-02T11:20:30Z",
+      "side": 1,
+      "message": "Always returns true.",
+      "revId": "f1faa5d6e8558ce5c350004ca327640da69cb033",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_9a791332",
+        "filename": "src/js/stores/NodesStore.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2015-11-02T11:20:30Z",
+      "side": 1,
+      "message": "Always returns true.",
+      "revId": "f1faa5d6e8558ce5c350004ca327640da69cb033",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
