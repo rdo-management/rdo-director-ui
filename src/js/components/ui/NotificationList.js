@@ -1,10 +1,11 @@
 import React from 'react';
 
+import AuthenticatedComponent from '../utils/AuthenticatedComponent';
 import Notification from './Notification';
 import NotificationActions from '../../actions/NotificationActions';
 import NotificationStore from '../../stores/NotificationStore';
 
-export default class NotificationList extends React.Component {
+export default AuthenticatedComponent(class NotificationList extends React.Component {
   constructor() {
     super();
     this.state = { notifications: [] };
@@ -29,28 +30,33 @@ export default class NotificationList extends React.Component {
   }
 
   render() {
-    let notifications = this.state.notifications.map((notification, index) => {
-      return (
-        <Notification key={index}
-                      title={notification.title}
-                      message={notification.message}
-                      type={notification.type}
-                      removeNotification={this._removeNotification.bind(this, index)}
-                      dismissable={notification.dismissable}/>
-      );
-    });
+    if (this.props.userLoggedIn)
+    {
+      let notifications = this.state.notifications.map((notification, index) => {
+        return (
+          <Notification key={index}
+                        title={notification.title}
+                        message={notification.message}
+                        type={notification.type}
+                        removeNotification={this._removeNotification.bind(this, index)}
+                        dismissable={notification.dismissable}/>
+        );
+      });
 
-    return (
-      <div className="container-fluid">
-        <div className="row">
-          <div className="col-lg-3 col-lg-offset-9 col-md-4
-                          col-md-offset-8 col-sm-6 col-sm-offset-6">
-            <div className="notification-list">
-              {notifications}
+      return (
+        <div className="container-fluid notifications-container">
+          <div className="row">
+            <div className="col-lg-6 col-sm-8 col-xs-12">
+              <div className="notification-list">
+                {notifications.reverse()}
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    );
+      );
+    }
+    else {
+      return false;
+    }
   }
-}
+});

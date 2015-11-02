@@ -16,10 +16,9 @@
     "xhr2": "~0.1.2",
     "lodash": "~3.10.1",
     "formsy-react": "~0.17.0",
-    "bootstrap": "~3.3.5",
     "invariant": "~2.1.1",
     "history": "~1.12.6",
-    "patternfly": "~2.4.0",
+    "patternfly": "~2.5.0",
     "keymirror": "~0.1.1"
   },
   "devDependencies": {

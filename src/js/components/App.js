@@ -2,22 +2,29 @@ import ClassNames from 'classnames';
 import React from 'react';
 
 import NavBar from './NavBar';
+import Footer from './Footer';
 import NotificationList from './ui/NotificationList';
 
 export default class App extends React.Component {
   render() {
     let containerClass = ClassNames({
-      'container': this.props.children.type.name === 'Login',
-      'container-fluid': this.props.children.type.name !== 'Login'
+      'rdo-body': true,
+      'rdo-fixed-body': this.props.children.type.name != 'Login'
     });
+
     return (
-      <div>
-        <NotificationList/>
+    <div className="pf-framework">
+      <header className="pf-framework-header">
         <NavBar/>
-        <div className={containerClass}>
+      </header>
+      <div className={containerClass} id="centralPanel">
+        <NotificationList/>
+        <div className="pf-framework-content">
           {this.props.children}
         </div>
       </div>
+      <Footer/>
+    </div>
     );
   }
 }
