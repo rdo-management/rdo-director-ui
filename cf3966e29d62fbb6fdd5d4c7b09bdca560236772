@@ -1,0 +1,418 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ab29df4_a2b94d30",
+        "filename": "dist/index.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-03T13:55:58Z",
+      "side": 1,
+      "message": "This is not a proper way to include javascript in the application. JS dependencies need to be added as npm modules. What I find quite crazy is how patternfly includes jquery, bootstrap, d3, font-awesome and other dependencies as part of it\u0027s codebase instead of specifying it as dependency. This is very wrong approach imho.\n\njquery, and bootstrap are patternfly\u0027s dependencies, not dependencies of this project.",
+      "revId": "cf3966e29d62fbb6fdd5d4c7b09bdca560236772",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_22cb7da6",
+        "filename": "gulpfile.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-03T13:55:58Z",
+      "side": 1,
+      "message": "We don\u0027t want to compile patternfly\u0027s code. It is patternfly\u0027s task to do.",
+      "revId": "cf3966e29d62fbb6fdd5d4c7b09bdca560236772",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_e20505c3",
+        "filename": "src/js/components/App.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-03T13:55:58Z",
+      "side": 1,
+      "message": "What are pf-framework, pf-framework-header, pf-framework-content classes for? I don\u0027t see them defined anywhere in patternfly code.",
+      "revId": "cf3966e29d62fbb6fdd5d4c7b09bdca560236772",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_a2c4ed40",
+        "filename": "src/js/components/App.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-03T13:55:58Z",
+      "side": 1,
+      "message": "can we name these classes differently? maybe \u0027wrapper\u0027? I think \u0027rdo\u0027 is quite unfortunate",
+      "revId": "cf3966e29d62fbb6fdd5d4c7b09bdca560236772",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_4215d1ef",
+        "filename": "src/js/components/App.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-03T13:55:58Z",
+      "side": 1,
+      "message": "what is centralPanel id used for?",
+      "revId": "cf3966e29d62fbb6fdd5d4c7b09bdca560236772",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_22e8ddb3",
+        "filename": "src/js/components/Footer.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-03T13:55:58Z",
+      "side": 1,
+      "message": "again, rdo-something seems not right to me, I think it should identify the function of the footer somehow",
+      "revId": "cf3966e29d62fbb6fdd5d4c7b09bdca560236772",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_82928955",
+        "filename": "src/js/components/Login.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-03T13:55:58Z",
+      "side": 1,
+      "message": "this can go away if you set login-pf elsewhere, not on body (as described in patternfly docs)",
+      "revId": "cf3966e29d62fbb6fdd5d4c7b09bdca560236772",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_a29f8d5e",
+        "filename": "src/js/components/Login.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-03T13:55:58Z",
+      "side": 1,
+      "message": "same as ^",
+      "revId": "cf3966e29d62fbb6fdd5d4c7b09bdca560236772",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_e288a524",
+        "filename": "src/js/components/Login.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-03T13:55:58Z",
+      "side": 1,
+      "message": "tabIndex (in jsx)",
+      "range": {
+        "startLine": 108,
+        "startChar": 108,
+        "endLine": 108,
+        "endChar": 116
+      },
+      "revId": "cf3966e29d62fbb6fdd5d4c7b09bdca560236772",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_62d1f5fa",
+        "filename": "src/js/components/NavBar.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-03T13:55:58Z",
+      "side": 1,
+      "message": "You removed the option of having responsive navigation toggle when screen gets small?",
+      "revId": "cf3966e29d62fbb6fdd5d4c7b09bdca560236772",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_4204f17a",
+        "filename": "src/js/components/nodes/Nodes.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-03T13:55:58Z",
+      "side": 1,
+      "message": "row needs to be here, because otherwise we are getting container without row, which is breaking the layout. rdo-base-page is a hack which tries to fix this.",
+      "revId": "cf3966e29d62fbb6fdd5d4c7b09bdca560236772",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_0231195a",
+        "filename": "src/js/components/overview/Overview.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-03T13:55:58Z",
+      "side": 1,
+      "message": "are those classes needed?",
+      "revId": "cf3966e29d62fbb6fdd5d4c7b09bdca560236772",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_e21265b3",
+        "filename": "src/js/components/ui/Notification.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-03T13:55:58Z",
+      "side": 1,
+      "message": "icon is already defined on line 24",
+      "revId": "cf3966e29d62fbb6fdd5d4c7b09bdca560236772",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_421231b2",
+        "filename": "src/js/components/ui/NotificationList.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-03T13:55:58Z",
+      "side": 1,
+      "message": "Notification list should not be authenticated component because user needs to get notified even when not logged in",
+      "revId": "cf3966e29d62fbb6fdd5d4c7b09bdca560236772",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_c24ba1ae",
+        "filename": "src/js/components/ui/PageHeader.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-03T13:55:58Z",
+      "side": 1,
+      "message": "wrapping this in div is not needed",
+      "revId": "cf3966e29d62fbb6fdd5d4c7b09bdca560236772",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_42eeb189",
+        "filename": "src/js/components/ui/forms/LoginInput.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-03T13:55:58Z",
+      "side": 1,
+      "message": "this needs to be {this.props.type}",
+      "revId": "cf3966e29d62fbb6fdd5d4c7b09bdca560236772",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_fd04c416",
+        "filename": "src/less/base.less",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-03T13:55:58Z",
+      "side": 1,
+      "message": "It would be nice to separate styling for fixed header and footer to separate stylesheet and import it here. In perfect world this file would just integrate all substylesheets.",
+      "revId": "cf3966e29d62fbb6fdd5d4c7b09bdca560236772",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_a206ad1e",
+        "filename": "src/less/base.less",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-03T13:55:58Z",
+      "side": 1,
+      "message": "it would be nice to set those as variables. I am sure that those values are specific to header and footer heights. It would be also much cleaner to see what this does.",
+      "revId": "cf3966e29d62fbb6fdd5d4c7b09bdca560236772",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_42187181",
+        "filename": "src/less/base.less",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-03T13:55:58Z",
+      "side": 1,
+      "message": "I\u0027d rather avoid any divergencies from patternfly design and leave it up to branding phase.",
+      "revId": "cf3966e29d62fbb6fdd5d4c7b09bdca560236772",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_22137d67",
+        "filename": "src/less/base.less",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-03T13:55:58Z",
+      "side": 1,
+      "message": "this should not be needed",
+      "revId": "cf3966e29d62fbb6fdd5d4c7b09bdca560236772",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_021e7970",
+        "filename": "src/less/base.less",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-03T13:55:58Z",
+      "side": 1,
+      "message": "wouldn\u0027t it be cleaner to use what patternfly provides and not override it?",
+      "revId": "cf3966e29d62fbb6fdd5d4c7b09bdca560236772",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_42415159",
+        "filename": "src/less/base.less",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-03T13:55:58Z",
+      "side": 1,
+      "message": "specifying href attr on a seems cleaner to me",
+      "revId": "cf3966e29d62fbb6fdd5d4c7b09bdca560236772",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_1d0a5821",
+        "filename": "src/less/components/NotificationList.less",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-03T13:55:58Z",
+      "side": 1,
+      "message": "this is the variable I mentioned in comment to base.less",
+      "revId": "cf3966e29d62fbb6fdd5d4c7b09bdca560236772",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_e2eee58a",
+        "filename": "src/less/components/NotificationList.less",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-03T13:55:58Z",
+      "side": 1,
+      "message": "doesn\u0027t this require to use box-sizing:border-box ?",
+      "revId": "cf3966e29d62fbb6fdd5d4c7b09bdca560236772",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
