@@ -15,7 +15,7 @@ export default AuthenticatedComponent(class NavBar extends React.Component {
   render() {
     if (this.props.userLoggedIn) {
       return (
-        <nav className="navbar navbar-default navbar-pf">
+        <nav className="navbar navbar-default navbar-pf navbar-fixed-top" role="navigation">
           <div className="navbar-header">
             <button type="button" className="navbar-toggle collapsed"
                     data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
@@ -25,24 +25,23 @@ export default AuthenticatedComponent(class NavBar extends React.Component {
               <span className="icon-bar"></span>
               <span className="icon-bar"></span>
             </button>
-            <Link className="navbar-brand" to="/">
-              <img src="https://www.patternfly.org/wp-content/themes/patternfly/library/components/patternfly/dist/img/brand.svg"/>
-            </Link>
+            <a className="navbar-brand" href="/">
+              <img src="img/brand.svg" alt="RDO Director" />
+            </a>
           </div>
-
           <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul className="nav navbar-nav navbar-primary">
-              <NavTab to="/" onlyActiveOnIndex>Overview</NavTab>
-              <NavTab to="/nodes">Nodes</NavTab>
-            </ul>
             <ul className="nav navbar-nav navbar-utility">
               <li>
                 <a>
-                  <span className="glyphicon glyphicon-user" aria-hidden="true">
-                  </span> {this.props.user.username}
+                  <span className="pficon pficon-user"></span>
+                  {this.props.user.username}
                 </a>
               </li>
               <li><a href="#" onClick={this.logout}>Logout</a></li>
+            </ul>
+            <ul className="nav navbar-nav navbar-primary">
+              <NavTab to="/" onlyActiveOnIndex>Overview</NavTab>
+              <NavTab to="nodes">Nodes</NavTab>
             </ul>
           </div>
         </nav>
