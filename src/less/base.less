@@ -4,14 +4,27 @@
 @import "../../node_modules/patternfly/less/patternfly.less";
 @import "../../node_modules/patternfly/less/navbar.less";
 @import "../../node_modules/patternfly/less/navbar-alt.less";
-@icon-font-path: "../fonts/";
-@fa-font-path: "../fonts/";
+
+@import "utils/variables";
 
 @import "forms/Forms";
 @import "components/NodeStack";
 @import "components/NodePicker";
 @import "components/NotificationList";
 @import "components/Notification";
+
+.wrapper-fixed-body {
+  padding-top: @header-height;
+  padding-bottom: @footer-height;
+}
+
+.wrapper-footer {
+  background-color: @footer-pf-alt-bg-color;
+  color:#999;
+  font-size: @font-size-small;
+  line-height: 17px; // whole px unit to avoid height differences among browsers
+  padding-top: @footer-pf-alt-padding-top;
+}
 
 .panel.flavor-panel > .panel-body{
   padding-bottom: 0;
@@ -47,5 +60,4 @@
     }
   }
 }
-
 

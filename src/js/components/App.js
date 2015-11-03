@@ -1,24 +1,32 @@
-import ClassNames from 'classnames';
 import React from 'react';
 
 import NavBar from './NavBar';
+import Footer from './Footer';
 import NotificationList from './ui/NotificationList';
 
 export default class App extends React.Component {
   render() {
-    let containerClass = ClassNames({
-      'container': this.props.children.type.name === 'Login',
-      'container-fluid': this.props.children.type.name !== 'Login'
-    });
-    return (
-      <div>
-        <NotificationList/>
-        <NavBar/>
-        <div className={containerClass}>
+    if (this.props.children.type.name === 'Login') {
+      return (
+        <div>
           {this.props.children}
         </div>
-      </div>
-    );
+      );
+    }
+    else {
+      return (
+        <div>
+          <header>
+            <NavBar/>
+          </header>
+          <div className="wrapper-fixed-body container-fluid">
+            <NotificationList/>
+            {this.props.children}
+          </div>
+          <Footer/>
+        </div>
+      );
+    }
   }
 }
 App.propTypes = {

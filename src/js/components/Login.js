@@ -3,7 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import FormErrorList from './ui/forms/FormErrorList';
-import GenericInput from './ui/forms/GenericInput';
+import LoginInput from './ui/forms/LoginInput';
 import KeystoneApiErrorHandler from '../services/KeystoneApiErrorHandler';
 import KeystoneApiService from '../services/KeystoneApiService';
 import LoginActions from '../actions/LoginActions';
@@ -75,41 +75,53 @@ export default class Login extends React.Component {
 
   render() {
     return (
-      <div className="row">
-        <div className="col-sm-12">
-          <div id="brand">
-            <img src="https://rawgit.com/patternfly/patternfly/master/dist/img/brand.svg"
-                 alt="RDO Manager"/>
+      <div>
+        <span id="badge">
+          <img src="img/logo.svg" alt="RDO Manager"></img>
+        </span>
+        <div className="container">
+          <div className="row">
+            <div className="col-sm-12">
+              <div id="brand">
+                <img src="img/brand.svg" alt="RDO Manager"></img>
+              </div>
+            </div>
+            <div className="col-sm-7 col-md-6 col-lg-5 login">
+              <FormErrorList errors={this.state.formErrors}/>
+              <Formsy.Form ref="form" role="form"
+                           className="form-horizontal"
+                           onSubmit={this.handleLogin.bind(this)}
+                           onValid={this._enableButton.bind(this)}
+                           onInvalid={this._disableButton.bind(this)}>
+                <LoginInput name="username"
+                            placeholder="Username"
+                            title="Username"
+                            validationError="Username is required"
+                            required/>
+                <LoginInput type="password"
+                            name="password"
+                            placeholder="Password"
+                            title="Password"
+                            validationError="Password is required"
+                            required/>
+                <div className="form-group">
+                  <div className="col-xs-offset-8 col-xs-4 col-sm-4 col-md-4 submit">
+                    <button type="submit" disabled={!this.state.canSubmit}
+                            className="btn btn-primary btn-lg" tabIndex="4">
+                      Log In
+                    </button>
+                  </div>
+                </div>
+              </Formsy.Form>
+            </div>
+            <div className="col-sm-5 col-md-6 col-lg-7 details">
+              <p>
+                <strong>Welcome to the RDO Manager.</strong><br/>
+                The RDO Manager will help you manage your OpenStack deployments. It's the best
+                thing since sliced bread. We think you will really enjoy it!
+              </p>
+            </div>
           </div>
-        </div>
-        <div className="col-sm-7 col-md-6 col-lg-5 login">
-          <FormErrorList errors={this.state.formErrors}/>
-          <Formsy.Form role="form"
-                       onSubmit={this.handleLogin.bind(this)}
-                       onValid={this._enableButton.bind(this)}
-                       onInvalid={this._disableButton.bind(this)}>
-            <GenericInput name="username"
-                          placeholder="Username"
-                          title="Username"
-                          validationError="Username is required"
-                          required/>
-            <GenericInput type="password"
-                          name="password"
-                          placeholder="Password"
-                          title="Password"
-                          validationError="Password is required"
-                          required/>
-            <button type="submit" disabled={!this.state.canSubmit} className="btn btn-primary">
-              Submit
-            </button>
-          </Formsy.Form>
-        </div>
-        <div className="col-sm-5 col-md-6 col-lg-7 details">
-          <p><strong>Welcome to PatternFly! </strong>
-          This is placeholder text, only. Use this area to place any information or introductory
-          message about your application that may be relevant for users. For example, you might
-          include news or information about the latest release of your product here—such as
-          a version number.</p>
         </div>
       </div>
     );
