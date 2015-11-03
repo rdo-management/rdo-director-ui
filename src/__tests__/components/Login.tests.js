@@ -43,7 +43,7 @@ describe('Login component', () => {
       expect(inputs[1].id).toBe('password');
 
       let submitButton = TestUtils.findRenderedDOMComponentWithTag(loginInstance, 'button');
-      expect(submitButton.textContent).toBe('Submit');
+      expect(submitButton.textContent).toBe('Log In');
       expect(submitButton.type).toBe('submit');
     });
 
