@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9ab29df4_7d9354a3",
+        "filename": "dist/index.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1006608
+      },
+      "writtenOn": "2015-11-03T18:56:50Z",
+      "side": 1,
+      "message": "Patternfly does it this way since different projects have different dependencies on versions of these libraries",
+      "parentUuid": "9ab29df4_a2b94d30",
+      "revId": "cf3966e29d62fbb6fdd5d4c7b09bdca560236772",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab29df4_22cb7da6",
         "filename": "gulpfile.js",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2015-11-03T13:55:58Z",
       "side": 1,
       "message": "We don\u0027t want to compile patternfly\u0027s code. It is patternfly\u0027s task to do.",
+      "revId": "cf3966e29d62fbb6fdd5d4c7b09bdca560236772",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_dd5e20e9",
+        "filename": "gulpfile.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1006608
+      },
+      "writtenOn": "2015-11-03T18:56:50Z",
+      "side": 1,
+      "message": "No compiling, just copying files to the dist area. However, I will be removing this as I am taking out this dependency.",
+      "parentUuid": "9ab29df4_22cb7da6",
       "revId": "cf3966e29d62fbb6fdd5d4c7b09bdca560236772",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
@@ -87,6 +123,24 @@
     },
     {
       "key": {
+        "uuid": "9ab29df4_bd008cab",
+        "filename": "src/js/components/App.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1006608
+      },
+      "writtenOn": "2015-11-03T18:56:50Z",
+      "side": 1,
+      "message": "Sorry, this is used when using an alternate scrollbar mechanism in patternfly applications. Just habit...",
+      "parentUuid": "9ab29df4_4215d1ef",
+      "revId": "cf3966e29d62fbb6fdd5d4c7b09bdca560236772",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab29df4_22e8ddb3",
         "filename": "src/js/components/Footer.js",
         "patchSetId": 1
@@ -115,6 +169,24 @@
       "writtenOn": "2015-11-03T13:55:58Z",
       "side": 1,
       "message": "this can go away if you set login-pf elsewhere, not on body (as described in patternfly docs)",
+      "revId": "cf3966e29d62fbb6fdd5d4c7b09bdca560236772",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_3d3b9c3b",
+        "filename": "src/js/components/Login.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1006608
+      },
+      "writtenOn": "2015-11-03T18:56:50Z",
+      "side": 1,
+      "message": "where do you see this described? As far as I know login-pf is required on the document element for the layout to work as designed.",
+      "parentUuid": "9ab29df4_82928955",
       "revId": "cf3966e29d62fbb6fdd5d4c7b09bdca560236772",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
@@ -178,6 +250,24 @@
     },
     {
       "key": {
+        "uuid": "9ab29df4_3d739cea",
+        "filename": "src/js/components/NavBar.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1006608
+      },
+      "writtenOn": "2015-11-03T18:56:50Z",
+      "side": 1,
+      "message": "I can put it back, but I believe it requires JQuery.",
+      "parentUuid": "9ab29df4_62d1f5fa",
+      "revId": "cf3966e29d62fbb6fdd5d4c7b09bdca560236772",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab29df4_4204f17a",
         "filename": "src/js/components/nodes/Nodes.js",
         "patchSetId": 1
@@ -195,6 +285,24 @@
     },
     {
       "key": {
+        "uuid": "9ab29df4_186fc6c6",
+        "filename": "src/js/components/nodes/Nodes.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1006608
+      },
+      "writtenOn": "2015-11-03T18:56:50Z",
+      "side": 1,
+      "message": "I don\u0027t think using a base page selector is a hack. It is a way to allow customization of the pages in one place. And since we have it, I use it rather than a row followed by a full width column. I will make the changes as I can go either way on this.",
+      "parentUuid": "9ab29df4_4204f17a",
+      "revId": "cf3966e29d62fbb6fdd5d4c7b09bdca560236772",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab29df4_0231195a",
         "filename": "src/js/components/overview/Overview.js",
         "patchSetId": 1
@@ -206,6 +314,24 @@
       "writtenOn": "2015-11-03T13:55:58Z",
       "side": 1,
       "message": "are those classes needed?",
+      "revId": "cf3966e29d62fbb6fdd5d4c7b09bdca560236772",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_38f9eae9",
+        "filename": "src/js/components/overview/Overview.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1006608
+      },
+      "writtenOn": "2015-11-03T18:56:50Z",
+      "side": 1,
+      "message": "No (based on previous comments). I will remove",
+      "parentUuid": "9ab29df4_0231195a",
       "revId": "cf3966e29d62fbb6fdd5d4c7b09bdca560236772",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
@@ -246,6 +372,24 @@
     },
     {
       "key": {
+        "uuid": "9ab29df4_78c1a27f",
+        "filename": "src/js/components/ui/NotificationList.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1006608
+      },
+      "writtenOn": "2015-11-03T18:56:50Z",
+      "side": 1,
+      "message": "I wouldn\u0027t expect anyone not logged in to see notifications. Details in the notifications could have information not meant for unauthorized users.",
+      "parentUuid": "9ab29df4_421231b2",
+      "revId": "cf3966e29d62fbb6fdd5d4c7b09bdca560236772",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab29df4_c24ba1ae",
         "filename": "src/js/components/ui/PageHeader.js",
         "patchSetId": 1
@@ -274,6 +418,24 @@
       "writtenOn": "2015-11-03T13:55:58Z",
       "side": 1,
       "message": "this needs to be {this.props.type}",
+      "revId": "cf3966e29d62fbb6fdd5d4c7b09bdca560236772",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_385e4ae7",
+        "filename": "src/js/components/ui/forms/LoginInput.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1006608
+      },
+      "writtenOn": "2015-11-03T18:56:50Z",
+      "side": 1,
+      "message": "Heh, all the times I\u0027ve tested and didn\u0027t realize the password was showing up in clear text. Ugh.",
+      "parentUuid": "9ab29df4_42eeb189",
       "revId": "cf3966e29d62fbb6fdd5d4c7b09bdca560236772",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
@@ -410,6 +572,24 @@
       "writtenOn": "2015-11-03T13:55:58Z",
       "side": 1,
       "message": "doesn\u0027t this require to use box-sizing:border-box ?",
+      "revId": "cf3966e29d62fbb6fdd5d4c7b09bdca560236772",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_f8d85255",
+        "filename": "src/less/components/NotificationList.less",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1006608
+      },
+      "writtenOn": "2015-11-03T18:56:50Z",
+      "side": 1,
+      "message": "box-sizing: border-box is set by default.",
+      "parentUuid": "9ab29df4_e2eee58a",
       "revId": "cf3966e29d62fbb6fdd5d4c7b09bdca560236772",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
