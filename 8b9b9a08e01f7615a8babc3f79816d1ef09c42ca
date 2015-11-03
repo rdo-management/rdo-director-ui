@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ab29df4_273c6fe2",
+        "filename": "src/js/components/plans/PlanUploadForm.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-03T11:39:34Z",
+      "side": 1,
+      "message": "Seems like this component is twice in the patch?",
+      "revId": "8b9b9a08e01f7615a8babc3f79816d1ef09c42ca",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_87ad3b34",
+        "filename": "src/js/constants/PlanUploadConstants.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-03T11:39:34Z",
+      "side": 1,
+      "message": "use import keyMirror from \u0027keymirror\u0027 instead. react 0.14 does not include keymirror any more",
+      "revId": "8b9b9a08e01f7615a8babc3f79816d1ef09c42ca",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
