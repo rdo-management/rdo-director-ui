@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9ab29df4_85be0ed3",
+        "filename": "src/js/components/App.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1006608
+      },
+      "writtenOn": "2015-11-04T13:30:39Z",
+      "side": 1,
+      "message": "Yeah, I put this here in case you wanted to leave it as a non-authenticated component to make sure the visuals were OK while on the login page. I will remove it.",
+      "parentUuid": "9ab29df4_453076e8",
+      "revId": "f509c943400808fee6288b391bf7d3cd8fec97b6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab29df4_62de5013",
         "filename": "src/js/components/App.js",
         "patchSetId": 1
@@ -47,6 +65,24 @@
       "writtenOn": "2015-11-04T11:35:07Z",
       "side": 1,
       "message": "fixed footer can be defined using navbar-fixed-bottom class and then putting container-fluid inside.\n\nhttp://getbootstrap.com/components/#navbar-fixed-bottom",
+      "revId": "f509c943400808fee6288b391bf7d3cd8fec97b6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_254aa2c5",
+        "filename": "src/js/components/Footer.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1006608
+      },
+      "writtenOn": "2015-11-04T13:30:39Z",
+      "side": 1,
+      "message": "I can do this but then I would need to add color/font styling, then add a row, then a full width column. If you think it\u0027s better to get the positioning from the navbar-fixed-bottom class then I can do so but still need to add all of the above.",
+      "parentUuid": "9ab29df4_022114b4",
       "revId": "f509c943400808fee6288b391bf7d3cd8fec97b6",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
