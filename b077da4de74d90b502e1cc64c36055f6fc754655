@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ab29df4_731380b8",
+        "filename": "src/js/components/NavBar.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-04T18:24:46Z",
+      "side": 1,
+      "message": "this is not required here",
+      "range": {
+        "startLine": 28,
+        "startChar": 50,
+        "endLine": 28,
+        "endChar": 67
+      },
+      "revId": "b077da4de74d90b502e1cc64c36055f6fc754655",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_d310ccaa",
+        "filename": "src/js/components/NavBar.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-04T18:24:46Z",
+      "side": 1,
+      "message": "onlyActiveOnIndex is required here :)",
+      "revId": "b077da4de74d90b502e1cc64c36055f6fc754655",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
