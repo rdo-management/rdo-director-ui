@@ -89,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "9ab29df4_68270fb7",
+        "filename": "src/js/components/Footer.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-04T13:59:38Z",
+      "side": 1,
+      "message": "IMO it is better because it resembles the standard bootstrap structure, which is ok for me because it is easy to understand even when it adds more lines.\n\nI tend to try to reuse bootstrap/patternfly as much as possible and write custom css only when really necessary.\n\nThe color/font styling is ok if paternfly does not include it, but we should use patternfly variables for it (if it is available)",
+      "parentUuid": "9ab29df4_254aa2c5",
+      "revId": "f509c943400808fee6288b391bf7d3cd8fec97b6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab29df4_e226e015",
         "filename": "src/js/components/Login.js",
         "patchSetId": 1
