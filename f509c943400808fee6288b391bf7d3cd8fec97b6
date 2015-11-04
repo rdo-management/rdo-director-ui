@@ -1,0 +1,220 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ab29df4_453076e8",
+        "filename": "src/js/components/App.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-04T11:35:07Z",
+      "side": 1,
+      "message": "If NotificationList is Authenticated component, it makes no sense to render it here. It also causes react to complain that we update state of component which does not exist",
+      "revId": "f509c943400808fee6288b391bf7d3cd8fec97b6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_62de5013",
+        "filename": "src/js/components/App.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-04T11:35:07Z",
+      "side": 1,
+      "message": "this div is not needed",
+      "revId": "f509c943400808fee6288b391bf7d3cd8fec97b6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_022114b4",
+        "filename": "src/js/components/Footer.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-04T11:35:07Z",
+      "side": 1,
+      "message": "fixed footer can be defined using navbar-fixed-bottom class and then putting container-fluid inside.\n\nhttp://getbootstrap.com/components/#navbar-fixed-bottom",
+      "revId": "f509c943400808fee6288b391bf7d3cd8fec97b6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_e226e015",
+        "filename": "src/js/components/Login.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-04T11:35:07Z",
+      "side": 1,
+      "message": "this needs to be wrapped in \u003cdiv class\u003d\"form-group\"\u003e to align it with form inputs",
+      "revId": "f509c943400808fee6288b391bf7d3cd8fec97b6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_82cb641d",
+        "filename": "src/js/components/Login.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-04T11:35:07Z",
+      "side": 1,
+      "message": "pull-right is not necessary, it should be \"col-xs-offset-8 col-xs-4 col-sm-4 col-md-4 submit\" according to https://rawgit.com/patternfly/patternfly/master/tests/login.html\n\ncol-xs-offset-8 because we don\u0027t have the column with \u0027forgot password etc.\u0027\n\n(see it in small width to see the difference)",
+      "range": {
+        "startLine": 107,
+        "startChar": 39,
+        "endLine": 107,
+        "endChar": 49
+      },
+      "revId": "f509c943400808fee6288b391bf7d3cd8fec97b6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_02f4b485",
+        "filename": "src/js/components/NavBar.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-04T11:35:07Z",
+      "side": 1,
+      "message": "This should be Link, to use react router",
+      "revId": "f509c943400808fee6288b391bf7d3cd8fec97b6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_4547964b",
+        "filename": "src/js/components/NavBar.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-04T11:35:07Z",
+      "side": 1,
+      "message": "/nodes",
+      "range": {
+        "startLine": 44,
+        "startChar": 26,
+        "endLine": 44,
+        "endChar": 31
+      },
+      "revId": "f509c943400808fee6288b391bf7d3cd8fec97b6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_6583ba56",
+        "filename": "src/js/components/ui/NotificationList.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-04T11:35:07Z",
+      "side": 1,
+      "message": "this can be rearanged into:\n \n\u003cdiv className\u003d\"container-fluid notification-list\"\u003e\n  \u003cdiv className\u003d\"row\"\u003e\n    \u003cdiv className\u003d\"col-lg-6 col-sm-8 col-xs-12\"\u003e\n      {notifications.reverse()}\n    \u003c/div\u003e\n  \u003c/div\u003e\n\u003c/div\u003e\n\nthis allows to get rid of notifications-container",
+      "revId": "f509c943400808fee6288b391bf7d3cd8fec97b6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_859feeb3",
+        "filename": "src/less/base.less",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-04T11:35:07Z",
+      "side": 1,
+      "message": "can we reuse patternfly variables here?",
+      "revId": "f509c943400808fee6288b391bf7d3cd8fec97b6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_e596ea93",
+        "filename": "src/less/components/NotificationList.less",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-04T11:35:07Z",
+      "side": 1,
+      "message": "this one is not needed (see comment in NofificationList.js)",
+      "revId": "f509c943400808fee6288b391bf7d3cd8fec97b6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_0592fe9e",
+        "filename": "src/less/components/NotificationList.less",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-04T11:35:07Z",
+      "side": 1,
+      "message": "with above change, use\nbottom: @footer-height;",
+      "revId": "f509c943400808fee6288b391bf7d3cd8fec97b6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_2591c299",
+        "filename": "src/less/components/NotificationList.less",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-04T11:35:07Z",
+      "side": 1,
+      "message": "and remove this margin",
+      "revId": "f509c943400808fee6288b391bf7d3cd8fec97b6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
