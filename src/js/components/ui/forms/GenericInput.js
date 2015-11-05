@@ -38,6 +38,7 @@ let GenericInput = React.createClass({
         <label htmlFor={this.props.name} className="control-label">{this.props.title}</label>
         <input type={this.props.type}
                name={this.props.name}
+               ref={this.props.name}
                id={this.props.name}
                className="form-control"
                onChange={this.changeValue}

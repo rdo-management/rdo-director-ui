@@ -1,11 +1,10 @@
 import React from 'react';
 
-import AuthenticatedComponent from '../utils/AuthenticatedComponent';
 import { PageHeader } from '../ui/PageHeader';
 import NavTab from '../ui/NavTab';
 import NodesStore from '../../stores/NodesStore';
 
-export default AuthenticatedComponent(class Nodes extends React.Component {
+export default class Nodes extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -44,4 +43,7 @@ export default AuthenticatedComponent(class Nodes extends React.Component {
       </div>
     );
   }
-});
+}
+Nodes.propTypes = {
+  children: React.PropTypes.node
+};

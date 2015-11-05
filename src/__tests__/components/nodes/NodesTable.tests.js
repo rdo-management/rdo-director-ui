@@ -20,7 +20,7 @@ describe('NodesTable component', () => {
   it('should render DataTable and pass data', () => {
     expect(nodesTableVdom.type.name).toEqual('DataTable');
     expect(nodesTableVdom.props.data).toEqual(data);
-    expect(nodesTableVdom.props.noRowsRenderer.name).toEqual('bound renderNoNodesFound');
+    expect(nodesTableVdom.props.noRowsRenderer.name).toBeDefined();
     expect(nodesTableVdom.props.children.length).toEqual(4);
   });
 
