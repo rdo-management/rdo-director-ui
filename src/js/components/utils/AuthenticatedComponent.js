@@ -11,6 +11,10 @@ export default (ComposedComponent) => {
       this.changeListener = this._onChange.bind(this);
     }
 
+    getChildContext() {
+      return this.state;
+    }
+
     componentDidMount() {
       LoginStore.addChangeListener(this.changeListener);
     }
@@ -20,13 +24,12 @@ export default (ComposedComponent) => {
     }
 
     _onChange() {
-      this.setState(this._getLoginState(), () => {
-        this._shouldRedirectToLogin();
-      });
+      this._shouldRedirectToLogin();
+      this.setState(this._getLoginState());
     }
 
     _shouldRedirectToLogin() {
-      if (!this.state.userLoggedIn) {
+      if (!LoginStore.userLoggedIn) {
         this.context.history.pushState(null, '/login');
       }
     }
@@ -54,6 +57,10 @@ export default (ComposedComponent) => {
   };
   AuthenticatedComponent.contextTypes = {
     history: React.PropTypes.object
+  };
+  AuthenticatedComponent.childContextTypes = {
+    user: React.PropTypes.object,
+    userLoggedIn: React.PropTypes.bool
   };
 
   return AuthenticatedComponent;

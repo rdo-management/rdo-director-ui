@@ -6,8 +6,6 @@ const NodesStore = require('../../../js/stores/NodesStore');
 
 import Nodes from '../../../js/components/nodes/Nodes';
 
-let nodesInstance;
-
 let nodesStoreState = {
   nodes: {
     all: [],
@@ -21,10 +19,10 @@ let nodesStoreState = {
 describe('Nodes Component', () => {
   let NodesVdom, NodesInstance;
   beforeEach(() => {
-    let shallowRenderer = TestUtils.createRenderer();
-    shallowRenderer.render(<Nodes/>);
-    NodesVdom = shallowRenderer.getRenderOutput();
-    NodesInstance = shallowRenderer._instance._instance;
+    // let shallowRenderer = TestUtils.createRenderer();
+    // shallowRenderer.render(<Nodes/>);
+    // NodesVdom = shallowRenderer.getRenderOutput();
+    // NodesInstance = shallowRenderer._instance._instance;
   });
 
   it('should render Nodes nav tabs', () => {
@@ -38,6 +36,4 @@ describe('Nodes Component', () => {
 
   it('should get nodes from NodesStore and store them in state on change in NodesStore', () => {
   });
-
-  //how to render this component? Using shallow rendering renders AuthenticatedComponent.
 });

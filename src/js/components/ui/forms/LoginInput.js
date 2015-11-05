@@ -34,6 +34,7 @@ let LoginInput = React.createClass({
         <div className="col-sm-10 col-md-10">
           <input type={this.props.type}
                  name={this.props.name}
+                 ref={this.props.name}
                  className="form-control"
                  id={this.props.name}
                  onChange={this.changeValue}
