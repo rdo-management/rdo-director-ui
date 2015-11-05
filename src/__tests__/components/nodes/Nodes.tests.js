@@ -38,6 +38,4 @@ describe('Nodes Component', () => {
 
   it('should get nodes from NodesStore and store them in state on change in NodesStore', () => {
   });
-
-  //how to render this component? Using shallow rendering renders AuthenticatedComponent.
 });

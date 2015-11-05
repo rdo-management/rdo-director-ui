@@ -88,7 +88,8 @@ export default class Login extends React.Component {
             </div>
             <div className="col-sm-7 col-md-6 col-lg-5 login">
               <FormErrorList errors={this.state.formErrors}/>
-              <Formsy.Form ref="form" role="form"
+              <Formsy.Form ref="form"
+                           role="form"
                            className="form-horizontal"
                            onSubmit={this.handleLogin.bind(this)}
                            onValid={this._enableButton.bind(this)}
