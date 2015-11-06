@@ -1,12 +1,11 @@
 import React from 'react';
 
-import OverviewActions from '../../actions/OverviewActions';
+import RolesActions from '../../actions/RolesActions';
 import FlavorStore from '../../stores/FlavorStore';
 import NodePicker from './NodePicker';
 import NodeStack from './NodeStack';
-import { PageHeader } from '../ui/PageHeader';
 
-export default class Overview extends React.Component {
+export default class Roles extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -32,7 +31,7 @@ export default class Overview extends React.Component {
     return (
       <div className="row">
         <div className="col-sm-12">
-          <PageHeader>Overcloud Deployment</PageHeader>
+          <h2>Deployment Roles</h2>
           <FlavorPanelList flavors={this.state.flavors}/>
         </div>
       </div>
@@ -130,7 +129,7 @@ export class FreeNodesPanel extends React.Component {
     return (
       <div className="panel panel-default role-panel free-nodes-panel">
         <div className="panel-heading">
-          <h3 className="panel-title">Free Nodes</h3>
+          <h3 className="panel-title">Available Nodes</h3>
         </div>
         <div className="panel-body clearfix">
           <NodeStack count={this.props.nodeCount} />
@@ -164,7 +163,7 @@ export class RolePanel extends React.Component {
   updateCount(increment) {
     let updatedRole = this.props.role;
     updatedRole.nodeCount = this.props.role.nodeCount + increment;
-    OverviewActions.updateRole(updatedRole);
+    RolesActions.updateRole(updatedRole);
   }
 
   render() {

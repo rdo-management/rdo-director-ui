@@ -39,7 +39,7 @@ let LoginInput = React.createClass({
                  id={this.props.name}
                  onChange={this.changeValue}
                  value={this.getValue()}
-                 placeholder={this.props.placeholder} />
+                 placeholder={this.props.placeholder}/>
           <span className='help-block'>{errorMessage}</span>
         </div>
       </div>
