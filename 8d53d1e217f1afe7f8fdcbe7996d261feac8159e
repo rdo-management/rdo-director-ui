@@ -33,6 +33,24 @@
       "revId": "8d53d1e217f1afe7f8fdcbe7996d261feac8159e",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ac7a964_539a3b15",
+        "filename": "src/js/components/environment_configuration/EnvironmentGroup.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-09T14:17:57Z",
+      "side": 1,
+      "message": "Having no environment in EnvironmentGroup is an error in mapping file.",
+      "parentUuid": "7ac7a964_735ad784",
+      "revId": "8d53d1e217f1afe7f8fdcbe7996d261feac8159e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
