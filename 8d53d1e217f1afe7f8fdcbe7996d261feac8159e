@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ac7a964_d369eb26",
+        "filename": "src/js/components/environment_configuration/EnvironmentConfiguration.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1006608
+      },
+      "writtenOn": "2015-11-09T14:06:41Z",
+      "side": 1,
+      "message": "Should add a TODO here to note what needs to be done",
+      "revId": "8d53d1e217f1afe7f8fdcbe7996d261feac8159e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ac7a964_735ad784",
+        "filename": "src/js/components/environment_configuration/EnvironmentGroup.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1006608
+      },
+      "writtenOn": "2015-11-09T14:06:41Z",
+      "side": 1,
+      "message": "Any chance of there being no Environments?",
+      "revId": "8d53d1e217f1afe7f8fdcbe7996d261feac8159e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
