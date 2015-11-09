@@ -41,7 +41,7 @@ export default class NotificationList extends React.Component {
     });
 
     return (
-      <div className="container-fluid notification-list">
+      <div className={this.props.className + ' container-fluid notification-list'}>
         <div className="row">
           <div className="col-lg-6 col-sm-8 col-xs-12">
             {notifications.reverse()}
@@ -51,3 +51,9 @@ export default class NotificationList extends React.Component {
     );
   }
 }
+NotificationList.propTypes = {
+  className: React.PropTypes.string
+};
+NotificationList.defaultProps = {
+  className: ''
+};

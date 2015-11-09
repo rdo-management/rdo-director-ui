@@ -14,9 +14,9 @@ export default AuthenticatedComponent(class Nodes extends React.Component {
           <NavBar/>
         </header>
         <div className="wrapper-fixed-body container-fluid">
-          <NotificationList/>
           {this.props.children}
         </div>
+        <NotificationList className="above-footer"/>
         <Footer/>
       </div>
     );
