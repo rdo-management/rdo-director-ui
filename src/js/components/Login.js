@@ -9,6 +9,7 @@ import KeystoneApiService from '../services/KeystoneApiService';
 import LoginActions from '../actions/LoginActions';
 import LoginStore from '../stores/LoginStore';
 import NotificationActions from '../actions/NotificationActions';
+import NotificationList from './ui/NotificationList';
 
 export default class Login extends React.Component {
   constructor() {
@@ -124,6 +125,7 @@ export default class Login extends React.Component {
             </div>
           </div>
         </div>
+        <NotificationList/>
       </div>
     );
   }
