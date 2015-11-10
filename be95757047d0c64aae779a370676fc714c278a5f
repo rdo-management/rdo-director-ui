@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ac7a964_4446ecc0",
+        "filename": "src/js/components/NavBar.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1006608
+      },
+      "writtenOn": "2015-11-10T14:30:31Z",
+      "side": 1,
+      "message": "I thought we agreed that validations would not be a section?",
+      "revId": "be95757047d0c64aae779a370676fc714c278a5f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
