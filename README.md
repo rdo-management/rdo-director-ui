@@ -8,6 +8,11 @@
    ```yum install gcc-c++ make```
 
 
+### Install and run Validations API service on Undercloud machine
+
+Use this guide to setup and run API on Undercloud machine:
+https://github.com/rthallisey/clapper/blob/ansible/ansible-tests/README.md
+
 ### Make Undercloud API services available when running app from laptop
 
 UI requires the openstack API services to be publicly accessible.
@@ -29,7 +34,7 @@ sudo iptables -t nat -A OUTPUT -d $UNDERCLOUD_IP -j DNAT --to-destination 127.0.
 
 Setup ssh tunnel for OpenStack API Services
 
-```ssh stack@$VIRT_IP -L 8774:$UNDERCLOUD_IP:8774 -L 9292:$UNDERCLOUD_IP:9292 -L 8777:$UNDERCLOUD_IP:8777 -L 9696:$UNDERCLOUD_IP:9696 -L 6385:$UNDERCLOUD_IP:6385 -L 8004:$UNDERCLOUD_IP:8004 -L 5000:$UNDERCLOUD_IP:5000 -L 8080:$UNDERCLOUD_IP:8080 -L 8585:$UNDERCLOUD_IP:8585  -L 35357:$UNDERCLOUD_IP:35357```
+```ssh stack@$VIRT_IP -L 8774:$UNDERCLOUD_IP:8774 -L 9292:$UNDERCLOUD_IP:9292 -L 8777:$UNDERCLOUD_IP:8777 -L 9696:$UNDERCLOUD_IP:9696 -L 6385:$UNDERCLOUD_IP:6385 -L 8004:$UNDERCLOUD_IP:8004 -L 5000:$UNDERCLOUD_IP:5000 -L 5001:$UNDERCLOUD_IP:5001 -L 8080:$UNDERCLOUD_IP:8080 -L 8585:$UNDERCLOUD_IP:8585  -L 35357:$UNDERCLOUD_IP:35357```
 
 Note that those ports need to be enabled in Undercloud VM's iptables (this should be already in place from undercloud installation):
 
@@ -42,14 +47,16 @@ add
 -A INPUT -p tcp -m tcp --dport 9696 -j ACCEPT
 -A INPUT -p tcp -m tcp --dport 8777 -j ACCEPT
 -A INPUT -p tcp -m tcp --dport 8080 -j ACCEPT
+-A INPUT -p tcp -m tcp --dport 5001 -j ACCEPT # enable Validations API port
 ...
 ```
-below 8585 rule.
+below 8585 rule and restart iptables
+
+```systemctl restart iptables```
 
 
 Original guide:
 https://wiki.openstack.org/wiki/Tuskar/Instack#Connecting_to_Undercloud_from_external_place_.28e.g._your_laptop.29
-
 
 ### Configure CORS for OpenStack services
 
