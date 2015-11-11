@@ -16,6 +16,40 @@
       "revId": "be95757047d0c64aae779a370676fc714c278a5f",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ac7a964_330054aa",
+        "filename": "src/js/components/environment_configuration/EnvironmentConfiguration.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2015-11-11T11:53:16Z",
+      "side": 1,
+      "message": "This will break if no plan data is present (yet). It currently works, since it\u0027s using mock data (synchronously), but once it\u0027s hooked up to the API we should account for a scenario of someone accessing the page without plan data.",
+      "revId": "be95757047d0c64aae779a370676fc714c278a5f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ac7a964_b32b842f",
+        "filename": "src/js/components/plan/Plan.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2015-11-11T11:53:16Z",
+      "side": 1,
+      "message": "See comment in EnvironmentComponent component. This is potentially an asynchronous call, so the initial data will probably be set elsewhere.",
+      "revId": "be95757047d0c64aae779a370676fc714c278a5f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
