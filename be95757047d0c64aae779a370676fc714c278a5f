@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "7ac7a964_93abe888",
+        "filename": "src/js/components/environment_configuration/EnvironmentConfiguration.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-11T14:12:19Z",
+      "side": 1,
+      "message": "the data will be retrieved separately directly in this component (as there will be specific tripleo-common method for it) and we\u0027ll be passing plan id to retrieve it. So what you say applies. Plan will be retrieved in Plan component. I\u0027ll update the code gradually as we are getting it hooked with api.",
+      "parentUuid": "7ac7a964_330054aa",
+      "revId": "be95757047d0c64aae779a370676fc714c278a5f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7ac7a964_b32b842f",
         "filename": "src/js/components/plan/Plan.js",
         "patchSetId": 2
@@ -47,6 +65,24 @@
       "writtenOn": "2015-11-11T11:53:16Z",
       "side": 1,
       "message": "See comment in EnvironmentComponent component. This is potentially an asynchronous call, so the initial data will probably be set elsewhere.",
+      "revId": "be95757047d0c64aae779a370676fc714c278a5f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ac7a964_b3b0e4f5",
+        "filename": "src/js/components/plan/Plan.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-11T14:12:19Z",
+      "side": 1,
+      "message": "yeah, we\u0027ll render the children only when plan data are present.",
+      "parentUuid": "7ac7a964_b32b842f",
       "revId": "be95757047d0c64aae779a370676fc714c278a5f",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
