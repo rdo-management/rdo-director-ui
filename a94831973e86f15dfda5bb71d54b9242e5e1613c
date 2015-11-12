@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ac7a964_6e69fe8a",
+        "filename": "src/js/services/TripleOApiService.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-12T12:03:24Z",
+      "side": 1,
+      "message": "I am keeping this method here, but I expect other similar methods for other api calls to exist directly in the components which call the requests as I think that what happens with the data is component specific.\n\nE.g. as we do in Login. The form gets submitted, makes api call (through keystoneapiservice) and handles the response in component, invalidating the form depending on the result. if the result is successful, it calls action which updates the store so other components can adjust to new data if they need.",
+      "revId": "a94831973e86f15dfda5bb71d54b9242e5e1613c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
