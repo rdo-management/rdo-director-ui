@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "7ac7a964_eeed0e8d",
+        "filename": "src/js/services/TripleOApiService.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2015-11-12T13:14:41Z",
+      "side": 1,
+      "message": "The relevant method in tripleo-common accepts a \u003cname\u003e param. Maybe change uuid to name?",
+      "revId": "a94831973e86f15dfda5bb71d54b9242e5e1613c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7ac7a964_6e69fe8a",
         "filename": "src/js/services/TripleOApiService.js",
         "patchSetId": 1
