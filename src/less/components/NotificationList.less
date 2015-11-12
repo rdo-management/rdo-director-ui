@@ -1,9 +1,13 @@
 .notification-list {
   position: absolute;
   left:0;
-  bottom: @footer-height;
+  bottom: 0;
   z-index: 100;
   width: 100%;
+
+  &.above-footer {
+    bottom: @footer-height;
+  }
 
   .alert {
     opacity: .95;
