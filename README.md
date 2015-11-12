@@ -13,6 +13,11 @@
 Use this guide to setup and run API on Undercloud machine:
 https://github.com/rthallisey/clapper/blob/ansible/ansible-tests/README.md
 
+### Install and run TripleO API service on Undercloud machine
+
+Use this guide to setup and run API on Undercloud machine:
+https://github.com/openstack/tripleo-common/tree/master/tripleo_common/README.md
+
 ### Make Undercloud API services available when running app from laptop
 
 UI requires the openstack API services to be publicly accessible.

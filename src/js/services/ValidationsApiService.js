@@ -1,3 +1,4 @@
+import * as _ from 'lodash';
 import request from 'reqwest';
 import when from 'when';
 
@@ -9,44 +10,45 @@ import ValidationsApiErrorHandler from './ValidationsApiErrorHandler';
 import { VALIDATIONS_URL } from '../constants/APIEndpointUrls';
 
 class ValidationsApiService {
-  /**
-   * Validations API: GET /v1/validations/
-   * @returns {array} of validations.
-   */
-  getValidationsRequest() {
-    return when(request({
-      url: VALIDATIONS_URL + GET_VALIDATIONS_PATH,
+  constructor() {
+    this.defaultGetRequest = {
       method: 'GET',
       headers: { 'X-Auth-Token': TempStorage.getItem('keystoneAuthTokenId') },
       crossOrigin: true,
       contentType: 'application/json',
       type: 'json'
-    }));
+    };
+  }
+  /**
+   * Validations API: GET /v1/validations/
+   * @returns {array} of validations.
+   */
+  getValidations() {
+    return when(request(_.merge(
+      this.defaultGetRequest,
+      { url: VALIDATIONS_URL + GET_VALIDATIONS_PATH }
+    )));
   }
 
   /**
    * Validations API: GET /v1/validations/<uuid>
    * @returns validation.
    */
-  getValidationRequest(uuid) {
-    return when(request({
-      url: VALIDATIONS_URL + GET_VALIDATIONS_PATH + uuid + '/',
-      method: 'GET',
-      headers: { 'X-Auth-Token': TempStorage.getItem('keystoneAuthTokenId') },
-      crossOrigin: true,
-      contentType: 'application/json',
-      type: 'json'
-    }));
+  getValidation(uuid) {
+    return when(request(_.merge(
+      this.defaultGetRequest,
+      { url: `${VALIDATIONS_URL}${GET_VALIDATIONS_PATH}${uuid}/`}
+    )));
   }
 
   /**
-  * Handles getValidationsRequest
+  * Handles getValidations
   */
-  getValidations() {
-    this.getValidationsRequest().then((response) => {
+  handleGetValidations() {
+    this.getValidations().then((response) => {
       ValidationsActions.listValidations(response);
     }).catch((error) => {
-      console.error('Error in getValidations', error);
+      console.error('Error in handleGetValidations', error);
       let errorHandler = new ValidationsApiErrorHandler(error);
       errorHandler.errors.forEach((error) => {
         NotificationActions.notify(error);

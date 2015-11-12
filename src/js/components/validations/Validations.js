@@ -14,7 +14,7 @@ export default class Validations extends React.Component {
   }
 
   componentDidMount() {
-    ValidationsApiService.getValidations();
+    ValidationsApiService.handleGetValidations();
     ValidationsStore.addChangeListener(this.changeListener);
   }
 
