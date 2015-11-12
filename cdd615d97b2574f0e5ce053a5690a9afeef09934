@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ac7a964_e146ff22",
+        "filename": "src/js/components/ui/NotificationList.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1006608
+      },
+      "writtenOn": "2015-11-12T14:20:58Z",
+      "side": 1,
+      "message": "cool, I was wondering how that would work",
+      "revId": "cdd615d97b2574f0e5ce053a5690a9afeef09934",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
