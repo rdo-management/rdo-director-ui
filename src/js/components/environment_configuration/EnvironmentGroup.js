@@ -27,6 +27,9 @@ export default class EnvironmentGroup extends React.Component {
                            id={environment.file}
                            title={environment.title}
                            value={this.state.checkedEnvironment === environment.file ? true : false}
+                           validations={{requiresEnvironments: environment.requires}}
+                           validationError={`This environment requires
+                                             '${environment.requires}'`}
                            checked={this.state.checkedEnvironment === environment.file}
                            onChange={this.onGroupedCheckBoxChange.bind(this)}
                            description={environment.description}/>
@@ -39,6 +42,9 @@ export default class EnvironmentGroup extends React.Component {
                          id={environment.file}
                          title={environment.title}
                          value={environment.enabled || false}
+                         validations={{requiresEnvironments: environment.requires}}
+                         validationError={`This environment requires
+                                           '${environment.requires}'`}
                          description={environment.description}/>
       );
     }

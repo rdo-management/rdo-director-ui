@@ -1,17 +1,32 @@
+import * as _ from 'lodash';
 import Formsy from 'formsy-react';
 import React from 'react';
 
+import CapabilitiesMap from '../../data/CapabilitiesMap';
 import EnvironmentConfigurationTopic from './EnvironmentConfigurationTopic';
 import FormErrorList from '../ui/forms/FormErrorList';
-// import KeystoneApiErrorHandler from '../services/KeystoneApiErrorHandler';
+import NotificationActions from '../../actions/NotificationActions';
+import TripleOApiService from '../../services/TripleOApiService';
+import TripleOApiErrorHandler from '../../services/TripleOApiErrorHandler';
 
 export default class EnvironmentConfiguration extends React.Component {
   constructor() {
     super();
     this.state = {
       canSubmit: false,
-      formErrors: []
+      formErrors: [],
+      environmentConfiguration: {
+        topics: []
+      }
     };
+  }
+
+  componentDidMount() {
+    // TODO(jtomasek): replace with
+    // TripleOApiService.getEnvironments();
+    this.setState({
+      environmentConfiguration: CapabilitiesMap
+    });
   }
 
   enableButton() {
@@ -24,30 +39,29 @@ export default class EnvironmentConfiguration extends React.Component {
 
   handleSubmit(formData, resetForm, invalidateForm) {
     console.log(formData);
-    // TODO(jtomasek): Handle form submit and errors here
-    // Sends API request with form data as param
-
-    // this.disableButton();
-    // KeystoneApiService.authenticateUser(formData.username, formData.password).then((response) => {
-    //   LoginActions.loginUser(response.access);
-    //   NotificationActions.notify({
-    //     title: 'Login Successful',
-    //     message: 'The user was logged in successfully',
-    //     type: 'success'
-    //   });
-    // }).catch((error) => {
-    //   this.enableButton();
-    //   console.error('Error in handleLogin', error);
-    //   let errorHandler = new KeystoneApiErrorHandler(error, Object.keys(this.refs.form.inputs));
-    //   invalidateForm(errorHandler.formFieldErrors);
-    //   this.setState({
-    //     formErrors: errorHandler.errors
-    //   });
-    // });
+    this.disableButton();
+    TripleOApiService.updateEnvironments(formData).then((response) => {
+      // TODO(jtomasek): we expect to receive updated environments mapping as a response
+      // update current state with this data.
+      // this.setState({ environmentConfiguration: response })
+      NotificationActions.notify({
+        title: 'Environment Configuration updated',
+        message: 'The Environment Configuration has been successfully updated',
+        type: 'success'
+      });
+    }).catch((error) => {
+      this.enableButton();
+      console.error('Error in EnvironmentConfiguration.handleSubmit', error);
+      let errorHandler = new TripleOApiErrorHandler(error, Object.keys(this.refs.form.inputs));
+      invalidateForm(errorHandler.formFieldErrors);
+      this.setState({
+        formErrors: errorHandler.errors
+      });
+    });
   }
 
   render() {
-    let topics = this.props.plan.capabilities.topics.map((topic, index) => {
+    let topics = this.state.environmentConfiguration.topics.map((topic, index) => {
       return (
         <EnvironmentConfigurationTopic key={index}
                                        title={topic.title}
@@ -91,3 +105,17 @@ export default class EnvironmentConfiguration extends React.Component {
 EnvironmentConfiguration.propTypes = {
   plan: React.PropTypes.object
 };
+
+/**
+* requiresEnvironments validation
+* Invalidates input if it is selected and environment it requires is not.
+* example: validations="requiredEnvironments:['some_environment.yaml']"
+*/
+Formsy.addValidationRule('requiresEnvironments',
+                         function (values, value, requiredEnvironmentFieldNames) {
+  if(value) {
+    return !_.filter(_.values(_.pick(values, requiredEnvironmentFieldNames)),
+                     function(val){return val === false;}).length;
+  }
+  return true;
+});
