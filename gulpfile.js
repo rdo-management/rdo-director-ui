@@ -48,7 +48,7 @@ gulp.task('fonts', function() {
 gulp.task('images', function() {
   var imagesPath = 'src/img/*';
   var patternFlyImagesPath = 'node_modules/patternfly/dist/img/*';
-  return gulp.src([imagesPath, patternFlyImagesPath])
+  return gulp.src([patternFlyImagesPath, imagesPath])
     .pipe(gulp.dest('./dist/img'));
 });
 
