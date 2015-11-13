@@ -1,0 +1,157 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ac7a964_3d41f739",
+        "filename": "src/js/components/plan/NewPlan.js",
+        "patchSetId": 11
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-13T20:03:06Z",
+      "side": 1,
+      "message": "this does not need to be authenticatedComponent, everyting is now wrapped in authenticatedContent component which is authenticatedComponent.",
+      "revId": "a1b4efae3b9f550f1c2254988c72f02b71abe27c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ac7a964_bd9b47c8",
+        "filename": "src/js/components/plan/NewPlan.js",
+        "patchSetId": 11
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-13T20:03:06Z",
+      "side": 1,
+      "message": "Is this needed? It seems to me that we always override the state in line 71, so this seems not necessary.\n\nNote: this.setState is async, so if the following code depends on state to be updated, it needs to be put into callback as a second parameter:\nthis.setState({files: []}, () \u003d\u003e {//here});\nbut as I said, I don\u0027t think we need it.",
+      "revId": "a1b4efae3b9f550f1c2254988c72f02b71abe27c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ac7a964_5d3793e3",
+        "filename": "src/js/components/plan/NewPlan.js",
+        "patchSetId": 11
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-13T20:03:06Z",
+      "side": 1,
+      "message": "You can make the input components to use Formsy mixin and get the validations for free. Let me know if you need help with that",
+      "revId": "a1b4efae3b9f550f1c2254988c72f02b71abe27c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ac7a964_fda5bf04",
+        "filename": "src/js/components/plan/NewPlan.js",
+        "patchSetId": 11
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-13T20:03:06Z",
+      "side": 1,
+      "message": "we should sync up on how we define api promises. I have been putting the when() as part of the api service method. I don\u0027t say it is best solution, we should just have it the same across the codebase.",
+      "revId": "a1b4efae3b9f550f1c2254988c72f02b71abe27c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ac7a964_3daf37e5",
+        "filename": "src/js/components/plan/NewPlan.js",
+        "patchSetId": 11
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-13T20:03:06Z",
+      "side": 1,
+      "message": "This is not needed any more, right?\nFire up notification that creation was success and redirect to plan list.\n\n.catch failure as form error just like here: line 50 https://review.gerrithub.io/#/c/252180/1/src/js/components/environment_configuration/EnvironmentConfiguration.js",
+      "revId": "a1b4efae3b9f550f1c2254988c72f02b71abe27c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ac7a964_fd6e9fc8",
+        "filename": "src/js/components/plan/NewPlan.js",
+        "patchSetId": 11
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-13T20:03:06Z",
+      "side": 1,
+      "message": "Make this for Formsy.Form",
+      "revId": "a1b4efae3b9f550f1c2254988c72f02b71abe27c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ac7a964_3d6817ba",
+        "filename": "src/js/components/plan/NewPlan.js",
+        "patchSetId": 11
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-13T20:03:06Z",
+      "side": 1,
+      "message": "It would be better to have this as submit button and this.createPlan to be triggered by Formsy.form onSubmit prop. (see Login.js or EnvironmentConfiguration.js)",
+      "revId": "a1b4efae3b9f550f1c2254988c72f02b71abe27c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ac7a964_1d827b4f",
+        "filename": "src/js/constants/PlansConstants.js",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-13T20:03:06Z",
+      "side": 1,
+      "message": "Are those still needed?",
+      "revId": "a1b4efae3b9f550f1c2254988c72f02b71abe27c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ac7a964_bd826750",
+        "filename": "src/js/services/TripleOApiService.js",
+        "patchSetId": 11
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-13T20:03:06Z",
+      "side": 1,
+      "message": "This is replaced by _createPlan in NewPlan line 78, right?",
+      "revId": "a1b4efae3b9f550f1c2254988c72f02b71abe27c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
