@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { PageHeader } from '../ui/PageHeader';
-import CapabilitiesMap from '../../data/CapabilitiesMap';
 
 export default class Plan extends React.Component {
   constructor() {
@@ -9,7 +8,6 @@ export default class Plan extends React.Component {
     this.state = {
       // plan: PlanStore.getPlan('uuid from route');
       plan: {
-        capabilities: CapabilitiesMap.content
       }
     };
     this.changeListener = this._onChange.bind(this);
