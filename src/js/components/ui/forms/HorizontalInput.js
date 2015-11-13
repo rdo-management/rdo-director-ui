@@ -2,10 +2,9 @@ import ClassNames from 'classnames';
 import Formsy from 'formsy-react';
 import React from 'react';
 
-class GroupedCheckBox extends React.Component {
+class HorizontalInput extends React.Component {
   changeValue(event) {
-    this.props.onChange(event.target.checked, this.props.name);
-    this.props.setValue(event.target.checked);
+    this.props.setValue(event.target.value);
   }
 
   renderErrorMessage() {
@@ -24,47 +23,52 @@ class GroupedCheckBox extends React.Component {
 
   render() {
     let divClasses = ClassNames({
-      'checkbox': this.props.type === 'checkbox',
-      'radio': this.props.type === 'radio',
+      'form-group': true,
       'has-error': this.props.showError(),
-      'required': this.props.showRequired()
+      'has-success': this.props.isValid(),
+      'required': this.props.isRequired()
     });
 
     return (
       <div className={divClasses}>
-        <label htmlFor={this.props.id} className="control-label">
-          <input type={this.props.type}
-                 name={this.props.name}
-                 ref={this.props.id}
-                 id={this.props.id}
-                 onChange={this.changeValue.bind(this)}
-                 checked={!!this.props.getValue()}
-                 value={this.props.getValue()}/>
+        <label htmlFor={this.props.name}
+               className={`${this.props.labelColumnClasses} control-label`}>
           {this.props.title}
         </label>
-        {this.renderErrorMessage()}
-        {this.renderDescription()}
+        <div className={this.props.inputColumnClasses}>
+          <input type={this.props.type}
+                 name={this.props.name}
+                 ref={this.props.name}
+                 id={this.props.name}
+                 className="form-control"
+                 onChange={this.changeValue.bind(this)}
+                 value={this.props.getValue()}
+                 placeholder={this.props.placeholder} />
+          {this.renderErrorMessage()}
+          {this.renderDescription()}
+        </div>
       </div>
     );
   }
 }
-GroupedCheckBox.propTypes = {
+HorizontalInput.propTypes = {
   description: React.PropTypes.string,
   getErrorMessage: React.PropTypes.func,
   getValue: React.PropTypes.func,
-  id: React.PropTypes.string.isRequired,
+  inputColumnClasses: React.PropTypes.string.isRequired,
   isRequired: React.PropTypes.func,
   isValid: React.PropTypes.func,
+  labelColumnClasses: React.PropTypes.string.isRequired,
   name: React.PropTypes.string.isRequired,
-  onChange: React.PropTypes.func.isRequired,
   placeholder: React.PropTypes.string,
   setValue: React.PropTypes.func,
   showError: React.PropTypes.func,
-  showRequired: React.PropTypes.func,
   title: React.PropTypes.string.isRequired,
   type: React.PropTypes.string
 };
-GroupedCheckBox.defaultProps = {
-  type: 'checkbox'
+HorizontalInput.defaultProps = {
+  inputColumnClasses: 'col-sm-10',
+  labelColumnClasses: 'col-sm-2',
+  type: 'text'
 };
-export default Formsy.HOC(GroupedCheckBox);
+export default Formsy.HOC(HorizontalInput);

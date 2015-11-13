@@ -1,31 +1,19 @@
 import Formsy from 'formsy-react';
 import React from 'react';
 
-let LoginInput = React.createClass({
+class LoginInput extends React.Component {
+  changeValue(event) {
+    this.props.setValue(event.target.value);
+  }
 
-  propTypes: {
-    name: React.PropTypes.string.isRequired,
-    placeholder: React.PropTypes.string,
-    title: React.PropTypes.string.isRequired,
-    type: React.PropTypes.string
-  },
+  renderErrorMessage() {
+    let errorMessage = this.props.getErrorMessage();
+    return errorMessage ? (
+      <span className='help-block'>{errorMessage}</span>
+    ) : false;
+  }
 
-  mixins: [Formsy.Mixin],
-
-  getDefaultProps: function() {
-    return {
-      type: 'text'
-    };
-  },
-
-  changeValue: function(event) {
-    this.setValue(event.currentTarget.value);
-  },
-
-  render: function() {
-
-    let errorMessage = this.getErrorMessage();
-
+  render() {
     return (
       <div className="form-group">
         <label className="col-sm-2 col-md-2 control-label" htmlFor={this.props.name}>
@@ -37,14 +25,25 @@ let LoginInput = React.createClass({
                  ref={this.props.name}
                  className="form-control"
                  id={this.props.name}
-                 onChange={this.changeValue}
-                 value={this.getValue()}
+                 onChange={this.changeValue.bind(this)}
+                 value={this.props.getValue()}
                  placeholder={this.props.placeholder}/>
-          <span className='help-block'>{errorMessage}</span>
+          {this.renderErrorMessage()}
         </div>
       </div>
     );
   }
-});
-
-module.exports = LoginInput;
+}
+LoginInput.propTypes = {
+  getErrorMessage: React.PropTypes.func,
+  getValue: React.PropTypes.func,
+  name: React.PropTypes.string.isRequired,
+  placeholder: React.PropTypes.string,
+  setValue: React.PropTypes.func,
+  title: React.PropTypes.string.isRequired,
+  type: React.PropTypes.string
+};
+LoginInput.defaultProps = {
+  type: 'text'
+};
+export default Formsy.HOC(LoginInput);
