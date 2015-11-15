@@ -19,21 +19,28 @@ let nodesStoreState = {
 describe('Nodes Component', () => {
   let NodesVdom, NodesInstance;
   beforeEach(() => {
-    // let shallowRenderer = TestUtils.createRenderer();
-    // shallowRenderer.render(<Nodes/>);
-    // NodesVdom = shallowRenderer.getRenderOutput();
-    // NodesInstance = shallowRenderer._instance._instance;
+    let shallowRenderer = TestUtils.createRenderer();
+    shallowRenderer.render(<Nodes/>);
+    NodesVdom = shallowRenderer.getRenderOutput();
+    NodesInstance = shallowRenderer._instance._instance;
   });
 
-  it('should render Nodes nav tabs', () => {
+  // TODO(jtomasek): not sure how to mock children passed by react router
+  xit('should render Nodes nav tabs', () => {
   });
 
-  it('should render tab-pane', () => {
+  xit('should render tab-pane', () => {
   });
 
-  it('should listen to NodesStore changes', () => {
+  xit('should listen to NodesStore changes', () => {
   });
 
-  it('should get nodes from NodesStore and store them in state on change in NodesStore', () => {
+  xit('should get nodes from NodesStore and store them in state on change in NodesStore', () => {
+  });
+
+  xit('should issue a request to list Nodes on when mounted', () => {
+    spyOn(IronicApiService, 'handleGetNodes');
+    NodesInstance.componentDidMount();
+    expect(IronicApiService.handleGetNodes).toHaveBeenCalled();
   });
 });
