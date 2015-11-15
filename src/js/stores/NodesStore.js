@@ -38,19 +38,22 @@ class NodesStore extends BaseStore {
 
   _filterRegisteredNodes(nodes) {
     return nodes.filter((node) => {
-      return true;
+      return node.provision_state === 'available' &&
+             !node.provision_updated_at ||
+             node.provision_state === 'manageable';
+      // ??? return node.provision_state === 'enroll';
     });
   }
 
   _filterDiscoveredNodes(nodes) {
     return nodes.filter((node) => {
-      return true;
+      return node.provision_state === 'available' && !!node.provision_updated_at;
     });
   }
 
   _filterProvisionedNodes(nodes) {
     return nodes.filter((node) => {
-      return true;
+      return node.instance_uuid;
     });
   }
 
