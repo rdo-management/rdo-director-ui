@@ -1,26 +1,53 @@
+import * as _ from 'lodash';
 import React from 'react';
 
-export class DataTableCell extends React.Component {
-  getCellData() {
-    return this.props.rowData[this.props.dataKey];
-  }
+/**
+* Default table header cell class
+*/
+export class DataTableHeaderCell extends React.Component {
   render() {
-    let cellData = this.getCellData();
     return (
-      <td>{cellData}</td>
+      <th {...this.props}>
+        {this.props.children}
+      </th>
+    );
+  }
+}
+DataTableHeaderCell.propTypes = {
+  children: React.PropTypes.node
+};
+
+/**
+* Default table cell class
+*/
+export class DataTableCell extends React.Component {
+  render() {
+    return (
+      <td {...this.props}>
+        {this.props.children}
+      </td>
     );
   }
 }
 DataTableCell.propTypes = {
-  dataKey: React.PropTypes.string.isRequired,
-  rowData: React.PropTypes.object.isRequired
+  children: React.PropTypes.node
 };
 
-export class DataTableCellLink extends DataTableCell {
+/**
+* Table cell class able to render value from data set passed to columns
+*/
+export class DataTableDataFieldCell extends React.Component {
   render() {
-    let cellData = this.getCellData();
+    let value = _.result(this.props.data[this.props.rowIndex], this.props.field);
     return (
-      <td><a href="#">{cellData}</a></td>
+      <DataTableCell {...this.props}>
+        {value}
+      </DataTableCell>
     );
   }
 }
+DataTableDataFieldCell.propTypes = {
+  data: React.PropTypes.array.isRequired,
+  field: React.PropTypes.string.isRequired,
+  rowIndex: React.PropTypes.number
+};

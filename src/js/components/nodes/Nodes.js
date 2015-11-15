@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { PageHeader } from '../ui/PageHeader';
+import IronicApiService from '../../services/IronicApiService';
 import NavTab from '../ui/NavTab';
 import NodesStore from '../../stores/NodesStore';
 
@@ -25,11 +25,24 @@ export default class Nodes extends React.Component {
     this.setState({ nodes: NodesStore.getState().nodes });
   }
 
+  refreshResults(e) {
+    e.preventDefault();
+    IronicApiService.getNodes();
+  }
+
   render() {
     return (
       <div className="row">
         <div className="col-sm-12">
-          <PageHeader>Nodes</PageHeader>
+          <div className="page-header">
+            <div className="actions pull-right">
+              <a href="" onClick={this.refreshResults.bind(this)}>
+                <span className="pficon pficon-refresh"></span>
+                Refresh Results
+              </a>
+            </div>
+            <h1>Nodes</h1>
+          </div>
           <ul className="nav nav-tabs">
             <NavTab to="/nodes/" onlyActiveOnIndex>Registered</NavTab>
             <NavTab to="/nodes/discovered">Discovered</NavTab>

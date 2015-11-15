@@ -22,7 +22,10 @@ class IronicApiService {
       contentType: 'application/json',
       type: 'json'
     })).then((response) => {
-      let nodes = response.nodes;
+      return when.all(response.nodes.map((node) => {
+        return this.getNode(node.uuid);
+      }));
+    }).then((nodes) => {
       NodesActions.listNodes(nodes);
     }).catch((error) => {
       console.error('Error in getNodes', error);
@@ -31,6 +34,17 @@ class IronicApiService {
         NotificationActions.notify(error);
       });
     });
+  }
+
+  getNode(uuid) {
+    return when(request({
+      url: `${LoginStore.getServiceUrl('ironic')}${GET_NODES_PATH}/${uuid}`,
+      method: 'GET',
+      headers: { 'X-Auth-Token': TempStorage.getItem('keystoneAuthTokenId') },
+      crossOrigin: true,
+      contentType: 'application/json',
+      type: 'json'
+    }));
   }
 }
 
