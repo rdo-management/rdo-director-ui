@@ -33,18 +33,19 @@ let routes = (
   <Route path="/" component={App}>
     <Route component={AuthenticatedContent} onEnter={checkAuth}>
       <IndexRoute component={Overview}/>
+      <Redirect from="nodes" to="nodes/registered"/>
       <Route path="nodes" component={Nodes}>
-        <IndexRoute component={RegisteredNodesTabPane}/>
+        <Route path="registered" component={RegisteredNodesTabPane}/>
         <Route path="discovered" component={DiscoveredNodesTabPane}/>
         <Route path="provisioned" component={ProvisionedNodesTabPane}/>
         <Route path="maintenance" component={MaintenanceNodesTabPane}/>
       </Route>
-      <Route component={Plan}>
-        <Redirect from="plan" to="plan/environment"/>
-        <Route path="plan/environment" component={EnvironmentConfiguration}/>
-        <Route path="plan/roles" component={Roles}/>
-        <Route path="plan/parameters" component={Parameters}/>
-        <Route path="plan/validations" component={Validations}/>
+      <Redirect from="plan" to="plan/environment"/>
+      <Route path="plan" component={Plan}>
+        <Route path="environment" component={EnvironmentConfiguration}/>
+        <Route path="roles" component={Roles}/>
+        <Route path="parameters" component={Parameters}/>
+        <Route path="validations" component={Validations}/>
       </Route>
     </Route>
     <Route path="login" component={Login}/>
