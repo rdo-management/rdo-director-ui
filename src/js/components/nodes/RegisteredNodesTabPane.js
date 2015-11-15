@@ -5,7 +5,7 @@ import NodesTable from './NodesTable';
 
 export default class RegisteredNodesTabPane extends React.Component {
   componentDidMount() {
-    IronicApiService.getNodes();
+    IronicApiService.handleGetNodes();
   }
 
   render() {

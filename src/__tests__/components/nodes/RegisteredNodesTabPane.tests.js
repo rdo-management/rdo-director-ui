@@ -28,8 +28,8 @@ describe('RegisteredNodesTabPane component', () => {
   });
 
   it('should issue a request to list Nodes on when mounted', () => {
-    spyOn(IronicApiService, 'getNodes');
+    spyOn(IronicApiService, 'handleGetNodes');
     tabPaneInstance.componentDidMount();
-    expect(IronicApiService.getNodes).toHaveBeenCalled();
+    expect(IronicApiService.handleGetNodes).toHaveBeenCalled();
   });
 });
