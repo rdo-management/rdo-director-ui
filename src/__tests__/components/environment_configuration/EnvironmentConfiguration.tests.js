@@ -6,25 +6,21 @@ import EnvironmentConfiguration from
 import MockPlan from '../../mocks/MockPlan';
 
 describe('EnvironmentConfiguration component', () => {
-  let EnvConfVdom;
+  let EnvConfVdom, EnvConfInstance;
   beforeEach(() => {
     let shallowRenderer = TestUtils.createRenderer();
     shallowRenderer.render(
-      <EnvironmentConfiguration plan={MockPlan}/>
+      <EnvironmentConfiguration plan={{}}/>
     );
     EnvConfVdom = shallowRenderer.getRenderOutput();
+    EnvConfInstance = shallowRenderer._instance._instance;
   });
 
   it('should render a form with topic panels and environment groups', () => {
+    EnvConfInstance.state = { environmentConfiguration: MockPlan };
     let form = EnvConfVdom.props.children[1].props.children.props.children[1];
     expect(form.ref).toEqual('environmentConfigurationForm');
     let EnvConfTopics = form.props.children[0].props.children.props.children;
-    expect(EnvConfTopics.length).toEqual(1);
-    expect(EnvConfTopics[0].props.title).toEqual('Basic Configuration');
-    let environmentGroups = EnvConfTopics[0].props.environmentGroups;
-    expect(environmentGroups[0].environments.length).toEqual(1);
-    expect(environmentGroups[0].environments[0].enabled).toBeTruthy();
-    expect(environmentGroups[0].environments[0].title).toEqual('Default Configuration');
-    expect(environmentGroups[1].environments.length).toEqual(2);
+    expect(EnvConfTopics.length).toEqual(0);
   });
 });
