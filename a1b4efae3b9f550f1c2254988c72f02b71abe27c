@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7ac7a964_b4035c0e",
+        "filename": "src/js/components/plan/NewPlan.js",
+        "patchSetId": 11
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2015-11-16T17:59:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ac7a964_3d41f739",
+      "revId": "a1b4efae3b9f550f1c2254988c72f02b71abe27c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7ac7a964_bd9b47c8",
         "filename": "src/js/components/plan/NewPlan.js",
         "patchSetId": 11
@@ -30,6 +48,24 @@
       "writtenOn": "2015-11-13T20:03:06Z",
       "side": 1,
       "message": "Is this needed? It seems to me that we always override the state in line 71, so this seems not necessary.\n\nNote: this.setState is async, so if the following code depends on state to be updated, it needs to be put into callback as a second parameter:\nthis.setState({files: []}, () \u003d\u003e {//here});\nbut as I said, I don\u0027t think we need it.",
+      "revId": "a1b4efae3b9f550f1c2254988c72f02b71abe27c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ac7a964_cfff6100",
+        "filename": "src/js/components/plan/NewPlan.js",
+        "patchSetId": 11
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2015-11-16T17:59:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ac7a964_bd9b47c8",
       "revId": "a1b4efae3b9f550f1c2254988c72f02b71abe27c",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "7ac7a964_ef041d17",
+        "filename": "src/js/components/plan/NewPlan.js",
+        "patchSetId": 11
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2015-11-16T17:59:55Z",
+      "side": 1,
+      "message": "Oh great. Will try Formsy then.",
+      "parentUuid": "7ac7a964_5d3793e3",
+      "revId": "a1b4efae3b9f550f1c2254988c72f02b71abe27c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7ac7a964_fda5bf04",
         "filename": "src/js/components/plan/NewPlan.js",
         "patchSetId": 11
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "7ac7a964_6f100d4f",
+        "filename": "src/js/components/plan/NewPlan.js",
+        "patchSetId": 11
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2015-11-16T17:59:55Z",
+      "side": 1,
+      "message": "I agree the service methods should return the promise.\n\nIn fact, that\u0027s what createPlan does, but for some reason I wrapped the returned promise in another when(). \n\nI removed the redundant \u0027when\u0027 here.",
+      "parentUuid": "7ac7a964_fda5bf04",
+      "revId": "a1b4efae3b9f550f1c2254988c72f02b71abe27c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7ac7a964_3daf37e5",
         "filename": "src/js/components/plan/NewPlan.js",
         "patchSetId": 11
@@ -81,6 +153,24 @@
       "writtenOn": "2015-11-13T20:03:06Z",
       "side": 1,
       "message": "This is not needed any more, right?\nFire up notification that creation was success and redirect to plan list.\n\n.catch failure as form error just like here: line 50 https://review.gerrithub.io/#/c/252180/1/src/js/components/environment_configuration/EnvironmentConfiguration.js",
+      "revId": "a1b4efae3b9f550f1c2254988c72f02b71abe27c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ac7a964_0f21599f",
+        "filename": "src/js/components/plan/NewPlan.js",
+        "patchSetId": 11
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2015-11-16T17:59:55Z",
+      "side": 1,
+      "message": "OK, will add the redirect instead of using an event. \n\nThe notification was in the api service method. But I agree it\u0027s better placed here.",
+      "parentUuid": "7ac7a964_3daf37e5",
       "revId": "a1b4efae3b9f550f1c2254988c72f02b71abe27c",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
@@ -121,6 +211,24 @@
     },
     {
       "key": {
+        "uuid": "7ac7a964_2f745598",
+        "filename": "src/js/components/plan/NewPlan.js",
+        "patchSetId": 11
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2015-11-16T17:59:55Z",
+      "side": 1,
+      "message": "OK, will do that when adding Formsy.",
+      "parentUuid": "7ac7a964_3d6817ba",
+      "revId": "a1b4efae3b9f550f1c2254988c72f02b71abe27c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7ac7a964_1d827b4f",
         "filename": "src/js/constants/PlansConstants.js",
         "patchSetId": 11
@@ -138,6 +246,24 @@
     },
     {
       "key": {
+        "uuid": "7ac7a964_8f4ba958",
+        "filename": "src/js/constants/PlansConstants.js",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2015-11-16T17:59:55Z",
+      "side": 1,
+      "message": "I removed PLAN_CREATED, but kept LIST_PLANS and added GET_PLAN for the plan list.",
+      "parentUuid": "7ac7a964_1d827b4f",
+      "revId": "a1b4efae3b9f550f1c2254988c72f02b71abe27c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7ac7a964_bd826750",
         "filename": "src/js/services/TripleOApiService.js",
         "patchSetId": 11
@@ -149,6 +275,24 @@
       "writtenOn": "2015-11-13T20:03:06Z",
       "side": 1,
       "message": "This is replaced by _createPlan in NewPlan line 78, right?",
+      "revId": "a1b4efae3b9f550f1c2254988c72f02b71abe27c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ac7a964_ef797d94",
+        "filename": "src/js/services/TripleOApiService.js",
+        "patchSetId": 11
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2015-11-16T17:59:55Z",
+      "side": 1,
+      "message": "No this is actually called from TripleOApiService.createPlan. This is only temporary. There\u0027s no real API call yet, but I wanted to keep the promise interface. \n\nI put that into an anonymous function in the PS12, so it\u0027s a little more obvious.",
+      "parentUuid": "7ac7a964_bd826750",
       "revId": "a1b4efae3b9f550f1c2254988c72f02b71abe27c",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
