@@ -22,16 +22,15 @@ describe('EnvironmentGroup component', () => {
     EnvGroupInstance = shallowRenderer._instance._instance;
   });
 
-  it('should render EnvironmentGroupHeading and environment checkbox', () => {
+  it('should render EnvironmentGroupHeading', () => {
     expect(EnvGroupVdom.props.children[0].type.name).toEqual('EnvironmentGroupHeading');
     expect(EnvGroupVdom.props.children[0].props.title).toBeDefined();
     expect(EnvGroupVdom.props.children[0].props.description).toBeDefined();
-    expect(EnvGroupVdom.props.children[1].type.displayName).toEqual('GenericCheckBox');
   });
 
   it('should be able to generate inputs based on environments length', () => {
     let environmentCheckboxes = EnvGroupInstance._generateInputs();
-    expect(environmentCheckboxes.type.displayName).toEqual('GenericCheckBox');
+    expect(environmentCheckboxes.props.title).toEqual('Default Configuration');
   });
 });
 
@@ -49,20 +48,17 @@ describe('EnvironmentGroup component with multiple environments', () => {
     EnvGroupInstance = shallowRenderer._instance._instance;
   });
 
-  it('should render EnvironmentGroupHeading and environment checkbox', () => {
+  it('should render EnvironmentGroupHeading', () => {
     expect(EnvGroupVdom.props.children[0].type.name).toEqual('EnvironmentGroupHeading');
     expect(EnvGroupVdom.props.children[0].props.title).toBeDefined();
     expect(EnvGroupVdom.props.children[0].props.description).toBeDefined();
-    expect(EnvGroupVdom.props.children[1].length).toEqual(2);
-    expect(EnvGroupVdom.props.children[1][0].type.displayName).toEqual('GroupedCheckBox');
-    expect(EnvGroupVdom.props.children[1][1].type.displayName).toEqual('GroupedCheckBox');
   });
 
   it('should be able to generate inputs based on environments length', () => {
     let environmentCheckboxes = EnvGroupInstance._generateInputs();
     expect(environmentCheckboxes.length).toEqual(2);
-    expect(environmentCheckboxes[0].type.displayName).toEqual('GroupedCheckBox');
-    expect(environmentCheckboxes[1].type.displayName).toEqual('GroupedCheckBox');
+    expect(environmentCheckboxes[0].props.title).toEqual('BigSwitch extensions');
+    expect(environmentCheckboxes[1].props.title).toEqual('Cisco N1KV backend');
   });
 
   it('should toggle GroupedCheckBoxes', () => {

@@ -2,48 +2,31 @@ import ClassNames from 'classnames';
 import Formsy from 'formsy-react';
 import React from 'react';
 
-let GenericCheckBox = React.createClass({
+class GenericCheckBox extends React.Component {
+  changeValue(event) {
+    this.props.setValue(event.target.checked);
+  }
 
-  propTypes: {
-    description: React.PropTypes.string,
-    id: React.PropTypes.string.isRequired,
-    name: React.PropTypes.string.isRequired,
-    title: React.PropTypes.string.isRequired,
-    type: React.PropTypes.string.isRequired
-  },
-
-  mixins: [Formsy.Mixin],
-
-  getDefaultProps: function() {
-    return {
-      type: 'checkbox'
-    };
-  },
-
-  changeValue: function(event) {
-    this.setValue(event.target.checked);
-  },
-
-  renderErrorMessage: function() {
-    let errorMessage = this.getErrorMessage();
+  renderErrorMessage() {
+    let errorMessage = this.props.getErrorMessage();
     return errorMessage ? (
       <span className='help-block'>{errorMessage}</span>
     ) : false;
-  },
+  }
 
-  renderDescription: function() {
+  renderDescription() {
     let description = this.props.description;
     return description ? (
       <small className='help-block'>{description}</small>
     ) : false;
-  },
+  }
 
-  render: function() {
+  render() {
     let divClasses = ClassNames({
       'checkbox': this.props.type === 'checkbox',
       'radio': this.props.type === 'radio',
-      'has-error': this.showError(),
-      'required': this.showRequired()
+      'has-error': this.props.showError(),
+      'required': this.props.showRequired()
     });
 
     return (
@@ -53,9 +36,9 @@ let GenericCheckBox = React.createClass({
                  name={this.props.name}
                  ref={this.props.id}
                  id={this.props.id}
-                 onChange={this.changeValue}
-                 checked={!!this.getValue()}
-                 value={this.getValue()}/>
+                 onChange={this.changeValue.bind(this)}
+                 checked={!!this.props.getValue()}
+                 value={this.props.getValue()}/>
           {this.props.title}
         </label>
         {this.renderErrorMessage()}
@@ -63,6 +46,23 @@ let GenericCheckBox = React.createClass({
       </div>
     );
   }
-});
-
-module.exports = GenericCheckBox;
+}
+GenericCheckBox.propTypes = {
+  description: React.PropTypes.string,
+  getErrorMessage: React.PropTypes.func,
+  getValue: React.PropTypes.func,
+  id: React.PropTypes.string.isRequired,
+  isRequired: React.PropTypes.func,
+  isValid: React.PropTypes.func,
+  name: React.PropTypes.string.isRequired,
+  placeholder: React.PropTypes.string,
+  setValue: React.PropTypes.func,
+  showError: React.PropTypes.func,
+  showRequired: React.PropTypes.func,
+  title: React.PropTypes.string.isRequired,
+  type: React.PropTypes.string
+};
+GenericCheckBox.defaultProps = {
+  type: 'checkbox'
+};
+export default Formsy.HOC(GenericCheckBox);

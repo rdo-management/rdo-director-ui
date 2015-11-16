@@ -1,38 +1,34 @@
 import ClassNames from 'classnames';
 import Formsy from 'formsy-react';
 import React from 'react';
-// import ReactMixin from 'react-mixin';
 
-let GenericInput = React.createClass({
+class GenericInput extends React.Component {
+  changeValue(event) {
+    this.props.setValue(event.target.value);
+  }
 
-  propTypes: {
-    name: React.PropTypes.string.isRequired,
-    placeholder: React.PropTypes.string,
-    title: React.PropTypes.string.isRequired,
-    type: React.PropTypes.string
-  },
+  renderErrorMessage() {
+    let errorMessage = this.props.getErrorMessage();
+    return errorMessage ? (
+      <span className='help-block'>{errorMessage}</span>
+    ) : false;
+  }
 
-  mixins: [Formsy.Mixin],
+  renderDescription() {
+    let description = this.props.description;
+    return description ? (
+      <small className='help-block'>{description}</small>
+    ) : false;
+  }
 
-  getDefaultProps: function() {
-    return {
-      type: 'text'
-    };
-  },
-
-  changeValue: function(event) {
-    this.setValue(event.currentTarget.value);
-  },
-
-  render: function() {
+  render() {
     let divClasses = ClassNames({
       'form-group': true,
-      'has-error': this.showError(),
-      'has-success': this.isValid(),
-      'required': this.isRequired()
+      'has-error': this.props.showError(),
+      'has-success': this.props.isValid(),
+      'required': this.props.isRequired()
     });
 
-    let errorMessage = this.getErrorMessage();
     return (
       <div className={divClasses}>
         <label htmlFor={this.props.name} className="control-label">{this.props.title}</label>
@@ -41,26 +37,29 @@ let GenericInput = React.createClass({
                ref={this.props.name}
                id={this.props.name}
                className="form-control"
-               onChange={this.changeValue}
-               value={this.getValue()}
+               onChange={this.changeValue.bind(this)}
+               value={this.props.getValue()}
                placeholder={this.props.placeholder} />
-        <span className='help-block'>{errorMessage}</span>
+        {this.renderErrorMessage()}
+        {this.renderDescription()}
       </div>
     );
   }
-});
-
-module.exports = GenericInput;
-// GenericInput.propTypes = {
-//   name: React.PropTypes.string.isRequired,
-//   placeholder: React.PropTypes.string,
-//   title: React.PropTypes.string.isRequired,
-//   type: React.PropTypes.string
-// };
-
-
-// ReactMixin(GenericInput.prototype, Formsy.Mixin);
-
-// TODO(jtomasek): This class needs to be defined using createClass because
-// the Formsy.Mixin uses getDefaultProps and getInitialState methods. Fix this
-// when Formsy fixes it
+}
+GenericInput.propTypes = {
+  description: React.PropTypes.string,
+  getErrorMessage: React.PropTypes.func,
+  getValue: React.PropTypes.func,
+  isRequired: React.PropTypes.func,
+  isValid: React.PropTypes.func,
+  name: React.PropTypes.string.isRequired,
+  placeholder: React.PropTypes.string,
+  setValue: React.PropTypes.func,
+  showError: React.PropTypes.func,
+  title: React.PropTypes.string.isRequired,
+  type: React.PropTypes.string
+};
+GenericInput.defaultProps = {
+  type: 'text'
+};
+export default Formsy.HOC(GenericInput);
