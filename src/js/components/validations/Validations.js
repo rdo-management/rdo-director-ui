@@ -8,7 +8,7 @@ export default class Validations extends React.Component {
   constructor() {
     super();
     this.state = {
-      validations: ValidationsStore.getState().validations
+      validationTypes: ValidationsStore.getState().validationTypes
     };
     this.changeListener = this._onChange.bind(this);
   }
@@ -23,11 +23,11 @@ export default class Validations extends React.Component {
   }
 
   _onChange() {
-    this.setState({ validations: ValidationsStore.getState().validations });
+    this.setState({ validationTypes: ValidationsStore.getState().validationTypes });
   }
 
   render() {
-    console.log(this.state.validations);
+    console.log(this.state.validationTypes);
     return (
       <PageHeader>Validations</PageHeader>
     );

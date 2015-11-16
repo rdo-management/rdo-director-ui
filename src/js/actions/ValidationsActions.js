@@ -2,10 +2,10 @@ import AppDispatcher from '../dispatchers/AppDispatcher.js';
 import ValidationsConstants from '../constants/ValidationsConstants';
 
 export default {
-  listValidations(validations) {
+  listValidationTypes(validationTypes) {
     AppDispatcher.dispatch({
-      actionType: ValidationsConstants.LIST_VALIDATIONS,
-      validations: validations
+      actionType: ValidationsConstants.LIST_VALIDATION_TYPES,
+      validationTypes: validationTypes
     });
   }
 };
