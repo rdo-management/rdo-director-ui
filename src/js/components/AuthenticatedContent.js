@@ -5,6 +5,7 @@ import AuthenticatedComponent from './utils/AuthenticatedComponent';
 import NavBar from './NavBar';
 import Footer from './Footer';
 import NotificationList from './ui/NotificationList';
+import ValidationsList from './ui/validations/ValidationsList';
 
 export default AuthenticatedComponent(class Nodes extends React.Component {
   render() {
@@ -16,7 +17,8 @@ export default AuthenticatedComponent(class Nodes extends React.Component {
         <div className="wrapper-fixed-body container-fluid">
           {this.props.children}
         </div>
-        <NotificationList className="above-footer"/>
+        <ValidationsList />
+        <NotificationList className="above-footer" />
         <Footer/>
       </div>
     );

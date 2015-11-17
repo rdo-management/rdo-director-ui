@@ -21,7 +21,6 @@ import ProvisionedNodesTabPane from './components/nodes/ProvisionedNodesTabPane'
 import RegisteredNodesTabPane from './components/nodes/RegisteredNodesTabPane';
 import Roles from './components/roles/Roles.js';
 import TempStorage from './services/TempStorage.js';
-import Validations from './components/validations/Validations.js';
 
 function checkAuth(nextState, replaceState) {
   if (!LoginStore.isLoggedIn()) {
@@ -44,7 +43,6 @@ let routes = (
         <Route path="plan/environment" component={EnvironmentConfiguration}/>
         <Route path="plan/roles" component={Roles}/>
         <Route path="plan/parameters" component={Parameters}/>
-        <Route path="plan/validations" component={Validations}/>
       </Route>
     </Route>
     <Route path="login" component={Login}/>
