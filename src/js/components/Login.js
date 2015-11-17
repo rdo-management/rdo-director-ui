@@ -11,6 +11,8 @@ import LoginStore from '../stores/LoginStore';
 import NotificationActions from '../actions/NotificationActions';
 import NotificationList from './ui/NotificationList';
 
+var mockData = true;
+
 export default class Login extends React.Component {
   constructor() {
     super();
@@ -56,22 +58,41 @@ export default class Login extends React.Component {
 
   handleLogin(formData, resetForm, invalidateForm) {
     this._disableButton();
-    KeystoneApiService.authenticateUser(formData.username, formData.password).then((response) => {
-      LoginActions.loginUser(response.access);
+    if (!mockData || formData.username == 'fail')
+    {
+      KeystoneApiService.authenticateUser(formData.username, formData.password).then((response) => {
+        LoginActions.loginUser(response.access);
+        NotificationActions.notify({
+          title: 'Login Successful',
+          message: 'The user was logged in successfully',
+          type: 'success'
+        });
+      }).catch((error) => {
+        this._enableButton();
+        console.error('Error in handleLogin', error);
+        let errorHandler = new KeystoneApiErrorHandler(error, Object.keys(this.refs.form.inputs));
+        invalidateForm(errorHandler.formFieldErrors);
+        this.setState({
+          formErrors: errorHandler.errors
+        });
+      });
+    }
+    else {
+      let mockKeystoneAccess = {
+        token: {
+          id: 'someTokenIdString'
+        },
+        user: {username: formData.username},
+        serviceCatalog: 'service catalog',
+        metadata: 'some metadata'
+      };
+      LoginActions.loginUser(mockKeystoneAccess);
       NotificationActions.notify({
-        title: 'Login Successful',
-        message: 'The user was logged in successfully',
+        title: 'Login Successful (MOCK)',
+        message: 'The user was logged in successfully (MOCK)',
         type: 'success'
       });
-    }).catch((error) => {
-      this._enableButton();
-      console.error('Error in handleLogin', error);
-      let errorHandler = new KeystoneApiErrorHandler(error, Object.keys(this.refs.form.inputs));
-      invalidateForm(errorHandler.formFieldErrors);
-      this.setState({
-        formErrors: errorHandler.errors
-      });
-    });
+    }
   }
 
   render() {
