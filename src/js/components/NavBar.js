@@ -39,7 +39,9 @@ export default class NavBar extends React.Component {
           </ul>
           <ul className="nav navbar-nav navbar-primary">
             <NavTab to="/" onlyActiveOnIndex>Overview</NavTab>
+            <NavTab to="/images">Images</NavTab>
             <NavTab to="/nodes">Nodes</NavTab>
+            <NavTab to="/flavors">Flavors</NavTab>
             <NavTab to="/plan/environment">Environment</NavTab>
             <NavTab to="/plan/roles">Roles</NavTab>
             <NavTab to="/plan/parameters">Service Configuration</NavTab>
