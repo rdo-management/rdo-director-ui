@@ -48,6 +48,7 @@ export default class Nodes extends React.Component {
             </div>
             <h1>Nodes</h1>
           </div>
+
           <ul className="nav nav-tabs">
             <NavTab to="nodes/registered">
               Registered<span className="badge">{this.state.nodes.registered.length}</span>
@@ -64,6 +65,20 @@ export default class Nodes extends React.Component {
           </ul>
           <div className="tab-pane">
             {React.cloneElement(this.props.children, {nodes: this.state.nodes})}
+          </div>
+
+          <div className="panel panel-info">
+            <div className="panel-heading">
+              <h3 className="panel-title">
+                <span className="pficon pficon-help"></span> Nodes
+              </h3>
+            </div>
+            <div className="panel-body">
+              <p>To register Nodes specified in instackenv.json run</p>
+              <pre>tripleo.sh --register-nodes</pre>
+              <p>To introspect registered Nodes run</p>
+              <pre>tripleo.sh --introspect-nodes</pre>
+            </div>
           </div>
         </div>
       </div>

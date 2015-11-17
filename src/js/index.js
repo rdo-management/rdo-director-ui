@@ -9,6 +9,8 @@ import AuthenticatedContent from './components/AuthenticatedContent';
 import DiscoveredNodesTabPane from './components/nodes/DiscoveredNodesTabPane';
 import EnvironmentConfiguration from
   './components/environment_configuration/EnvironmentConfiguration.js';
+import Flavors from './components/flavors/Flavors';
+import Images from './components/images/Images';
 import Login from './components/Login';
 import LoginActions from './actions/LoginActions';
 import LoginStore from './stores/LoginStore';
@@ -33,6 +35,7 @@ let routes = (
   <Route path="/" component={App}>
     <Route component={AuthenticatedContent} onEnter={checkAuth}>
       <IndexRoute component={Overview}/>
+      <Route path="images" component={Images}/>
       <Redirect from="nodes" to="nodes/registered"/>
       <Route path="nodes" component={Nodes}>
         <Route path="registered" component={RegisteredNodesTabPane}/>
@@ -40,6 +43,7 @@ let routes = (
         <Route path="provisioned" component={ProvisionedNodesTabPane}/>
         <Route path="maintenance" component={MaintenanceNodesTabPane}/>
       </Route>
+      <Route path="flavors" component={Flavors}/>
       <Redirect from="plan" to="plan/environment"/>
       <Route path="plan" component={Plan}>
         <Route path="environment" component={EnvironmentConfiguration}/>
