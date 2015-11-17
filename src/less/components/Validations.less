@@ -1,0 +1,179 @@
+.validations-indicator {
+
+  &:focus {
+    outline: none;
+  }
+
+  .status-indicator {
+    color: #000;
+    &:focus {
+      background-color: transparent;
+    }
+  }
+
+  .validations-icon.pficon, .validations-icon.fa {
+    margin-right: 7px;
+
+    &:before {
+      color: #fff;
+    }
+  }
+}
+
+.validations-list {
+  background: #fff;
+  border: solid 1px #D1D1D1;
+  bottom: @footer-height;
+  left:0;
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+
+  &.closed {
+    display: none;
+  }
+  &.opened {
+    display: block;
+  }
+
+  .validations-header {
+    background-color: #ffffff;
+    border-bottom: solid 1px #D1D1D1;
+    padding: 10px 18px;
+
+    .close {
+      margin-top: 2px;
+    }
+
+    button.close {
+      padding: 0;
+      cursor: pointer;
+      background: transparent;
+      border: 0;
+      -webkit-appearance: none;
+    }
+    .close {
+      color: #000;
+      filter: alpha(opacity=20);
+      float: right;
+      font-size: 18px;
+      font-weight: bold;
+      line-height: 1;
+      opacity: 0.2;
+      text-shadow: 0 1px 0 #fff;
+    }
+  }
+
+  .validation-types-container {
+    max-height: 400px;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  .validation-type-panel {
+    margin-bottom: 0;
+    border-width: 0 1px;
+  }
+
+  .validation-type-heading {
+
+    .validation-type-title {
+      color: @gray-pf;
+      float: left;
+      font-weight: @btn-font-weight;
+      &:before {
+        content: "\f107";
+        font-family: @icon-font-name-fa;
+        font-size: 13px;
+        margin-right: 5px;
+        vertical-align: 0;
+      }
+      &:focus {
+        outline: none;
+        text-decoration: none;
+      }
+      &:hover {
+        text-decoration: none;
+      }
+      &.collapsed:before {
+        content: "\f105";
+        margin-left: 4px;
+        margin-right: 7px;
+      }
+    }
+    .validation-statuses {
+      float: left;
+      list-style: none;
+      margin-bottom: 0;
+    }
+    .validation-status {
+      float: left;
+      margin-right: 5px;
+    }
+    .details-link {
+      cursor: pointer;
+      float: left;
+      margin-left: 15px;
+      visibility: hidden;
+
+      &.available {
+        visibility: visible;
+      }
+    }
+    .run-button {
+      font-weight: 500;
+      height: 15px;
+      line-height: 0.3em;
+      margin-left: 10px;
+      margin-top: -3px;
+    }
+  }
+
+  .validation-type-content {
+    border-bottom: solid 1px #D1D1D1;
+    display: none;
+    padding-bottom: 0;
+
+    &.opened {
+      display: block;
+    }
+  }
+}
+
+.validation {
+  border: solid 1px #ddd;
+  padding: 10px 20px;
+
+  .validation-icon {
+  }
+
+  .validation-name {
+    padding-left: 5px;
+  }
+
+  .validation-message {
+    padding-left: 17px;
+  }
+
+  button {
+
+    display: none;
+    float: right;
+    font-weight: 500;
+    height: 20px;
+    line-height: 0.5em;
+
+    &.available {
+      display: inline-block;
+    }
+  }
+
+  .details-link {
+    margin-left: 15px;
+    visibility: hidden;
+
+    &.available {
+      visibility: visible;
+    }
+  }
+}

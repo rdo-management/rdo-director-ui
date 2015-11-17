@@ -14,6 +14,7 @@
 @import "components/NodePicker";
 @import "components/NotificationList";
 @import "components/Notification";
+@import "components/Validations";
 
 .wrapper-fixed-body {
   padding-top: @header-height;
@@ -26,6 +27,25 @@
   font-size: @font-size-small;
   line-height: 17px; // whole px unit to avoid height differences among browsers
   padding-top: @footer-pf-alt-padding-top;
+
+  .indicator {
+    margin-top: -4px;
+    padding: 5px;
+    background-color: #bbbbbb;
+  }
+
+  a {
+    margin-right: 10px;
+    color: #000;
+
+    &:hover {
+      color: #000;
+    }
+
+    .pficon, .fa {
+      padding-right: 5px;
+    }
+  }
 }
 
 .panel.flavor-panel > .panel-body{
