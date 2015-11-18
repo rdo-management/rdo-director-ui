@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7ac7a964_2ba7dfbe",
+        "filename": "src/js/actions/PlansActions.js",
+        "patchSetId": 14
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2015-11-18T17:38:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ac7a964_e85fad0c",
+      "revId": "e7543d12d055246a23242a0a371fb609654863ea",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7ac7a964_48a6e111",
         "filename": "src/js/components/plan/ListPlans.js",
         "patchSetId": 14
@@ -47,6 +65,24 @@
       "writtenOn": "2015-11-18T13:03:38Z",
       "side": 1,
       "message": "authenticated component not needed",
+      "revId": "e7543d12d055246a23242a0a371fb609654863ea",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ac7a964_0ba223ae",
+        "filename": "src/js/components/plan/ListPlans.js",
+        "patchSetId": 14
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2015-11-18T17:38:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ac7a964_68747d99",
       "revId": "e7543d12d055246a23242a0a371fb609654863ea",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
@@ -87,6 +123,24 @@
     },
     {
       "key": {
+        "uuid": "7ac7a964_4bac1ba1",
+        "filename": "src/js/components/plan/NewPlan.js",
+        "patchSetId": 14
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2015-11-18T17:38:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ac7a964_88c47993",
+      "revId": "e7543d12d055246a23242a0a371fb609654863ea",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7ac7a964_685d5d21",
         "filename": "src/js/index.js",
         "patchSetId": 14
@@ -104,6 +158,24 @@
     },
     {
       "key": {
+        "uuid": "7ac7a964_ebc5e75b",
+        "filename": "src/js/index.js",
+        "patchSetId": 14
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2015-11-18T17:38:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ac7a964_685d5d21",
+      "revId": "e7543d12d055246a23242a0a371fb609654863ea",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7ac7a964_e8bb2d0c",
         "filename": "src/js/stores/PlansStore.js",
         "patchSetId": 14
@@ -115,6 +187,24 @@
       "writtenOn": "2015-11-18T13:03:38Z",
       "side": 1,
       "message": "getCurrentPlan() could be convenient. instead of having to call PlansStore.getState().currentPlan",
+      "revId": "e7543d12d055246a23242a0a371fb609654863ea",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ac7a964_8b955342",
+        "filename": "src/js/stores/PlansStore.js",
+        "patchSetId": 14
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2015-11-18T17:38:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ac7a964_e8bb2d0c",
       "revId": "e7543d12d055246a23242a0a371fb609654863ea",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
