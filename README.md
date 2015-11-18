@@ -11,12 +11,12 @@
 ### Install and run Validations API service on Undercloud machine
 
 Use this guide to setup and run API on Undercloud machine:
-https://github.com/rthallisey/clapper/blob/ansible/ansible-tests/README.md
+https://github.com/rthallisey/clapper/blob/master/ansible-tests/README.md
 
 ### Install and run TripleO API service on Undercloud machine
 
 Use this guide to setup and run API on Undercloud machine:
-https://github.com/openstack/tripleo-common/tree/master/tripleo_common/README.md
+https://github.com/openstack/tripleo-common/blob/master/README.rst
 
 ### Make Undercloud API services available when running app from laptop
 
@@ -41,7 +41,7 @@ Setup ssh tunnel for OpenStack API Services
 
 ```ssh stack@$VIRT_IP -L 8774:$UNDERCLOUD_IP:8774 -L 9292:$UNDERCLOUD_IP:9292 -L 8777:$UNDERCLOUD_IP:8777 -L 9696:$UNDERCLOUD_IP:9696 -L 6385:$UNDERCLOUD_IP:6385 -L 8004:$UNDERCLOUD_IP:8004 -L 5000:$UNDERCLOUD_IP:5000 -L 5001:$UNDERCLOUD_IP:5001 -L 8080:$UNDERCLOUD_IP:8080 -L 8585:$UNDERCLOUD_IP:8585  -L 35357:$UNDERCLOUD_IP:35357```
 
-Note that those ports need to be enabled in Undercloud VM's iptables (this should be already in place from undercloud installation):
+Note that those ports need to be enabled in Undercloud VM's iptables (this should be already in place from undercloud installation, except for the validations API port 5001):
 
 ```
 ssh root@<undercloud_vm_ip>
@@ -59,13 +59,7 @@ below 8585 rule and restart iptables
 
 ```systemctl restart iptables```
 
-
-Original guide:
-https://wiki.openstack.org/wiki/Tuskar/Instack#Connecting_to_Undercloud_from_external_place_.28e.g._your_laptop.29
-
 ### Configure CORS for OpenStack services
-
-http://docs.openstack.org/developer/oslo.middleware/cors.html#configuration-for-oslo-config
 
 #### Keystone - pastedeploy method:
 ```
@@ -112,25 +106,6 @@ expose_headers=Content-Type,Cache-Control,Content-Language,Expires,Last-Modified
 Temporary: set ```auth_strategy=noauth```
 
 and restart ironic ```systemctl restart openstack-ironic-api```
-
-
-
-#### Official CORS Support progress
-
-Spec: http://specs.openstack.org/openstack/openstack-specs/specs/cors-support.html
-http://docs.openstack.org/admin-guide-cloud/cross_project_cors.html
-
-Ironic: https://review.openstack.org/#/c/199769/
-...
-
-#### Enable Keystone CORS for services that don't use official oslo CORS middleware (temporary solution)
-
-https://ianunruh.com/2014/11/openstack-cors.html
-
-keystone-paste.ini is at /usr/share/keystone/keystone-dist-paste.ini
-on Undercloud VM
-
-```systemctl restart openstack-keystone```
 
 
 ## Running the App
