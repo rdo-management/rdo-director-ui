@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ac7a964_e85fad0c",
+        "filename": "src/js/actions/PlansActions.js",
+        "patchSetId": 14
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-18T13:03:38Z",
+      "side": 1,
+      "message": "I think this one is not needed. I know that I used it somewhere to have it ready for spinner or something, but I am not sure the spinner will work this way. I am ok with keeping it here, so I\u0027ll leave it up to you. It just does nothing :)",
+      "revId": "e7543d12d055246a23242a0a371fb609654863ea",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ac7a964_48a6e111",
+        "filename": "src/js/components/plan/ListPlans.js",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-18T13:03:38Z",
+      "side": 1,
+      "message": "Looks good. We\u0027ll eventually want to move this to use DataTable component once this gets merged: https://review.gerrithub.io/252272 but it is not a big deal.",
+      "revId": "e7543d12d055246a23242a0a371fb609654863ea",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ac7a964_68747d99",
+        "filename": "src/js/components/plan/ListPlans.js",
+        "patchSetId": 14
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-18T13:03:38Z",
+      "side": 1,
+      "message": "authenticated component not needed",
+      "revId": "e7543d12d055246a23242a0a371fb609654863ea",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ac7a964_28a1a5f8",
+        "filename": "src/js/components/plan/ListPlans.js",
+        "patchSetId": 14
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-18T13:03:38Z",
+      "side": 1,
+      "message": "\"plans\" route sounds better to me (I am Rails guy:D)",
+      "revId": "e7543d12d055246a23242a0a371fb609654863ea",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ac7a964_88c47993",
+        "filename": "src/js/components/plan/NewPlan.js",
+        "patchSetId": 14
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-18T13:03:38Z",
+      "side": 1,
+      "message": "Please define propTypes and defaultProps. with that you can avoid having \u0027if\u0027 when there are no files prop passed.\n\nFileList.propTypes \u003d {\n  files: React.PropTypes.array.isRequired\n};\nFileList.defaultProps \u003d {\n  files: []\n};",
+      "revId": "e7543d12d055246a23242a0a371fb609654863ea",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ac7a964_685d5d21",
+        "filename": "src/js/index.js",
+        "patchSetId": 14
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-18T13:03:38Z",
+      "side": 1,
+      "message": "this should better be \u0027plans\u0027 or, maybe we can leave it as it is as we\u0027ll probably render this under single common route:\nplans/list and plans/new",
+      "revId": "e7543d12d055246a23242a0a371fb609654863ea",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ac7a964_e8bb2d0c",
+        "filename": "src/js/stores/PlansStore.js",
+        "patchSetId": 14
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-18T13:03:38Z",
+      "side": 1,
+      "message": "getCurrentPlan() could be convenient. instead of having to call PlansStore.getState().currentPlan",
+      "revId": "e7543d12d055246a23242a0a371fb609654863ea",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
