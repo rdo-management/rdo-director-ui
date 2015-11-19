@@ -165,6 +165,24 @@
     },
     {
       "key": {
+        "uuid": "7ac7a964_dcf9d34e",
+        "filename": "src/js/components/ui/validations/ValidationType.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1006608
+      },
+      "writtenOn": "2015-11-19T13:15:38Z",
+      "side": 1,
+      "message": "I updated the code to not listen to the store change but rather compute these values on render for now with a TODO of getting the values from the store. At least this will be closer to the final version and remove the dependency.",
+      "parentUuid": "7ac7a964_7c6d1f32",
+      "revId": "631c7ae244352a17249835dc533160038135cff8",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7ac7a964_71d0e850",
         "filename": "src/less/base.less",
         "patchSetId": 4
