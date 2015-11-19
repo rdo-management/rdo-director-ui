@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "7ac7a964_fc792ffd",
+        "filename": "src/js/components/Footer.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1006608
+      },
+      "writtenOn": "2015-11-19T12:37:05Z",
+      "side": 1,
+      "message": "Agreed. I am removing this in the next review I post w/ notifications",
+      "parentUuid": "7ac7a964_f155d81d",
+      "revId": "631c7ae244352a17249835dc533160038135cff8",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7ac7a964_5c26a3b8",
         "filename": "src/js/components/Footer.js",
         "patchSetId": 4
@@ -48,6 +66,24 @@
       "writtenOn": "2015-11-19T10:54:58Z",
       "side": 1,
       "message": "What do you think about this being rendered right below the ValidationsIndicator? When I look at the wireframes, when the Validations are open, the indicator is the actual \u0027validations\u0027 tab. So the indicator can be a tab in \u0027nav nav-tabs nav-tabs-pf\u0027 (notifications one will be added later too) and clicking the tab would activate the ValidationsList and that would get rendered below the Tabs (the black footer part). This way it would act also as \u0027validations-title\u0027 And as the tabs bar would be black, The validations list would be nicely separated from the content above. Right now it kind of melts together.",
+      "revId": "631c7ae244352a17249835dc533160038135cff8",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ac7a964_dc1d53bf",
+        "filename": "src/js/components/Footer.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1006608
+      },
+      "writtenOn": "2015-11-19T12:37:05Z",
+      "side": 1,
+      "message": "Funny you say that. This is what I am working on when I add the notifications indicator. Still need some visualizations from design but otherwise it\u0027s very close and should be up today or tomorrow. I\u0027d like to get the validations review finished first though.",
+      "parentUuid": "7ac7a964_5c26a3b8",
       "revId": "631c7ae244352a17249835dc533160038135cff8",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
@@ -105,6 +141,24 @@
       "writtenOn": "2015-11-19T10:54:58Z",
       "side": 1,
       "message": "It would be good to avoid listening to ValidationsStore here as Footer is already listening to it and can pass everything as props. IOW the additional information as availableCount, runningCount... should get calculated in the store, when the types are received. We can keep this here for now and update the code with the store and api wiring.",
+      "revId": "631c7ae244352a17249835dc533160038135cff8",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ac7a964_7c6d1f32",
+        "filename": "src/js/components/ui/validations/ValidationType.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1006608
+      },
+      "writtenOn": "2015-11-19T12:37:05Z",
+      "side": 1,
+      "message": "OK, I wasn\u0027t sure if we wanted that info in the store or not. I agree it should be.",
+      "parentUuid": "7ac7a964_fce92f1b",
       "revId": "631c7ae244352a17249835dc533160038135cff8",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
