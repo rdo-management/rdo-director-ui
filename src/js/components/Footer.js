@@ -3,7 +3,10 @@ import React from 'react';
 import ClassNames from 'classnames';
 
 import NotificationStore from '../stores/NotificationStore';
+import NotificationActions from '../actions/NotificationActions';
+import ValidationsActions from '../actions/ValidationsActions';
 import ValidationsApiService from '../services/ValidationsApiService';
+import ValidationsApiErrorHandler from '../services/ValidationsApiErrorHandler';
 import ValidationsStore from '../stores/ValidationsStore';
 
 import NotificationsIndicator from './notifications/NotificationsIndicator';
@@ -13,19 +16,14 @@ import NotificationsToaster   from './notifications/NotificationsToaster';
 import ValidationsIndicator from './validations/ValidationsIndicator';
 import ValidationsList from './validations/ValidationsList';
 
-
-
-import MockValidations from '../mock/mockValidations';
-var mockValidations = true;
-
 export default class Footer extends React.Component {
   constructor() {
     super();
     this.state = {
       isOpen: false,
       listShown: 'notifications',
-      notifications: [],
-      validationTypes: []
+      notifications: NotificationStore.getState(),
+      validationStages: ValidationsStore.getState().stages
     };
 
     this.validationsChangeListener = this._onValidationsChange.bind(this);
@@ -33,13 +31,9 @@ export default class Footer extends React.Component {
   }
 
   componentDidMount() {
-    this._onValidationsChange();
-    ValidationsApiService.handleGetValidations();
-    ValidationsStore.addChangeListener(this.validationsChangeListener);
-
-    this._onNotificationsChange();
     NotificationStore.addChangeListener(this.notificationsChangeListener);
-
+    ValidationsStore.addChangeListener(this.validationsChangeListener);
+    this.getValidationStages();
   }
 
   componentWillUnmount() {
@@ -47,32 +41,38 @@ export default class Footer extends React.Component {
     NotificationStore.removeChangeListener(this.notificationsChangeListener);
   }
 
-  _onValidationsChange() {
-    if (mockValidations) {
-      this.setState({validationTypes: MockValidations.validations});
-      return;
-    }
+  getValidationStages() {
+    ValidationsApiService.getStages().then((response) => {
+      ValidationsActions.listStages(response);
+      console.log(response);
+    }).catch((error) => {
+      console.error('Error in Footer.getValidationStages', error);
+      let errorHandler = new ValidationsApiErrorHandler(error);
+      errorHandler.errors.forEach((error) => {
+        NotificationActions.notify(error);
+      });
+    });
+  }
 
-    this.setState({validationTypes: ValidationsStore.getState().validations});
+  _onValidationsChange() {
+    this.setState({validationStages: ValidationsStore.getState().stages});
   }
 
   _onNotificationsChange() {
     this.setState({notifications: NotificationStore.getState()});
   }
 
-  toggleOpen (e) {
+  toggleOpen(e) {
     e.preventDefault();
-
-    var nowOpen = !this.state.isOpen;
-    this.setState({isOpen: nowOpen});
+    this.setState({isOpen: !this.state.isOpen});
   }
 
-  showNotifications (e) {
+  showNotifications(e) {
     e.preventDefault();
     this.setState({isOpen: true, listShown: 'notifications'});
   }
 
-  showValidations (e) {
+  showValidations(e) {
     e.preventDefault();
     this.setState({isOpen: true, listShown: 'validations'});
   }
@@ -89,17 +89,17 @@ export default class Footer extends React.Component {
     });
 
     let contentClasses = ClassNames({
-      'drawer-content' : true,
+      'row drawer-content' : true,
       'collapsed': !this.state.isOpen
     });
 
     let notificationTabClasses =  ClassNames({
-      'hidden' : !this.state.isOpen,
-      'active' : this.state.listShown === 'notifications'
+      hidden: !this.state.isOpen,
+      active: this.state.listShown === 'notifications'
     });
     let validationTabClasses =  ClassNames({
-      'hidden' : !this.state.isOpen,
-      'active' : this.state.listShown === 'validations'
+      hidden: !this.state.isOpen,
+      active: this.state.listShown === 'validations'
     });
 
     let toasterNotification = _.findLast(_.filter(this.state.notifications, function(notification) {
@@ -111,35 +111,37 @@ export default class Footer extends React.Component {
     return (
       <div>
         <NotificationsToaster notification={toasterNotification}/>
-        <div className="navbar-fixed-bottom wrapper-footer">
-          <div className="header-container">
-            <ul className={indicatorsClasses}>
-              <li className={notificationTabClasses}>
-                <a onClick={this.showNotifications.bind(this)}>
-                  <span>Notifications</span>
-                </a>
-              </li>
-              <li className={validationTabClasses}>
-                <a onClick={this.showValidations.bind(this)}>
-                  <span>Validations</span>
-                </a>
-              </li>
-              <li className={this.state.isOpen ? 'hidden' : ''}>
-                <NotificationsIndicator notifications={this.state.notifications}
-                                        onClick={this.showNotifications.bind(this)}/>
-              </li>
-              <li className={this.state.isOpen ? 'hidden' : ''}>
-                <ValidationsIndicator validationTypes={this.state.validationTypes}
-                                      onClick={this.showValidations.bind(this)}/>
-              </li>
-            </ul>
-            <span className={toggleClasses} onClick={this.toggleOpen.bind(this)}></span>
+        <div className="navbar-fixed-bottom wrapper-footer container-fluid">
+          <div className="row">
+            <div className="col-sm-12">
+              <ul className={indicatorsClasses}>
+                <li className={notificationTabClasses}>
+                  <a onClick={this.showNotifications.bind(this)}>
+                    <span>Notifications</span>
+                  </a>
+                </li>
+                <li className={validationTabClasses}>
+                  <a onClick={this.showValidations.bind(this)}>
+                    <span>Validations</span>
+                  </a>
+                </li>
+                <li className={this.state.isOpen ? 'hidden' : ''}>
+                  <NotificationsIndicator notifications={this.state.notifications}
+                                          onClick={this.showNotifications.bind(this)}/>
+                </li>
+                <li className={this.state.isOpen ? 'hidden' : ''}>
+                  <ValidationsIndicator validationStages={this.state.validationStages}
+                                        onClick={this.showValidations.bind(this)}/>
+                </li>
+              </ul>
+              <span className={toggleClasses} onClick={this.toggleOpen.bind(this)}></span>
+            </div>
           </div>
           <div className={contentClasses}>
             <NotificationList active={this.state.listShown === 'notifications'}
                               notifications={this.state.notifications}/>
             <ValidationsList  active={this.state.listShown === 'validations'}
-                              validationTypes={this.state.validationTypes}/>
+                              validationStages={this.state.validationStages}/>
           </div>
         </div>
       </div>

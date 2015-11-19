@@ -12,8 +12,6 @@
   }
 
   .validations-icon.pficon, .validations-icon.fa {
-    margin-right: 7px;
-
     &:before {
       color: #fff;
     }
@@ -39,20 +37,20 @@
 
   }
 
-  .validation-types-container {
+  .validation-stages-container {
     max-height: 400px;
     overflow-x: hidden;
     overflow-y: auto;
   }
 
-  .validation-type-panel {
+  .validation-stage-panel {
     margin-bottom: 0;
     border-width: 0 1px;
   }
 
-  .validation-type-heading {
+  .validation-stage-heading {
 
-    .validation-type-title {
+    .validation-stage-title {
       color: @gray-pf;
       cursor: pointer;
       float: left;
@@ -72,28 +70,12 @@
         text-decoration: none;
       }
     }
-    .validation-statuses {
-      float: left;
-      list-style: none;
-      margin-bottom: 0;
-    }
-    .validation-status {
-      float: left;
-      margin-right: 5px;
-    }
-    .details-link {
-      color: #0099d3;
-      cursor: pointer;
-      float: left;
-      margin-left: 5px;
-      margin-right: 0;
-    }
   }
 
-  .validation-type-content {
+  .validation-stage-content {
     border-bottom: solid 1px #D1D1D1;
     display: none;
-    padding-bottom: 5px;
+    padding-bottom: 0;
 
     &.opened {
       display: block;
@@ -103,13 +85,12 @@
 
 .validation {
   border: solid 1px #D1D1D1;
-  margin: 10px 10px 5px 10px;
   padding-top: 5px;
   padding-bottom: 5px;
 
   .validation-icon {
     &.pficon-flag {
-      color: #0088CE;
+      color: @brand-primary;
     }
     &.pficon-ok:before {
       color: #333;
