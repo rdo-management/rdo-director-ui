@@ -19,6 +19,98 @@
     },
     {
       "key": {
+        "uuid": "7ac7a964_f155d81d",
+        "filename": "src/js/components/Footer.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-19T10:54:58Z",
+      "side": 1,
+      "message": "Yeah, this can go away as it won\u0027t be used",
+      "parentUuid": "7ac7a964_11d17457",
+      "revId": "631c7ae244352a17249835dc533160038135cff8",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ac7a964_5c26a3b8",
+        "filename": "src/js/components/Footer.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-19T10:54:58Z",
+      "side": 1,
+      "message": "What do you think about this being rendered right below the ValidationsIndicator? When I look at the wireframes, when the Validations are open, the indicator is the actual \u0027validations\u0027 tab. So the indicator can be a tab in \u0027nav nav-tabs nav-tabs-pf\u0027 (notifications one will be added later too) and clicking the tab would activate the ValidationsList and that would get rendered below the Tabs (the black footer part). This way it would act also as \u0027validations-title\u0027 And as the tabs bar would be black, The validations list would be nicely separated from the content above. Right now it kind of melts together.",
+      "revId": "631c7ae244352a17249835dc533160038135cff8",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ac7a964_fcd04f55",
+        "filename": "src/js/components/ui/validations/Validation.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-19T10:54:58Z",
+      "side": 1,
+      "message": "Validations are quite specific, so I\u0027d rather keep them in components/validations/",
+      "revId": "631c7ae244352a17249835dc533160038135cff8",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ac7a964_bc6257d6",
+        "filename": "src/js/components/ui/validations/Validation.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-19T10:54:58Z",
+      "side": 1,
+      "message": "this class is not needed. Put this span next to the icon one, not inside. And put space between the spans.",
+      "range": {
+        "startLine": 70,
+        "startChar": 33,
+        "endLine": 70,
+        "endChar": 48
+      },
+      "revId": "631c7ae244352a17249835dc533160038135cff8",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ac7a964_fce92f1b",
+        "filename": "src/js/components/ui/validations/ValidationType.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-19T10:54:58Z",
+      "side": 1,
+      "message": "It would be good to avoid listening to ValidationsStore here as Footer is already listening to it and can pass everything as props. IOW the additional information as availableCount, runningCount... should get calculated in the store, when the types are received. We can keep this here for now and update the code with the store and api wiring.",
+      "revId": "631c7ae244352a17249835dc533160038135cff8",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7ac7a964_71d0e850",
         "filename": "src/less/base.less",
         "patchSetId": 4
@@ -36,6 +128,40 @@
     },
     {
       "key": {
+        "uuid": "7ac7a964_bce7b73f",
+        "filename": "src/less/base.less",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-19T10:54:58Z",
+      "side": 1,
+      "message": "not needed if you use nav-tabs for indicators",
+      "revId": "631c7ae244352a17249835dc533160038135cff8",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ac7a964_9cdafb76",
+        "filename": "src/less/base.less",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-19T10:54:58Z",
+      "side": 1,
+      "message": "not needded, put space between the spans",
+      "revId": "631c7ae244352a17249835dc533160038135cff8",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7ac7a964_b1c1a082",
         "filename": "src/less/components/Validations.less",
         "patchSetId": 4
@@ -47,6 +173,23 @@
       "writtenOn": "2015-11-19T04:46:00Z",
       "side": 1,
       "message": "#fff",
+      "revId": "631c7ae244352a17249835dc533160038135cff8",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ac7a964_9c659be3",
+        "filename": "src/less/components/Validations.less",
+        "patchSetId": 4
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-19T10:54:58Z",
+      "side": 1,
+      "message": "not needed",
       "revId": "631c7ae244352a17249835dc533160038135cff8",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
