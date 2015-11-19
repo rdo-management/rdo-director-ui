@@ -53,6 +53,24 @@
     },
     {
       "key": {
+        "uuid": "7ac7a964_42831804",
+        "filename": "src/js/components/NavBar.js",
+        "patchSetId": 16
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-19T15:48:21Z",
+      "side": 1,
+      "message": "add location to contextTypes:\nlocation: React.PropTypes.object,\n\nand then you can access the location from NavBar at this.context.location",
+      "parentUuid": "7ac7a964_e2c5045c",
+      "revId": "bd1f95af7d0402fea8913135248165cc868647b3",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7ac7a964_025f60e6",
         "filename": "src/js/index.js",
         "patchSetId": 16
