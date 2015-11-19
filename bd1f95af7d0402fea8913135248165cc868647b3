@@ -71,6 +71,24 @@
     },
     {
       "key": {
+        "uuid": "7ac7a964_62d734c2",
+        "filename": "src/js/components/NavBar.js",
+        "patchSetId": 16
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-19T16:14:48Z",
+      "side": 1,
+      "message": "params: React.PropTypes.object \n\nthis.context.params should return object consisting the params so you could get current plan using this.context.params.planName\n\nbut maybe this is only available via props to \u0027routed\u0027 components which unfortunatelly NavBar isn\u0027t. I am looking into this. At worst we could pass the params from AuthenticatedContent to NavBar, which is routed component.",
+      "parentUuid": "7ac7a964_42831804",
+      "revId": "bd1f95af7d0402fea8913135248165cc868647b3",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7ac7a964_025f60e6",
         "filename": "src/js/index.js",
         "patchSetId": 16
