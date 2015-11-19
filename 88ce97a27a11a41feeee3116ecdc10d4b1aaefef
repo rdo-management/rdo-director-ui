@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ac7a964_5773dce8",
+        "filename": "src/js/components/nodes/Nodes.js",
+        "patchSetId": 7
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2015-11-19T14:58:19Z",
+      "side": 1,
+      "message": "Is this a placeholder or a TODO?",
+      "revId": "88ce97a27a11a41feeee3116ecdc10d4b1aaefef",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
