@@ -43,7 +43,6 @@ export default class NavBar extends React.Component {
             <NavTab to="/plan/environment">Environment</NavTab>
             <NavTab to="/plan/roles">Roles</NavTab>
             <NavTab to="/plan/parameters">Service Configuration</NavTab>
-            <NavTab to="/plan/validations">Validations</NavTab>
           </ul>
         </div>
       </nav>

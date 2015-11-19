@@ -16,7 +16,7 @@ export default AuthenticatedComponent(class Nodes extends React.Component {
         <div className="wrapper-fixed-body container-fluid">
           {this.props.children}
         </div>
-        <NotificationList className="above-footer"/>
+        <NotificationList className="above-footer" />
         <Footer/>
       </div>
     );
