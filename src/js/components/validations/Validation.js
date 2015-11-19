@@ -1,30 +1,63 @@
-import React from 'react';
+import * as _ from 'lodash';
 import ClassNames from 'classnames';
+import React from 'react';
+
+import NotificationActions from '../../actions/NotificationActions';
+import ValidationsApiService from '../../services/ValidationsApiService';
+import ValidationsApiErrorHandler from '../../services/ValidationsApiErrorHandler';
 
 export default class Validation extends React.Component {
-  constructor() {
-    super();
-  }
-
-  toggleOpen () {
-    var nowOpen = !this.state.isOpen;
-    this.setState({isOpen: nowOpen});
-  }
-
   runValidaton () {
-    // TODO: Run the validation
+    ValidationsApiService.runValidation(this.props.uuid).then((response) => {
+      console.log(response);
+    }).catch((error) => {
+      console.error('Error in Validation.runValidaton', error);
+      let errorHandler = new ValidationsApiErrorHandler(error);
+      errorHandler.errors.forEach((error) => {
+        NotificationActions.notify(error);
+      });
+    });
   }
 
   stopValidation () {
-    // TODO: Stop the validation
+    ValidationsApiService.stopValidation(this.props.uuid).then((response) => {
+      console.log(response);
+    }).catch((error) => {
+      console.error('Error in Validation.runValidaton', error);
+      let errorHandler = new ValidationsApiErrorHandler(error);
+      errorHandler.errors.forEach((error) => {
+        NotificationActions.notify(error);
+      });
+    });
   }
 
-  viewDetails () {
+  viewDetails (e) {
+    e.preventDefault();
     // TODO: Show the details
   }
 
+  getActionButton() {
+    if (_.includes(['new', 'ok', 'failed'], this.props.status)) {
+      return (
+        <button className="btn btn-primary btn-xs pull-right"
+                onClick={this.runValidaton.bind(this)}>
+          Run Now
+        </button>
+      );
+    } else if (this.props.status === 'running' ) {
+      return (
+        <button className="btn btn-danger btn-xs pull-right"
+                onClick={this.stopValidation.bind(this)}>
+          Stop
+        </button>
+      );
+    } else {
+      return false;
+    }
+  }
+
   render() {
-    let status = this.props.validation.status;
+    let status = this.props.status;
     let statusIconClass = ClassNames({
       'validation-icon' : true,
       'pficon pficon-error-circle-o': status === 'failed',
@@ -33,47 +66,16 @@ export default class Validation extends React.Component {
       'pficon pficon-add-circle-o':   status === 'new'
     });
 
-    var runButton;
-    if (this.props.validation.status == 'new')
-    {
-      runButton =
-        <button className="btn btn-primary btn-xs pull-right"
-                onClick={this.runValidaton.bind(this)}>
-          Run Now
-        </button>;
-    }
-
-    var stopButton;
-    if (this.props.validation.status == 'running')
-    {
-      stopButton =
-        <button className="btn btn-danger btn-xs pull-right"
-                onClick={this.stopValidation.bind(this)}>
-          Stop
-        </button>;
-    }
-
-    var detailsLink;
-    if (this.props.validation.results && this.props.validation.results.length > 0)
-    {
-      detailsLink =
-        <a className="details-link" onClick={this.viewDetails.bind(this)}>
-          View Details
-        </a>
-    }
-
     return (
         <div className="col-lg-4 col-md-6 col-sm-12">
           <div className="card-pf validation">
             <div>
-              <span className={statusIconClass}></span>
-              <span > {this.props.validation.name}</span>
-              {runButton}
-              {stopButton}
+              <span className={statusIconClass}></span> <span>{this.props.name}</span>
+              {this.getActionButton()}
             </div>
             <div>
-              <span className="validation-message">{this.props.validation.description}</span>
-              {detailsLink}
+              <span className="validation-message">{this.props.description}
+              </span> <a href="" onClick={this.viewDetails.bind(this)}>View Details</a>
             </div>
           </div>
         </div>
@@ -82,5 +84,8 @@ export default class Validation extends React.Component {
 }
 
 Validation.propTypes = {
-  validation: React.PropTypes.object
+  description: React.PropTypes.string,
+  name: React.PropTypes.string,
+  status: React.PropTypes.string,
+  uuid: React.PropTypes.string
 };

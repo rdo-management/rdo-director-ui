@@ -1,30 +1,27 @@
 import React from 'react';
 
+import NotificationActions from '../actions/NotificationActions';
+import ValidationsActions from '../actions/ValidationsActions';
 import ValidationsApiService from '../services/ValidationsApiService';
 import ValidationsStore from '../stores/ValidationsStore';
-
 import ValidationsIndicator from './validations/ValidationsIndicator';
 import ValidationsList from './validations/ValidationsList';
-
-import MockValidations from '../mock/mockValidations';
-var mockValidations = true;
+import ValidationsApiErrorHandler from '../services/ValidationsApiErrorHandler';
 
 export default class Footer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       showValidations: false,
-      validationTypes: []
+      validationStages: ValidationsStore.getState().stages
     };
 
     this.changeListener = this._onChange.bind(this);
   }
 
   componentDidMount() {
-    this._onChange();
-
-    ValidationsApiService.handleGetValidations();
     ValidationsStore.addChangeListener(this.changeListener);
+    this.getValidationStages();
   }
 
   componentWillUnmount() {
@@ -32,23 +29,29 @@ export default class Footer extends React.Component {
   }
 
   _onChange() {
-    if (mockValidations) {
-      this.setState({validationTypes: MockValidations.validations});
-      return;
-    }
+    this.setState({validationStages: ValidationsStore.getState().stages});
+  }
 
-    this.setState({validationTypes: ValidationsStore.getState().validations});
+  getValidationStages() {
+    ValidationsApiService.getStages().then((response) => {
+      ValidationsActions.listStages(response);
+      console.log(response);
+    }).catch((error) => {
+      console.error('Error in Footer.getValidationStages', error);
+      let errorHandler = new ValidationsApiErrorHandler(error);
+      errorHandler.errors.forEach((error) => {
+        NotificationActions.notify(error);
+      });
+    });
   }
 
   toggleValidationsList(e) {
     e.preventDefault();
-
     this.setState({showValidations: !this.state.showValidations});
   }
 
   closeValidationsList(e) {
     e.preventDefault();
-
     this.setState({showValidations: false});
   }
 
@@ -58,12 +61,15 @@ export default class Footer extends React.Component {
         <div className="container-fluid">
           <div className="row">
             <div className="col-sm-12">
-              <ValidationsIndicator validationTypes={this.state.validationTypes} onClick={this.toggleValidationsList.bind(this)}/>
+              <ValidationsIndicator validationStages={this.state.validationStages}
+                                    onClick={this.toggleValidationsList.bind(this)}/>
               <p className="pull-right">&copy; 2015 Company Name</p>
             </div>
           </div>
         </div>
-        <ValidationsList active={this.state.showValidations} validationTypes={this.state.validationTypes} onClose={this.closeValidationsList.bind(this)}/>
+        <ValidationsList active={this.state.showValidations}
+                         validationStages={this.state.validationStages}
+                         onClose={this.closeValidationsList.bind(this)}/>
       </footer>
     );
   }

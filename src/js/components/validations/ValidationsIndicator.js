@@ -27,8 +27,8 @@ export default class ValidationsIndicator extends React.Component {
     let statusCount = 0;
     let me = this;
 
-    this.props.validationTypes.forEach(function(validationType, i) {
-      validationType.validations.forEach(function (validation, j) {
+    this.props.validationStages.forEach(function(validationStage, i) {
+      validationStage.validations.forEach(function (validation, j) {
         if (i + j === 0)
         {
           currentStatus = validation.status || 'failed';
@@ -70,7 +70,7 @@ export default class ValidationsIndicator extends React.Component {
   }
 }
 ValidationsIndicator.propTypes = {
-  validationTypes: React.PropTypes.array,
-  onClick: React.PropTypes.func
+  onClick: React.PropTypes.func,
+  validationStages: React.PropTypes.array
 };
 

@@ -2,10 +2,7 @@ import * as _ from 'lodash';
 import request from 'reqwest';
 import when from 'when';
 
-import NotificationActions from '../actions/NotificationActions';
 import TempStorage from './TempStorage';
-import ValidationsActions from '../actions/ValidationsActions';
-import ValidationsApiErrorHandler from './ValidationsApiErrorHandler';
 import { VALIDATIONS_URL } from '../constants/APIEndpointUrls';
 
 class ValidationsApiService {
@@ -19,117 +16,116 @@ class ValidationsApiService {
     };
   }
   /**
-   * Validations API: GET /v1/plans/<planId>/validations/
+   * Validations API: GET /v1/validations/
+   * @param {string} plan_id - optional, specify to fetch validations with results
+   * related to certain plan if validation supports it
    * @returns {array} of validations.
    */
   getValidations(planId) {
     return when(request(_.merge(
       this.defaultGetRequest,
-      { url: `${VALIDATIONS_URL}/plans/${planId}/validations/` }
+      { url: `${VALIDATIONS_URL}/validations/`,
+        data: { plan_id: planId } }
     )));
   }
 
   /**
-   * Validations API: GET /v1/plans/<planId>/validations/<validationId>
+   * Validations API: GET /v1/validations/<validationId>
+   * @param {string} plan_id - optional, specify to fetch validation with results
+   * related to certain plan if validation supports it
    * @returns validation.
    */
   getValidation(validationId, planId) {
     return when(request(_.merge(
       this.defaultGetRequest,
-      { url: `${VALIDATIONS_URL}/plans/${planId}/validations/${validationId}/` }
+      { url: `${VALIDATIONS_URL}/validations/${validationId}/`,
+        data: { plan_id: planId } }
     )));
   }
 
   /**
-   * Validations API: PUT /v1/plans/<plan_id>/validations/<validation_id>/run
+   * Validations API: PUT /v1/validations/<validation_id>/run
    */
   runValidation(validationId, planId) {
     return when(request(_.merge(
       this.defaultGetRequest,
       { method: 'PUT',
-        url: `${VALIDATIONS_URL}/plans/${planId}/validations/${validationId}/run` }
+        url: `${VALIDATIONS_URL}/validations/${validationId}/run`,
+        data: { plan_id: planId } }
     )));
   }
 
   /**
-   * Validations API: PUT /v1/plans/<plan_id>/validations/<validation_id>/stop
+   * Validations API: PUT /v1/validations/<validation_id>/stop
    */
   stopValidation(validationId, planId) {
     return when(request(_.merge(
       this.defaultGetRequest,
       { method: 'PUT',
-        url: `${VALIDATIONS_URL}/plans/${planId}/validations/${validationId}/stop` }
+        url: `${VALIDATIONS_URL}/validations/${validationId}/stop`,
+        data: { plan_id: planId } }
     )));
   }
 
   /**
-   * Validations API: GET /v1/plans/<planId>/validation_types/
-   * @returns Validation Types.
+   * Validations API: GET /v1/stages/
+   * @param {string} plan_id - optional, specify to fetch validations with results
+   * related to certain plan if validation supports it
+   * @returns {array} of Stages.
    */
-  getValidationTypes(planId) {
+  getStages(planId) {
     return when(request(_.merge(
       this.defaultGetRequest,
-      { url: `${VALIDATIONS_URL}/plans/${planId}/validation_types/` }
+      { url: `${VALIDATIONS_URL}/stages/`,
+        data: { plan_id: planId } }
     )));
   }
 
   /**
-   * Validations API: GET /v1/plans/<planId>/validation_types/<type_uuid>/
-   * @returns Validation Type.
+   * Validations API: GET /v1/stages/<stage_id>/
+   * @returns Stage.
    */
-  getValidationType(validationTypeId, planId) {
+  getStage(stageId, planId) {
     return when(request(_.merge(
       this.defaultGetRequest,
-      { url: `${VALIDATIONS_URL}/plans/${planId}/validation_types/${validationTypeId}/` }
+      { url: `${VALIDATIONS_URL}/stages/${stageId}/`,
+        data: { plan_id: planId } }
     )));
   }
 
   /**
-   * Validations API: PUT /v1/plans/<planId>/validation_types/<type_uuid>/run
+   * Validations API: PUT /v1/stages/<stage_id>/run
    */
-  runValidationType(validationTypeId, planId) {
+  runStage(stageId, planId) {
     return when(request(_.merge(
       this.defaultGetRequest,
       { method: 'PUT',
-        url: `${VALIDATIONS_URL}/plans/${planId}/validation_types/${validationTypeId}/run` }
+        url: `${VALIDATIONS_URL}/stages/${stageId}/run`,
+        data: { plan_id: planId } }
     )));
   }
 
   /**
-   * GET /v1/plans/<planId>/validation_results/
+   * GET /v1/results/
    * @returns array of validation results
    */
-  getValidationResults(planId) {
+  getResults(planId) {
     return when(request(_.merge(
       this.defaultGetRequest,
-      { url: `${VALIDATIONS_URL}/plans/${planId}/validation_results/` }
+      { url: `${VALIDATIONS_URL}/results/`,
+        data: { plan_id: planId } }
     )));
   }
 
   /**
-   * GET /v1/plans/<planId>/validation_results/<result_id>/
+   * GET /v1/results/<result_id>/
    * @returns validation result
    */
-  getValidationResult(resultId, planId) {
+  getResult(resultId) {
     return when(request(_.merge(
       this.defaultGetRequest,
-      { url: `${VALIDATIONS_URL}/plans/${planId}/validation_results/${resultId}/` }
+      { url: `${VALIDATIONS_URL}/results/${resultId}/` }
     )));
-  }
-
-  /**
-  * Handles getValidations
-  */
-  handleGetValidations() {
-    this.getValidationTypes().then((response) => {
-      ValidationsActions.listValidationTypes(response);
-    }).catch((error) => {
-      console.error('Error in handleGetValidations', error);
-      let errorHandler = new ValidationsApiErrorHandler(error);
-      errorHandler.errors.forEach((error) => {
-        NotificationActions.notify(error);
-      });
-    });
   }
 }
 
