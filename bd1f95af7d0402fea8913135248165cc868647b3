@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ac7a964_42b5d8ec",
+        "filename": "src/js/components/NavBar.js",
+        "patchSetId": 16
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-19T15:43:47Z",
+      "side": 1,
+      "message": "should not be needed, check my comment to index.js",
+      "revId": "bd1f95af7d0402fea8913135248165cc868647b3",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ac7a964_62bad4df",
+        "filename": "src/js/components/NavBar.js",
+        "patchSetId": 16
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-19T15:43:47Z",
+      "side": 1,
+      "message": "to\u003d\"plans/list\"",
+      "revId": "bd1f95af7d0402fea8913135248165cc868647b3",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ac7a964_e2c5045c",
+        "filename": "src/js/components/NavBar.js",
+        "patchSetId": 16
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-19T15:43:47Z",
+      "side": 1,
+      "message": "to\u003d{`plan/${getCurrentPlanName()}/environment`}\n\ngetCurrentPlanName fetches the plan name from the url\n\n- let me know if you need to find out how. React router has means to access the url and get params",
+      "revId": "bd1f95af7d0402fea8913135248165cc868647b3",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ac7a964_025f60e6",
+        "filename": "src/js/index.js",
+        "patchSetId": 16
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-19T15:43:47Z",
+      "side": 1,
+      "message": "I think I confused you here. (I also updated the routes in last tables patch, so they make more sense now) IMHO it should be like this:\n\n\u003cRedirect from\u003d\"plans\" to\u003d\"plans/list\"/\u003e\n\u003cRoute path\u003d\"plans\" component\u003d{Plans}\u003e\n  \u003cRoute path\u003d\"list\" component\u003d{ListPlans}/\u003e\n  \u003cRoute path\u003d\"new\" component\u003d{NewPlan}/\u003e\n\u003c/Route\u003e\n\n\u003cRedirect from\u003d\"plan\" to\u003d\"plan/environment\"/\u003e\n\u003cRoute path\u003d\"plan/:planName\" component\u003d{Plan}\u003e\n  \u003cRoute path\u003d\"environment\" component\u003d{EnvironmentConfiguration}/\u003e\n  \u003cRoute path\u003d\"roles\" component\u003d{Roles}/\u003e\n  \u003cRoute path\u003d\"parameters\" component\u003d{Parameters}/\u003e\n\u003c/Route\u003e\n\nboth Plan and Plans components listen to PlansStore. Plan component uses Store.getPlan(name) (gets the plan name from url) to get plan\n\nPlans fetches list of plans from Store.\n\nSetting current plan from the plans list now equals to just linking to /plan/:selectedPlanName/environments\n\nWe don\u0027t need to track \u0027currentPlan\u0027 anywhere.\n\nwhat do you think?",
+      "revId": "bd1f95af7d0402fea8913135248165cc868647b3",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
