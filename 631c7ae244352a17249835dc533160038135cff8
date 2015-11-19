@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ac7a964_11d17457",
+        "filename": "src/js/components/Footer.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1004551
+      },
+      "writtenOn": "2015-11-19T04:46:00Z",
+      "side": 1,
+      "message": "Perhaps a nit pick but what is \"Company Name\"",
+      "revId": "631c7ae244352a17249835dc533160038135cff8",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ac7a964_71d0e850",
+        "filename": "src/less/base.less",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1004551
+      },
+      "writtenOn": "2015-11-19T04:46:00Z",
+      "side": 1,
+      "message": "could just do #bbb",
+      "revId": "631c7ae244352a17249835dc533160038135cff8",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ac7a964_b1c1a082",
+        "filename": "src/less/components/Validations.less",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1004551
+      },
+      "writtenOn": "2015-11-19T04:46:00Z",
+      "side": 1,
+      "message": "#fff",
+      "revId": "631c7ae244352a17249835dc533160038135cff8",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
