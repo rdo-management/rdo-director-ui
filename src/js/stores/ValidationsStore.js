@@ -7,22 +7,22 @@ class ValidationsStore extends BaseStore {
     super();
     this.subscribe(() => this._registerToActions.bind(this));
     this.state = {
-      validationTypes: []
+      stages: []
     };
   }
 
   _registerToActions(payload) {
     switch(payload.actionType) {
-    case ValidationsConstants.LIST_VALIDATION_TYPES:
-      this.onListValidationTypes(payload.validationTypes);
+    case ValidationsConstants.LIST_STAGES:
+      this.onListStages(payload.stages);
       break;
     default:
       break;
     }
   }
 
-  onListValidationTypes(validationTypes) {
-    this.state.validationTypes = validationTypes;
+  onListStages(stages) {
+    this.state.stages = stages;
     this.emitChange();
   }
 

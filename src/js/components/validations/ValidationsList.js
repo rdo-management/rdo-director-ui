@@ -1,7 +1,7 @@
 import React from 'react';
 import ClassNames from 'classnames';
 
-import ValidationType from './ValidationType';
+import ValidationStage from './ValidationStage';
 
 export default class ValidationsList extends React.Component {
   render () {
@@ -11,15 +11,18 @@ export default class ValidationsList extends React.Component {
       'collapsed': !this.props.active
     });
 
-    let validationTypesComponents = this.props.validationTypes.map((validationType, index) => {
+    let validationStages = this.props.validationStages.map((validationStage, index) => {
       return (
-        <ValidationType key={index} validationType={validationType} />
+        <ValidationStage key={index}
+                         validations={validationStage.validations}
+                         name={validationStage.name}
+                         uuid={validationStage.uuid} />
       );
     });
 
     return (
       <div className={classes}>
-        {validationTypesComponents}
+        {validationStages}
       </div>
     );
   }
@@ -27,5 +30,5 @@ export default class ValidationsList extends React.Component {
 
 ValidationsList.propTypes = {
   active: React.PropTypes.bool,
-  validationTypes: React.PropTypes.array
+  validationStages: React.PropTypes.array
 };
