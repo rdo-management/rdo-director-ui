@@ -14,5 +14,12 @@ export default {
       actionType: NotificationConstants.REMOVE_NOTIFICATION,
       notification: notification
     });
+  },
+
+  notificationViewed(notification) {
+    AppDispatcher.dispatch({
+      actionType: NotificationConstants.NOTIFICATION_VIEWED,
+      notification: notification
+    });
   }
 };

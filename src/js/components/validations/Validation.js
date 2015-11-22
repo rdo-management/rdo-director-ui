@@ -30,36 +30,39 @@ export default class Validation extends React.Component {
       'pficon pficon-error-circle-o': status === 'failed',
       'pficon pficon-ok':             status === 'ok',
       'pficon pficon-running':        status === 'running',
-      'pficon pficon-add-circle-o':   status === 'new'
+      'pficon pficon-flag':           status === 'new'
     });
 
     var runButton;
-    if (this.props.validation.status == 'new')
+    if (status == 'new')
     {
-      runButton =
+      runButton = (
         <button className="btn btn-primary btn-xs pull-right"
                 onClick={this.runValidaton.bind(this)}>
           Run Now
-        </button>;
+        </button>
+      );
     }
 
     var stopButton;
     if (this.props.validation.status == 'running')
     {
-      stopButton =
+      stopButton = (
         <button className="btn btn-danger btn-xs pull-right"
                 onClick={this.stopValidation.bind(this)}>
           Stop
-        </button>;
+        </button>
+      );
     }
 
     var detailsLink;
     if (this.props.validation.results && this.props.validation.results.length > 0)
     {
-      detailsLink =
+      detailsLink = (
         <a className="details-link" onClick={this.viewDetails.bind(this)}>
           View Details
         </a>
+      );
     }
 
     return (

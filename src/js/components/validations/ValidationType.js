@@ -45,14 +45,14 @@ export default class ValidationType extends React.Component {
       statusInfo.validationStatuses.push(
         {
           count: availableCount,
-          label: 'New' + (runningCount||sucessCount||errorCount ? ',':'')
+          label: 'Available' + (runningCount||sucessCount||errorCount ? ',':'')
         }
       );
     }
     if (runningCount > 0) {
       statusInfo.validationStatuses.push(
         {
-          count: statusInfo.runningCount,
+          count: runningCount,
           label: 'Running' + (sucessCount||errorCount ? ',':'')
         }
       );
@@ -65,10 +65,10 @@ export default class ValidationType extends React.Component {
         }
       );
     }
-    if (statusInfo.errorCount > 0) {
+    if (errorCount > 0) {
       statusInfo.validationStatuses.push(
         {
-          count: statusInfo.errorCount,
+          count: errorCount,
           label: 'Failed'
         }
       );
@@ -122,7 +122,9 @@ export default class ValidationType extends React.Component {
     var detailsLink;
     if (statusInfo.showDetails)
     {
-      detailsLink = <a className="details-link">View Details</a>
+      detailsLink = (
+        <a className="details-link">View Details</a>
+      );
     }
 
     return (

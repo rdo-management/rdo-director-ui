@@ -16,6 +16,9 @@ class NotificationStore extends BaseStore {
     case NotificationConstants.REMOVE_NOTIFICATION:
       this.onRemoveNotification(payload.notification);
       break;
+    case NotificationConstants.NOTIFICATION_VIEWED:
+      this.onViewedNotification(payload.notification);
+      break;
     default:
       break;
     }
@@ -26,6 +29,7 @@ class NotificationStore extends BaseStore {
       title: notificationData.title,
       message: notificationData.message,
       type: notificationData.type,
+      viewed: false,
       dismissable: notificationData.dissmissable
     };
     this.state.push(notification);
@@ -34,6 +38,11 @@ class NotificationStore extends BaseStore {
 
   onRemoveNotification(index) {
     this.state.splice(index, 1);
+    this.emitChange();
+  }
+
+  onViewedNotification(notification) {
+    notification.viewed = true;
     this.emitChange();
   }
 

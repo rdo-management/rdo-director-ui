@@ -20,24 +20,17 @@
   }
 }
 
-.validations-list {
-  background: #fff;
-  border: solid 1px #D1D1D1;
-  bottom: @footer-height;
-  color:#333;
-  font-size: 12px;
-  line-height: 1.66666667;
-  left:0;
-  position: fixed;
-  width: 100%;
-  z-index: 100;
-
-  &.closed {
-    display: none;
-  }
-  &.opened {
-    display: block;
-  }
+.validations-container {
+    color: #4d5258;
+    font-size: 12px;
+    margin-right: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding-left: 0;
+    padding-right: 0;
+    &.collapsed {
+      display: none;
+    }
 
   .validations-header {
     background-color: #fff;
@@ -61,6 +54,7 @@
 
     .validation-type-title {
       color: @gray-pf;
+      cursor: pointer;
       float: left;
       font-weight: @btn-font-weight;
       &:before {
@@ -76,11 +70,6 @@
       }
       &:hover {
         text-decoration: none;
-      }
-      &.collapsed:before {
-        content: "\f105";
-        margin-left: 4px;
-        margin-right: 7px;
       }
     }
     .validation-statuses {
@@ -104,7 +93,7 @@
   .validation-type-content {
     border-bottom: solid 1px #D1D1D1;
     display: none;
-    padding-bottom: 0;
+    padding-bottom: 5px;
 
     &.opened {
       display: block;
@@ -113,8 +102,25 @@
 }
 
 .validation {
-  border: solid 1px #ddd;
-  padding: 10px 20px;
+  border: solid 1px #D1D1D1;
+  margin: 10px 10px 5px 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+
+  .validation-icon {
+    &.pficon-flag {
+      color: #0088CE;
+    }
+    &.pficon-ok:before {
+      color: #333;
+    }
+  }
+
+  .validation-name {
+    color: #333;
+    font-size: 12px;
+    padding-left: 5px;
+  }
 
   .validation-message {
     padding-left: 15px;
@@ -124,6 +130,10 @@
     color: #0099d3;
     cursor: pointer;
     margin-left: 15px;
-    margin-right: 0;
+    visibility: hidden;
+
+    &.available {
+      visibility: visible;
+    }
   }
 }

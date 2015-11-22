@@ -9,40 +9,13 @@
 
 @import "utils/patternflyOverrides";
 @import "forms/Forms";
+@import "components/Footer";
 @import "components/EnvironmentConfiguration";
 @import "components/NodeStack";
 @import "components/NodePicker";
 @import "components/NotificationList";
 @import "components/Notification";
 @import "components/Validations";
-
-.wrapper-fixed-body {
-  padding-top: @header-height;
-  padding-bottom: @footer-height;
-}
-
-.wrapper-footer {
-  background-color: @footer-pf-alt-bg-color;
-  color:#999;
-  font-size: @font-size-small;
-  line-height: 17px; // whole px unit to avoid height differences among browsers
-  padding-top: @footer-pf-alt-padding-top;
-
-  .indicator {
-    margin-top: -4px;
-    padding: 5px;
-    background-color: #bbb;
-  }
-
-  a {
-    margin-right: 10px;
-    color: #000;
-
-    &:hover {
-      color: #000;
-    }
-  }
-}
 
 .panel.flavor-panel > .panel-body{
   padding-bottom: 0;

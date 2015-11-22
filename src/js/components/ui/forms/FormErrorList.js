@@ -1,7 +1,7 @@
 import React from 'react';
 import * as _ from 'lodash';
 
-import Notification from '../Notification';
+import Notification from '../../notifications/Notification';
 
 export default class FormErrorList extends React.Component {
   render() {

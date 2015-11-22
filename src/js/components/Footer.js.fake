@@ -3,6 +3,7 @@ import React from 'react';
 import ClassNames from 'classnames';
 
 import NotificationStore from '../stores/NotificationStore';
+import NotificationActions from '../actions/NotificationActions';
 import ValidationsApiService from '../services/ValidationsApiService';
 import ValidationsStore from '../stores/ValidationsStore';
 
@@ -77,6 +78,44 @@ export default class Footer extends React.Component {
     this.setState({isOpen: true, listShown: 'validations'});
   }
 
+  fakeNotification (e) {
+    if (this.fakeCount === undefined) {
+      this.fakeCount = 0;
+    }
+
+    let msgType = this.fakeCount % 4;
+    this.fakeCount++;
+    if (msgType === 0) {
+      NotificationActions.notify({
+        title: 'Bah!',
+        message: 'Something has gone awry!',
+        type: 'error'
+      });
+    }
+    else if (msgType === 1) {
+      NotificationActions.notify({
+        title: 'Oopsies!',
+        message: 'It looks like something could be an issue.',
+        type: 'warning'
+      });
+    }
+    else if (msgType === 2) {
+      NotificationActions.notify({
+        title: 'Yay!',
+        message: 'Everything went completely as planned.',
+        type: 'success'
+      });
+    }
+    else if (msgType === 3) {
+      NotificationActions.notify({
+        title: 'Hey!',
+        message: 'You might want to check out how things went.',
+        type: 'info'
+      });
+    }
+
+  }
+
   render() {
     let indicatorsClasses = ClassNames({
       'nav nav-tabs nav-tabs-pf drawer-nav' : true,
@@ -108,6 +147,10 @@ export default class Footer extends React.Component {
              notification.type !== 'ok';
     }));
 
+    let fakeStyle = {
+      color: 'transparent'
+    };
+
     return (
       <div>
         <NotificationsToaster notification={toasterNotification}/>
@@ -133,13 +176,12 @@ export default class Footer extends React.Component {
                                       onClick={this.showValidations.bind(this)}/>
               </li>
             </ul>
+            <span onClick={this.fakeNotification.bind(this)} style={fakeStyle}>Fake Notification</span>
             <span className={toggleClasses} onClick={this.toggleOpen.bind(this)}></span>
           </div>
           <div className={contentClasses}>
-            <NotificationList active={this.state.listShown === 'notifications'}
-                              notifications={this.state.notifications}/>
-            <ValidationsList  active={this.state.listShown === 'validations'}
-                              validationTypes={this.state.validationTypes}/>
+            <NotificationList active={this.state.listShown === 'notifications'} notifications={this.state.notifications}/>
+            <ValidationsList  active={this.state.listShown === 'validations'} validationTypes={this.state.validationTypes}/>
           </div>
         </div>
       </div>

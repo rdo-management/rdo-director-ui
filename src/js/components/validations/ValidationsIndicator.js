@@ -60,17 +60,15 @@ export default class ValidationsIndicator extends React.Component {
 
 
     return (
-      <div className="pull-left">
-        <a href="#" onClick={this.props.onClick} className="indicator">
-          <span className={validationStatusIcon}></span>
-          <span> Validations: <strong>{statusCount}</strong></span>
-        </a>
-      </div>
+      <a onClick={this.props.onClick}>
+        <span className={validationStatusIcon}></span>
+        <span> Validations: {statusCount}</span>
+      </a>
     );
   }
 }
 ValidationsIndicator.propTypes = {
-  validationTypes: React.PropTypes.array,
-  onClick: React.PropTypes.func
+  onClick: React.PropTypes.func,
+  validationTypes: React.PropTypes.array
 };
 
