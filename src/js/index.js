@@ -6,6 +6,7 @@ import { Router, Route, IndexRoute, Redirect } from 'react-router';
 
 import App from './components/App';
 import AuthenticatedContent from './components/AuthenticatedContent';
+import Deployment from './components/deployment/Deployment.js';
 import DiscoveredNodesTabPane from './components/nodes/DiscoveredNodesTabPane';
 import EnvironmentConfiguration from
   './components/environment_configuration/EnvironmentConfiguration.js';
@@ -19,7 +20,7 @@ import MaintenanceNodesTabPane from './components/nodes/MaintenanceNodesTabPane'
 import NewPlan from './components/plan/NewPlan';
 import Nodes from './components/nodes/Nodes';
 import Overview from './components/Overview';
-import Parameters from './components/plan/Parameters.js';
+import Parameters from './components/parameters/Parameters.js';
 import Plan from './components/plan/Plan.js';
 import Plans from './components/plan/Plans.js';
 import PlansStore from './stores/PlansStore';
@@ -65,6 +66,7 @@ let routes = (
         <Route path="environment" component={EnvironmentConfiguration}/>
         <Route path="roles" component={Roles}/>
         <Route path="parameters" component={Parameters}/>
+        <Route path="deployment" component={Deployment}/>
       </Route>
     </Route>
     <Route path="login" component={Login}/>
