@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac4a560_3b7e7fe5",
+        "filename": "src/js/components/NavBar.js",
+        "patchSetId": 17
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-23T12:52:04Z",
+      "side": 1,
+      "message": "probably not needed, because state.plan is {} by default in constructor",
+      "range": {
+        "startLine": 37,
+        "startChar": 30,
+        "endLine": 37,
+        "endChar": 36
+      },
+      "revId": "0554d3c1b6111bec39b9f1ebcdb0ba613a68522a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_5be89b7c",
+        "filename": "src/js/index.js",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-23T12:52:04Z",
+      "side": 1,
+      "message": "I think we are complicating things too much by putting the plan into the URL, because then we have to introduce this ugly mechanism that tapes to urls and updates current plan. How about we keep just the plan/environments etc. That will get us rid of all the redirection hacks.\n\nTo check if there is no plan set, use onEnter method on route",
+      "revId": "0554d3c1b6111bec39b9f1ebcdb0ba613a68522a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
