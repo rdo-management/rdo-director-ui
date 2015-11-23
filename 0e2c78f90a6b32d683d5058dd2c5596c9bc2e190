@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac4a560_3e2bcd83",
+        "filename": "src/js/components/environment_configuration/EnvironmentConfiguration.js",
+        "patchSetId": 19
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-23T13:41:58Z",
+      "side": 1,
+      "message": "not needed, plan is passed from Plan.js as prop",
+      "revId": "0e2c78f90a6b32d683d5058dd2c5596c9bc2e190",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_7e5c6526",
+        "filename": "src/js/components/plan/Plan.js",
+        "patchSetId": 19
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-23T13:41:58Z",
+      "side": 1,
+      "message": "PlansStore.getPlan();",
+      "revId": "0e2c78f90a6b32d683d5058dd2c5596c9bc2e190",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_fe479549",
+        "filename": "src/js/components/plan/Plan.js",
+        "patchSetId": 19
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-23T13:41:58Z",
+      "side": 1,
+      "message": "probably in ComponentWillMount\nif plan is {}, redirect to plans/list",
+      "revId": "0e2c78f90a6b32d683d5058dd2c5596c9bc2e190",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_1e2611bb",
+        "filename": "src/js/index.js",
+        "patchSetId": 19
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-23T13:41:58Z",
+      "side": 1,
+      "message": "is it needed?",
+      "range": {
+        "startLine": 57,
+        "startChar": 23,
+        "endLine": 57,
+        "endChar": 24
+      },
+      "revId": "0e2c78f90a6b32d683d5058dd2c5596c9bc2e190",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
