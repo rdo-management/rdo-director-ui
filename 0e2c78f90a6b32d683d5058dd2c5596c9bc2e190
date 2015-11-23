@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "5ac4a560_de5499cc",
+        "filename": "src/js/components/plan/Plan.js",
+        "patchSetId": 19
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2015-11-23T14:14:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ac4a560_7e5c6526",
+      "revId": "0e2c78f90a6b32d683d5058dd2c5596c9bc2e190",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac4a560_fe479549",
         "filename": "src/js/components/plan/Plan.js",
         "patchSetId": 19
@@ -53,6 +71,24 @@
     },
     {
       "key": {
+        "uuid": "5ac4a560_be47dd1c",
+        "filename": "src/js/components/plan/Plan.js",
+        "patchSetId": 19
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2015-11-23T14:14:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ac4a560_fe479549",
+      "revId": "0e2c78f90a6b32d683d5058dd2c5596c9bc2e190",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac4a560_1e2611bb",
         "filename": "src/js/index.js",
         "patchSetId": 19
@@ -64,6 +100,30 @@
       "writtenOn": "2015-11-23T13:41:58Z",
       "side": 1,
       "message": "is it needed?",
+      "range": {
+        "startLine": 57,
+        "startChar": 23,
+        "endLine": 57,
+        "endChar": 24
+      },
+      "revId": "0e2c78f90a6b32d683d5058dd2c5596c9bc2e190",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_1e0531c2",
+        "filename": "src/js/index.js",
+        "patchSetId": 19
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2015-11-23T14:14:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ac4a560_1e2611bb",
       "range": {
         "startLine": 57,
         "startChar": 23,
