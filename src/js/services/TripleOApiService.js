@@ -86,6 +86,20 @@ class TripleOApiService {
   }
 
   /**
+   * TripleO API: PATCH /v1/plans/<planName>/parameters
+   * @returns Plan's parameters.
+   */
+  updatePlanParameters(planName, data) {
+    return when(request(_.merge(
+      this.defaultPostRequest, {
+        url: `${TRIPLEOAPI_URL}${GET_PLANS_PATH}/${planName}/parameters`,
+        method: 'PATCH',
+        data: JSON.stringify(data)
+      }
+    )));
+  }
+
+  /**
    * TripleO API: GET /v1/plans/<planName>/resource_types
    * @returns Plan's resource registry.
    */
@@ -100,7 +114,7 @@ class TripleOApiService {
    * TripleO API: GET /v1/plans/<planName>/roles
    * @returns Plan's roles mapping.
    */
-  getPlanResourceTypes(planName) {
+  getPlanRoles(planName) {
     return when(request(_.merge(
       this.defaultGetRequest,
       { url: `${TRIPLEOAPI_URL}${GET_PLANS_PATH}/${planName}/roles` }
@@ -111,7 +125,7 @@ class TripleOApiService {
    * TripleO API: GET /v1/plans/<planName>/validate
    * @returns Plan's validation results.
    */
-  getPlanResourceTypes(planName) {
+  validatePlan(planName) {
     return when(request(_.merge(
       this.defaultGetRequest,
       { url: `${TRIPLEOAPI_URL}${GET_PLANS_PATH}/${planName}/validate` }
@@ -121,7 +135,7 @@ class TripleOApiService {
   /**
    * TripleO API: GET /v1/plans/<planName>/deploy
    */
-  getPlanResourceTypes(planName) {
+  deployPlan(planName) {
     return when(request(_.merge(
       this.defaultGetRequest,
       { url: `${TRIPLEOAPI_URL}${GET_PLANS_PATH}/${planName}/deploy` }
