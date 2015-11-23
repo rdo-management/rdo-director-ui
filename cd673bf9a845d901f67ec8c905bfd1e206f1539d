@@ -16,6 +16,24 @@
       "revId": "cd673bf9a845d901f67ec8c905bfd1e206f1539d",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_db92ebf5",
+        "filename": "src/js/components/validations/ValidationStage.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-23T12:59:00Z",
+      "side": 1,
+      "message": "Yes, we can add it if we need to, but focusing on the demo,I\u0027d rather simplify things rather that add some mocks to satisfy wireframes. Adding things gradually will help with review proces. Reviewing such a large patches takes me too long, given the timeframe we have, and potential things that may cause trouble are getting merged.",
+      "parentUuid": "5ac4a560_1bc70314",
+      "revId": "cd673bf9a845d901f67ec8c905bfd1e206f1539d",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
