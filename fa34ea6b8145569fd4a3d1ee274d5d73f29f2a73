@@ -34,6 +34,24 @@
       "revId": "fa34ea6b8145569fd4a3d1ee274d5d73f29f2a73",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_5e87a461",
+        "filename": "src/js/actions/PlansActions.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2015-11-24T12:31:46Z",
+      "side": 0,
+      "message": "True, in most cases we don\u0027t need the whole plan.\n\nExcept when the plan is edited (picking different root/capab. files). But that\u0027s a rare enough case that we don\u0027t need to store the whole plan just for that.",
+      "parentUuid": "5ac4a560_7e20e09b",
+      "revId": "fa34ea6b8145569fd4a3d1ee274d5d73f29f2a73",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
