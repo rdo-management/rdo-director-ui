@@ -50,6 +50,9 @@ export default class ListPlans extends React.Component {
     return false;
   }
 
+  onPlanEditClick(e) {
+  }
+
   render() {
     let plans = this.state.plans.map(item => {
       return (
@@ -58,10 +61,8 @@ export default class ListPlans extends React.Component {
                  onClick={this.onPlanClick.bind(this)}>{item}</a></td>
           <td className="plan-list-actions-col">
             <div className="btn-group" role="group">
-              <Link to="plans/list" className="btn btn-xs btn-default">Edit</Link>
-              <button onClick={this.onDelete.bind(this)}
-                      data-plan-name={item}
-                      className="btn btn-xs btn-warning">Delete</button>
+              <Link to={`plans/${item}/edit`} className="btn btn-xs btn-default">Edit</Link>
+              <Link to={`plans/${item}/delete`} className="btn btn-xs btn-warning">Delete</Link>
             </div>
           </td>
         </tr>

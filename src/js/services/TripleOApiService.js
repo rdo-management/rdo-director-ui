@@ -128,10 +128,7 @@ class TripleOApiService {
     )));
   }
 
-  /**
-   * TripleO API: POST /v1/plans
-   */
-  createPlan(name, files) {
+  _getPlanFilesObj(files) {
     let planFiles = {};
     files.forEach(item => {
       planFiles[item.name] = {};
@@ -143,15 +140,22 @@ class TripleOApiService {
         planFiles[item.name].meta = { 'file-type': 'capabilities-map' };
       }
     });
-    let payload = {
+    return planFiles;
+  }
+
+  /**
+   * TripleO API: POST /v1/plans
+   */
+  createPlan(name, files) {
+    let payload = JSON.stringify({
       name: name,
-      files: planFiles
-    };
+      files: this._getPlanFilesObj(files)
+    });
     return when(request(_.merge(
       this.defaultPostRequest,
       {
         url: `${TRIPLEOAPI_URL}${GET_PLANS_PATH}`,
-        data: JSON.stringify(payload)
+        data: payload
       }
     ))).then(result => {
       NotificationActions.notify({
@@ -166,6 +170,68 @@ class TripleOApiService {
         NotificationActions.notify({
           title: 'Error Creating Plan',
           message: `The plan ${name} could not be created. ${error.message}`,
+          type: 'error'
+        });
+      });
+    });
+  }
+
+  /**
+   * TripleO API: PATCH /v1/plans/<name>
+   */
+  updatePlan(name, files) {
+    let payload = JSON.stringify({
+      files: this._getPlanFilesObj(files)
+    });
+    return when(request(_.merge(
+      this.defaultPostRequest,
+      {
+        url: `${TRIPLEOAPI_URL}${GET_PLANS_PATH}/${name}`,
+        data: payload,
+        method: 'PATCH'
+      }
+    ))).then(result => {
+      NotificationActions.notify({
+        title: 'Plan Updated',
+        message: 'The plan ' + name + ' was successfully updated.',
+        type: 'success'
+      });
+    }).catch(error => {
+      console.error('Error in TripleOApiService.updatePlan', error);
+      let errorHandler = new TripleOApiErrorHandler(error);
+      errorHandler.errors.forEach((error) => {
+        NotificationActions.notify({
+          title: 'Error Updating Plan',
+          message: `The plan ${name} could not be updated. ${error.message}`,
+          type: 'error'
+        });
+      });
+    });
+  }
+
+  /**
+   * TripleO API: DELETE /v1/plans/<name>
+   */
+  deletePlan(name) {
+    return when(request(_.merge(
+      this.defaultPostRequest,
+      {
+        url: `${TRIPLEOAPI_URL}${GET_PLANS_PATH}/${name}`,
+        method: 'DELETE'
+      }
+    ))).then(result => {
+      NotificationActions.notify({
+        title: 'Plan Deleted',
+        message: 'The plan ' + name + ' was successfully deleted.',
+        type: 'success'
+      });
+    }).catch(error => {
+      console.error('Error in TripleOApiService.updatePlan', error);
+      let errorHandler = new TripleOApiErrorHandler(error);
+      errorHandler.errors.forEach((error) => {
+        NotificationActions.notify({
+          title: 'Error Deleting Plan',
+          message: `The plan ${name} could not be deleted. ${error.message}`,
           type: 'error'
         });
       });
