@@ -2,7 +2,6 @@ import * as _ from 'lodash';
 import Formsy from 'formsy-react';
 import React from 'react';
 
-import CapabilitiesMap from '../../data/CapabilitiesMap';
 import EnvironmentConfigurationTopic from './EnvironmentConfigurationTopic';
 import FormErrorList from '../ui/forms/FormErrorList';
 import NotificationActions from '../../actions/NotificationActions';
@@ -22,10 +21,19 @@ export default class EnvironmentConfiguration extends React.Component {
   }
 
   componentDidMount() {
-    // TODO(jtomasek): replace with
-    // TripleOApiService.getEnvironments();
-    this.setState({
-      environmentConfiguration: CapabilitiesMap
+    this._fetchEnvironmentConfiguration();
+  }
+
+  _fetchEnvironmentConfiguration() {
+    TripleOApiService.getPlanEnvironments(this.props.currentPlanName).then((response) => {
+      this.setState({
+        environmentConfiguration: response.environments
+      });
+    }).catch((error) => {
+      let errorHandler = new TripleOApiErrorHandler(error);
+      errorHandler.errors.forEach((error) => {
+        NotificationActions.notify(error);
+      });
     });
   }
 
@@ -37,22 +45,31 @@ export default class EnvironmentConfiguration extends React.Component {
     this.setState({ canSubmit: false });
   }
 
+  /*
+  * Formsy splits data into objects by '.', file names include '.'
+  * so we need to convert data back to e.g. { filename.yaml: true, ... }
+  */
+  _convertFormData(formData) {
+    return _.mapValues(_.mapKeys(formData, (value, key) => {
+      return key+'.yaml';
+    }), (value) => {
+      return value.yaml;
+    });
+  }
+
   handleSubmit(formData, resetForm, invalidateForm) {
-    console.log(formData);
+    let data = this._convertFormData(formData);
     this.disableButton();
-    TripleOApiService.updateEnvironments(formData).then((response) => {
-      // TODO(jtomasek): we expect to receive updated environments mapping as a response
-      // update current state with this data.
-      // this.setState({ environmentConfiguration: response })
+    TripleOApiService.updatePlanEnvironments(this.props.currentPlanName, data).then((response) => {
+      this.setState({ environmentConfiguration: response.environments });
       NotificationActions.notify({
         title: 'Environment Configuration updated',
         message: 'The Environment Configuration has been successfully updated',
         type: 'success'
       });
     }).catch((error) => {
-      this.enableButton();
       console.error('Error in EnvironmentConfiguration.handleSubmit', error);
-      let errorHandler = new TripleOApiErrorHandler(error, Object.keys(this.refs.form.inputs));
+      let errorHandler = new TripleOApiErrorHandler(error, Object.keys(this.refs.environmentConfigurationForm.inputs));
       invalidateForm(errorHandler.formFieldErrors);
       this.setState({
         formErrors: errorHandler.errors
@@ -103,7 +120,7 @@ export default class EnvironmentConfiguration extends React.Component {
   }
 }
 EnvironmentConfiguration.propTypes = {
-  plan: React.PropTypes.object
+  currentPlanName: React.PropTypes.string
 };
 
 /**

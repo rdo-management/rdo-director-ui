@@ -144,6 +144,7 @@ export default class NewPlanForm extends React.Component {
 
   onFormSubmit(form) {
     TripleOApiService.createPlan(this.state.name, this.state.files).then(() => {
+      //TODO(jtomasek): move the createPlan contents here
       this.props.history.pushState(null, 'plans/list');
     });
   }

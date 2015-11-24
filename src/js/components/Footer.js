@@ -44,7 +44,6 @@ export default class Footer extends React.Component {
   getValidationStages() {
     ValidationsApiService.getStages().then((response) => {
       ValidationsActions.listStages(response);
-      console.log(response);
     }).catch((error) => {
       console.error('Error in Footer.getValidationStages', error);
       let errorHandler = new ValidationsApiErrorHandler(error);
@@ -103,9 +102,7 @@ export default class Footer extends React.Component {
     });
 
     let toasterNotification = _.findLast(_.filter(this.state.notifications, function(notification) {
-      return !notification.viewed &&
-             notification.type !== 'success' &&
-             notification.type !== 'ok';
+      return !notification.viewed;
     }));
 
     return (

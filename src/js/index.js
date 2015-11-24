@@ -22,6 +22,7 @@ import Overview from './components/Overview';
 import Parameters from './components/plan/Parameters.js';
 import Plan from './components/plan/Plan.js';
 import Plans from './components/plan/Plans.js';
+import PlansStore from './stores/PlansStore';
 import ProvisionedNodesTabPane from './components/nodes/ProvisionedNodesTabPane';
 import RegisteredNodesTabPane from './components/nodes/RegisteredNodesTabPane';
 import Roles from './components/roles/Roles.js';
@@ -30,6 +31,12 @@ import TempStorage from './services/TempStorage.js';
 function checkAuth(nextState, replaceState) {
   if (!LoginStore.isLoggedIn()) {
     replaceState(null, '/login', { nextPath: nextState.location.pathname });
+  }
+}
+
+function checkCurrentPlan(nextState, replaceState) {
+  if(!PlansStore.getCurrentPlanName()) {
+    replaceState(null, '/plans/list');
   }
 }
 
@@ -54,7 +61,7 @@ let routes = (
       </Route>
 
       <Redirect from="plan" to="plan/environment"/>
-      <Route path="plan" component={Plan}>
+      <Route path="plan" component={Plan} onEnter={checkCurrentPlan}>
         <Route path="environment" component={EnvironmentConfiguration}/>
         <Route path="roles" component={Roles}/>
         <Route path="parameters" component={Parameters}/>
