@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac4a560_2a4aa383",
+        "filename": "src/js/actions/PlansActions.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2015-11-24T11:43:54Z",
+      "side": 0,
+      "message": "So the idea here was to fetch the plan data *once* from the API, and keep it available in the store for other modules (env config, for instance), so the data doesn\u0027t have to be reloaded when switching between pages. \n\nThe downside of this change: the data will be fetched again every time it\u0027s needed in a component (see your change in the env config component), which means more wait time for users. \n\nThe upside: The data is potentially fresher.",
+      "revId": "fa34ea6b8145569fd4a3d1ee274d5d73f29f2a73",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}

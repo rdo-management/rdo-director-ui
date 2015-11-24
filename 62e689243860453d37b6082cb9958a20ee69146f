@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac4a560_0af9674d",
+        "filename": "src/js/components/environment_configuration/EnvironmentConfiguration.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2015-11-24T11:43:54Z",
+      "side": 1,
+      "message": "I think that could go into componentWillMount, so the data fetching is initiated before the rendering process.",
+      "revId": "62e689243860453d37b6082cb9958a20ee69146f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_aa8873c7",
+        "filename": "src/js/components/plan/ListPlans.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2015-11-24T11:43:54Z",
+      "side": 1,
+      "message": "nice!",
+      "revId": "62e689243860453d37b6082cb9958a20ee69146f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_6a9f3b04",
+        "filename": "src/js/components/plan/NewPlan.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2015-11-24T11:43:54Z",
+      "side": 1,
+      "message": "I agree the capabilities/root files detection should be moved here from TripleOApiService. I suggest we add buttons or drop downs to the files list, so users can make that distinction. We could also pre-fill those values (based on file names), so users can skip this step when using the vanilla tripleo-heat templates.",
+      "revId": "62e689243860453d37b6082cb9958a20ee69146f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
