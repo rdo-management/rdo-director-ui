@@ -2,7 +2,6 @@ import * as _ from 'lodash';
 import Formsy from 'formsy-react';
 import React from 'react';
 
-import CapabilitiesMap from '../../data/CapabilitiesMap';
 import EnvironmentConfigurationTopic from './EnvironmentConfigurationTopic';
 import FormErrorList from '../ui/forms/FormErrorList';
 import NotificationActions from '../../actions/NotificationActions';
@@ -22,10 +21,19 @@ export default class EnvironmentConfiguration extends React.Component {
   }
 
   componentDidMount() {
-    // TODO(jtomasek): replace with
-    // TripleOApiService.getEnvironments();
-    this.setState({
-      environmentConfiguration: CapabilitiesMap
+    this._fetchEnvironmentConfiguration();
+  }
+
+  _fetchEnvironmentConfiguration() {
+    TripleOApiService.getPlanEnvironments(this.props.currentPlanName).then((response) => {
+      this.setState({
+        environmentConfiguration: response.environments
+      });
+    }).catch((error) => {
+      let errorHandler = new TripleOApiErrorHandler(error);
+      errorHandler.errors.forEach((error) => {
+        NotificationActions.notify(error);
+      });
     });
   }
 
@@ -103,7 +111,7 @@ export default class EnvironmentConfiguration extends React.Component {
   }
 }
 EnvironmentConfiguration.propTypes = {
-  plan: React.PropTypes.object
+  currentPlanName: React.PropTypes.string
 };
 
 /**

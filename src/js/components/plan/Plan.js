@@ -7,16 +7,10 @@ export default class Plan extends React.Component {
   constructor() {
     super();
     this.state = {
-      plan: PlansStore.getPlan(),
+      planName: PlansStore.getCurrentPlanName(),
       planNames: PlansStore.getPlanNames()
     };
     this.changeListener = this._onChange.bind(this);
-  }
-
-  componentWillMount() {
-    if(!this.state.plan.name) {
-      this.props.history.pushState(null, '/plans/list');
-    }
   }
 
   componentDidMount() {
@@ -28,12 +22,13 @@ export default class Plan extends React.Component {
   }
 
   _onChange() {
-    this.setState({ plan: PlansStore.getPlan(), planNames: PlansStore.getPlanNames() });
+    this.setState({ planName: PlansStore.getCurrentPlanName(),
+                    planNames: PlansStore.getPlanNames() });
   }
 
   _getHeadline() {
-    if(this.state.plan.name) {
-      return 'OpenStack Deployment - ' + this.state.plan.name;
+    if(this.state.planName) {
+      return 'OpenStack Deployment - ' + this.state.planName;
     }
     return 'OpenStack Deployment';
   }
@@ -43,7 +38,7 @@ export default class Plan extends React.Component {
       <div className="row">
         <div className="col-sm-12">
           <PageHeader>{this._getHeadline()}</PageHeader>
-          {React.cloneElement(this.props.children, {plan: this.state.plan})}
+          {React.cloneElement(this.props.children, {currentPlanName: this.state.planName})}
         </div>
       </div>
     );

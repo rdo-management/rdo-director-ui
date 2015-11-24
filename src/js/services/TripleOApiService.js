@@ -6,7 +6,6 @@ import { GET_PLANS_PATH } from '../constants/TripleOApiConstants';
 // import LoginStore from '../stores/LoginStore';
 import NotificationActions from '../actions/NotificationActions';
 import TempStorage from './TempStorage';
-import TripleOApiErrorHandler from './TripleOApiErrorHandler';
 import { TRIPLEOAPI_URL } from '../constants/APIEndpointUrls';
 
 class TripleOApiService {
@@ -35,13 +34,7 @@ class TripleOApiService {
     return when(request(_.merge(
       this.defaultGetRequest,
       { url: TRIPLEOAPI_URL + GET_PLANS_PATH }
-    ))).catch(error => {
-      console.error('Error retrieving plans', error);
-      let errorHandler = new TripleOApiErrorHandler(error);
-      errorHandler.errors.forEach((error) => {
-        NotificationActions.notify(error);
-      });
-    });
+    )));
   }
 
   /**
@@ -52,13 +45,7 @@ class TripleOApiService {
     return when(request(_.merge(
       this.defaultGetRequest,
       { url: `${TRIPLEOAPI_URL}${GET_PLANS_PATH}/${planName}` }
-    ))).catch(error => {
-      console.error('Error retrieving plan', error);
-      let errorHandler = new TripleOApiErrorHandler(error);
-      errorHandler.errors.forEach((error) => {
-        NotificationActions.notify(error);
-      });
-    });
+    )));
   }
 
   /**
@@ -134,6 +121,22 @@ class TripleOApiService {
     files.forEach(item => {
       planFiles[item.name] = {};
       planFiles[item.name].contents = item.content;
+
+      // TODO(jtomasek): find a better way to identify capabilities map and root
+      // template. User should probably specify those separately - user can identify
+      // them in the list of files (dropdown select or sth)
+      // user should identify just mapping file. everything else can be done by tripleo-common
+      // from mapping file - should be part of files processing when creating/updating plan
+      if(item.name === 'capabilities_map.yaml') {
+        console.log('this file is capabilities map '+item.name);
+        planFiles[item.name].meta = { 'file-type': 'capabilities-map' };
+      }
+      if(item.name === 'overcloud-without-mergepy.yaml') {
+        planFiles[item.name].meta = { 'file-type': 'root-template' };
+      }
+      if(item.name === 'overcloud-resource-registry-puppet.yaml') {
+        planFiles[item.name].meta = { 'file-type': 'root-environment' };
+      }
     });
     let payload = {
       name: name,

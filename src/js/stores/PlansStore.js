@@ -7,8 +7,7 @@ class PlansStore extends BaseStore {
     super();
     this.subscribe(() => this._registerToActions.bind(this));
     this.state = {
-      plan: {
-      },
+      currentPlanName: undefined,
       planNames: []
     };
   }
@@ -16,7 +15,7 @@ class PlansStore extends BaseStore {
   _registerToActions(payload) {
     switch(payload.actionType) {
     case PlansConstants.GET_PLAN:
-      this.onGetPlan(payload.plan);
+      this.onGetPlan(payload.planName);
       break;
     case PlansConstants.LIST_PLANS:
       this.onListPlans(payload.plans);
@@ -26,9 +25,8 @@ class PlansStore extends BaseStore {
     }
   }
 
-  onGetPlan(plan) {
-    plan = plan || {};
-    this.state.plan = plan;
+  onGetPlan(planName) {
+    this.state.currentPlanName = planName;
     this.emitChange();
   }
 
@@ -49,12 +47,12 @@ class PlansStore extends BaseStore {
    * Returns a plan obj, either by name or current
    * (if name is omitted).
    */
-  getPlan() {
-    return this.state.plan;
-  }
+  // getPlan() {
+  //   return this.state.plan;
+  // }
 
-  getPlanName() {
-    return this.state.plan.name;
+  getCurrentPlanName() {
+    return this.state.currentPlanName;
   }
 
   getPlanNames() {
