@@ -10,21 +10,15 @@ import TripleOApiErrorHandler from './TripleOApiErrorHandler';
 import { TRIPLEOAPI_URL } from '../constants/APIEndpointUrls';
 
 class TripleOApiService {
-  constructor() {
-    this.defaultGetRequest = {
-      method: 'GET',
+
+  defaultRequest(additionalAttributes) {
+    return _.merge({
       headers: { 'X-Auth-Token': TempStorage.getItem('keystoneAuthTokenId') },
       crossOrigin: true,
       contentType: 'application/json',
-      type: 'json'
-    };
-    this.defaultPostRequest = {
-      method: 'POST',
-      headers: { 'X-Auth-Token': TempStorage.getItem('keystoneAuthTokenId') },
-      crossOrigin: true,
-      contentType: 'application/json',
-      type: 'json'
-    };
+      type: 'json',
+      method: 'GET'
+    }, additionalAttributes);
   }
 
   /**
@@ -32,8 +26,7 @@ class TripleOApiService {
    * @returns {Promise} resolving with {array} of plans.
    */
   getPlans() {
-    return when(request(_.merge(
-      this.defaultGetRequest,
+    return when(request(this.defaultRequest(
       { url: TRIPLEOAPI_URL + GET_PLANS_PATH }
     )));
   }
@@ -43,8 +36,7 @@ class TripleOApiService {
    * @returns plan.
    */
   getPlan(planName) {
-    return when(request(_.merge(
-      this.defaultGetRequest,
+    return when(request(this.defaultRequest(
       { url: `${TRIPLEOAPI_URL}${GET_PLANS_PATH}/${planName}` }
     )));
   }
@@ -54,8 +46,7 @@ class TripleOApiService {
    * @returns Plan's environments mapping.
    */
   getPlanEnvironments(planName) {
-    return when(request(_.merge(
-      this.defaultGetRequest,
+    return when(request(this.defaultRequest(
       { url: `${TRIPLEOAPI_URL}${GET_PLANS_PATH}/${planName}/environments` }
     )));
   }
@@ -65,8 +56,8 @@ class TripleOApiService {
    * @returns Plan's environments mapping.
    */
   updatePlanEnvironments(planName, data) {
-    return when(request(_.merge(
-      this.defaultPostRequest, {
+    return when(request(this.defaultRequest(
+      {
         url: `${TRIPLEOAPI_URL}${GET_PLANS_PATH}/${planName}/environments`,
         method: 'PATCH',
         data: JSON.stringify(data)
@@ -79,8 +70,7 @@ class TripleOApiService {
    * @returns Plan's parameters.
    */
   getPlanParameters(planName) {
-    return when(request(_.merge(
-      this.defaultGetRequest,
+    return when(request(this.defaultRequest(
       { url: `${TRIPLEOAPI_URL}${GET_PLANS_PATH}/${planName}/parameters` }
     )));
   }
@@ -90,8 +80,7 @@ class TripleOApiService {
    * @returns Plan's resource registry.
    */
   getPlanResourceTypes(planName) {
-    return when(request(_.merge(
-      this.defaultGetRequest,
+    return when(request(this.defaultRequest(
       { url: `${TRIPLEOAPI_URL}${GET_PLANS_PATH}/${planName}/resource_types` }
     )));
   }
@@ -101,8 +90,7 @@ class TripleOApiService {
    * @returns Plan's roles mapping.
    */
   getPlanResourceTypes(planName) {
-    return when(request(_.merge(
-      this.defaultGetRequest,
+    return when(request(this.defaultRequest(
       { url: `${TRIPLEOAPI_URL}${GET_PLANS_PATH}/${planName}/roles` }
     )));
   }
@@ -112,8 +100,7 @@ class TripleOApiService {
    * @returns Plan's validation results.
    */
   getPlanResourceTypes(planName) {
-    return when(request(_.merge(
-      this.defaultGetRequest,
+    return when(request(this.defaultRequest(
       { url: `${TRIPLEOAPI_URL}${GET_PLANS_PATH}/${planName}/validate` }
     )));
   }
@@ -122,16 +109,12 @@ class TripleOApiService {
    * TripleO API: GET /v1/plans/<planName>/deploy
    */
   getPlanResourceTypes(planName) {
-    return when(request(_.merge(
-      this.defaultGetRequest,
+    return when(request(this.defaultRequest(
       { url: `${TRIPLEOAPI_URL}${GET_PLANS_PATH}/${planName}/deploy` }
     )));
   }
 
-  /**
-   * TripleO API: POST /v1/plans
-   */
-  createPlan(name, files) {
+  _getPlanFilesObj(files) {
     let planFiles = {};
     files.forEach(item => {
       planFiles[item.name] = {};
@@ -143,15 +126,22 @@ class TripleOApiService {
         planFiles[item.name].meta = { 'file-type': 'capabilities-map' };
       }
     });
-    let payload = {
+    return planFiles;
+  }
+
+  /**
+   * TripleO API: POST /v1/plans
+   */
+  createPlan(name, files) {
+    let payload = JSON.stringify({
       name: name,
-      files: planFiles
-    };
-    return when(request(_.merge(
-      this.defaultPostRequest,
+      files: this._getPlanFilesObj(files)
+    });
+    return when(request(this.defaultRequest(
       {
         url: `${TRIPLEOAPI_URL}${GET_PLANS_PATH}`,
-        data: JSON.stringify(payload)
+        data: payload,
+        method: 'POST'
       }
     ))).then(result => {
       NotificationActions.notify({
@@ -166,6 +156,66 @@ class TripleOApiService {
         NotificationActions.notify({
           title: 'Error Creating Plan',
           message: `The plan ${name} could not be created. ${error.message}`,
+          type: 'error'
+        });
+      });
+    });
+  }
+
+  /**
+   * TripleO API: PATCH /v1/plans/<name>
+   */
+  updatePlan(name, files) {
+    let payload = JSON.stringify({
+      files: this._getPlanFilesObj(files)
+    });
+    return when(request(this.defaultRequest(
+      {
+        url: `${TRIPLEOAPI_URL}${GET_PLANS_PATH}/${name}`,
+        data: payload,
+        method: 'PATCH'
+      }
+    ))).then(result => {
+      NotificationActions.notify({
+        title: 'Plan Updated',
+        message: 'The plan ' + name + ' was successfully updated.',
+        type: 'success'
+      });
+    }).catch(error => {
+      console.error('Error in TripleOApiService.updatePlan', error);
+      let errorHandler = new TripleOApiErrorHandler(error);
+      errorHandler.errors.forEach((error) => {
+        NotificationActions.notify({
+          title: 'Error Updating Plan',
+          message: `The plan ${name} could not be updated. ${error.message}`,
+          type: 'error'
+        });
+      });
+    });
+  }
+
+  /**
+   * TripleO API: DELETE /v1/plans/<name>
+   */
+  deletePlan(name) {
+    return when(request(this.defaultRequest(
+      {
+        url: `${TRIPLEOAPI_URL}${GET_PLANS_PATH}/${name}`,
+        method: 'DELETE'
+      }
+    ))).then(result => {
+      NotificationActions.notify({
+        title: 'Plan Deleted',
+        message: 'The plan ' + name + ' was successfully deleted.',
+        type: 'success'
+      });
+    }).catch(error => {
+      console.error('Error in TripleOApiService.updatePlan', error);
+      let errorHandler = new TripleOApiErrorHandler(error);
+      errorHandler.errors.forEach((error) => {
+        NotificationActions.notify({
+          title: 'Error Deleting Plan',
+          message: `The plan ${name} could not be deleted. ${error.message}`,
           type: 'error'
         });
       });

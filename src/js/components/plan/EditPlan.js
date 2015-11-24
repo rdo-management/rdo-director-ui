@@ -1,52 +1,12 @@
-import ClassNames from 'classnames';
 import Formsy from 'formsy-react';
 import React from 'react';
 
-import FileInput from './FileInput';
 import FileList from './FileList';
+import FileInput from './FileInput';
 import FormErrorList from '../ui/forms/FormErrorList';
 import TripleOApiService from '../../services/TripleOApiService';
 
-let NameInput = React.createClass({
-  mixins: [Formsy.Mixin],
-
-  componentDidMount() {
-    if(this.props.disabled === 'disabled') {
-      this.refs.inputTag.setAttribute('disabled', 'disabled');
-    }
-  },
-
-  changeValue(event) {
-    this.setValue(event.currentTarget.value);
-    this.props.onChange(event);
-  },
-
-  render() {
-    let divClasses = ClassNames({
-      'form-group': true,
-      'has-error': this.showError(),
-      'has-success': this.isValid(),
-      'required': this.isRequired()
-    });
-
-    var errorMessage = this.getErrorMessage();
-
-    return (
-      <div className={divClasses}>
-        <input id={this.props.name}
-               ref="inputTag"
-               placeholder={this.props.placeholder}
-               name={this.props.name}
-               type="text"
-               onChange={this.changeValue}
-               value={this.getValue()}/>
-        <span>{errorMessage}</span>
-      </div>
-    );
-  }
-});
-
-export default class NewPlan extends React.Component {
+export default class EditPlan extends React.Component {
 
   constructor() {
     super();
@@ -56,10 +16,6 @@ export default class NewPlan extends React.Component {
       canSubmit: false,
       formErrors: []
     };
-  }
-
-  onNameChange(e) {
-    this.setState({name: e.target.value});
   }
 
   onPlanFilesChange(e) {
@@ -84,10 +40,12 @@ export default class NewPlan extends React.Component {
   }
 
   onFormSubmit(form) {
-    TripleOApiService.createPlan(this.state.name, this.state.files).then(() => {
-      //TODO(jtomasek): move the createPlan contents here
-      this.props.history.pushState(null, 'plans/list');
-    });
+    let planName = this.getNameFromUrl();
+    if(!!planName) {
+      TripleOApiService.updatePlan(planName, this.state.files).then(() => {
+        this.props.history.pushState(null, 'plans/list');
+      });
+    }
   }
 
   onFormValid() {
@@ -98,14 +56,19 @@ export default class NewPlan extends React.Component {
     this.setState({canSubmit: false});
   }
 
+  getNameFromUrl() {
+    let planName = this.props.params.planName || '';
+    return planName.replace(/[^A-Za-z0-9_-]*/g, '');
+  }
+
   render () {
     return (
       <div className="new-plan">
         <div className="blank-slate-pf clearfix">
           <div className="blank-slate-pf-icon">
-            <i className="fa fa-plus"></i>
+            <i className="fa fa-edit"></i>
           </div>
-          <h1>Create New Plan</h1>
+          <h1>Replace Files for plan: {this.getNameFromUrl()}</h1>
           <FormErrorList errors={this.state.formErrors}/>
           <Formsy.Form ref="NewPlanForm"
                        role="form"
@@ -113,15 +76,6 @@ export default class NewPlan extends React.Component {
                        onValidSubmit={this.onFormSubmit.bind(this)}
                        onValid={this.onFormValid.bind(this)}
                        onInvalid={this.onFormInvalid.bind(this)}>
-            <div className="form-group">
-              <NameInput id="PlanName"
-                     name="PlanName"
-                     placeholder="Add a Plan Name"
-                     onChange={this.onNameChange.bind(this)}
-                     validations={{matchRegexp: /^[A-Za-z0-9_-]+$/}}
-                     validationError="Please use only alphanumeric characters and - or _"
-                     required />
-            </div>
             <div className="form-group">
                 <FileInput onChange={this.onPlanFilesChange.bind(this)}
                            name="PlanFiles"
