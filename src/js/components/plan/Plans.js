@@ -2,7 +2,7 @@ import React from 'react';
 
 import { PageHeader } from '../ui/PageHeader';
 
-export default class Plan extends React.Component {
+export default class Plans extends React.Component {
   render() {
     return (
       <div className="row">

@@ -26,6 +26,11 @@ export default class TripleOApiErrorHandler extends BaseHttpRequestErrorHandler 
       });
       break;
     default:
+      error = JSON.parse(xmlHttpRequestError.responseText).error;
+      errors.push({
+        title: 'TripleO API',
+        message: error.message
+      });
       break;
     }
     return errors;

@@ -9,7 +9,7 @@ export default class ListPlans extends React.Component {
   constructor() {
     super();
     this.state = {
-      plans: []
+      plans: PlansStore.getPlanNames()
     };
     this.changeListener = this._onPlansChange.bind(this);
   }
@@ -36,17 +36,26 @@ export default class ListPlans extends React.Component {
   }
 
   onPlanClick(e) {
-    let planName = e.target.getAttribute('data-plan-name');
-    PlansActions.choosePlan(planName);
+    e.preventDefault();
+    PlansActions.choosePlan(e.target.textContent);
+    // this.props.history.pushState(null, '/plan/environment');
+  }
+
+  getActiveIcon(planName) {
+    if(planName === PlansStore.getCurrentPlanName()) {
+      return (
+        <span className="pficon pficon-flag"></span>
+      );
+    }
+    return false;
   }
 
   render() {
     let plans = this.state.plans.map(item => {
       return (
         <tr key={item}>
-          <td><Link to="/plan/environment"
-                    onClick={this.onPlanClick}
-                    data-plan-name={item}>{item}</Link></td>
+          <td>{this.getActiveIcon(item)} <a href=""
+                 onClick={this.onPlanClick.bind(this)}>{item}</a></td>
           <td className="plan-list-actions-col">
             <div className="btn-group" role="group">
               <Link to="plans/list" className="btn btn-xs btn-default">Edit</Link>

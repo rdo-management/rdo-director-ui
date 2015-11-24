@@ -35,13 +35,7 @@ class TripleOApiService {
     return when(request(_.merge(
       this.defaultGetRequest,
       { url: TRIPLEOAPI_URL + GET_PLANS_PATH }
-    ))).catch(error => {
-      console.error('Error retrieving plans', error);
-      let errorHandler = new TripleOApiErrorHandler(error);
-      errorHandler.errors.forEach((error) => {
-        NotificationActions.notify(error);
-      });
-    });
+    )));
   }
 
   /**
@@ -52,13 +46,7 @@ class TripleOApiService {
     return when(request(_.merge(
       this.defaultGetRequest,
       { url: `${TRIPLEOAPI_URL}${GET_PLANS_PATH}/${planName}` }
-    ))).catch(error => {
-      console.error('Error retrieving plan', error);
-      let errorHandler = new TripleOApiErrorHandler(error);
-      errorHandler.errors.forEach((error) => {
-        NotificationActions.notify(error);
-      });
-    });
+    )));
   }
 
   /**
@@ -69,6 +57,20 @@ class TripleOApiService {
     return when(request(_.merge(
       this.defaultGetRequest,
       { url: `${TRIPLEOAPI_URL}${GET_PLANS_PATH}/${planName}/environments` }
+    )));
+  }
+
+  /**
+   * TripleO API: PATCH /v1/plans/<planName>/environments
+   * @returns Plan's environments mapping.
+   */
+  updatePlanEnvironments(planName, data) {
+    return when(request(_.merge(
+      this.defaultPostRequest, {
+        url: `${TRIPLEOAPI_URL}${GET_PLANS_PATH}/${planName}/environments`,
+        method: 'PATCH',
+        data: JSON.stringify(data)
+      }
     )));
   }
 
@@ -134,6 +136,21 @@ class TripleOApiService {
     files.forEach(item => {
       planFiles[item.name] = {};
       planFiles[item.name].contents = item.content;
+
+      // TODO(jtomasek): find a better way to identify capabilities map and root
+      // template. User should probably specify those separately - user can identify
+      // them in the list of files (dropdown select or sth)
+      // user should identify just mapping file. everything else can be done by tripleo-common
+      // from mapping file - should be part of files processing when creating/updating plan
+      if(item.name === 'capabilities_map.yaml') {
+        planFiles[item.name].meta = { 'file-type': 'capabilities-map' };
+      }
+      if(item.name === 'overcloud-without-mergepy.yaml') {
+        planFiles[item.name].meta = { 'file-type': 'root-template' };
+      }
+      if(item.name === 'overcloud-resource-registry-puppet.yaml') {
+        planFiles[item.name].meta = { 'file-type': 'root-environment' };
+      }
     });
     let payload = {
       name: name,
@@ -151,12 +168,15 @@ class TripleOApiService {
         message: 'The plan ' + name + ' was successfully created.',
         type: 'success'
       });
-    }).catch(err => {
-      console.log('Error Creating Plan');
-      NotificationActions.notify({
-        title: 'Error Creating Plan',
-        message: 'The plan ' + name + ' could not be created',
-        type: 'error'
+    }).catch(error => {
+      console.error('Error in TripleOApiService.createPlan', error);
+      let errorHandler = new TripleOApiErrorHandler(error);
+      errorHandler.errors.forEach((error) => {
+        NotificationActions.notify({
+          title: 'Error Creating Plan',
+          message: `The plan ${name} could not be created. ${error.message}`,
+          type: 'error'
+        });
       });
     });
   }

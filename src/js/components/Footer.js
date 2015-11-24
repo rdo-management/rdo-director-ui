@@ -44,7 +44,6 @@ export default class Footer extends React.Component {
   getValidationStages() {
     ValidationsApiService.getStages().then((response) => {
       ValidationsActions.listStages(response);
-      console.log(response);
     }).catch((error) => {
       console.error('Error in Footer.getValidationStages', error);
       let errorHandler = new ValidationsApiErrorHandler(error);
