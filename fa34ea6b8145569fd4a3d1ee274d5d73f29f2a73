@@ -16,6 +16,24 @@
       "revId": "fa34ea6b8145569fd4a3d1ee274d5d73f29f2a73",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_7e20e09b",
+        "filename": "src/js/actions/PlansActions.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-24T12:14:03Z",
+      "side": 0,
+      "message": "This is valid.If it turns out that we\u0027ll need a Plan anywhere, we can include plan loading on switching the plan. But so far, I think we won\u0027t ever need to fetch the plan. We use tripleo api to provide us with data based on the plan name, that is all we need so far. In environment configuration, I am requesting a mapping from mapping file. So this request is needed anyway. We could alternatively keep the plan handy and parse the mapping on client side, but I think it is bad idea since tripleo-common needs to do it too. So it is better to have single source of truth.\n\nFor parameters it is the same, we will request a list(tree) of parameters generated from running heat validation, so all we need for that is again just plan name.",
+      "parentUuid": "5ac4a560_2a4aa383",
+      "revId": "fa34ea6b8145569fd4a3d1ee274d5d73f29f2a73",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }

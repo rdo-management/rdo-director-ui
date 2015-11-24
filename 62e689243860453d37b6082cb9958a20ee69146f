@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5ac4a560_9e25bcad",
+        "filename": "src/js/components/environment_configuration/EnvironmentConfiguration.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-24T12:14:03Z",
+      "side": 1,
+      "message": "according to all react tutorials I read, these kind of operations should be done in this method. componentWillMount is used for something else afaik. We can reiterate on this later.\n\nIn general, the idea is to have a loading spinner on the component until the array is populated/request finished. Until then, the value from constructor is used",
+      "parentUuid": "5ac4a560_0af9674d",
+      "revId": "62e689243860453d37b6082cb9958a20ee69146f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac4a560_aa8873c7",
         "filename": "src/js/components/plan/ListPlans.js",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "5ac4a560_fe6150d4",
+        "filename": "src/js/components/plan/ListPlans.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-24T12:14:03Z",
+      "side": 1,
+      "message": "not very, really:) we\u0027ll want something better when we have time:)))\nBut I avoided the redirect, I thin this is slightly better. Again we\u0027ll want to refactor/reiterate on the whole plan selection process and make it as less complicated as possible. UXD will probably help here a lot. The whole thing of having links for plan-related configuration not working/redirecting when plan is not selected is not very nice.\n\nWe\u0027ll probably improve this by storing the currentPlanName in tempstorage, so user does not need to select plan every time he refreshes page. If plan is not selected, we\u0027ll select the first one. when there is no plan, redirect to plans/new.\n\n^ I\u0027d like to avoid those changes until after the development will get a bit more relaxed so we thing things really through and don\u0027t rush it.",
+      "parentUuid": "5ac4a560_aa8873c7",
+      "revId": "62e689243860453d37b6082cb9958a20ee69146f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac4a560_6a9f3b04",
         "filename": "src/js/components/plan/NewPlan.js",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2015-11-24T11:43:54Z",
       "side": 1,
       "message": "I agree the capabilities/root files detection should be moved here from TripleOApiService. I suggest we add buttons or drop downs to the files list, so users can make that distinction. We could also pre-fill those values (based on file names), so users can skip this step when using the vanilla tripleo-heat templates.",
+      "revId": "62e689243860453d37b6082cb9958a20ee69146f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_3e9bc8ca",
+        "filename": "src/js/components/plan/NewPlan.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-24T12:14:03Z",
+      "side": 1,
+      "message": "Exactly! UXD will help here too",
+      "parentUuid": "5ac4a560_6a9f3b04",
       "revId": "62e689243860453d37b6082cb9958a20ee69146f",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
