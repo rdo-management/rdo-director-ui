@@ -137,19 +137,10 @@ class TripleOApiService {
       planFiles[item.name] = {};
       planFiles[item.name].contents = item.content;
 
-      // TODO(jtomasek): find a better way to identify capabilities map and root
-      // template. User should probably specify those separately - user can identify
-      // them in the list of files (dropdown select or sth)
-      // user should identify just mapping file. everything else can be done by tripleo-common
-      // from mapping file - should be part of files processing when creating/updating plan
+      // TODO(jtomasek): user can identify capabilities-map in the list of files
+      // (dropdown select or sth)
       if(item.name === 'capabilities_map.yaml') {
         planFiles[item.name].meta = { 'file-type': 'capabilities-map' };
-      }
-      if(item.name === 'overcloud-without-mergepy.yaml') {
-        planFiles[item.name].meta = { 'file-type': 'root-template' };
-      }
-      if(item.name === 'overcloud-resource-registry-puppet.yaml') {
-        planFiles[item.name].meta = { 'file-type': 'root-environment' };
       }
     });
     let payload = {
