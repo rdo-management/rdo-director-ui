@@ -6,7 +6,9 @@ import { Router, Route, IndexRoute, Redirect } from 'react-router';
 
 import App from './components/App';
 import AuthenticatedContent from './components/AuthenticatedContent';
+import DeletePlan from './components/plan/DeletePlan';
 import DiscoveredNodesTabPane from './components/nodes/DiscoveredNodesTabPane';
+import EditPlan from './components/plan/EditPlan';
 import EnvironmentConfiguration from
   './components/environment_configuration/EnvironmentConfiguration.js';
 import Flavors from './components/flavors/Flavors';
@@ -58,6 +60,8 @@ let routes = (
       <Route path="plans" component={Plans}>
         <Route path="list" component={ListPlans}/>
         <Route path="new" component={NewPlan}/>
+        <Route path=":planName/edit" component={EditPlan}/>
+        <Route path=":planName/delete" component={DeletePlan}/>
       </Route>
 
       <Redirect from="plan" to="plan/environment"/>
