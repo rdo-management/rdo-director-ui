@@ -2,7 +2,6 @@ import * as _ from 'lodash';
 import request from 'reqwest';
 import when from 'when';
 
-import { GET_PLANS_PATH } from '../constants/TripleOApiConstants';
 // import LoginStore from '../stores/LoginStore';
 import NotificationActions from '../actions/NotificationActions';
 import TempStorage from './TempStorage';
@@ -10,21 +9,15 @@ import TripleOApiErrorHandler from './TripleOApiErrorHandler';
 import { TRIPLEOAPI_URL } from '../constants/APIEndpointUrls';
 
 class TripleOApiService {
-  constructor() {
-    this.defaultGetRequest = {
-      method: 'GET',
+
+  defaultRequest(additionalAttributes) {
+    return _.merge({
       headers: { 'X-Auth-Token': TempStorage.getItem('keystoneAuthTokenId') },
       crossOrigin: true,
       contentType: 'application/json',
-      type: 'json'
-    };
-    this.defaultPostRequest = {
-      method: 'POST',
-      headers: { 'X-Auth-Token': TempStorage.getItem('keystoneAuthTokenId') },
-      crossOrigin: true,
-      contentType: 'application/json',
-      type: 'json'
-    };
+      type: 'json',
+      method: 'GET'
+    }, additionalAttributes);
   }
 
   /**
@@ -32,9 +25,8 @@ class TripleOApiService {
    * @returns {Promise} resolving with {array} of plans.
    */
   getPlans() {
-    return when(request(_.merge(
-      this.defaultGetRequest,
-      { url: TRIPLEOAPI_URL + GET_PLANS_PATH }
+    return when(request(this.defaultRequest(
+      { url: TRIPLEOAPI_URL + '/plans' }
     )));
   }
 
@@ -43,9 +35,8 @@ class TripleOApiService {
    * @returns plan.
    */
   getPlan(planName) {
-    return when(request(_.merge(
-      this.defaultGetRequest,
-      { url: `${TRIPLEOAPI_URL}${GET_PLANS_PATH}/${planName}` }
+    return when(request(this.defaultRequest(
+      { url: `${TRIPLEOAPI_URL}/plans/${planName}` }
     )));
   }
 
@@ -54,9 +45,8 @@ class TripleOApiService {
    * @returns Plan's environments mapping.
    */
   getPlanEnvironments(planName) {
-    return when(request(_.merge(
-      this.defaultGetRequest,
-      { url: `${TRIPLEOAPI_URL}${GET_PLANS_PATH}/${planName}/environments` }
+    return when(request(this.defaultRequest(
+      { url: `${TRIPLEOAPI_URL}/plans/${planName}/environments` }
     )));
   }
 
@@ -65,9 +55,9 @@ class TripleOApiService {
    * @returns Plan's environments mapping.
    */
   updatePlanEnvironments(planName, data) {
-    return when(request(_.merge(
-      this.defaultPostRequest, {
-        url: `${TRIPLEOAPI_URL}${GET_PLANS_PATH}/${planName}/environments`,
+    return when(request(this.defaultRequest(
+      {
+        url: `${TRIPLEOAPI_URL}/plans/${planName}/environments`,
         method: 'PATCH',
         data: JSON.stringify(data)
       }
@@ -79,9 +69,8 @@ class TripleOApiService {
    * @returns Plan's parameters.
    */
   getPlanParameters(planName) {
-    return when(request(_.merge(
-      this.defaultGetRequest,
-      { url: `${TRIPLEOAPI_URL}${GET_PLANS_PATH}/${planName}/parameters` }
+    return when(request(this.defaultRequest(
+      { url: `${TRIPLEOAPI_URL}/plans/${planName}/parameters` }
     )));
   }
 
@@ -90,9 +79,8 @@ class TripleOApiService {
    * @returns Plan's resource registry.
    */
   getPlanResourceTypes(planName) {
-    return when(request(_.merge(
-      this.defaultGetRequest,
-      { url: `${TRIPLEOAPI_URL}${GET_PLANS_PATH}/${planName}/resource_types` }
+    return when(request(this.defaultRequest(
+      { url: `${TRIPLEOAPI_URL}/plans/${planName}/resource_types` }
     )));
   }
 
@@ -101,9 +89,8 @@ class TripleOApiService {
    * @returns Plan's roles mapping.
    */
   getPlanResourceTypes(planName) {
-    return when(request(_.merge(
-      this.defaultGetRequest,
-      { url: `${TRIPLEOAPI_URL}${GET_PLANS_PATH}/${planName}/roles` }
+    return when(request(this.defaultRequest(
+      { url: `${TRIPLEOAPI_URL}/plans/${planName}/roles` }
     )));
   }
 
@@ -112,9 +99,8 @@ class TripleOApiService {
    * @returns Plan's validation results.
    */
   getPlanResourceTypes(planName) {
-    return when(request(_.merge(
-      this.defaultGetRequest,
-      { url: `${TRIPLEOAPI_URL}${GET_PLANS_PATH}/${planName}/validate` }
+    return when(request(this.defaultRequest(
+      { url: `${TRIPLEOAPI_URL}/plans/${planName}/validate` }
     )));
   }
 
@@ -122,9 +108,8 @@ class TripleOApiService {
    * TripleO API: GET /v1/plans/<planName>/deploy
    */
   getPlanResourceTypes(planName) {
-    return when(request(_.merge(
-      this.defaultGetRequest,
-      { url: `${TRIPLEOAPI_URL}${GET_PLANS_PATH}/${planName}/deploy` }
+    return when(request(this.defaultRequest(
+      { url: `${TRIPLEOAPI_URL}/plans/${planName}/deploy` }
     )));
   }
 
@@ -132,44 +117,37 @@ class TripleOApiService {
    * TripleO API: POST /v1/plans
    */
   createPlan(name, files) {
-    let planFiles = {};
-    files.forEach(item => {
-      planFiles[item.name] = {};
-      planFiles[item.name].contents = item.content;
+    return when(request(this.defaultRequest({
+      url: `${TRIPLEOAPI_URL}/plans`,
+      data: JSON.stringify({
+        name: name,
+        files: files
+      }),
+      method: 'POST'
+    })));
+  }
 
-      // TODO(jtomasek): user can identify capabilities-map in the list of files
-      // (dropdown select or sth)
-      if(item.name === 'capabilities_map.yaml') {
-        planFiles[item.name].meta = { 'file-type': 'capabilities-map' };
-      }
-    });
-    let payload = {
-      name: name,
-      files: planFiles
-    };
-    return when(request(_.merge(
-      this.defaultPostRequest,
-      {
-        url: `${TRIPLEOAPI_URL}${GET_PLANS_PATH}`,
-        data: JSON.stringify(payload)
-      }
-    ))).then(result => {
-      NotificationActions.notify({
-        title: 'Plan Created',
-        message: 'The plan ' + name + ' was successfully created.',
-        type: 'success'
-      });
-    }).catch(error => {
-      console.error('Error in TripleOApiService.createPlan', error);
-      let errorHandler = new TripleOApiErrorHandler(error);
-      errorHandler.errors.forEach((error) => {
-        NotificationActions.notify({
-          title: 'Error Creating Plan',
-          message: `The plan ${name} could not be created. ${error.message}`,
-          type: 'error'
-        });
-      });
-    });
+  /**
+   * TripleO API: PATCH /v1/plans/<name>
+   */
+  updatePlan(name, files) {
+    return when(request(this.defaultRequest({
+      url: `${TRIPLEOAPI_URL}/plans/${name}`,
+      data: JSON.stringify({
+        files: files
+      }),
+      method: 'PATCH'
+    })));
+  }
+
+  /**
+   * TripleO API: DELETE /v1/plans/<name>
+   */
+  deletePlan(name) {
+    return when(request(this.defaultRequest({
+        url: `${TRIPLEOAPI_URL}/plans/${name}`,
+        method: 'DELETE'
+    })));
   }
 }
 
