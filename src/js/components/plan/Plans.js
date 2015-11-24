@@ -14,3 +14,7 @@ export default class Plans extends React.Component {
     );
   }
 }
+
+Plans.propTypes = {
+  children: React.PropTypes.node
+};

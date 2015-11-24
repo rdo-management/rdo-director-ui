@@ -1,15 +1,14 @@
 import Formsy from 'formsy-react';
 import React from 'react';
 
-import PlanFileInput from './PlanFileInput';
-import PlanNameInput from './PlanNameInput';
 import FileList from './FileList';
+import PlanFileInput from './PlanFileInput';
 import FormErrorList from '../ui/forms/FormErrorList';
 import NotificationActions from '../../actions/NotificationActions';
 import TripleOApiErrorHandler from '../../services/TripleOApiErrorHandler';
 import TripleOApiService from '../../services/TripleOApiService';
 
-export default class NewPlan extends React.Component {
+export default class EditPlan extends React.Component {
 
   constructor() {
     super();
@@ -19,10 +18,6 @@ export default class NewPlan extends React.Component {
       canSubmit: false,
       formErrors: []
     };
-  }
-
-  onNameChange(e) {
-    this.setState({name: e.target.value});
   }
 
   onPlanFilesChange(e) {
@@ -58,24 +53,27 @@ export default class NewPlan extends React.Component {
       }
     });
 
-    TripleOApiService.createPlan(this.state.name, planFiles).then(result => {
-      this.props.history.pushState(null, 'plans/list');
-      NotificationActions.notify({
-        title: 'Plan Created',
-        message: `The plan ${this.state.name} was successfully created.`,
-        type: 'success'
-      });
-    }).catch(error => {
-      console.error('Error in TripleOApiService.createPlan', error);
-      let errorHandler = new TripleOApiErrorHandler(error);
-      errorHandler.errors.forEach((error) => {
+    let planName = this.getNameFromUrl();
+    if(planName) {
+      TripleOApiService.updatePlan(planName, planFiles).then(result => {
+        this.props.history.pushState(null, 'plans/list');
         NotificationActions.notify({
-          title: 'Error Creating Plan',
-          message: `The plan ${this.state.name} could not be created. ${error.message}`,
-          type: 'error'
+          title: 'Plan Updated',
+          message: `The plan ${planName} was successfully updated.`,
+          type: 'success'
+        });
+      }).catch(error => {
+        console.error('Error in TripleOApiService.updatePlan', error);
+        let errorHandler = new TripleOApiErrorHandler(error);
+        errorHandler.errors.forEach((error) => {
+          NotificationActions.notify({
+            title: 'Error Updating Plan',
+            message: `The plan ${planName} could not be updated. ${error.message}`,
+            type: 'error'
+          });
         });
       });
-    });
+    }
   }
 
   onFormValid() {
@@ -86,14 +84,19 @@ export default class NewPlan extends React.Component {
     this.setState({canSubmit: false});
   }
 
+  getNameFromUrl() {
+    let planName = this.props.params.planName || '';
+    return planName.replace(/[^A-Za-z0-9_-]*/g, '');
+  }
+
   render () {
     return (
       <div className="new-plan">
         <div className="blank-slate-pf clearfix">
           <div className="blank-slate-pf-icon">
-            <i className="fa fa-plus"></i>
+            <i className="fa fa-edit"></i>
           </div>
-          <h1>Create New Plan</h1>
+          <h1>Replace Files for plan: {this.getNameFromUrl()}</h1>
           <FormErrorList errors={this.state.formErrors}/>
           <Formsy.Form ref="NewPlanForm"
                        role="form"
@@ -101,15 +104,6 @@ export default class NewPlan extends React.Component {
                        onValidSubmit={this.onFormSubmit.bind(this)}
                        onValid={this.onFormValid.bind(this)}
                        onInvalid={this.onFormInvalid.bind(this)}>
-            <div className="form-group">
-              <PlanNameInput id="PlanName"
-                     name="PlanName"
-                     placeholder="Add a Plan Name"
-                     onChange={this.onNameChange.bind(this)}
-                     validations={{matchRegexp: /^[A-Za-z0-9_-]+$/}}
-                     validationError="Please use only alphanumeric characters and - or _"
-                     required />
-            </div>
             <div className="form-group">
                 <PlanFileInput onChange={this.onPlanFilesChange.bind(this)}
                            name="PlanFiles"
@@ -132,8 +126,9 @@ export default class NewPlan extends React.Component {
   }
 }
 
-NewPlan.propTypes = {
-  history: React.PropTypes.object
+EditPlan.propTypes = {
+  history: React.PropTypes.object,
+  params: React.PropTypes.object
 };
 
 Formsy.addValidationRule('hasPlanFiles', function (values, value) {
