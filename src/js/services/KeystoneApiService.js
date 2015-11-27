@@ -1,19 +1,22 @@
+import * as _ from 'lodash';
 import request from 'reqwest';
 import when from 'when';
 
 import { AUTH_URL } from '../constants/KeystoneApiConstants';
-import KeystoneApiErrorHandler from './KeystoneApiErrorHandler';
-import LoginActions from '../actions/LoginActions';
-import NotificationActions from '../actions/NotificationActions';
 
 class KeystoneApiService {
-  authenticateUser(username, password) {
-    return when(request({
+  defaultRequest(additionalAttributes) {
+    return _.merge({
       url: AUTH_URL,
       method: 'POST',
       crossOrigin: true,
       contentType: 'application/json',
-      type: 'json',
+      type: 'json'
+    }, additionalAttributes);
+  }
+
+  authenticateUser(username, password) {
+    return when(request(this.defaultRequest({
       data: JSON.stringify({
         auth: {
           tenantName: 'admin',
@@ -23,16 +26,11 @@ class KeystoneApiService {
           }
         }
       })
-    }));
+    })));
   }
 
   authenticateUserViaToken(keystoneAuthTokenId) {
-    return this.handleAuth(when(request({
-      url: AUTH_URL,
-      method: 'POST',
-      crossOrigin: true,
-      contentType: 'application/json',
-      type: 'json',
+    return when(request(this.defaultRequest({
       data: JSON.stringify({
         auth: {
           tenantName: 'admin',
@@ -42,20 +40,6 @@ class KeystoneApiService {
         }
       })
     })));
-  }
-
-  handleAuth(loginPromise) {
-    return loginPromise.then((response) => {
-      let keystoneAccess = response.access;
-      LoginActions.loginUser(keystoneAccess);
-      return true;
-    }).catch((error) => {
-      console.error('Error in handleAuth', error);
-      let errorHandler = new KeystoneApiErrorHandler(error);
-      errorHandler.errors.forEach((error) => {
-        NotificationActions.notify(error);
-      });
-    });
   }
 }
 
