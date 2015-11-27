@@ -1,8 +1,12 @@
 import React from 'react';
+import when from 'when';
 
+import IronicApiErrorHandler from '../../services/IronicApiErrorHandler';
 import IronicApiService from '../../services/IronicApiService';
 import NavTab from '../ui/NavTab';
+import NodesActions from '../../actions/NodesActions';
 import NodesStore from '../../stores/NodesStore';
+import NotificationActions from '../../actions/NotificationActions';
 
 export default class Nodes extends React.Component {
   constructor() {
@@ -15,7 +19,7 @@ export default class Nodes extends React.Component {
 
   componentDidMount() {
     NodesStore.addChangeListener(this.changeListener);
-    IronicApiService.handleGetNodes();
+    this._fetchNodes();
   }
 
   componentWillUnmount() {
@@ -26,13 +30,25 @@ export default class Nodes extends React.Component {
     this.setState({ nodes: NodesStore.getState().nodes });
   }
 
-  fetchNodes() {
-    // TODO(jtomasek): move IronicApiService.handleGetNodes here instead of keeping it in api service
+  _fetchNodes() {
+    IronicApiService.getNodes().then((response) => {
+      return when.all(response.nodes.map((node) => {
+        return IronicApiService.getNode(node.uuid);
+      }));
+    }).then((nodes) => {
+      NodesActions.listNodes(nodes);
+    }).catch((error) => {
+      console.error('Error in Nodes._fetchNodes', error);
+      let errorHandler = new IronicApiErrorHandler(error);
+      errorHandler.errors.forEach((error) => {
+        NotificationActions.notify(error);
+      });
+    });
   }
 
   refreshResults(e) {
     e.preventDefault();
-    IronicApiService.handleGetNodes();
+    this._fetchNodes();
   }
 
   render() {
