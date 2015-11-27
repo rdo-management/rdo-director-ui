@@ -16,6 +16,24 @@
       "revId": "6f949bfbe6e66fec02d605f3d5439785bf007419",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_e049998c",
+        "filename": "src/js/services/TripleOApiService.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-27T18:32:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ac4a560_a065e146",
+      "revId": "6f949bfbe6e66fec02d605f3d5439785bf007419",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
