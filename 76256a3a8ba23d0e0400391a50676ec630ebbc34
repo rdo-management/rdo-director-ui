@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac4a560_a02b2181",
+        "filename": "src/js/components/plan/FileInput.js",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-27T15:00:55Z",
+      "side": 1,
+      "message": "Please rename to PlanFileInput and use Formsy.HOC instead Formsy.Mixin mixin",
+      "revId": "76256a3a8ba23d0e0400391a50676ec630ebbc34",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_e02519ac",
+        "filename": "src/js/components/plan/FileInput.js",
+        "patchSetId": 7
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-27T15:00:55Z",
+      "side": 1,
+      "message": "class PlanFileInput extends React.Component {",
+      "revId": "76256a3a8ba23d0e0400391a50676ec630ebbc34",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_c0201d9e",
+        "filename": "src/js/components/plan/FileInput.js",
+        "patchSetId": 7
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-27T15:00:55Z",
+      "side": 1,
+      "message": "export default Formsy.HOC(FileInput);",
+      "revId": "76256a3a8ba23d0e0400391a50676ec630ebbc34",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_40340dde",
+        "filename": "src/js/components/plan/NewPlan.js",
+        "patchSetId": 7
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-27T15:00:55Z",
+      "side": 1,
+      "message": "Formsy.HOC(class NameInput extends React.Component {...})",
+      "revId": "76256a3a8ba23d0e0400391a50676ec630ebbc34",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
