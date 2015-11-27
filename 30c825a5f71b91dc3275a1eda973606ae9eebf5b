@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac4a560_40f16dcc",
+        "filename": "src/js/components/Login.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2015-11-27T16:41:18Z",
+      "side": 1,
+      "message": "Can we make a successful login silent, i.e. remove the notification? It\u0027s probably not that useful for a user.",
+      "revId": "30c825a5f71b91dc3275a1eda973606ae9eebf5b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
