@@ -14,7 +14,7 @@ let mockKeystoneAccess = {
 };
 
 describe('LoginActions', () => {
-  it('creates action to authenticate user via keystone token', () => {
+  xit('creates action to authenticate user via keystone token', () => {
     spyOn(KeystoneApiService, 'authenticateUserViaToken');
     LoginActions.authenticateUserViaToken('someTokenIdString');
     expect(KeystoneApiService.authenticateUserViaToken).toHaveBeenCalledWith('someTokenIdString');
