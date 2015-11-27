@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5ac4a560_605f490f",
+        "filename": "src/js/components/plan/FileInput.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2015-11-27T15:49:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ac4a560_65003bab",
+      "range": {
+        "startLine": 4,
+        "startChar": 4,
+        "endLine": 4,
+        "endChar": 13
+      },
+      "revId": "c3e35633361ba3b070239b288082c7c0a2969d29",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac4a560_45033fb8",
         "filename": "src/js/components/plan/FileInput.js",
         "patchSetId": 4
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "5ac4a560_809b85c8",
+        "filename": "src/js/components/plan/FileInput.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2015-11-27T15:49:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ac4a560_45033fb8",
+      "revId": "c3e35633361ba3b070239b288082c7c0a2969d29",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac4a560_a53173a4",
         "filename": "src/js/components/plan/FileList.js",
         "patchSetId": 4
@@ -53,6 +95,30 @@
       "writtenOn": "2015-11-27T12:40:50Z",
       "side": 1,
       "message": "this can go away",
+      "range": {
+        "startLine": 4,
+        "startChar": 1,
+        "endLine": 6,
+        "endChar": 3
+      },
+      "revId": "c3e35633361ba3b070239b288082c7c0a2969d29",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_057ce71f",
+        "filename": "src/js/components/plan/FileList.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2015-11-27T15:49:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ac4a560_a53173a4",
       "range": {
         "startLine": 4,
         "startChar": 1,
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "5ac4a560_2579e32f",
+        "filename": "src/js/components/plan/FileList.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2015-11-27T15:49:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ac4a560_c5266f68",
+      "range": {
+        "startLine": 10,
+        "startChar": 1,
+        "endLine": 12,
+        "endChar": 8
+      },
+      "revId": "c3e35633361ba3b070239b288082c7c0a2969d29",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac4a560_e52b6b2e",
         "filename": "src/js/components/plan/ListPlans.js",
         "patchSetId": 4
@@ -99,6 +189,30 @@
       "writtenOn": "2015-11-27T12:40:50Z",
       "side": 1,
       "message": "not needed",
+      "range": {
+        "startLine": 53,
+        "startChar": 2,
+        "endLine": 54,
+        "endChar": 3
+      },
+      "revId": "c3e35633361ba3b070239b288082c7c0a2969d29",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_4576df3f",
+        "filename": "src/js/components/plan/ListPlans.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2015-11-27T15:49:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ac4a560_e52b6b2e",
       "range": {
         "startLine": 53,
         "startChar": 2,
@@ -128,6 +242,24 @@
     },
     {
       "key": {
+        "uuid": "5ac4a560_858f1723",
+        "filename": "src/js/components/plan/NewPlan.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2015-11-27T15:49:07Z",
+      "side": 1,
+      "message": "disabled can go away entirely. I wanted to reuse the whole form for plan update, where the name cannot be changed, but decided to not use an input field there, but to display the name in a header. So it\u0027s not needed anymore.",
+      "parentUuid": "5ac4a560_05cea783",
+      "revId": "c3e35633361ba3b070239b288082c7c0a2969d29",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac4a560_85a1d7ab",
         "filename": "src/js/services/TripleOApiService.js",
         "patchSetId": 4
@@ -151,6 +283,30 @@
     },
     {
       "key": {
+        "uuid": "5ac4a560_c5990f70",
+        "filename": "src/js/services/TripleOApiService.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2015-11-27T15:49:07Z",
+      "side": 1,
+      "message": "I agree. Removing it.",
+      "parentUuid": "5ac4a560_85a1d7ab",
+      "range": {
+        "startLine": 30,
+        "startChar": 30,
+        "endLine": 30,
+        "endChar": 44
+      },
+      "revId": "c3e35633361ba3b070239b288082c7c0a2969d29",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac4a560_a5a6d3bf",
         "filename": "src/js/services/TripleOApiService.js",
         "patchSetId": 4
@@ -162,6 +318,24 @@
       "writtenOn": "2015-11-27T12:40:50Z",
       "side": 1,
       "message": "I think _getPlanFilesObj, createPlan, updatePlan, deletePlan should not be part of TripleoApiService. I mean, this service should just hold the methods which return api promises. Handling the responses of those promises should be part of the Component (DeletePlan, EditPlan, NewPlan) or if the Action which call TripleoApiService.",
+      "revId": "c3e35633361ba3b070239b288082c7c0a2969d29",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_c55aef82",
+        "filename": "src/js/services/TripleOApiService.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2015-11-27T15:49:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ac4a560_a5a6d3bf",
       "revId": "c3e35633361ba3b070239b288082c7c0a2969d29",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
