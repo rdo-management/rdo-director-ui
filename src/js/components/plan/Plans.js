@@ -8,7 +8,7 @@ export default class Plans extends React.Component {
       <div className="row">
         <div className="col-sm-12">
           <PageHeader>OpenStack Deployment</PageHeader>
-          {React.cloneElement(this.props.children)}
+          {this.props.children}
         </div>
       </div>
     );
