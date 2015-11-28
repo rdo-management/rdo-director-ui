@@ -20,7 +20,8 @@
     "invariant": "~2.1.1",
     "history": "~1.12.6",
     "patternfly": "~2.5.0",
-    "keymirror": "~0.1.1"
+    "keymirror": "~0.1.1",
+    "react-modal": "~0.6.1"
   },
   "devDependencies": {
     "gulp": "~3.9.0",

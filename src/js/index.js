@@ -33,7 +33,8 @@ import TempStorage from './services/TempStorage.js';
 
 function checkAuth(nextState, replaceState) {
   if (!LoginStore.isLoggedIn()) {
-    replaceState(null, '/login', { nextPath: nextState.location.pathname });
+    replaceState(null, '/login', { nextPath: nextState.location.pathname +
+                                             nextState.location.search });
   }
 }
 
@@ -59,8 +60,9 @@ let routes = (
 
       <Redirect from="plans" to="plans/list"/>
       <Route path="plans" component={Plans}>
-        <Route path="list" component={ListPlans}/>
-        <Route path="new" component={NewPlan}/>
+        <Route path="list" component={ListPlans}>
+          <Route path="/plans/new" component={NewPlan}/>
+        </Route>
         <Route path=":planName/edit" component={EditPlan}/>
         <Route path=":planName/delete" component={DeletePlan}/>
       </Route>
