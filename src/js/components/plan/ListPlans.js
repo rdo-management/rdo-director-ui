@@ -51,7 +51,9 @@ export default class ListPlans extends React.Component {
                  onClick={this.onPlanClick.bind(this)}>{item}</a></td>
           <td className="plan-list-actions-col">
             <div className="btn-group" role="group">
-              <Link to={`/plans/${item}/edit`} className="btn btn-xs btn-default">Edit</Link>
+              <Link to={`/plans/${item}/edit`}
+                    query={{tab: 'editPlan'}}
+                    className="btn btn-xs btn-default">Edit</Link>
               <Link to={`/plans/${item}/delete`} className="btn btn-xs btn-warning">Delete</Link>
             </div>
           </td>
