@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac4a560_3c7c9920",
+        "filename": "src/js/components/plan/PlanFileInput.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-30T09:28:55Z",
+      "side": 1,
+      "message": "just fyi, I have to use this variable instead of \u0027i\u0027 because the files aren\u0027t read strictly in order, so i is somewhat random in \u0027onload\u0027",
+      "revId": "cf5774340076ab3dd36d9e7399acb384d700d923",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
