@@ -100,7 +100,7 @@ export default class NewPlan extends React.Component {
                           type="submit">
                     Upload Files and Create Plan
                   </button>
-                  <Link to="/plans/list" type="button" className="btn btn-default" >Close</Link>
+                  <Link to="/plans/list" type="button" className="btn btn-default" >Cancel</Link>
                 </div>
               </Formsy.Form>
             </div>
