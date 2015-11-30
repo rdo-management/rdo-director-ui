@@ -62,9 +62,9 @@ let routes = (
       <Route path="plans" component={Plans}>
         <Route path="list" component={ListPlans}>
           <Route path="/plans/new" component={NewPlan}/>
+          <Route path="/plans/:planName/delete" component={DeletePlan}/>
         </Route>
         <Route path=":planName/edit" component={EditPlan}/>
-        <Route path=":planName/delete" component={DeletePlan}/>
       </Route>
 
       <Redirect from="plan" to="plan/environment"/>

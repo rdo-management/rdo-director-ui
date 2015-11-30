@@ -30,5 +30,12 @@ export default {
       message: 'The plan ' + planName + ' activated.',
       type: 'success'
     });
+  },
+
+  removePlan(planName) {
+    AppDispatcher.dispatch({
+      actionType: PlansConstants.REMOVE_PLAN,
+      planName: planName
+    });
   }
 };
