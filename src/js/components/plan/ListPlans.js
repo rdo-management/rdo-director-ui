@@ -8,7 +8,7 @@ export default class ListPlans extends React.Component {
   constructor() {
     super();
     this.state = {
-      plans: PlansStore.getPlanNames()
+      plans: PlansStore.getPlans()
     };
     this.changeListener = this._onPlansChange.bind(this);
   }
@@ -26,7 +26,7 @@ export default class ListPlans extends React.Component {
   }
 
   _onPlansChange() {
-    this.setState({ plans: PlansStore.getPlanNames() });
+    this.setState({ plans: PlansStore.getPlans() });
   }
 
   onPlanClick(e) {
@@ -44,15 +44,23 @@ export default class ListPlans extends React.Component {
   }
 
   render() {
-    let plans = this.state.plans.map(item => {
-      return (
-        <tr key={item}>
-          <td>{this.getActiveIcon(item)} <a href=""
-                 onClick={this.onPlanClick.bind(this)}>{item}</a></td>
+    let plans = this.state.plans.map((plan, index) => {
+      return plan.transition ? (
+            <tr key={index}>
+              <td colSpan="2" className={plan.transition}>
+                <em>Deleting <strong>{plan.name}</strong>&hellip;</em>
+              </td>
+            </tr>
+        ) : ( <tr key={index}>
+          <td className={plan.transition}>{this.getActiveIcon(plan.name)} <a href=""
+                onClick={this.onPlanClick.bind(this)}>
+                  {plan.name}</a></td>
           <td className="plan-list-actions-col">
             <div className="btn-group" role="group">
-              <Link to={`/plans/${item}/edit`} className="btn btn-xs btn-default">Edit</Link>
-              <Link to={`/plans/${item}/delete`} className="btn btn-xs btn-warning">Delete</Link>
+              <Link to={`/plans/${plan.name}/edit`}
+                    className="btn btn-xs btn-default">Edit</Link>
+              <Link to={`/plans/${plan.name}/delete`}
+                    className="btn btn-xs btn-warning">Delete</Link>
             </div>
           </td>
         </tr>

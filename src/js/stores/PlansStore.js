@@ -1,3 +1,5 @@
+import * as _ from 'lodash';
+
 import BaseStore from './BaseStore';
 import PlansConstants from '../constants/PlansConstants';
 
@@ -8,7 +10,7 @@ class PlansStore extends BaseStore {
     this.subscribe(() => this._registerToActions.bind(this));
     this.state = {
       currentPlanName: undefined,
-      planNames: []
+      plans: []
     };
   }
 
@@ -19,6 +21,12 @@ class PlansStore extends BaseStore {
       break;
     case PlansConstants.LIST_PLANS:
       this.onListPlans(payload.plans);
+      break;
+    case PlansConstants.DELETING_PLAN:
+      this.onDeletingPlan(payload.planName);
+      break;
+    case PlansConstants.PLAN_DELETED:
+      this.onPlanDeleted(payload.planName);
       break;
     default:
       break;
@@ -31,11 +39,19 @@ class PlansStore extends BaseStore {
   }
 
   onListPlans(plans) {
-    let planNames = [];
-    plans.forEach(item => {
-      planNames.push(item.name);
-    });
-    this.state.planNames = planNames;
+    this.state.plans = plans;
+    this.emitChange();
+  }
+
+  onDeletingPlan(planName) {
+    let index = _.findIndex(this.state.plans, 'name', planName);
+    this.state.plans[index].transition = 'deleting';
+    this.emitChange();
+  }
+
+  onPlanDeleted(planName) {
+    let index = _.findIndex(this.state.plans, 'name', planName);
+    this.state.plans = _.without(this.state.plans, this.state.plans[index]);
     this.emitChange();
   }
 
@@ -55,8 +71,8 @@ class PlansStore extends BaseStore {
     return this.state.currentPlanName;
   }
 
-  getPlanNames() {
-    return this.state.planNames;
+  getPlans() {
+    return this.state.plans;
   }
 }
 

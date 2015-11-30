@@ -30,5 +30,19 @@ export default {
       message: 'The plan ' + planName + ' activated.',
       type: 'success'
     });
+  },
+
+  deletingPlan(planName) {
+    AppDispatcher.dispatch({
+      actionType: PlansConstants.DELETING_PLAN,
+      planName: planName
+    });
+  },
+
+  planDeleted(planName) {
+    AppDispatcher.dispatch({
+      actionType: PlansConstants.PLAN_DELETED,
+      planName: planName
+    });
   }
 };

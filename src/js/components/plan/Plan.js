@@ -7,8 +7,7 @@ export default class Plan extends React.Component {
   constructor() {
     super();
     this.state = {
-      planName: PlansStore.getCurrentPlanName(),
-      planNames: PlansStore.getPlanNames()
+      planName: PlansStore.getCurrentPlanName()
     };
     this.changeListener = this._onChange.bind(this);
   }
@@ -22,8 +21,7 @@ export default class Plan extends React.Component {
   }
 
   _onChange() {
-    this.setState({ planName: PlansStore.getCurrentPlanName(),
-                    planNames: PlansStore.getPlanNames() });
+    this.setState({ planName: PlansStore.getCurrentPlanName() });
   }
 
   _getHeadline() {
