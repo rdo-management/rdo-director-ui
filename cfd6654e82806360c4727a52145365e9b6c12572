@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac4a560_7f4e03c3",
+        "filename": "src/js/components/plan/DeletePlan.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2015-11-30T13:22:05Z",
+      "side": 0,
+      "message": "It\u0027s not technically a form, but shouldn\u0027t we use FormErrorList to display errors, so it\u0027s consistent with the error messaging in NewPlan/EditPlan?",
+      "revId": "cfd6654e82806360c4727a52145365e9b6c12572",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
