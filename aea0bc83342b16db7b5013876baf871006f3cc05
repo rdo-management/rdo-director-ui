@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac4a560_bc9b49c8",
+        "filename": "src/js/components/plan/PlanFileInput.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2015-11-30T09:03:49Z",
+      "side": 1,
+      "message": "We can profile this a little more in detail, but I think most of the time is spent actually reading the files, which we can\u0027t really speed up. \n\nSo I think there are a couple of things we could do: \n\n* Show the complete list while files are still being read. \n  PRO: Only one DOM-Update\n  CON: User thinks everything\u0027s done while files are still\n  being read. So there needs to be some process indicator. \n  We also need to make sure, upload button is\n  not activated until last file is processed. \n* Show the list after the last file has been processed. \n  PRO: Only one DOM-Update\n  CON: Waiting time until the list is shown. There should be \n  some indicator showing that files are currently being \n  processed.",
+      "revId": "aea0bc83342b16db7b5013876baf871006f3cc05",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
