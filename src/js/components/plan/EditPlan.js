@@ -1,10 +1,10 @@
 import Formsy from 'formsy-react';
+import { Link } from 'react-router';
 import React from 'react';
 
-import FileList from './FileList';
-import PlanFileInput from './PlanFileInput';
 import FormErrorList from '../ui/forms/FormErrorList';
 import NotificationActions from '../../actions/NotificationActions';
+import PlanEditFormTabs from './PlanEditFormTabs';
 import TripleOApiErrorHandler from '../../services/TripleOApiErrorHandler';
 import TripleOApiService from '../../services/TripleOApiService';
 
@@ -15,41 +15,113 @@ export default class EditPlan extends React.Component {
     this.state = {
       name: undefined,
       files: [],
+      filesObj: {},
       canSubmit: false,
       formErrors: []
     };
+    this.processPlanFiles = this._processPlanFiles.bind(this);
+    this.createFilesArray = this._createFilesArray.bind(this);
   }
 
-  onPlanFilesChange(e) {
-    let files = [];
-    for(let i=0, l=e.target.files.length; i<l; i++) {
-      let reader = new FileReader();
-      let file = e.target.files[i];
-      if(file.name.match(/(\.yaml|\.json)$/)) {
-        reader.onload = (f => {
-          return e => {
-            let obj = {
-              name: f.webkitRelativePath.replace(/^[^\/]*\//, ''),
-              content: e.target.result
-            };
-            files.push(obj);
-            this.setState({files: files});
-          };
-        }(file));
-        reader.readAsText(file);
+  componentDidMount() {
+    this.state.name = this.getNameFromUrl();
+    TripleOApiService.getPlan(this.state.name).then(result => {
+      this.processPlanFiles(result.plan.files);
+      this.setState({ files: this.createFilesArray() });
+    });
+  }
+
+  _createFilesArray() {
+    let arr = [];
+    for(let key in this.state.filesObj) {
+      arr.push({
+        name: key,
+        content: this.state.filesObj[key].content,
+        info: this.state.filesObj[key].info
+      });
+    }
+    return arr.sort((a, b) => {
+      if (a.info.newFile && !b.info.newFile) {
+        return -1;
       }
+      else if (b.info.newFile && !a.info.newFile) {
+        return 1;
+      }
+      else if (a.info.changed && !b.info.changed) {
+        return -1;
+      }
+      else if (b.info.changed && !a.info.changed) {
+        return 1;
+      }
+      else if(a.name > b.name) {
+        return 1;
+      }
+      else if(a.name < b.name) {
+        return -1;
+      }
+      else {
+        return 0;
+      }
+    });
+  }
+
+  _processPlanFiles(planFilesObj) {
+    for(let key in planFilesObj) {
+      let item = planFilesObj[key];
+      let obj = this.state.filesObj[key] || {};
+      obj.name = key;
+      if(!obj.info) {
+        obj.info = {};
+      }
+      // If the same file has been selected from disk:
+      // Are the contents the same?
+      if (obj.content && obj.content !== item.contents) {
+        obj.info.changed = true;
+      }
+      else {
+        obj.info.changed = false;
+        obj.content = item.contents;
+      }
+      obj.info.existing = true;
+      obj.info.newFile = false;
+      this.state.filesObj[key] = obj;
+    }
+  }
+
+  onPlanFilesChange(currentValues, isChanged) {
+    let files = currentValues.planFiles;
+    if (files && files != []) {
+      files.forEach(item => {
+        let obj = this.state.filesObj[item.name] || {};
+        obj.name = item.name;
+        if(!obj.info) {
+          obj.info = {
+            existing: false,
+            newFile: true
+          };
+        }
+        // If the same file has been selected from disk:
+        // Are the contents the same?
+        obj.info.changed = (obj.content && obj.content !== item.content);
+        obj.content = item.content;
+        this.state.filesObj[item.name] = obj;
+      });
+      this.setState({ files: this.createFilesArray() });
     }
   }
 
   onFormSubmit(form) {
     let planFiles = {};
     this.state.files.forEach(item => {
-      planFiles[item.name] = {};
-      planFiles[item.name].contents = item.content;
-      // TODO(jtomasek): user can identify capabilities-map in the list of files
-      // (dropdown select or sth)
-      if(item.name === 'capabilities_map.yaml') {
-        planFiles[item.name].meta = { 'file-type': 'capabilities-map' };
+      // online upload new or changed files
+      if(item.info.changed || item.info.newFile) {
+        planFiles[item.name] = {};
+        planFiles[item.name].contents = item.content;
+        // TODO(jtomasek): user can identify capabilities-map in the list of files
+        // (dropdown select or sth)
+        if(item.name === 'capabilities_map.yaml') {
+          planFiles[item.name].meta = { 'file-type': 'capabilities-map' };
+        }
       }
     });
 
@@ -65,12 +137,14 @@ export default class EditPlan extends React.Component {
       }).catch(error => {
         console.error('Error in TripleOApiService.updatePlan', error);
         let errorHandler = new TripleOApiErrorHandler(error);
-        errorHandler.errors.forEach((error) => {
-          NotificationActions.notify({
-            title: 'Error Updating Plan',
-            message: `The plan ${planName} could not be updated. ${error.message}`,
-            type: 'error'
-          });
+        this.setState({
+          formErrors: errorHandler.errors.map((error) => {
+            return {
+              title: 'Error Updating Plan',
+              message: `The plan ${planName} could not be updated. ${error.message}`,
+              type: 'error'
+            };
+          })
         });
       });
     }
@@ -91,36 +165,43 @@ export default class EditPlan extends React.Component {
 
   render () {
     return (
-      <div className="new-plan">
-        <div className="blank-slate-pf clearfix">
-          <div className="blank-slate-pf-icon">
-            <i className="fa fa-edit"></i>
+      <div>
+        <div className="modal modal-routed in" role="dialog">
+          <div className="modal-dialog">
+            <div className="modal-content">
+              <Formsy.Form ref="EditPlanForm"
+                           role="form"
+                           className="form-horizontal"
+                           onChange={this.onPlanFilesChange.bind(this)}
+                           onValidSubmit={this.onFormSubmit.bind(this)}
+                           onValid={this.onFormValid.bind(this)}
+                           onInvalid={this.onFormInvalid.bind(this)}>
+              <div className="modal-header">
+                <Link to="/plans/list"
+                     type="button"
+                     className="close">
+                     <span aria-hidden="true">&times;</span>
+                </Link>
+                <h4>Update {this.getNameFromUrl()} Files</h4>
+              </div>
+              <div className="modal-body">
+                <FormErrorList errors={this.state.formErrors}/>
+                <PlanEditFormTabs currentTab={this.props.location.query.tab || 'editPlan'}
+                                  planFiles={this.state.files}
+                                  planName={this.getNameFromUrl()}/>
+              </div>
+              <div className="modal-footer">
+                <button disabled={!this.state.canSubmit}
+                        className="btn btn-primary btn-lg"
+                        type="submit">
+                  Upload Files and Update Plan
+                </button>
+              </div>
+              </Formsy.Form>
+            </div>
           </div>
-          <h1>Replace Files for plan: {this.getNameFromUrl()}</h1>
-          <FormErrorList errors={this.state.formErrors}/>
-          <Formsy.Form ref="NewPlanForm"
-                       role="form"
-                       className="form new-plan-form col-sm-6 col-sm-offset-3"
-                       onValidSubmit={this.onFormSubmit.bind(this)}
-                       onValid={this.onFormValid.bind(this)}
-                       onInvalid={this.onFormInvalid.bind(this)}>
-            <div className="form-group">
-                <PlanFileInput onChange={this.onPlanFilesChange.bind(this)}
-                           name="PlanFiles"
-                           label="Plan Files"
-                           validations="hasPlanFiles"
-                           multiple/>
-            </div>
-            <div className="blank-slate-pf-main-action">
-              <button disabled={!this.state.canSubmit}
-                      className="btn btn-primary btn-lg"
-                      type="submit">
-                Upload Files and Create Plan
-              </button>
-            </div>
-          </Formsy.Form>
         </div>
-        <FileList files={this.state.files} />
+        <div className="modal-backdrop in"></div>
       </div>
     );
   }
@@ -128,12 +209,6 @@ export default class EditPlan extends React.Component {
 
 EditPlan.propTypes = {
   history: React.PropTypes.object,
+  location: React.PropTypes.object,
   params: React.PropTypes.object
 };
-
-Formsy.addValidationRule('hasPlanFiles', function (values, value) {
-  if(value && value.length > 0) {
-    return true;
-  }
-  return false;
-});

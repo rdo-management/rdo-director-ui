@@ -1,3 +1,4 @@
+import ClassNames from 'classnames';
 import React from 'react';
 
 export default class FileList extends React.Component {
@@ -7,13 +8,18 @@ export default class FileList extends React.Component {
       return null;
     }
     let files = this.props.files.map(file => {
+      let info = file.info || {};
+      let classes = ClassNames({
+        'changed-plan-file': info.changed,
+        'existing-plan-file': info.existing,
+        'new-plan-file': info.newFile
+      });
       return (
         <tr key={file.name}>
-          <td>{file.name}</td>
+          <td className={classes}>{file.name}</td>
         </tr>
       );
     });
-    // TODO(flfuchs): This needs to go into a collapsible panel.
     return (
       <div className="panel panel-default">
         <div className="panel-heading" role="tab" id="plan-files-list-panel">
