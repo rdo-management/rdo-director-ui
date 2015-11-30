@@ -1,6 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 import NotificationActions from '../../actions/NotificationActions';
+import PlansActions from '../../actions/PlansActions';
 import TripleOApiErrorHandler from '../../services/TripleOApiErrorHandler';
 import TripleOApiService from '../../services/TripleOApiService';
 
@@ -19,8 +21,11 @@ export default class DeletePlan extends React.Component {
   _onDeleteClick() {
     let planName = this.getNameFromUrl();
     if(planName) {
+      PlansActions.removePlan(planName);
+      this.props.history.pushState(null, 'plans/list');
+
       TripleOApiService.deletePlan(planName).then(result => {
-        this.props.history.pushState(null, 'plans/list');
+        PlansActions.listPlans();
         NotificationActions.notify({
           title: 'Plan Deleted',
           message: `The plan ${planName} was successfully deleted.`,
@@ -28,6 +33,7 @@ export default class DeletePlan extends React.Component {
         });
       }).catch(error => {
         console.error('Error in TripleOApiService.updatePlan', error);
+        PlansActions.listPlans();
         let errorHandler = new TripleOApiErrorHandler(error);
         errorHandler.errors.forEach((error) => {
           NotificationActions.notify({
@@ -42,18 +48,37 @@ export default class DeletePlan extends React.Component {
 
   render () {
     return (
-      <div className="new-plan">
-        <div className="blank-slate-pf clearfix">
-          <div className="blank-slate-pf-icon">
-            <i className="fa fa-trash"></i>
+      <div>
+        <div className="modal modal-routed in" role="dialog">
+          <div className="modal-dialog">
+            <div className="modal-content">
+              <div className="modal-header">
+                <Link to="/plans/list"
+                      type="button"
+                      className="close">
+                  <span className="pficon pficon-close"></span>
+                </Link>
+                <h4 className="modal-title">
+                  <span className="pficon pficon-delete"></span> Delete {this.getNameFromUrl()}
+                </h4>
+              </div>
+              <div className="modal-body">
+                <p>
+                  Are you sure you want to delete plan <strong>{this.getNameFromUrl()}</strong>?
+                </p>
+              </div>
+              <div className="modal-footer">
+                <button className="btn btn-danger"
+                        onClick={this.onDeleteClick}
+                        type="submit">
+                  Delete Plan
+                </button>
+                <Link to="/plans/list" type="button" className="btn btn-default" >Cancel</Link>
+              </div>
+            </div>
           </div>
-          <h1>Delete plan: {this.getNameFromUrl()}</h1>
-            <button className="btn btn-lg btn-danger"
-                    onClick={this.onDeleteClick}
-                    type="submit">
-              Delete Plan
-            </button>
         </div>
+        <div className="modal-backdrop in"></div>
       </div>
     );
   }

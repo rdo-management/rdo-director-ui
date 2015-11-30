@@ -1,3 +1,4 @@
+import * as _ from 'lodash';
 import BaseStore from './BaseStore';
 import PlansConstants from '../constants/PlansConstants';
 
@@ -20,6 +21,9 @@ class PlansStore extends BaseStore {
     case PlansConstants.LIST_PLANS:
       this.onListPlans(payload.plans);
       break;
+    case PlansConstants.REMOVE_PLAN:
+      this.onRemovePlan(payload.planName);
+      break;
     default:
       break;
     }
@@ -36,6 +40,11 @@ class PlansStore extends BaseStore {
       planNames.push(item.name);
     });
     this.state.planNames = planNames;
+    this.emitChange();
+  }
+
+  onRemovePlan(planName) {
+    this.state.planNames = _.without(this.state.planNames, planName);
     this.emitChange();
   }
 
