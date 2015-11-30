@@ -16,6 +16,24 @@
       "revId": "aea0bc83342b16db7b5013876baf871006f3cc05",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_fc8221ff",
+        "filename": "src/js/components/plan/PlanFileInput.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-30T09:27:08Z",
+      "side": 1,
+      "message": "in patchset2 I am calling setValue only when last file is processed\nin patch3 I have added progress bar showing the progress of reading the files.\n\nThese two changes make reading of the files instant for local files and when I tested uploading from remote machine, the progressbar keeps the user updated on what is going on. In this case the read is also not less the a couple of seconds",
+      "parentUuid": "5ac4a560_bc9b49c8",
+      "revId": "aea0bc83342b16db7b5013876baf871006f3cc05",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
