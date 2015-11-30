@@ -32,9 +32,16 @@ export default {
     });
   },
 
-  removePlan(planName) {
+  deletingPlan(planName) {
     AppDispatcher.dispatch({
-      actionType: PlansConstants.REMOVE_PLAN,
+      actionType: PlansConstants.DELETING_PLAN,
+      planName: planName
+    });
+  },
+
+  planDeleted(planName) {
+    AppDispatcher.dispatch({
+      actionType: PlansConstants.PLAN_DELETED,
       planName: planName
     });
   }

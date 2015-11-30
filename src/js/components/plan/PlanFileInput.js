@@ -60,7 +60,7 @@ class PlanFileInput extends React.Component {
 
   renderProgress() {
     return this.state.progress > 0 ? (
-      <div className="progress help-block">
+      <div className="progress active help-block">
         <div className="progress-bar" style={{width: `${this.state.progress}%`}}></div>
       </div>
     ) : false;

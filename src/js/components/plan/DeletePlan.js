@@ -21,18 +21,17 @@ export default class DeletePlan extends React.Component {
   _onDeleteClick() {
     let planName = this.getNameFromUrl();
     if(planName) {
-      PlansActions.removePlan(planName);
+      PlansActions.deletingPlan(planName);
       this.props.history.pushState(null, 'plans/list');
-
       TripleOApiService.deletePlan(planName).then(result => {
-        PlansActions.listPlans();
+        PlansActions.planDeleted(planName);
         NotificationActions.notify({
           title: 'Plan Deleted',
           message: `The plan ${planName} was successfully deleted.`,
           type: 'success'
         });
       }).catch(error => {
-        console.error('Error in TripleOApiService.updatePlan', error);
+        console.error('Error in DeletePlan._ondeleteClick', error);
         PlansActions.listPlans();
         let errorHandler = new TripleOApiErrorHandler(error);
         errorHandler.errors.forEach((error) => {
