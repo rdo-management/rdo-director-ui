@@ -16,6 +16,24 @@
       "revId": "cfd6654e82806360c4727a52145365e9b6c12572",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_df9ab713",
+        "filename": "src/js/components/plan/DeletePlan.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-11-30T13:29:03Z",
+      "side": 0,
+      "message": "Yes, if we intend to keep the modal open until the plan is actually deleted (ajax promise finishes) I think it is not required, so In this patch I remove the plan from the list by calling PlansActions.removePlan. In case the plan does not get removed, it will raise the notification and the plan re-appears in the list. I think this speeds up the interaction quite a lot.\n\nI am currently playing with the idea of putting the plan in the list to \u0027deleting\u0027 transitional state, so I display it appropriately in the list as \u0027hey, I am the plan which you initiated deletion of and I am in process of deleting so you can\u0027t really do anything with me\u0027\n\nThis way the UI would reflect the actual situation more. I am currently figuring out how to deal with the required changes in the store.\n\nWe might eventually apply this also for create/edit plan, but I think testing it out with deletion first is better.",
+      "parentUuid": "5ac4a560_7f4e03c3",
+      "revId": "cfd6654e82806360c4727a52145365e9b6c12572",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
