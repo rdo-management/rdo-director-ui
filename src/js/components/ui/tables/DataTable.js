@@ -26,17 +26,29 @@ export default class DataTable extends React.Component {
   renderFilterInput() {
     if (this.props.onFilter) {
       return (
-        <label>
-          <input type="search"
-                 className=""
-                 placeholder={'Filter'}
-                 title={'Filter'}
-                 value={this.props.filterString}
-                 onChange={this.onFilterTable.bind(this)}/>
-        </label>
+        <div className="dataTables_filter">
+          <label>
+            <input type="search"
+                   className=""
+                   placeholder={'Filter'}
+                   title={'Filter'}
+                   value={this.props.filterString}
+                   onChange={this.onFilterTable.bind(this)}/>
+          </label>
+        </div>
       );
     }
     return false;
+  }
+
+  renderTableActions() {
+    if(this.props.tableActions) {
+      return (
+        <div className="dataTables_actions">
+          {this.props.tableActions()}
+        </div>
+      );
+    }
   }
 
   render() {
@@ -56,9 +68,8 @@ export default class DataTable extends React.Component {
     return (
       <div className="dataTables_wrapper">
         <div className="dataTables_header">
-          <div className="dataTables_filter">
-            {this.renderFilterInput()}
-          </div>
+          {this.renderFilterInput()}
+          {this.renderTableActions()}
           <div className="dataTables_info">
             Showing <b>{rows.length}</b> of <b>{this.props.data.length}</b> items
           </div>
@@ -88,7 +99,8 @@ DataTable.propTypes = {
   filterString: React.PropTypes.string,
   noRowsRenderer: React.PropTypes.func.isRequired,
   onFilter: React.PropTypes.func,
-  rowsCount: React.PropTypes.number.isRequired
+  rowsCount: React.PropTypes.number.isRequired,
+  tableActions: React.PropTypes.func
 };
 DataTable.defaultProps = {
   className: 'table'
