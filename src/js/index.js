@@ -25,6 +25,7 @@ import Overview from './components/Overview';
 import Parameters from './components/parameters/Parameters.js';
 import Plan from './components/plan/Plan.js';
 import Plans from './components/plan/Plans.js';
+import PlansActions from './actions/PlansActions';
 import PlansStore from './stores/PlansStore';
 import ProvisionedNodesTabPane from './components/nodes/ProvisionedNodesTabPane';
 import RegisteredNodesTabPane from './components/nodes/RegisteredNodesTabPane';
@@ -35,6 +36,9 @@ function checkAuth(nextState, replaceState) {
   if (!LoginStore.isLoggedIn()) {
     replaceState(null, '/login', { nextPath: nextState.location.pathname +
                                              nextState.location.search });
+  }
+  else {
+    PlansActions.listPlans();
   }
 }
 
