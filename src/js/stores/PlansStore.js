@@ -31,25 +31,16 @@ class PlansStore extends BaseStore {
   }
 
   onListPlans(plans) {
-    let planNames = [];
+    this.state.planNames = [];
     plans.forEach(item => {
-      planNames.push(item.name);
+      this.state.planNames.push(item.name);
     });
-    this.state.planNames = planNames;
     this.emitChange();
   }
 
   getState() {
     return this.state;
   }
-
-  /**
-   * Returns a plan obj, either by name or current
-   * (if name is omitted).
-   */
-  // getPlan() {
-  //   return this.state.plan;
-  // }
 
   getCurrentPlanName() {
     return this.state.currentPlanName;
