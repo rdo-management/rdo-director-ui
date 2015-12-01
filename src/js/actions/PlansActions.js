@@ -1,6 +1,7 @@
 import AppDispatcher from '../dispatchers/AppDispatcher.js';
 import NotificationActions from '../actions/NotificationActions';
 import PlansConstants from '../constants/PlansConstants';
+import PlansStore from '../stores/PlansStore';
 import TripleOApiService from '../services/TripleOApiService';
 import TripleOApiErrorHandler from '../services/TripleOApiErrorHandler';
 
@@ -25,10 +26,13 @@ export default {
       actionType: PlansConstants.GET_PLAN,
       planName: planName
     });
+    if(window && window.localStorage) {
+      window.localStorage.setItem('currentPlanName', planName);
+    }
     NotificationActions.notify({
       title: 'Plan Activated',
-      message: 'The plan ' + planName + ' activated.',
+      message: 'The plan ' + planName + ' was activated.',
       type: 'success'
     });
-  }
+  },
 };
