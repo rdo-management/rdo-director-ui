@@ -1,6 +1,7 @@
 import AppDispatcher from '../dispatchers/AppDispatcher.js';
 import NotificationActions from '../actions/NotificationActions';
 import PlansConstants from '../constants/PlansConstants';
+import PlansActionsHandler from '../services/PlansActionsHandler';
 import TripleOApiService from '../services/TripleOApiService';
 import TripleOApiErrorHandler from '../services/TripleOApiErrorHandler';
 
@@ -11,6 +12,7 @@ export default {
         actionType: PlansConstants.LIST_PLANS,
         plans: res.plans
       });
+      PlansActionsHandler.onListPlans();
     }).catch(error => {
       console.error('Error retrieving plans PlansActions.listPlans', error);
       let errorHandler = new TripleOApiErrorHandler(error);
@@ -25,9 +27,10 @@ export default {
       actionType: PlansConstants.GET_PLAN,
       planName: planName
     });
+    PlansActionsHandler.onChoosePlan();
     NotificationActions.notify({
       title: 'Plan Activated',
-      message: 'The plan ' + planName + ' activated.',
+      message: 'The plan ' + planName + ' was activated.',
       type: 'success'
     });
   }
