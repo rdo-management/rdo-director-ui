@@ -24,6 +24,10 @@ const mockNoRowsRenderer = function() {
   return 'There are no items in data';
 };
 
+const mockOnFilter = () => {
+  return 'Filtering Happened';
+};
+
 describe('DataTable component', () => {
   let DataTableVdom, DataTableInstance;
   beforeEach(() => {
@@ -31,6 +35,7 @@ describe('DataTable component', () => {
     shallowRenderer.render(
       <DataTable data={data}
                  rowsCount={data.length}
+                 onFilter={mockOnFilter}
                  noRowsRenderer={mockNoRowsRenderer}>
         <DataTableColumn key="uuid"
                          header={<DataTableHeaderCell key="uuid">UUID</DataTableHeaderCell>}
@@ -52,7 +57,7 @@ describe('DataTable component', () => {
     expect(tableHeader.props.className).toBe('dataTables_header');
     let tableFilterInput = tableHeader.props.children[0];
     expect(tableFilterInput.props.className).toBe('dataTables_filter');
-    let tableInfo = tableHeader.props.children[1];
+    let tableInfo = tableHeader.props.children[2];
     expect(tableInfo.props.className).toBe('dataTables_info');
     expect(tableInfo).toEqual(
       <div className="dataTables_info">
