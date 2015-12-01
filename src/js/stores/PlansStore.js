@@ -10,8 +10,13 @@ class PlansStore extends BaseStore {
     this.subscribe(() => this._registerToActions.bind(this));
     this.state = {
       currentPlanName: undefined,
-      plans: []
+      plans: [],
+      conflict: undefined
     };
+    this.detectPlan = this._detectPlan.bind(this);
+    this.storePlan = this._storePlan.bind(this);
+    this.getStoredPlan = this._getStoredPlan.bind(this);
+    this.getPreviousPlan = this._getPreviousPlan.bind(this);
   }
 
   _registerToActions(payload) {
@@ -35,11 +40,15 @@ class PlansStore extends BaseStore {
 
   onGetPlan(planName) {
     this.state.currentPlanName = planName;
+    if(window && window.localStorage) {
+      window.localStorage.setItem('currentPlanName', planName);
+    }
     this.emitChange();
   }
 
   onListPlans(plans) {
     this.state.plans = plans;
+    this.detectPlan();
     this.emitChange();
   }
 
@@ -59,20 +68,56 @@ class PlansStore extends BaseStore {
     return this.state;
   }
 
-  /**
-   * Returns a plan obj, either by name or current
-   * (if name is omitted).
-   */
-  // getPlan() {
-  //   return this.state.plan;
-  // }
-
   getCurrentPlanName() {
     return this.state.currentPlanName;
   }
 
   getPlans() {
     return this.state.plans;
+  }
+
+  _detectPlan() {
+    let previousPlan = this._getPreviousPlan();
+    // No plans present.
+    if(this.state.plans.length < 1) {
+      if(!previousPlan) {
+        return;
+      }
+    }
+    // Plans present.
+    // No previously chosen plan.
+    else if(!previousPlan) {
+      this.state.currentPlanName = this.state.plans[0].name;
+      this.storePlan(this.state.plans[0].name);
+    }
+    // Previously chosen plan doesn't exist any more.
+    else if(!_.includes(_.pluck(this.state.plans, 'name'), previousPlan)) {
+      this.state.conflict = previousPlan;
+      this.state.currentPlanName = this.state.plans[0].name;
+      this.storePlan(this.state.plans[0].name);
+    }
+    // No plan in state, but in localStorage
+    else if(!this.state.currentPlanName && previousPlan) {
+      this.state.currentPlanName = previousPlan;
+      this.storePlan(previousPlan);
+    }
+  }
+
+  _getPreviousPlan() {
+    return this.state.currentPlanName || this.getStoredPlan();
+  }
+
+  _storePlan(name) {
+    if(window && window.localStorage) {
+      window.localStorage.setItem('currentPlanName', name);
+    }
+  }
+
+  _getStoredPlan() {
+    if(window && window.localStorage) {
+      return window.localStorage.getItem('currentPlanName');
+    }
+    return null;
   }
 }
 

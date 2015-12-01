@@ -27,7 +27,7 @@ export default {
     });
     NotificationActions.notify({
       title: 'Plan Activated',
-      message: 'The plan ' + planName + ' activated.',
+      message: 'The plan ' + planName + ' was activated.',
       type: 'success'
     });
   },
