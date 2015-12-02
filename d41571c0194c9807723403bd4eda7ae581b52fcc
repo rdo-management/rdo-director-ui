@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5ac4a560_07ee9988",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2015-12-02T11:40:49Z",
+      "side": 1,
+      "message": "If we always auto-activate a plan, we should also add a notification to make it clear to the user that the previously active plan could not be found and thus another one is activated. Just silently doing something that might contradict a user\u0027s expectation is a little dangerous IMHO.\n\nI\u0027ll do the same with the case described in line 21.",
+      "parentUuid": "5ac4a560_67f2ed9b",
+      "revId": "d41571c0194c9807723403bd4eda7ae581b52fcc",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac4a560_e7b0bddf",
         "filename": "src/js/index.js",
         "patchSetId": 2
