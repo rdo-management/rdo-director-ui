@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac4a560_e758bdfc",
+        "filename": "src/js/components/plan/EditPlan.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-12-02T10:46:13Z",
+      "side": 1,
+      "message": "How about fetching the actual plan from API and display it\u0027s properties (name and files) in the form? This way we could provide the user with information about the files it already carries, which is imho important, and when we\u0027ll have the feature, user can potentially just remove some files from the list, (or upload new ones)",
+      "revId": "17956bdcd6794723d4a73f9d6356565f7e4690e8",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_8752a9db",
+        "filename": "src/js/components/plan/EditPlan.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-12-02T10:46:13Z",
+      "side": 1,
+      "message": "instead of name and files in the state we\u0027 have plan: {name: this.getNameFromUrl(), files: []}",
+      "revId": "17956bdcd6794723d4a73f9d6356565f7e4690e8",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_a7d32537",
+        "filename": "src/js/components/plan/EditPlan.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-12-02T10:46:13Z",
+      "side": 1,
+      "message": "componentDidMount() {\n TripleoAPI.getPlan(this.state.plan.name).then {setState{plan:response}...",
+      "revId": "17956bdcd6794723d4a73f9d6356565f7e4690e8",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_471df10e",
+        "filename": "src/js/components/plan/EditPlan.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-12-02T10:46:13Z",
+      "side": 1,
+      "message": "this.setState({plan: {files: merge(this.state.plan.files, files)}}) - beware, we do\u0027t want to mutate this.state.plan.files - which is what my example does, we need to work around it as we did with the api default requests.\n\nThis is where we decide if the newly uploaded files overwrite the old ones (that is how it works now - so we just send the newly added files to plan) or if we used merge here, we\u0027d get complete list of files of the plan.IMHO the best way would be to use merge and allow user to remove files from the files tab.\nThen we\u0027d send the complete list of files we want the plan to have to the API and API could just overwrite all the plan files with those new ones we are sending?",
+      "revId": "17956bdcd6794723d4a73f9d6356565f7e4690e8",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_87ee29eb",
+        "filename": "src/js/components/plan/EditPlan.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-12-02T10:46:13Z",
+      "side": 1,
+      "message": "this.state.plan.files...",
+      "revId": "17956bdcd6794723d4a73f9d6356565f7e4690e8",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_e7ab5d87",
+        "filename": "src/js/components/plan/EditPlan.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-12-02T10:46:13Z",
+      "side": 1,
+      "message": "this should be used only by constructor to set initial plan name in state and then we can use this.state.plan.name everywhere else. It might be worth removing this method and put it\u0027s contents into the constructor directly, so we are not tempted to use this method anywhere else",
+      "revId": "17956bdcd6794723d4a73f9d6356565f7e4690e8",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_47a09190",
+        "filename": "src/js/components/plan/PlanEditFormTabs.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-12-02T10:46:13Z",
+      "side": 1,
+      "message": "I think it is worth to have the plan name input here too even though the plan name can\u0027t be set. You can use HorizontalInput, where with value\u003d{this.props.planName} disabled (and remove placeholder, validations, validationError, required)\n\nor better you can create new HorizontalStaticText which will render this: http://getbootstrap.com/css/#forms-controls-static",
+      "revId": "17956bdcd6794723d4a73f9d6356565f7e4690e8",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_8773894c",
+        "filename": "src/js/components/plan/PlanEditFormTabs.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-12-02T10:46:13Z",
+      "side": 1,
+      "message": "Plan Files tab is the same as in PlanFormTabs, so extract it from there to separate file and reuse it.",
+      "revId": "17956bdcd6794723d4a73f9d6356565f7e4690e8",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
