@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac4a560_67f2ed9b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-12-02T11:23:38Z",
+      "side": 1,
+      "message": "No \u003d\u003e Activate the first plan from the list",
+      "revId": "d41571c0194c9807723403bd4eda7ae581b52fcc",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_e7b0bddf",
+        "filename": "src/js/index.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-12-02T11:23:38Z",
+      "side": 1,
+      "message": "I\u0027d prefer to have index.js as clean as possible. This is probably better to do in AuthenticatedContent.componentDidMount - the topmost component which gets rendered when user is logged in",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 3
+      },
+      "revId": "d41571c0194c9807723403bd4eda7ae581b52fcc",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_e70c3d97",
+        "filename": "src/js/stores/PlansStore.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-12-02T11:23:38Z",
+      "side": 1,
+      "message": "you can use lodash: _.includes(array,item) instead of this method",
+      "revId": "d41571c0194c9807723403bd4eda7ae581b52fcc",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
