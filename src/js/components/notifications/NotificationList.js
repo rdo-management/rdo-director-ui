@@ -13,6 +13,12 @@ export default class NotificationList extends React.Component {
     NotificationActions.removeNotification(index);
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (this.props.active && !nextProps.active) {
+      NotificationActions.notificationViewed(this.props.notifications);
+    }
+  }
+
   render() {
     let classes = ClassNames({
       'col-sm-12': true,

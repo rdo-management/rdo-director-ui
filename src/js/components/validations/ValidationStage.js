@@ -73,28 +73,32 @@ export default class ValidationStage extends React.Component {
     });
 
     return (
-      <div className="panel panel-default validation-stage-panel">
-        <div className="panel-heading validation-stage-heading">
-          <div className="row">
-            <div className="col-lg-3 col-sm-3">
-              <a href="" onClick={this.toggleOpen.bind(this)} className={titleClass}>
-                {this.props.name}
-              </a>
+        <div className="panel panel-default">
+          <div className="panel-heading validation-stage-heading">
+            <div className="row">
+              <div className="col-lg-3 col-md-4 col-sm-5 col-xs-5">
+                <h4 className="panel-title">
+                  <a onClick={this.toggleOpen.bind(this)} className={titleClass}>
+                    {this.props.name}
+                  </a>
+                </h4>
+              </div>
+              <div className="col-lg-3 col-md-4 col-sm-5 col-xs-5">
+                <h4 className="panel-title">
+                  {this.getStatusInfo()}
+                </h4>
+              </div>
+              <button className="btn btn-primary btn-xs" onClick={this.runStage.bind(this)}>
+                Run All
+              </button>
             </div>
-            <div className="col-lg-4 col-sm-5">
-              {this.getStatusInfo()}
-            </div>
-            <button className="btn btn-primary btn-xs" onClick={this.runStage.bind(this)}>
-              Run All
-            </button>
           </div>
-        </div>
-        <div className={contentClass}>
-            <div className="row-cards-pf">
+          <div className={contentClass}>
+            <div className="panel-body">
               {validations}
             </div>
+          </div>
         </div>
-      </div>
     );
   }
 }

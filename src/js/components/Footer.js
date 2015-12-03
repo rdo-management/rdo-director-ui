@@ -11,7 +11,6 @@ import ValidationsStore from '../stores/ValidationsStore';
 
 import NotificationsIndicator from './notifications/NotificationsIndicator';
 import NotificationList       from './notifications/NotificationList';
-import NotificationsToaster   from './notifications/NotificationsToaster';
 
 import ValidationsIndicator from './validations/ValidationsIndicator';
 import ValidationsList from './validations/ValidationsList';
@@ -101,13 +100,8 @@ export default class Footer extends React.Component {
       active: this.state.listShown === 'validations'
     });
 
-    let toasterNotification = _.findLast(_.filter(this.state.notifications, function(notification) {
-      return !notification.viewed;
-    }));
-
     return (
       <div>
-        <NotificationsToaster notification={toasterNotification}/>
         <div className="navbar-fixed-bottom wrapper-footer container-fluid">
           <div className="row">
             <div className="col-sm-12">

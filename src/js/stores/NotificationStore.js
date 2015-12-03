@@ -30,7 +30,8 @@ class NotificationStore extends BaseStore {
       message: notificationData.message,
       type: notificationData.type,
       viewed: false,
-      dismissable: notificationData.dissmissable
+      dismissable: notificationData.dissmissable,
+      timestamp: (new Date()).getTime()
     };
     this.state.push(notification);
     this.emitChange();
@@ -41,9 +42,28 @@ class NotificationStore extends BaseStore {
     this.emitChange();
   }
 
-  onViewedNotification(notification) {
-    notification.viewed = true;
-    this.emitChange();
+  onViewedNotification(notifications) {
+    let updated = false;
+    let viewedNotifications = notifications;
+    if (!(notifications instanceof Array)) {
+      viewedNotifications = [notifications];
+    }
+
+    let storeNotifications = this.state;
+    _.forEach(viewedNotifications, function(notification) {
+      let storeNotification = _.find(storeNotifications, function(nextNotification) {
+        return nextNotification.timestamp === notification.timestamp &&
+          nextNotification.title === notification.title;
+      });
+      if (storeNotification) {
+        storeNotification.viewed = true;
+        updated = true;
+      }
+    });
+
+    if (updated) {
+      this.emitChange();
+    }
   }
 
   getState() {

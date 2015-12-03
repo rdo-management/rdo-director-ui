@@ -9,19 +9,16 @@ import KeystoneApiErrorHandler from '../services/KeystoneApiErrorHandler';
 import KeystoneApiService from '../services/KeystoneApiService';
 import LoginActions from '../actions/LoginActions';
 import LoginStore from '../stores/LoginStore';
-import NotificationStore from '../stores/NotificationStore';
-import NotificationToaster from './notifications/NotificationsToaster';
+import NotificationsToaster from './notifications/NotificationsToaster';
 
 export default class Login extends React.Component {
   constructor() {
     super();
     this.state = {
       canSubmit: false,
-      formErrors: [],
-      notifications: []
+      formErrors: []
     };
     this.changeListener = this._onChange.bind(this);
-    this.notificationsChangeListener = this._onNotificationsChange.bind(this);
   }
 
   componentWillMount() {
@@ -31,21 +28,15 @@ export default class Login extends React.Component {
 
   componentDidMount() {
     LoginStore.addChangeListener(this.changeListener);
-    NotificationStore.addChangeListener(this.notificationsChangeListener);
   }
 
   componentWillUnmount() {
     ReactDOM.findDOMNode(document.documentElement).className = '';
     LoginStore.removeChangeListener(this.changeListener);
-    NotificationStore.removeChangeListener(this.notificationsChangeListener);
   }
 
   _onChange() {
     this._shouldRedirect();
-  }
-
-  _onNotificationsChange() {
-    this.setState({notifications: NotificationStore.getState()});
   }
 
   _shouldRedirect() {
@@ -79,11 +70,6 @@ export default class Login extends React.Component {
   }
 
   render() {
-    let toasterNotification = _.findLast(_.filter(this.state.notifications, function(notification) {
-      return !notification.viewed &&
-        notification.type !== 'success' &&
-        notification.type !== 'ok';
-    }));
     return (
       <div>
         <span id="badge">
@@ -134,7 +120,7 @@ export default class Login extends React.Component {
             </div>
           </div>
         </div>
-        <NotificationToaster className="on-login" notification={toasterNotification} />
+        <NotificationsToaster />
       </div>
     );
   }
