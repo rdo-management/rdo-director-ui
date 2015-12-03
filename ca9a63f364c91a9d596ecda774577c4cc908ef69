@@ -16,6 +16,24 @@
       "revId": "ca9a63f364c91a9d596ecda774577c4cc908ef69",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_9c6af718",
+        "filename": "src/js/actions/PlansActions.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2015-12-03T16:32:40Z",
+      "side": 1,
+      "message": "The reason I hooked it into the listPlans action is that plan-detection depends on that list. There\u0027s no way to activate a plan from a clean slate without knowing which plans exist. (Even if there\u0027s a plan stored in localStorage it still makes sense to retrieve the list to make sure the name in localStorage still exists as a plan.)\n\nBut of course I can do it the other way round: Call listPlans from the AuthContent component and then react to the changes in the PlansStore. But we\u0027d still need the initial listPlans call. Or am I missing something?\n\nJust one thing to think about: Should we keep the detection logic in the service to keep it semantically separated from the more general AuthContent component or just move everything to the component and get rid of the plan?",
+      "parentUuid": "5ac4a560_9ce4b70e",
+      "revId": "ca9a63f364c91a9d596ecda774577c4cc908ef69",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
