@@ -9,6 +9,12 @@ export default class NotificationList extends React.Component {
     super();
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (this.props.active && !nextProps.active) {
+      NotificationActions.notificationViewed(this.props.notifications);
+    }
+  }
+
   _removeNotification(index) {
     NotificationActions.removeNotification(index);
   }

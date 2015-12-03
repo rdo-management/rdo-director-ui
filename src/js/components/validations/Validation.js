@@ -75,7 +75,7 @@ export default class Validation extends React.Component {
             </div>
             <div>
               <span className="validation-message">{this.props.description}
-              </span> <a href="" onClick={this.viewDetails.bind(this)}>View Details</a>
+              </span> <a className="link" onClick={this.viewDetails.bind(this)}>View Details</a>
             </div>
           </div>
         </div>

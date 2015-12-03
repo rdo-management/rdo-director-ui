@@ -23,8 +23,8 @@ export default class Notification extends React.Component {
     return (
       <div className={classes}
            role="alert"
-           onMouseEnter={this.props.mouseOver}
-           onMouseLeave={this.props.mouseOut}>
+           onMouseEnter={this.props.onMouseEnter}
+           onMouseLeave={this.props.onMouseLeave}>
         <span className={iconClass} aria-hidden="true"></span>
         <button type="button"
                 className="close"
@@ -40,8 +40,8 @@ export default class Notification extends React.Component {
 Notification.propTypes = {
   dismissable: React.PropTypes.bool,
   message: React.PropTypes.string.isRequired,
-  mouseOut: React.PropTypes.func,
-  mouseOver: React.PropTypes.func,
+  onMouseEnter: React.PropTypes.func,
+  onMouseLeave: React.PropTypes.func,
   removeNotification: React.PropTypes.func,
   title: React.PropTypes.string,
   type: React.PropTypes.string

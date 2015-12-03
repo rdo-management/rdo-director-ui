@@ -5,6 +5,7 @@ import PlansActions from '../actions/PlansActions';
 
 import NavBar from './NavBar';
 import Footer from './Footer';
+import NotificationsToaster from './notifications/NotificationsToaster';
 
 export default AuthenticatedComponent(class Nodes extends React.Component {
 
@@ -22,6 +23,7 @@ export default AuthenticatedComponent(class Nodes extends React.Component {
           {this.props.children}
         </div>
         <Footer/>
+        <NotificationsToaster />
       </div>
     );
   }
