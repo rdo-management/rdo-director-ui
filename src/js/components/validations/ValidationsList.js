@@ -6,7 +6,7 @@ import ValidationStage from './ValidationStage';
 export default class ValidationsList extends React.Component {
   render () {
     let classes = ClassNames({
-      'col-sm-12': true,
+      'panel-group': true,
       'validations-container': true,
       'collapsed': !this.props.active
     });
