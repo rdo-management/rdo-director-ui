@@ -1,16 +1,9 @@
 import React from 'react';
-import ClassNames from 'classnames';
 
 import ValidationStage from './ValidationStage';
 
 export default class ValidationsList extends React.Component {
   render () {
-    let classes = ClassNames({
-      'col-sm-12': true,
-      'validations-container': true,
-      'collapsed': !this.props.active
-    });
-
     let validationStages = this.props.validationStages.map((validationStage, index) => {
       return (
         <ValidationStage key={index}
@@ -21,7 +14,7 @@ export default class ValidationsList extends React.Component {
     });
 
     return (
-      <div className={classes}>
+      <div className="panel-group">
         {validationStages}
       </div>
     );
