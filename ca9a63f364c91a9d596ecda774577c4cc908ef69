@@ -34,6 +34,24 @@
       "revId": "ca9a63f364c91a9d596ecda774577c4cc908ef69",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_500f6330",
+        "filename": "src/js/actions/PlansActions.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-12-03T16:55:23Z",
+      "side": 1,
+      "message": "Yes, it does depend on listPlans. It is fine to call that from AuthenticatedContent as we do now. It happens only when component mounts - this spins the wheel initially and from now on it is just on the component reacts to the changes in store, processes current plan and fires necessary actions.\n\nI\u0027ll leave it up to you if you want to keep the service and call it from the component. IMO it is ok to put it into method on the AuthenticatedComponent because that is only thing that that component does now. If it grows, we can refactor.",
+      "parentUuid": "5ac4a560_9c6af718",
+      "revId": "ca9a63f364c91a9d596ecda774577c4cc908ef69",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
