@@ -17,9 +17,9 @@ export default class NotificationsToaster extends React.Component {
     this.clearTimer();
 
     this.timeout = setTimeout(function () {
+      me.timeout = undefined;
       if (!me.isHovering) {
         NotificationActions.notificationViewed(me.props.notification);
-        me.timeout = undefined;
       }
     }, 8000);
   }
