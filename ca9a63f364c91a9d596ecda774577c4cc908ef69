@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac4a560_9ce4b70e",
+        "filename": "src/js/actions/PlansActions.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-12-03T15:15:53Z",
+      "side": 1,
+      "message": "This way, we are limiting the plan processing only on moments when listPlans is triggered. which will force us running this action to trigger the processing.\n\nIt would be probably better to put the processing to the component (AuthenticatedContent) which would do the processing on every PlanStore change and trigger the necessary actions (choosePlan) if they are needed.\n\nSo in the end this service would not be needed",
+      "revId": "ca9a63f364c91a9d596ecda774577c4cc908ef69",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
