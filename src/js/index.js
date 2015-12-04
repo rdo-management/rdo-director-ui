@@ -7,7 +7,6 @@ import { Router, Route, IndexRoute, Redirect } from 'react-router';
 import App from './components/App';
 import AuthenticatedContent from './components/AuthenticatedContent';
 import DeletePlan from './components/plan/DeletePlan';
-import Deployment from './components/deployment/Deployment.js';
 import DiscoveredNodesTabPane from './components/nodes/DiscoveredNodesTabPane';
 import EditPlan from './components/plan/EditPlan';
 import EnvironmentConfiguration from
@@ -25,7 +24,6 @@ import Overview from './components/Overview';
 import Parameters from './components/parameters/Parameters.js';
 import Plan from './components/plan/Plan.js';
 import Plans from './components/plan/Plans.js';
-import PlansStore from './stores/PlansStore';
 import ProvisionedNodesTabPane from './components/nodes/ProvisionedNodesTabPane';
 import RegisteredNodesTabPane from './components/nodes/RegisteredNodesTabPane';
 import Roles from './components/roles/Roles.js';
@@ -38,44 +36,38 @@ function checkAuth(nextState, replaceState) {
   }
 }
 
-function checkCurrentPlan(nextState, replaceState) {
-  if(!PlansStore.getCurrentPlanName()) {
-    replaceState(null, '/plans/list');
-  }
-}
-
 let routes = (
-  <Route path="/" component={App}>
-    <Route component={AuthenticatedContent} onEnter={checkAuth}>
-      <IndexRoute component={Overview}/>
-      <Route path="images" component={Images}/>
-      <Redirect from="nodes" to="nodes/registered"/>
-      <Route path="nodes" component={Nodes}>
-        <Route path="registered" component={RegisteredNodesTabPane}/>
-        <Route path="discovered" component={DiscoveredNodesTabPane}/>
-        <Route path="provisioned" component={ProvisionedNodesTabPane}/>
-        <Route path="maintenance" component={MaintenanceNodesTabPane}/>
-      </Route>
-      <Route path="flavors" component={Flavors}/>
-
-      <Redirect from="plans" to="plans/list"/>
-      <Route path="plans" component={Plans}>
-        <Route path="list" component={ListPlans}>
-          <Route path="/plans/new" component={NewPlan}/>
-          <Route path="/plans/:planName/delete" component={DeletePlan}/>
+  <Route>
+    <Redirect from="/" to="/overview"/>
+    <Route path="/" component={App}>
+      <Route component={AuthenticatedContent} onEnter={checkAuth}>
+        <Route path="overview" component={Plan}>
+          <IndexRoute component={Roles}/>
+          <Route path="parameters" component={Parameters}/>
+          <Route path="environment" component={EnvironmentConfiguration}/>
         </Route>
-        <Route path=":planName/edit" component={EditPlan}/>
-      </Route>
 
-      <Redirect from="plan" to="plan/environment"/>
-      <Route path="plan" component={Plan} onEnter={checkCurrentPlan}>
-        <Route path="environment" component={EnvironmentConfiguration}/>
-        <Route path="roles" component={Roles}/>
-        <Route path="parameters" component={Parameters}/>
-        <Route path="deployment" component={Deployment}/>
+        <Route path="images" component={Images}/>
+        <Redirect from="nodes" to="nodes/registered"/>
+        <Route path="nodes" component={Nodes}>
+          <Route path="registered" component={RegisteredNodesTabPane}/>
+          <Route path="discovered" component={DiscoveredNodesTabPane}/>
+          <Route path="provisioned" component={ProvisionedNodesTabPane}/>
+          <Route path="maintenance" component={MaintenanceNodesTabPane}/>
+        </Route>
+        <Route path="flavors" component={Flavors}/>
+
+        <Redirect from="plans" to="plans/list"/>
+        <Route path="plans" component={Plans}>
+          <Route path="list" component={ListPlans}>
+            <Route path="/plans/new" component={NewPlan}/>
+            <Route path="/plans/:planName/delete" component={DeletePlan}/>
+          </Route>
+          <Route path=":planName/edit" component={EditPlan}/>
+        </Route>
       </Route>
+      <Route path="login" component={Login}/>
     </Route>
-    <Route path="login" component={Login}/>
   </Route>
 );
 

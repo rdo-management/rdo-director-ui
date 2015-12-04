@@ -31,7 +31,7 @@ export default class Roles extends React.Component {
     return (
       <div className="row">
         <div className="col-sm-12">
-          <h2>Deployment Roles</h2>
+          <h3>Hardware</h3>
           <FlavorPanelList flavors={this.state.flavors}/>
         </div>
       </div>

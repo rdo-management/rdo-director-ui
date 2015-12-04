@@ -38,14 +38,10 @@ export default class NavBar extends React.Component {
             <li><a href="#" onClick={this.logout}>Logout</a></li>
           </ul>
           <ul className="nav navbar-nav navbar-primary">
-            <NavTab to="/" onlyActiveOnIndex>Overview</NavTab>
+            <NavTab to="/overview">Overview</NavTab>
             <NavTab to="/images">Images</NavTab>
             <NavTab to="/nodes">Nodes</NavTab>
             <NavTab to="/plans/list">Plans</NavTab>
-            <NavTab to="/plan/environment">Environment</NavTab>
-            <NavTab to="/plan/roles">Roles</NavTab>
-            <NavTab to="/plan/parameters">Service Configuration</NavTab>
-            <NavTab to="/plan/deployment">Deployment</NavTab>
           </ul>
         </div>
       </nav>
