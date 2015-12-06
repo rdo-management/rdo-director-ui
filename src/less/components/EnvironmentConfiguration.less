@@ -1,27 +1,10 @@
-.masonry-environment-topics {
-  column-width: 30em;
-  -moz-column-width: 30em;
-  -webkit-column-width: 30em;
-  column-gap: @grid-gutter-width/2;
-  -moz-column-gap: @grid-gutter-width/2;
-  -webkit-column-gap: @grid-gutter-width/2;
-}
-.masonry-item {
-  display: inline-block;
-  width:  100%;
-  break-inside: avoid-column;
-  -webkit-column-break-inside: avoid;
-}
-
-.panel.panel-environment {
-  .panel-body {
-    .environment-group {
-      &:not(:last-child):not(:only-child) {
-        &:after {
-          &:extend(hr);
-          content: "";
-          display: block;
-        }
+fieldset.environment-topic {
+  .environment-group {
+    &:not(:last-child):not(:only-child) {
+      &:after {
+        &:extend(hr);
+        content: "";
+        display: block;
       }
     }
   }

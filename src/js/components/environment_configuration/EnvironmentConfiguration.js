@@ -1,9 +1,11 @@
 import * as _ from 'lodash';
 import Formsy from 'formsy-react';
+import { Link } from 'react-router';
 import React from 'react';
 
 import EnvironmentConfigurationTopic from './EnvironmentConfigurationTopic';
 import FormErrorList from '../ui/forms/FormErrorList';
+import Tab from '../ui/Tab';
 import NotificationActions from '../../actions/NotificationActions';
 import TripleOApiService from '../../services/TripleOApiService';
 import TripleOApiErrorHandler from '../../services/TripleOApiErrorHandler';
@@ -16,7 +18,8 @@ export default class EnvironmentConfiguration extends React.Component {
       formErrors: [],
       environmentConfiguration: {
         topics: []
-      }
+      },
+      activeTab: undefined
     };
   }
 
@@ -62,6 +65,7 @@ export default class EnvironmentConfiguration extends React.Component {
     this.disableButton();
     TripleOApiService.updatePlanEnvironments(this.props.currentPlanName, data).then((response) => {
       this.setState({ environmentConfiguration: response.environments });
+      this.props.history.pushState(null, '/overview');
       NotificationActions.notify({
         title: 'Environment Configuration updated',
         message: 'The Environment Configuration has been successfully updated',
@@ -77,50 +81,96 @@ export default class EnvironmentConfiguration extends React.Component {
     });
   }
 
+  activateTab(tabName, e) {
+    e.preventDefault();
+    this.setState({ activeTab: tabName });
+  }
+
+  isTabActive(tabName) {
+    let firstTabName = _.camelCase(_.first(this.state.environmentConfiguration.topics).title);
+    let currentTab = this.state.activeTab || firstTabName;
+    return currentTab === tabName;
+  }
+
   render() {
     let topics = this.state.environmentConfiguration.topics.map((topic, index) => {
+      let tabName = _.camelCase(topic.title);
       return (
         <EnvironmentConfigurationTopic key={index}
+                                       isActive={this.isTabActive(tabName)}
                                        title={topic.title}
                                        description={topic.description}
                                        environmentGroups={topic.environment_groups}/>
       );
     });
 
+    let topicTabs = this.state.environmentConfiguration.topics.map((topic, index) => {
+      let tabName = _.camelCase(topic.title);
+      return (
+        <Tab key={index} isActive={this.isTabActive(tabName)}>
+          <a href="" onClick={this.activateTab.bind(this, tabName)}>
+            {topic.title}
+          </a>
+        </Tab>
+      );
+    });
+
     return (
       <div>
-        <h2>Environment Configuration</h2>
-        <div className="row">
-          <div className="col-sm-12">
-            <FormErrorList errors={this.state.formErrors}/>
-            <Formsy.Form ref="environmentConfigurationForm"
-                         role="form"
-                         className="form"
-                         onSubmit={this.handleSubmit.bind(this)}
-                         onValid={this.enableButton.bind(this)}
-                         onInvalid={this.disableButton.bind(this)}>
-              <div className="form-group">
-                <div className="masonry-environment-topics">
-                  {topics}
+        <div className="modal modal-routed in" role="dialog">
+          <div className="modal-dialog modal-lg">
+            <div className="modal-content">
+              <Formsy.Form ref="environmentConfigurationForm"
+                           role="form"
+                           className="form"
+                           onSubmit={this.handleSubmit.bind(this)}
+                           onValid={this.enableButton.bind(this)}
+                           onInvalid={this.disableButton.bind(this)}>
+                <div className="modal-header">
+                  <Link to="/overview"
+                        type="button"
+                        className="close">
+                    <span aria-hidden="true" className="pficon pficon-close"/>
+                  </Link>
+                  <h4 className="modal-title">Environment Configuration</h4>
                 </div>
-              </div>
-              <div className="form-group">
-                <div className="submit">
+                <div className="modal-body">
+
+                  <FormErrorList errors={this.state.formErrors}/>
+                  <div className="row">
+                    <div className="col-xs-5">
+                      <ul className="nav nav-pills nav-stacked nav-arrows">
+                        {topicTabs}
+                      </ul>
+                    </div>
+                    <div className="col-xs-7">
+                      <div className="tab-content">
+                        {topics}
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+                <div className="modal-footer">
                   <button type="submit" disabled={!this.state.canSubmit}
-                          className="btn btn-primary btn-lg">
+                          className="btn btn-primary">
                     Save Configuration
                   </button>
+                  <Link to="/overview" type="button" className="btn btn-default" >Cancel</Link>
                 </div>
-              </div>
-            </Formsy.Form>
+              </Formsy.Form>
+            </div>
           </div>
         </div>
+        <div className="modal-backdrop in"></div>
       </div>
     );
   }
 }
 EnvironmentConfiguration.propTypes = {
-  currentPlanName: React.PropTypes.string
+  currentPlanName: React.PropTypes.string,
+  history: React.PropTypes.object,
+  location: React.PropTypes.object
 };
 
 /**

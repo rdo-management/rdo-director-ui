@@ -37,8 +37,11 @@ export default class Plan extends React.Component {
                 </a>
               </div>
               <h1>OpenStack Deployment - {this.state.currentPlanName}</h1>
-              <p>List of enabled Environment names goes here <Link to="/overview/environment">Edit</Link></p>
-              <p>Configure Deployment Parameters <Link to="/overview/parameters">Parameters</Link></p>
+              <p>
+                Enabled Environment Names List (TBD) <Link to="/overview/environment">Edit</Link>
+                <br/>
+                <Link to="/overview/parameters">Configure Deployment Parameters</Link>
+              </p>
             </div>
             {React.cloneElement(this.props.children, {currentPlanName: this.state.currentPlanName})}
           </div>

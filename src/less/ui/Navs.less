@@ -1,0 +1,35 @@
+.nav-arrows {
+  > li {
+    &.active {
+      &:after {
+        border: 10px solid transparent;
+        border-bottom-width: 20px;
+        border-left-color: @nav-pills-active-link-hover-bg;
+        border-right-width: 0;
+        border-top-width: 20px;
+        content: '';
+        height: 0;
+        position: absolute;
+        right: -10px;
+        top: 0;
+        width: 0;
+      }
+      .fa-trash-o, &:hover {
+        color: #fff;
+      }
+    }
+    > a {
+      padding-right: 30px;
+    }
+  }
+  .fa-trash-o {
+    color: @link-color;
+    font-size: @font-size-large;
+    position: absolute;
+    right: 12px;
+    top: 12px;
+    &:hover {
+      color: @link-hover-color;
+    }
+  }
+}
