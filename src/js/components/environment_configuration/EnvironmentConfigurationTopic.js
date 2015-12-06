@@ -13,18 +13,11 @@ export default class EnvironmentConfigurationTopic extends React.Component {
       );
     });
 
+
     return (
-      <div className="masonry-item">
-        <div className="panel panel-default panel-environment">
-          <div className="panel-heading">
-            <h3 className="panel-title">{this.props.title}</h3>
-            <small className="subheader">{this.props.description}</small>
-          </div>
-          <div className="panel-body clearfix">
-            {environmentGroups}
-          </div>
-        </div>
-      </div>
+      <fieldset className="environment-topic">
+        {environmentGroups}
+      </fieldset>
     );
   }
 }

@@ -20,22 +20,11 @@ describe('EnvironmentConfigurationTopic component', () => {
     EnvConfTopicVdom = shallowRenderer.getRenderOutput();
   });
 
-  it('should render title and desctiption in panel-heading', () => {
-    let panelHeading = EnvConfTopicVdom.props.children.props.children[0];
-    expect(panelHeading.props.className).toEqual('panel-heading');
-    expect(panelHeading.props.children[0].type).toEqual('h3');
-    expect(panelHeading.props.children[0].props.children).toEqual('Basic Configuration');
-    expect(panelHeading.props.children[1].type).toEqual('small');
-    expect(panelHeading.props.children[1].props.className).toEqual('subheader');
-    expect(panelHeading.props.children[1].props.children).toEqual(null);
-  });
-
-
-  it('should render list of EnvironmentGroups in panel-body', () => {
-    let panelBody = EnvConfTopicVdom.props.children.props.children[1];
-    expect(panelBody.props.className).toContain('panel-body');
-    expect(panelBody.props.children.length).toEqual(2);
-    expect(panelBody.props.children[0].type.name).toEqual('EnvironmentGroup');
-    expect(panelBody.props.children[1].type.name).toEqual('EnvironmentGroup');
+  it('should render list of EnvironmentGroups in fieldset', () => {
+    expect(EnvConfTopicVdom.type).toEqual('fieldset');
+    expect(EnvConfTopicVdom.props.className).toContain('environment-topic');
+    expect(EnvConfTopicVdom.props.children.length).toEqual(2);
+    expect(EnvConfTopicVdom.props.children[0].type.name).toEqual('EnvironmentGroup');
+    expect(EnvConfTopicVdom.props.children[1].type.name).toEqual('EnvironmentGroup');
   });
 });
