@@ -128,6 +128,24 @@
     },
     {
       "key": {
+        "uuid": "5ac4a560_7d7d0fe7",
+        "filename": "src/js/components/notifications/NotificationsToaster.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-12-06T18:57:40Z",
+      "side": 1,
+      "message": "Ah, right. Sorry. I missed that. You can name it the same so it is clear when it is run (onMouseEnter, onMouseLeave)",
+      "parentUuid": "5ac4a560_5f020c3f",
+      "revId": "1dbda0be07b38c5440bb0f092a9e8b70a8c264f6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac4a560_e98fa621",
         "filename": "src/js/components/validations/ValidationStage.js",
         "patchSetId": 3
@@ -157,6 +175,24 @@
       "side": 1,
       "message": "Personally, I usually do it this way because some browsers (chrome) show the URL when you hover over the href. Looks silly to me to have it show the URL when the purpose is not to navigate.",
       "parentUuid": "5ac4a560_e98fa621",
+      "revId": "1dbda0be07b38c5440bb0f092a9e8b70a8c264f6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_5d7a13f2",
+        "filename": "src/js/components/validations/ValidationStage.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-12-06T18:57:40Z",
+      "side": 1,
+      "message": "OK, makes sense. Does it make sense to set it globally in utils/patternflyOverrides.less ?",
+      "parentUuid": "5ac4a560_5fdbecec",
       "revId": "1dbda0be07b38c5440bb0f092a9e8b70a8c264f6",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
