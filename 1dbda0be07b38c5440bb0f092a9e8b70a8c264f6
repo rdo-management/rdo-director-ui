@@ -196,6 +196,24 @@
       "revId": "1dbda0be07b38c5440bb0f092a9e8b70a8c264f6",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_f120684b",
+        "filename": "src/js/components/validations/ValidationStage.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1006608
+      },
+      "writtenOn": "2015-12-07T16:30:10Z",
+      "side": 1,
+      "message": "I don\u0027t think so. I hate to override at that level (all \u003ca\u003e components). We could potentially add a class to handle it and add that class to all non navigating a\u0027s.",
+      "parentUuid": "5ac4a560_5d7a13f2",
+      "revId": "1dbda0be07b38c5440bb0f092a9e8b70a8c264f6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
