@@ -5,6 +5,7 @@ import React from 'react';
 
 import EnvironmentConfigurationTopic from './EnvironmentConfigurationTopic';
 import FormErrorList from '../ui/forms/FormErrorList';
+import Loader from '../ui/Loader';
 import Tab from '../ui/Tab';
 import TabPane from '../ui/TabPane';
 import NotificationActions from '../../actions/NotificationActions';
@@ -20,7 +21,8 @@ export default class EnvironmentConfiguration extends React.Component {
       environmentConfiguration: {
         topics: []
       },
-      activeTab: undefined
+      activeTab: undefined,
+      environmentConfigurationLoaded: false
     };
   }
 
@@ -29,9 +31,11 @@ export default class EnvironmentConfiguration extends React.Component {
   }
 
   _fetchEnvironmentConfiguration() {
+    this.setState({ environmentConfigurationLoaded: false });
     TripleOApiService.getPlanEnvironments(this.props.currentPlanName).then((response) => {
       this.setState({
-        environmentConfiguration: response.environments
+        environmentConfiguration: response.environments,
+        environmentConfigurationLoaded: true
       });
     }).catch((error) => {
       let errorHandler = new TripleOApiErrorHandler(error);
@@ -139,19 +143,22 @@ export default class EnvironmentConfiguration extends React.Component {
                 </div>
                 <div className="modal-body">
 
-                  <FormErrorList errors={this.state.formErrors}/>
-                  <div className="row">
-                    <div className="col-xs-5">
-                      <ul className="nav nav-pills nav-stacked nav-arrows">
-                        {topicTabs}
-                      </ul>
-                    </div>
-                    <div className="col-xs-7">
-                      <div className="tab-content">
-                        {topics}
+                  <Loader height={60}
+                          loaded={this.state.environmentConfigurationLoaded}>
+                    <FormErrorList errors={this.state.formErrors}/>
+                    <div className="row">
+                      <div className="col-xs-5">
+                        <ul className="nav nav-pills nav-stacked nav-arrows">
+                          {topicTabs}
+                        </ul>
+                      </div>
+                      <div className="col-xs-7">
+                        <div className="tab-content">
+                          {topics}
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  </Loader>
 
                 </div>
                 <div className="modal-footer">
