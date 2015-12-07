@@ -1,6 +1,7 @@
 import { Link } from 'react-router';
 import React from 'react';
 
+import Loader from '../ui/Loader';
 import NoPlans from './NoPlans';
 import PlansStore from '../../stores/PlansStore';
 
@@ -28,28 +29,33 @@ export default class Plan extends React.Component {
   render() {
     return (
       <div className="row">
-        {this.state.currentPlanName ? (
-          <div className="col-sm-12">
-            <div className="page-header">
-              <div className="actions pull-right">
-                <a href="#" className="btn btn-primary">
-                  <span className="fa fa-plus"/> Register Nodes
-                </a>
+        <Loader loaded={PlansStore.getState().plansLoaded}
+                content="Loading Deployments..."
+                global>
+          {this.state.currentPlanName ? (
+            <div className="col-sm-12">
+              <div className="page-header">
+                <div className="actions pull-right">
+                  <a href="#" className="btn btn-primary">
+                    <span className="fa fa-plus"/> Register Nodes
+                  </a>
+                </div>
+                <h1>OpenStack Deployment - {this.state.currentPlanName}</h1>
+                <p>
+                  Enabled Environment Names List (TBD) <Link to="/overview/environment">Edit</Link>
+                  <br/>
+                  <Link to="/overview/parameters">Configure Deployment Parameters</Link>
+                </p>
               </div>
-              <h1>OpenStack Deployment - {this.state.currentPlanName}</h1>
-              <p>
-                Enabled Environment Names List (TBD) <Link to="/overview/environment">Edit</Link>
-                <br/>
-                <Link to="/overview/parameters">Configure Deployment Parameters</Link>
-              </p>
+              {React.cloneElement(this.props.children,
+                                  {currentPlanName: this.state.currentPlanName})}
             </div>
-            {React.cloneElement(this.props.children, {currentPlanName: this.state.currentPlanName})}
-          </div>
-        ) : (
-          <div className="col-sm-12">
-            <NoPlans/>
-          </div>
-        )}
+          ) : (
+            <div className="col-sm-12">
+              <NoPlans/>
+            </div>
+          )}
+        </Loader>
       </div>
     );
   }
