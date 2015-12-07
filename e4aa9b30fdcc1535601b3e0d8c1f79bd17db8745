@@ -16,6 +16,24 @@
       "revId": "e4aa9b30fdcc1535601b3e0d8c1f79bd17db8745",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_0650485d",
+        "filename": "src/js/components/plan/Plan.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-12-07T14:13:02Z",
+      "side": 1,
+      "message": "That is on my todo. I am starting to work on the loader, so Loader is a component with isLoaded prop. It will display spinner when isLoaded is false or it will render it\u0027s children if isLoaded is true. So in state we\u0027ll track if plans are loaded and if not, Loader is going to take care of not showing the \u0027NoPlans\u0027 to the user.",
+      "parentUuid": "5ac4a560_e626ec15",
+      "revId": "e4aa9b30fdcc1535601b3e0d8c1f79bd17db8745",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
