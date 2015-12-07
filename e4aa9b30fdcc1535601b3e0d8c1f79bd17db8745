@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac4a560_e626ec15",
+        "filename": "src/js/components/plan/Plan.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2015-12-07T13:46:41Z",
+      "side": 1,
+      "message": "I wonder if there\u0027s a better way for a default here. With NoPlans as the default, a freshly logged in user will almost always see the \"please create a plan first\" for (unless the API /v1/plans request is really really fast). \n\nHow about adding another default page indicating the pending state? Once the initial listPlans action is done, the component could show either the overview page or \u003cNoPlans/\u003e.",
+      "revId": "e4aa9b30fdcc1535601b3e0d8c1f79bd17db8745",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
