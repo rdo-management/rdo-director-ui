@@ -11,6 +11,7 @@ class PlansStore extends BaseStore {
     this.state = {
       currentPlanName: undefined,
       plans: [],
+      plansLoaded: false,
       conflict: undefined
     };
     this.detectPlan = this._detectPlan.bind(this);
@@ -48,6 +49,7 @@ class PlansStore extends BaseStore {
 
   onListPlans(plans) {
     this.state.plans = plans;
+    this.state.plansLoaded = true;
     this.detectPlan();
     this.emitChange();
   }
