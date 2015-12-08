@@ -71,6 +71,24 @@
     },
     {
       "key": {
+        "uuid": "5ac4a560_494c0c71",
+        "filename": "src/js/components/validations/ValidationStage.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-12-08T14:09:35Z",
+      "side": 1,
+      "message": "yes, sure, but using the same classes which Bootstrap uses is not a problem and it makes things much clearer than introducing our own classes that do the same thing. All that bootrstrap\u0027s javascript does is adds and removes \u0027in\u0027 css class. we can do the same in react. Everything else is css.",
+      "parentUuid": "5ac4a560_66a65755",
+      "revId": "4930d57bb8f6a6a02f71c5abfb00eb252ddb7db9",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac4a560_66d737ee",
         "filename": "src/js/components/validations/ValidationStage.js",
         "patchSetId": 4
@@ -141,6 +159,30 @@
       "side": 1,
       "message": "Latest mocks remove the padding between columns. I will be reworking this in the next review as well.",
       "parentUuid": "5ac4a560_86a293ac",
+      "range": {
+        "startLine": 97,
+        "startChar": 28,
+        "endLine": 97,
+        "endChar": 38
+      },
+      "revId": "4930d57bb8f6a6a02f71c5abfb00eb252ddb7db9",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_8975449a",
+        "filename": "src/js/components/validations/ValidationStage.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-12-08T14:09:35Z",
+      "side": 1,
+      "message": "ok, so looking at the new wireframes, we are moving back to plain grid columns instead of cards which will have right border if-not last-child.",
+      "parentUuid": "5ac4a560_a6678f24",
       "range": {
         "startLine": 97,
         "startChar": 28,
