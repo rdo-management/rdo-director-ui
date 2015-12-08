@@ -1,0 +1,214 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac4a560_664577b2",
+        "filename": "src/js/components/notifications/NotificationsToaster.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-12-08T13:02:03Z",
+      "side": 1,
+      "message": "a lot of linting issues here\n\nI don\u0027t really get the need of using the timestamp. I see that there are 2 types of \u0027viewed\u0027 flag for notification: viewed in toaster and viewed in validations list.\n\nso the workflow is: notification is raised, gets stored in store. \nNotificationList watches the store and fires notificationsViewed action when user closes it. Store updates it\u0027s notifications accordingly.\n\nToaster watches store, displays the first unviewed notification and starts timeout. when timeout finishes, fires notificationViewedInToaster and store updates the notification accordingly in state.\n\nNote: I think we are complicating stuff a bit too much with marking notifications as viewed in notification list. I don\u0027t think this is really necessary in the development phase the application is at the moment.\n\nThe whole notifications management seems to be very complicated while I\u0027d much rather keep it as simple as possible so we are ready to swiftly accept changes which will eventually come.",
+      "revId": "4930d57bb8f6a6a02f71c5abfb00eb252ddb7db9",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_861373b7",
+        "filename": "src/js/components/notifications/NotificationsToaster.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-12-08T13:02:03Z",
+      "side": 1,
+      "message": "no curly braces needed",
+      "revId": "4930d57bb8f6a6a02f71c5abfb00eb252ddb7db9",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_6672d74a",
+        "filename": "src/js/components/validations/ValidationStage.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-12-08T13:02:03Z",
+      "side": 1,
+      "message": "use the accordion markup here. https://www.patternfly.org/widgets/#accordion\n\nwrap panel-body div in \u0027panel-collapse collapse in\u0027 and to toggle the visibility toggle the \u0027in\u0027 class. Using that you can rid of custom styling added on opened class...",
+      "revId": "4930d57bb8f6a6a02f71c5abfb00eb252ddb7db9",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_66d737ee",
+        "filename": "src/js/components/validations/ValidationStage.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-12-08T13:02:03Z",
+      "side": 1,
+      "message": "wouldn\u0027t this be better just span instead of h4.panel-title?",
+      "revId": "4930d57bb8f6a6a02f71c5abfb00eb252ddb7db9",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_86a293ac",
+        "filename": "src/js/components/validations/ValidationStage.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-12-08T13:02:03Z",
+      "side": 1,
+      "message": "why removing row-cards-pf here? It makes sure the cars are properly padded as they are meant to. Adding panel-body here duplicates the panel-body included in div above",
+      "range": {
+        "startLine": 97,
+        "startChar": 28,
+        "endLine": 97,
+        "endChar": 38
+      },
+      "revId": "4930d57bb8f6a6a02f71c5abfb00eb252ddb7db9",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_862d3349",
+        "filename": "src/less/components/NotificationList.less",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-12-08T13:02:03Z",
+      "side": 1,
+      "message": "nice catch, this way it is visible with modal too.\nIt would be nice to set footer z-index to 1050 too, so validations are accessible even when modal is up.",
+      "revId": "4930d57bb8f6a6a02f71c5abfb00eb252ddb7db9",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_26c61f4a",
+        "filename": "src/less/components/Validations.less",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-12-08T13:02:03Z",
+      "side": 1,
+      "message": "All colors should be patternfly variables",
+      "revId": "4930d57bb8f6a6a02f71c5abfb00eb252ddb7db9",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_66c0172b",
+        "filename": "src/less/components/Validations.less",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-12-08T13:02:03Z",
+      "side": 1,
+      "message": "wouldn\u0027t it be better to use display: inline-block and vertical-align: middle to match the alignment with the \u0027run all\u0027 button which causes the misalignment of the text in panel-heading?",
+      "revId": "4930d57bb8f6a6a02f71c5abfb00eb252ddb7db9",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_a6306f9f",
+        "filename": "src/less/components/Validations.less",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-12-08T13:02:03Z",
+      "side": 1,
+      "message": "this will go away if you include a.link style to show pointer",
+      "revId": "4930d57bb8f6a6a02f71c5abfb00eb252ddb7db9",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_c6e80bb7",
+        "filename": "src/less/components/Validations.less",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-12-08T13:02:03Z",
+      "side": 1,
+      "message": "the border is doubled when validation stage is open. To resemble the accordion it should be below the heading.",
+      "revId": "4930d57bb8f6a6a02f71c5abfb00eb252ddb7db9",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_06d20300",
+        "filename": "src/less/components/Validations.less",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-12-08T13:02:03Z",
+      "side": 1,
+      "message": "not neede if panel-collapse collapse in div is used (see comment in ValidationStage)",
+      "revId": "4930d57bb8f6a6a02f71c5abfb00eb252ddb7db9",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_26cd3f5e",
+        "filename": "src/less/components/Validations.less",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-12-08T13:02:03Z",
+      "side": 1,
+      "message": "same as previous comment",
+      "revId": "4930d57bb8f6a6a02f71c5abfb00eb252ddb7db9",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
