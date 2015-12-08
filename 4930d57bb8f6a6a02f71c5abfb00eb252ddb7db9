@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5ac4a560_2947d01e",
+        "filename": "src/js/components/notifications/NotificationsToaster.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1006608
+      },
+      "writtenOn": "2015-12-08T14:45:43Z",
+      "side": 1,
+      "message": "OK, so this has changed from how it previously worked. Here is how it should work now:\n\nNotification gets raised, viewed is set to false.\n\nToaster sees the change and displays the latest notification. \n\nIf there is more than one \u0027new\u0027 notification, they get queued for display, most recent to oldest. \n\nWe now timestamp when the notification comes in so we can display them in the correct order.\n\nThe viewed flag is not affected by the toaster. \n\nThere will be an indicator in the footer to show the user how many unread notifications there are currently.\n\nThe timestamp will be shown in the notifications list.\n\nThe notifications list will highlight unread notifications.\n\nOnce the user closes the notifications list all notifications will be marked viewed and the unread count on the footer indicator will go to 0.",
+      "parentUuid": "5ac4a560_664577b2",
+      "revId": "4930d57bb8f6a6a02f71c5abfb00eb252ddb7db9",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac4a560_861373b7",
         "filename": "src/js/components/notifications/NotificationsToaster.js",
         "patchSetId": 4
