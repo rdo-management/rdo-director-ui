@@ -214,6 +214,24 @@
       "revId": "1dbda0be07b38c5440bb0f092a9e8b70a8c264f6",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_46915b98",
+        "filename": "src/js/components/validations/ValidationStage.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-12-08T10:50:58Z",
+      "side": 1,
+      "message": "Agree, something like a.link {cursor: pointer;}",
+      "parentUuid": "5ac4a560_f120684b",
+      "revId": "1dbda0be07b38c5440bb0f092a9e8b70a8c264f6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
