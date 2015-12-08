@@ -51,7 +51,12 @@ product:
 
 
 rdo_director_ui_rpm_deps: [
-  'gcc', 'git', 'gcc-c++', 'make', 'nodejs', 'npm'
+  'gcc',
+  'git',
+  'gcc-c++',
+  'make',
+  'nodejs',
+  'npm'
 ]
 
 rdo_director_ui_virt_config:
@@ -73,8 +78,8 @@ rdo_director_ui_virt_config:
 test_config:
   virt:
     Fedora-20:  "{{rdo_director_ui_virt_config}}"
-    RedHat-7.0: "{{rdo_director_ui_virt_config}}"
-    RedHat-7.1: "{{rdo_director_ui_virt_config}}"
+    RedHat-7: "{{rdo_director_ui_virt_config}}"
+    Centos-7: "{{rdo_director_ui_virt_config}}"
 
 # How this works!
 # ==============
