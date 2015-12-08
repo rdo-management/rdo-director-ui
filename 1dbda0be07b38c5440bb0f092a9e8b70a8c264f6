@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "5ac4a560_26853fad",
+        "filename": "src/js/components/notifications/NotificationsToaster.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1006608
+      },
+      "writtenOn": "2015-12-08T13:32:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ac4a560_a9f12ecf",
+      "revId": "1dbda0be07b38c5440bb0f092a9e8b70a8c264f6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac4a560_c9ee6aec",
         "filename": "src/js/components/notifications/NotificationsToaster.js",
         "patchSetId": 3
@@ -47,6 +65,24 @@
       "writtenOn": "2015-12-04T13:00:34Z",
       "side": 1,
       "message": "not needed see previous comment",
+      "revId": "1dbda0be07b38c5440bb0f092a9e8b70a8c264f6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_4694fbe1",
+        "filename": "src/js/components/notifications/NotificationsToaster.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1006608
+      },
+      "writtenOn": "2015-12-08T13:32:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ac4a560_c9ee6aec",
       "revId": "1dbda0be07b38c5440bb0f092a9e8b70a8c264f6",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
@@ -70,6 +106,24 @@
     },
     {
       "key": {
+        "uuid": "5ac4a560_668f37cd",
+        "filename": "src/js/components/notifications/NotificationsToaster.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1006608
+      },
+      "writtenOn": "2015-12-08T13:32:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ac4a560_29b51eee",
+      "revId": "1dbda0be07b38c5440bb0f092a9e8b70a8c264f6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac4a560_49ba5adf",
         "filename": "src/js/components/notifications/NotificationsToaster.js",
         "patchSetId": 3
@@ -81,6 +135,30 @@
       "writtenOn": "2015-12-04T13:00:34Z",
       "side": 1,
       "message": "you\u0027re mutating component state from render method here, you should use component\u0027s lifecycle methods for it\nsee https://facebook.github.io/react/docs/component-specs.html\nand http://stackoverflow.com/questions/33778675/react-make-flash-message-disappear-automatically",
+      "range": {
+        "startLine": 51,
+        "startChar": 2,
+        "endLine": 58,
+        "endChar": 5
+      },
+      "revId": "1dbda0be07b38c5440bb0f092a9e8b70a8c264f6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_86bd336b",
+        "filename": "src/js/components/notifications/NotificationsToaster.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1006608
+      },
+      "writtenOn": "2015-12-08T13:32:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ac4a560_49ba5adf",
       "range": {
         "startLine": 51,
         "startChar": 2,
@@ -140,6 +218,24 @@
       "side": 1,
       "message": "Ah, right. Sorry. I missed that. You can name it the same so it is clear when it is run (onMouseEnter, onMouseLeave)",
       "parentUuid": "5ac4a560_5f020c3f",
+      "revId": "1dbda0be07b38c5440bb0f092a9e8b70a8c264f6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_26ac5f35",
+        "filename": "src/js/components/notifications/NotificationsToaster.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1006608
+      },
+      "writtenOn": "2015-12-08T13:32:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ac4a560_7d7d0fe7",
       "revId": "1dbda0be07b38c5440bb0f092a9e8b70a8c264f6",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
@@ -229,6 +325,24 @@
       "side": 1,
       "message": "Agree, something like a.link {cursor: pointer;}",
       "parentUuid": "5ac4a560_f120684b",
+      "revId": "1dbda0be07b38c5440bb0f092a9e8b70a8c264f6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_46ab1b1d",
+        "filename": "src/js/components/validations/ValidationStage.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1006608
+      },
+      "writtenOn": "2015-12-08T13:32:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ac4a560_46915b98",
       "revId": "1dbda0be07b38c5440bb0f092a9e8b70a8c264f6",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
