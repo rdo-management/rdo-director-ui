@@ -53,6 +53,24 @@
     },
     {
       "key": {
+        "uuid": "5ac4a560_66a65755",
+        "filename": "src/js/components/validations/ValidationStage.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1006608
+      },
+      "writtenOn": "2015-12-08T13:32:11Z",
+      "side": 1,
+      "message": "Because we are not pulling in Bootstrap javascript which would require jQuery. It\u0027s Bootstrap\u0027s javascript that handles the open/close state of the accordion. We could pull in react-bootstrap but I didn\u0027t feel it worth it for this one component.",
+      "parentUuid": "5ac4a560_6672d74a",
+      "revId": "4930d57bb8f6a6a02f71c5abfb00eb252ddb7db9",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac4a560_66d737ee",
         "filename": "src/js/components/validations/ValidationStage.js",
         "patchSetId": 4
@@ -64,6 +82,24 @@
       "writtenOn": "2015-12-08T13:02:03Z",
       "side": 1,
       "message": "wouldn\u0027t this be better just span instead of h4.panel-title?",
+      "revId": "4930d57bb8f6a6a02f71c5abfb00eb252ddb7db9",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_86645323",
+        "filename": "src/js/components/validations/ValidationStage.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1006608
+      },
+      "writtenOn": "2015-12-08T13:32:11Z",
+      "side": 1,
+      "message": "I was following the patternfly example. This is changing a bit in the next review I have coming up to meet more of the UXD mocks.",
+      "parentUuid": "5ac4a560_66d737ee",
       "revId": "4930d57bb8f6a6a02f71c5abfb00eb252ddb7db9",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
@@ -93,6 +129,30 @@
     },
     {
       "key": {
+        "uuid": "5ac4a560_a6678f24",
+        "filename": "src/js/components/validations/ValidationStage.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1006608
+      },
+      "writtenOn": "2015-12-08T13:32:11Z",
+      "side": 1,
+      "message": "Latest mocks remove the padding between columns. I will be reworking this in the next review as well.",
+      "parentUuid": "5ac4a560_86a293ac",
+      "range": {
+        "startLine": 97,
+        "startChar": 28,
+        "endLine": 97,
+        "endChar": 38
+      },
+      "revId": "4930d57bb8f6a6a02f71c5abfb00eb252ddb7db9",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac4a560_862d3349",
         "filename": "src/less/components/NotificationList.less",
         "patchSetId": 4
@@ -104,6 +164,24 @@
       "writtenOn": "2015-12-08T13:02:03Z",
       "side": 1,
       "message": "nice catch, this way it is visible with modal too.\nIt would be nice to set footer z-index to 1050 too, so validations are accessible even when modal is up.",
+      "revId": "4930d57bb8f6a6a02f71c5abfb00eb252ddb7db9",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_c66e4b01",
+        "filename": "src/less/components/NotificationList.less",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1006608
+      },
+      "writtenOn": "2015-12-08T13:32:11Z",
+      "side": 1,
+      "message": "I think it would be better to have the modal over the footer. In case the close button is at the very bottom we wouldn\u0027t want it under the footer and inaccessible.",
+      "parentUuid": "5ac4a560_862d3349",
       "revId": "4930d57bb8f6a6a02f71c5abfb00eb252ddb7db9",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
@@ -155,6 +233,24 @@
       "writtenOn": "2015-12-08T13:02:03Z",
       "side": 1,
       "message": "this will go away if you include a.link style to show pointer",
+      "revId": "4930d57bb8f6a6a02f71c5abfb00eb252ddb7db9",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_067843c3",
+        "filename": "src/less/components/Validations.less",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1006608
+      },
+      "writtenOn": "2015-12-08T13:32:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ac4a560_a6306f9f",
       "revId": "4930d57bb8f6a6a02f71c5abfb00eb252ddb7db9",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
