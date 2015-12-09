@@ -1,4 +1,3 @@
-import * as _ from 'lodash';
 import React from 'react';
 import ClassNames from 'classnames';
 
@@ -11,7 +10,6 @@ import ValidationsStore from '../stores/ValidationsStore';
 
 import NotificationsIndicator from './notifications/NotificationsIndicator';
 import NotificationList       from './notifications/NotificationList';
-import NotificationsToaster   from './notifications/NotificationsToaster';
 
 import ValidationsIndicator from './validations/ValidationsIndicator';
 import ValidationsList from './validations/ValidationsList';
@@ -83,7 +81,7 @@ export default class Footer extends React.Component {
     });
 
     let toggleClasses = ClassNames({
-      'drawer-toggle' : true,
+      'drawer-toggle link' : true,
       'collapsed': !this.state.isOpen
     });
 
@@ -101,24 +99,19 @@ export default class Footer extends React.Component {
       active: this.state.listShown === 'validations'
     });
 
-    let toasterNotification = _.findLast(_.filter(this.state.notifications, function(notification) {
-      return !notification.viewed;
-    }));
-
     return (
       <div>
-        <NotificationsToaster notification={toasterNotification}/>
         <div className="navbar-fixed-bottom wrapper-footer container-fluid">
           <div className="row">
             <div className="col-sm-12">
               <ul className={indicatorsClasses}>
                 <li className={notificationTabClasses}>
-                  <a onClick={this.showNotifications.bind(this)}>
+                  <a className="link" onClick={this.showNotifications.bind(this)}>
                     <span>Notifications</span>
                   </a>
                 </li>
                 <li className={validationTabClasses}>
-                  <a onClick={this.showValidations.bind(this)}>
+                  <a className="link" onClick={this.showValidations.bind(this)}>
                     <span>Validations</span>
                   </a>
                 </li>
@@ -131,7 +124,7 @@ export default class Footer extends React.Component {
                                         onClick={this.showValidations.bind(this)}/>
                 </li>
               </ul>
-              <span className={toggleClasses} onClick={this.toggleOpen.bind(this)}></span>
+              <a className={toggleClasses} onClick={this.toggleOpen.bind(this)}></a>
             </div>
           </div>
           <div className={contentClasses}>
