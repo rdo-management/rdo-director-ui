@@ -2,7 +2,7 @@ import ClassNames from 'classnames';
 import Formsy from 'formsy-react';
 import React from 'react';
 
-class HorizontalInput extends React.Component {
+class HorizontalTextarea extends React.Component {
   changeValue(event) {
     this.props.setValue(event.target.value);
   }
@@ -36,17 +36,16 @@ class HorizontalInput extends React.Component {
           {this.props.title}
         </label>
         <div className={this.props.inputColumnClasses}>
-          <input type={this.props.type}
-                 name={this.props.name}
-                 ref={this.props.name}
-                 id={this.props.name}
-                 className="form-control"
-                 onChange={this.changeValue.bind(this)}
-                 value={this.props.getValue()}
-                 placeholder={this.props.placeholder}
-                 min={this.props.min}
-                 max={this.props.max}
-                 disabled={this.props.disabled} />
+          <textarea type={this.props.type}
+                    name={this.props.name}
+                    ref={this.props.name}
+                    id={this.props.name}
+                    rows={this.props.rows}
+                    className="form-control"
+                    onChange={this.changeValue.bind(this)}
+                    value={this.props.getValue()}
+                    placeholder={this.props.placeholder}
+                    disabled={this.props.disabled} />
           {this.renderErrorMessage()}
           {this.renderDescription()}
         </div>
@@ -54,7 +53,7 @@ class HorizontalInput extends React.Component {
     );
   }
 }
-HorizontalInput.propTypes = {
+HorizontalTextarea.propTypes = {
   description: React.PropTypes.string,
   disabled: React.PropTypes.bool,
   getErrorMessage: React.PropTypes.func,
@@ -63,18 +62,18 @@ HorizontalInput.propTypes = {
   isRequired: React.PropTypes.func,
   isValid: React.PropTypes.func,
   labelColumnClasses: React.PropTypes.string.isRequired,
-  max: React.PropTypes.number,
-  min: React.PropTypes.number,
   name: React.PropTypes.string.isRequired,
   placeholder: React.PropTypes.string,
+  rows: React.PropTypes.number,
   setValue: React.PropTypes.func,
   showError: React.PropTypes.func,
   title: React.PropTypes.string.isRequired,
   type: React.PropTypes.string
 };
-HorizontalInput.defaultProps = {
+HorizontalTextarea.defaultProps = {
   inputColumnClasses: 'col-sm-10',
   labelColumnClasses: 'col-sm-2',
+  rows: 3,
   type: 'text'
 };
-export default Formsy.HOC(HorizontalInput);
+export default Formsy.HOC(HorizontalTextarea);
