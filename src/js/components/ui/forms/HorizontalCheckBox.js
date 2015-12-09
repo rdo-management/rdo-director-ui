@@ -2,9 +2,9 @@ import ClassNames from 'classnames';
 import Formsy from 'formsy-react';
 import React from 'react';
 
-class HorizontalInput extends React.Component {
+class HorizontalCheckBox extends React.Component {
   changeValue(event) {
-    this.props.setValue(event.target.value);
+    this.props.setValue(event.target.checked);
   }
 
   renderErrorMessage() {
@@ -17,7 +17,7 @@ class HorizontalInput extends React.Component {
   renderDescription() {
     let description = this.props.description;
     return description ? (
-      <small className='help-block'>{description}</small>
+      <small>{description}</small>
     ) : false;
   }
 
@@ -25,8 +25,7 @@ class HorizontalInput extends React.Component {
     let divClasses = ClassNames({
       'form-group': true,
       'has-error': this.props.showError(),
-      // 'has-success': this.props.isValid(),
-      'required': this.props.isRequired()
+      'required': this.props.showRequired()
     });
 
     return (
@@ -36,45 +35,42 @@ class HorizontalInput extends React.Component {
           {this.props.title}
         </label>
         <div className={this.props.inputColumnClasses}>
-          <input type={this.props.type}
-                 name={this.props.name}
-                 ref={this.props.name}
-                 id={this.props.name}
-                 className="form-control"
-                 onChange={this.changeValue.bind(this)}
-                 value={this.props.getValue()}
-                 placeholder={this.props.placeholder}
-                 min={this.props.min}
-                 max={this.props.max}
-                 disabled={this.props.disabled} />
-          {this.renderErrorMessage()}
-          {this.renderDescription()}
+          <div className="checkbox">
+            <label>
+              <input type={this.props.type}
+                     name={this.props.name}
+                     ref={this.props.id}
+                     id={this.props.id}
+                     onChange={this.changeValue.bind(this)}
+                     checked={!!this.props.getValue()}
+                     value={this.props.getValue()}/>
+              {this.renderDescription()}
+              {this.renderErrorMessage()}
+            </label>
+          </div>
         </div>
       </div>
     );
   }
 }
-HorizontalInput.propTypes = {
+HorizontalCheckBox.propTypes = {
   description: React.PropTypes.string,
-  disabled: React.PropTypes.bool,
   getErrorMessage: React.PropTypes.func,
   getValue: React.PropTypes.func,
+  id: React.PropTypes.string.isRequired,
   inputColumnClasses: React.PropTypes.string.isRequired,
   isRequired: React.PropTypes.func,
   isValid: React.PropTypes.func,
   labelColumnClasses: React.PropTypes.string.isRequired,
-  max: React.PropTypes.number,
-  min: React.PropTypes.number,
   name: React.PropTypes.string.isRequired,
   placeholder: React.PropTypes.string,
   setValue: React.PropTypes.func,
   showError: React.PropTypes.func,
+  showRequired: React.PropTypes.func,
   title: React.PropTypes.string.isRequired,
   type: React.PropTypes.string
 };
-HorizontalInput.defaultProps = {
-  inputColumnClasses: 'col-sm-10',
-  labelColumnClasses: 'col-sm-2',
-  type: 'text'
+HorizontalCheckBox.defaultProps = {
+  type: 'checkbox'
 };
-export default Formsy.HOC(HorizontalInput);
+export default Formsy.HOC(HorizontalCheckBox);
