@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5ac4a560_70e1a999",
+        "filename": "src/js/components/plan/EditPlan.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2015-12-09T14:08:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ac4a560_b0a501b7",
+      "revId": "3e539f130d0d6eb0865d61f8fc105c4f822c5bb3",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac4a560_f09db95a",
         "filename": "src/js/components/plan/PlanEditFormTabs.js",
         "patchSetId": 3
@@ -47,6 +65,24 @@
       "writtenOn": "2015-12-09T12:44:30Z",
       "side": 1,
       "message": ".existing-plan-file {\n  color: @brand-primary;\n}\n.changed-plan-file {\n  color: @brand-danger;\n}\n.new-plan-file {\n    color: @brand-success;\n}",
+      "revId": "3e539f130d0d6eb0865d61f8fc105c4f822c5bb3",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_f0485989",
+        "filename": "src/less/components/Plans.less",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2015-12-09T14:08:00Z",
+      "side": 1,
+      "message": "I removed .existing-plan-file, because it doesn\u0027t make too much sense. \n\nAlso, I\u0027d prefer to keep the @brand-warning color instead of @brand-danger for changed files.",
+      "parentUuid": "5ac4a560_30e3b106",
       "revId": "3e539f130d0d6eb0865d61f8fc105c4f822c5bb3",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
