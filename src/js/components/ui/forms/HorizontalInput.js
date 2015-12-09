@@ -25,7 +25,7 @@ class HorizontalInput extends React.Component {
     let divClasses = ClassNames({
       'form-group': true,
       'has-error': this.props.showError(),
-      'has-success': this.props.isValid(),
+      // 'has-success': this.props.isValid(),
       'required': this.props.isRequired()
     });
 
@@ -43,7 +43,8 @@ class HorizontalInput extends React.Component {
                  className="form-control"
                  onChange={this.changeValue.bind(this)}
                  value={this.props.getValue()}
-                 placeholder={this.props.placeholder} />
+                 placeholder={this.props.placeholder}
+                 disabled={this.props.disabled} />
           {this.renderErrorMessage()}
           {this.renderDescription()}
         </div>
@@ -53,6 +54,7 @@ class HorizontalInput extends React.Component {
 }
 HorizontalInput.propTypes = {
   description: React.PropTypes.string,
+  disabled: React.PropTypes.bool,
   getErrorMessage: React.PropTypes.func,
   getValue: React.PropTypes.func,
   inputColumnClasses: React.PropTypes.string.isRequired,

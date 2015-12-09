@@ -55,3 +55,42 @@
 .badge { vertical-align: baseline; }
 
 .modal-footer { margin-top: 0; }
+
+// Additional treeview styles not included in patternfly but included in patternfly's treeview example ?!?
+.treeview {
+  .list-group-item {
+    cursor:pointer;
+  }
+  span.indent {
+    margin-left:10px;
+    margin-right:10px;
+  }
+  span.icon {
+    width:12px;
+    margin-right:5px;
+  }
+  .node-disabled {
+    color:silver;
+    cursor:not-allowed;
+  }
+}
+.node-treeview1 {
+  border:none;
+}
+.node-treeview1:not(.node-disabled):hover {
+  background-color:#F5F5F5;
+}
+
+// Custom styles
+.treeview {
+  .list-grou-item {
+    white-space: nowrap; // experimental
+    overflow: hidden; // experimental
+  }
+  .item-group {
+    display: none;
+    &.expanded {
+      display: block;
+    }
+  }
+}
