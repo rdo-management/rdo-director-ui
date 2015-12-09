@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5ac4a560_1096b54c",
+        "filename": "src/js/components/plan/EditPlan.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2015-12-09T14:08:00Z",
+      "side": 1,
+      "message": "I\u0027ve done it like this: The plan files are fetched from the server and merged with the files from the upload dialog. New or changed files are listed on top, all the other files are listed below. \n\nSince the plan update in the API is a PATCH request, only new and changed files are uploaded to the API.",
+      "parentUuid": "5ac4a560_e758bdfc",
+      "revId": "17956bdcd6794723d4a73f9d6356565f7e4690e8",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac4a560_8752a9db",
         "filename": "src/js/components/plan/EditPlan.js",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2015-12-02T10:46:13Z",
       "side": 1,
       "message": "instead of name and files in the state we\u0027 have plan: {name: this.getNameFromUrl(), files: []}",
+      "revId": "17956bdcd6794723d4a73f9d6356565f7e4690e8",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_50a02d9f",
+        "filename": "src/js/components/plan/EditPlan.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2015-12-09T14:08:00Z",
+      "side": 1,
+      "message": "Done. Except the plan name is set in componentDidMount.",
+      "parentUuid": "5ac4a560_8752a9db",
       "revId": "17956bdcd6794723d4a73f9d6356565f7e4690e8",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "5ac4a560_709b6972",
+        "filename": "src/js/components/plan/EditPlan.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2015-12-09T14:08:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ac4a560_a7d32537",
+      "revId": "17956bdcd6794723d4a73f9d6356565f7e4690e8",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac4a560_471df10e",
         "filename": "src/js/components/plan/EditPlan.js",
         "patchSetId": 2
@@ -64,6 +118,24 @@
       "writtenOn": "2015-12-02T10:46:13Z",
       "side": 1,
       "message": "this.setState({plan: {files: merge(this.state.plan.files, files)}}) - beware, we do\u0027t want to mutate this.state.plan.files - which is what my example does, we need to work around it as we did with the api default requests.\n\nThis is where we decide if the newly uploaded files overwrite the old ones (that is how it works now - so we just send the newly added files to plan) or if we used merge here, we\u0027d get complete list of files of the plan.IMHO the best way would be to use merge and allow user to remove files from the files tab.\nThen we\u0027d send the complete list of files we want the plan to have to the API and API could just overwrite all the plan files with those new ones we are sending?",
+      "revId": "17956bdcd6794723d4a73f9d6356565f7e4690e8",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_3078112b",
+        "filename": "src/js/components/plan/EditPlan.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2015-12-09T14:08:00Z",
+      "side": 1,
+      "message": "See my comment above. If we want to delete files from a plan, this would have to be implemented in the API first.",
+      "parentUuid": "5ac4a560_471df10e",
       "revId": "17956bdcd6794723d4a73f9d6356565f7e4690e8",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
@@ -121,6 +193,24 @@
     },
     {
       "key": {
+        "uuid": "5ac4a560_10dcf5e3",
+        "filename": "src/js/components/plan/PlanEditFormTabs.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2015-12-09T14:08:00Z",
+      "side": 1,
+      "message": "There\u0027s a new HorizontalStaticText module.",
+      "parentUuid": "5ac4a560_47a09190",
+      "revId": "17956bdcd6794723d4a73f9d6356565f7e4690e8",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac4a560_8773894c",
         "filename": "src/js/components/plan/PlanEditFormTabs.js",
         "patchSetId": 2
@@ -132,6 +222,24 @@
       "writtenOn": "2015-12-02T10:46:13Z",
       "side": 1,
       "message": "Plan Files tab is the same as in PlanFormTabs, so extract it from there to separate file and reuse it.",
+      "revId": "17956bdcd6794723d4a73f9d6356565f7e4690e8",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_f03f79d4",
+        "filename": "src/js/components/plan/PlanEditFormTabs.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2015-12-09T14:08:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ac4a560_8773894c",
       "revId": "17956bdcd6794723d4a73f9d6356565f7e4690e8",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
