@@ -107,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "5ac4a560_0921344d",
+        "filename": "src/js/components/validations/ValidationStage.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1006608
+      },
+      "writtenOn": "2015-12-09T13:38:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ac4a560_494c0c71",
+      "revId": "4930d57bb8f6a6a02f71c5abfb00eb252ddb7db9",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac4a560_66d737ee",
         "filename": "src/js/components/validations/ValidationStage.js",
         "patchSetId": 4
@@ -260,6 +278,24 @@
       "side": 1,
       "message": "There will be usecases when the validations will be run when the modal is open and user needs to be able to access validations while the modal is open. The modal\u0027s bottom margin makes sure that the modal is always fully accessible when footer is closed.",
       "parentUuid": "5ac4a560_c66e4b01",
+      "revId": "4930d57bb8f6a6a02f71c5abfb00eb252ddb7db9",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_9032c50e",
+        "filename": "src/less/components/NotificationList.less",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1006608
+      },
+      "writtenOn": "2015-12-09T13:38:36Z",
+      "side": 1,
+      "message": "OK, I will make the change in my next patch.",
+      "parentUuid": "5ac4a560_351c8313",
       "revId": "4930d57bb8f6a6a02f71c5abfb00eb252ddb7db9",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
