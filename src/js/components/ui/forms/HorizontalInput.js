@@ -25,7 +25,7 @@ class HorizontalInput extends React.Component {
     let divClasses = ClassNames({
       'form-group': true,
       'has-error': this.props.showError(),
-      'has-success': this.props.isValid(),
+      // 'has-success': this.props.isValid(),
       'required': this.props.isRequired()
     });
 
