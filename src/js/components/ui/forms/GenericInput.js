@@ -39,7 +39,8 @@ class GenericInput extends React.Component {
                className="form-control"
                onChange={this.changeValue.bind(this)}
                value={this.props.getValue()}
-               placeholder={this.props.placeholder} />
+               placeholder={this.props.placeholder}
+               disabled={this.props.disabled} />
         {this.renderErrorMessage()}
         {this.renderDescription()}
       </div>
@@ -48,6 +49,7 @@ class GenericInput extends React.Component {
 }
 GenericInput.propTypes = {
   description: React.PropTypes.string,
+  disabled: React.PropTypes.bool,
   getErrorMessage: React.PropTypes.func,
   getValue: React.PropTypes.func,
   isRequired: React.PropTypes.func,
