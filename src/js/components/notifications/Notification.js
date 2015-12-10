@@ -26,12 +26,13 @@ export default class Notification extends React.Component {
            onMouseEnter={this.props.onMouseEnter}
            onMouseLeave={this.props.onMouseLeave}>
         <span className={iconClass} aria-hidden="true"></span>
-        <button type="button"
-                className="close"
-                aria-label="Close"
-                onClick={this.props.removeNotification}>
-          <span className="pficon pficon-close" aria-hidden="true"></span>
-        </button>
+        {this.props.dismissable ?
+          <button type="button"
+                  className="close"
+                  aria-label="Close"
+                  onClick={this.props.removeNotification.bind(this)}>
+            <span className="pficon pficon-close" aria-hidden="true"></span>
+          </button> : false}
         <strong>{this.props.title}</strong> {this.props.message}
       </div>
     );
@@ -47,7 +48,7 @@ Notification.propTypes = {
   type: React.PropTypes.string
 };
 Notification.defaultProps = {
-  dismissable: true,
+  dismissable: false,
   title: '',
   type: 'error'
 };

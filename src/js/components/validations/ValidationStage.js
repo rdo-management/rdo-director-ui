@@ -58,23 +58,25 @@ export default class ValidationStage extends React.Component {
 
     let contentClass = ClassNames({
       'panel-collapse collapse' : true,
-      'validation-stage-content' : true,
       'in' : this.state.isOpen
     });
 
     let validations = this.props.validations.map((validation, index) => {
       return (
-        <Validation key={index}
-                    name={validation.name}
-                    status={validation.status}
-                    description={validation.description}
-                    uuid={validation.uuid} />
+        <div key={index} className="validation-tile">
+          <div className="tile-content">
+            <Validation name={validation.name}
+                        status={validation.status}
+                        description={validation.description}
+                        uuid={validation.uuid} />
+          </div>
+        </div>
       );
     });
 
     return (
         <div className="panel panel-default">
-          <div className="panel-heading">
+          <div className="panel-heading validation-stage-heading">
             <div className="row">
               <div className="col-lg-3 col-md-4 col-sm-5 col-xs-5">
                 <h4 className="panel-title">
@@ -88,13 +90,15 @@ export default class ValidationStage extends React.Component {
                   {this.getStatusInfo()}
                 </h4>
               </div>
-              <button className="btn btn-primary btn-xs" onClick={this.runStage.bind(this)}>
-                Run All
-              </button>
+              <div className="col-lg-6 col-md-4 col-sm-2 col-xs-2">
+                <button className="btn btn-primary pull-right" onClick={this.runStage.bind(this)}>
+                  Run All
+                </button>
+              </div>
             </div>
           </div>
           <div className={contentClass}>
-            <div className="panel-body">
+            <div className="panel-body validations-tile-view">
               {validations}
             </div>
           </div>
