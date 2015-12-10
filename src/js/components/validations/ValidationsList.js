@@ -1,16 +1,12 @@
 import React from 'react';
 import ClassNames from 'classnames';
 
+import BlankSlate from '../ui/BlankSlate';
 import ValidationStage from './ValidationStage';
 
 export default class ValidationsList extends React.Component {
-  render () {
-    let classes = ClassNames({
-      'panel-group': true,
-      'validations-container': true,
-      'collapsed': !this.props.active
-    });
 
+  getValidationsContent  (stages) {
     let validationStages = this.props.validationStages.map((validationStage, index) => {
       return (
         <ValidationStage key={index}
@@ -20,9 +16,34 @@ export default class ValidationsList extends React.Component {
       );
     });
 
+    if (stages && stages.length > 0)
+    {
+      return (
+        <div>
+          {validationStages}
+        </div>
+      );
+    }
+    else
+    {
+      return (
+        <BlankSlate iconClass="pficon pficon-flag"
+                    title="No Validations"
+                    message="There are no validations at this time." />
+      );
+    }
+  }
+
+  render () {
+    let classes = ClassNames({
+      'panel-group': true,
+      'validations-container': true,
+      'collapsed': !this.props.active
+    });
+
     return (
       <div className={classes}>
-        {validationStages}
+        {this.getValidationsContent(this.props.validationStages)}
       </div>
     );
   }

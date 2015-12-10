@@ -76,7 +76,7 @@ export default class Footer extends React.Component {
 
   render() {
     let indicatorsClasses = ClassNames({
-      'nav nav-tabs nav-tabs-pf drawer-nav' : true,
+      'drawer-nav' : true,
       'drawer-collapsed' : !this.state.isOpen
     });
 
@@ -86,7 +86,7 @@ export default class Footer extends React.Component {
     });
 
     let contentClasses = ClassNames({
-      'row drawer-content' : true,
+      'drawer-content' : true,
       'collapsed': !this.state.isOpen
     });
 
@@ -100,39 +100,32 @@ export default class Footer extends React.Component {
     });
 
     return (
-      <div>
-        <div className="navbar-fixed-bottom wrapper-footer container-fluid">
-          <div className="row">
-            <div className="col-sm-12">
-              <ul className={indicatorsClasses}>
-                <li className={notificationTabClasses}>
-                  <a className="link" onClick={this.showNotifications.bind(this)}>
-                    <span>Notifications</span>
-                  </a>
-                </li>
-                <li className={validationTabClasses}>
-                  <a className="link" onClick={this.showValidations.bind(this)}>
-                    <span>Validations</span>
-                  </a>
-                </li>
-                <li className={this.state.isOpen ? 'hidden' : ''}>
-                  <NotificationsIndicator notifications={this.state.notifications}
-                                          onClick={this.showNotifications.bind(this)}/>
-                </li>
-                <li className={this.state.isOpen ? 'hidden' : ''}>
-                  <ValidationsIndicator validationStages={this.state.validationStages}
-                                        onClick={this.showValidations.bind(this)}/>
-                </li>
-              </ul>
-              <a className={toggleClasses} onClick={this.toggleOpen.bind(this)}></a>
-            </div>
-          </div>
-          <div className={contentClasses}>
-            <NotificationList active={this.state.listShown === 'notifications'}
-                              notifications={this.state.notifications}/>
-            <ValidationsList  active={this.state.listShown === 'validations'}
-                              validationStages={this.state.validationStages}/>
-          </div>
+      <div className="wrapper-fixed-footer drawer-container">
+        <div>
+          <a className={toggleClasses} onClick={this.toggleOpen.bind(this)}></a>
+          <ul className={indicatorsClasses}>
+            <li className={notificationTabClasses}>
+              <a className="link" onClick={this.showNotifications.bind(this)}>Notifications</a>
+            </li>
+            <li className={validationTabClasses}>
+              <a className="link" onClick={this.showValidations.bind(this)}>Validations</a>
+            </li>
+            <li className={this.state.isOpen ? 'hidden' : ''}>
+              <NotificationsIndicator notifications={this.state.notifications}
+                                      onClick={this.showNotifications.bind(this)}/>
+            </li>
+            <li className={(this.state.isOpen ? 'hidden' : '') + ' separator'}></li>
+            <li className={this.state.isOpen ? 'hidden' : ''}>
+              <ValidationsIndicator validationStages={this.state.validationStages}
+                                    onClick={this.showValidations.bind(this)}/>
+            </li>
+          </ul>
+        </div>
+        <div className={contentClasses}>
+          <NotificationList active={this.state.isOpen && this.state.listShown === 'notifications'}
+                            notifications={this.state.notifications}/>
+          <ValidationsList  active={this.state.isOpen && this.state.listShown === 'validations'}
+                            validationStages={this.state.validationStages}/>
         </div>
       </div>
     );
