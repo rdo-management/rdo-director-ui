@@ -1,68 +1,63 @@
 import * as _ from 'lodash';
 import React from 'react';
-import ClassNames from 'classnames';
 
 export default class NotificationsIndicator extends React.Component {
 
-  greaterStatus (status1, status2) {
-    if (status1 === 'error' || status2 === 'error') {
-      return 'error';
-    }
-    else if (status1 === 'warning' || status2 === 'warning') {
-      return 'warning';
-    }
-    else if (status1 === 'info' || status2 === 'info') {
-      return 'error';
-    }
-    else if (status1 === 'success' || status1 === 'ok' ||
-             status2 === 'success' || status2 === 'ok') {
-      return 'success';
+  getStatusInfo() {
+    // Generate an object of status counts {'status': statusCount...}
+    let stateCounts = _.countBy(_.pluck(this.props.notifications, 'type'));
+    stateCounts.error = (stateCounts.error || 0) + (stateCounts.undefined || 0);
+    stateCounts.warning = (stateCounts.warning || 0);
+
+    let unreadCount = _.countBy(this.props.notifications, function(notification) {
+        return notification.viewed ? 'read' : 'unread';
+      })['unread'] || 0;
+
+    return {
+      total: this.props.notifications.length,
+      unread: unreadCount,
+      error: (stateCounts.error || 0) + (stateCounts.undefined || 0),
+      warning: stateCounts.warning || 0
+    };
+  }
+
+  getStatusBadge (statusInfo) {
+    if (statusInfo.error > 0 || statusInfo.warning > 0) {
+      let badgeClasses = 'badge';
+      let statusText = '';
+      let statusCount = 0;
+
+      if (statusInfo.error > 0) {
+        badgeClasses += ' error';
+        statusText = 'Errors';
+        statusCount = statusInfo.error;
+      }
+      else {
+        badgeClasses += ' warning';
+        statusText = 'Warnings';
+        statusCount = statusInfo.warning;
+      }
+      return (
+        <div className="pull-right">
+          <span className="indicator-category">{statusText}</span>
+          <span className={badgeClasses}>{statusCount}</span>
+        </div>
+      );
     }
     else {
-      return 'error';
+      return false;
     }
   }
 
   render() {
-    let currentStatus = 'ok';
-    let statusCount;
-    let me = this;
-
-    this.props.notifications.forEach(function(notification) {
-      currentStatus = me.greaterStatus(currentStatus, notification.type || 'error');
-    });
-
-    statusCount = _.filter(this.props.notifications, function(notification) {
-      let status = notification.type;
-      if (status === currentStatus) {
-        return true;
-      }
-      else if ((currentStatus === 'error') && !status) {
-        return true;
-      }
-      else if ((currentStatus === 'success') && (status === 'ok')) {
-        return true;
-      }
-      else {
-        return false;
-      }
-    }).length;
-
-
-    let StatusIcon = ClassNames({
-      'validations-icon' : true,
-      'pficon': true,
-      'pficon-error-circle-o':     currentStatus === 'error',
-      'pficon-warning-triangle-o': currentStatus === 'warning',
-      'pficon-ok':                 currentStatus === 'success' || currentStatus === 'ok',
-      'pficon-info':               currentStatus === 'info'
-    });
-
+    let statusInfo = this.getStatusInfo();
 
     return (
-      <a onClick={this.props.onClick}>
-        <span className={StatusIcon}></span>
-        <span> Notifications: {statusCount}</span>
+      <a onClick={this.props.onClick} className="indicator">
+        <span className="indicator-title">Notifications:</span>
+        <span className="indicator-category">Unread</span>
+        <span className="badge unread">{statusInfo.unread}</span>
+        {this.getStatusBadge(statusInfo)}
       </a>
     );
   }

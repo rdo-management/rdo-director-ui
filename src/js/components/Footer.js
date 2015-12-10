@@ -14,6 +14,8 @@ import NotificationList       from './notifications/NotificationList';
 import ValidationsIndicator from './validations/ValidationsIndicator';
 import ValidationsList from './validations/ValidationsList';
 
+import MockValidations from '../mock/mockValidations';
+
 export default class Footer extends React.Component {
   constructor() {
     super();
@@ -74,9 +76,60 @@ export default class Footer extends React.Component {
     this.setState({isOpen: true, listShown: 'validations'});
   }
 
+  fakeNotification (e) {
+    if (this.fakeCount === undefined) {
+      this.fakeCount = 0;
+    }
+
+    let msgType = this.fakeCount % 4;
+    this.fakeCount++;
+    if (msgType === 0) {
+      NotificationActions.notify({
+        title: 'Bah!',
+        message: 'Something has gone awry!',
+        type: 'error'
+      });
+    }
+    else if (msgType === 1) {
+      NotificationActions.notify({
+        title: 'Oopsies!',
+        message: 'It looks like something could be an issue.',
+        type: 'warning'
+      });
+    }
+    else if (msgType === 2) {
+      NotificationActions.notify({
+        title: 'Yay!',
+        message: 'Everything went completely as planned.',
+        type: 'success'
+      });
+    }
+    else if (msgType === 3) {
+      NotificationActions.notify({
+        title: 'Hey!',
+        message: 'You might want to check out how things went.',
+        type: 'info'
+      });
+    }
+  }
+
+  fakeValidations () {
+    if (this.state.validationStages && this.state.validationStages.length > 0) {
+      this.setState({validationStages: []});
+    }
+    else {
+      this.setState({validationStages: MockValidations.validations});
+    }
+  }
+
   render() {
+    let drawerHeaderClasses = ClassNames({
+      'row drawer-header' : true,
+      'content-open' : this.state.isOpen
+
+    });
     let indicatorsClasses = ClassNames({
-      'nav nav-tabs nav-tabs-pf drawer-nav' : true,
+      'nav navbar-nav drawer-nav' : true,
       'drawer-collapsed' : !this.state.isOpen
     });
 
@@ -99,40 +152,43 @@ export default class Footer extends React.Component {
       active: this.state.listShown === 'validations'
     });
 
+    let fakeStyle = {
+      color: 'transparent'
+    };
+    let fakeStyle2 = {
+      color: 'transparent',
+      float: 'right'
+    };
+
     return (
-      <div>
-        <div className="navbar-fixed-bottom wrapper-footer container-fluid">
-          <div className="row">
-            <div className="col-sm-12">
-              <ul className={indicatorsClasses}>
-                <li className={notificationTabClasses}>
-                  <a className="link" onClick={this.showNotifications.bind(this)}>
-                    <span>Notifications</span>
-                  </a>
-                </li>
-                <li className={validationTabClasses}>
-                  <a className="link" onClick={this.showValidations.bind(this)}>
-                    <span>Validations</span>
-                  </a>
-                </li>
-                <li className={this.state.isOpen ? 'hidden' : ''}>
-                  <NotificationsIndicator notifications={this.state.notifications}
-                                          onClick={this.showNotifications.bind(this)}/>
-                </li>
-                <li className={this.state.isOpen ? 'hidden' : ''}>
-                  <ValidationsIndicator validationStages={this.state.validationStages}
-                                        onClick={this.showValidations.bind(this)}/>
-                </li>
-              </ul>
-              <a className={toggleClasses} onClick={this.toggleOpen.bind(this)}></a>
-            </div>
-          </div>
-          <div className={contentClasses}>
-            <NotificationList active={this.state.listShown === 'notifications'}
-                              notifications={this.state.notifications}/>
-            <ValidationsList  active={this.state.listShown === 'validations'}
-                              validationStages={this.state.validationStages}/>
-          </div>
+      <div className="navbar-fixed-bottom wrapper-footer container-fluid">
+        <div className={drawerHeaderClasses}>
+          <ul className={indicatorsClasses}>
+            <li className={notificationTabClasses}>
+              <a className="link" onClick={this.showNotifications.bind(this)}>Notifications</a>
+            </li>
+            <li className={validationTabClasses}>
+              <a className="link" onClick={this.showValidations.bind(this)}>Validations</a>
+            </li>
+            <li className={this.state.isOpen ? 'hidden' : ''}>
+              <NotificationsIndicator notifications={this.state.notifications}
+                                      onClick={this.showNotifications.bind(this)}/>
+            </li>
+            <li className={(this.state.isOpen ? 'hidden' : '') + ' separator'}></li>
+            <li className={this.state.isOpen ? 'hidden' : ''}>
+              <ValidationsIndicator validationStages={this.state.validationStages}
+                                    onClick={this.showValidations.bind(this)}/>
+            </li>
+          </ul>
+          <span onClick={this.fakeNotification.bind(this)} style={fakeStyle}>Fake Notification</span>
+          <span onClick={this.fakeValidations.bind(this)} style={fakeStyle2}>Fake Validations</span>
+          <a className={toggleClasses} onClick={this.toggleOpen.bind(this)}></a>
+        </div>
+        <div className={contentClasses}>
+          <NotificationList active={this.state.isOpen && this.state.listShown === 'notifications'}
+                            notifications={this.state.notifications}/>
+          <ValidationsList  active={this.state.isOpen && this.state.listShown === 'validations'}
+                            validationStages={this.state.validationStages}/>
         </div>
       </div>
     );

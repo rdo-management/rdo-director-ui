@@ -1,68 +1,60 @@
+import * as _ from 'lodash';
 import React from 'react';
-import ClassNames from 'classnames';
-
 
 export default class ValidationsIndicator extends React.Component {
 
-  greaterStatus (status1, status2) {
-    if (status1 === 'failed' || status2 === 'failed') {
-      return 'failed';
-    }
-    else if (status1 === 'running' || status2 === 'running') {
-      return 'running';
-    }
-    else if (status1 === 'new' || status2 === 'new'){
-      return 'available';
-    }
-    else if (status1 === 'ok' || status2 === 'ok'){
-      return 'ok';
+  getStatusInfo() {
+    let allValidations = [];
+    _.forEach(this.props.validationStages, function (validationStage) {
+      allValidations = allValidations.concat(validationStage.validations);
+    });
+
+    let stateCounts = _.countBy(_.pluck(allValidations, 'status'));
+    stateCounts.total = allValidations.length;
+    stateCounts.error = (stateCounts.error || 0) + (stateCounts.failed || 0);
+    stateCounts.available = (stateCounts.available || 0) + (stateCounts.new || 0);
+    stateCounts.running = stateCounts.running || 0;
+
+    return stateCounts;
+  }
+
+  getStatusBadge (statusInfo) {
+    if (statusInfo.error > 0 || statusInfo.available > 0) {
+      let badgeClasses = 'badge';
+      let statusText = '';
+      let statusCount = 0;
+
+      if (statusInfo.error > 0) {
+        badgeClasses += ' error';
+        statusText = 'Errors';
+        statusCount = statusInfo.error;
+      }
+      else {
+        badgeClasses += ' available';
+        statusText = 'Available';
+        statusCount = statusInfo.available;
+      }
+      return (
+        <div className="pull-right">
+          <span className="indicator-category">{statusText}</span>
+          <span className={badgeClasses}>{statusCount}</span>
+        </div>
+      );
     }
     else {
-      return 'unknown';
+      return false;
     }
   }
 
   render() {
-    let currentStatus = 'success';
-    let statusCount = 0;
-    let me = this;
-
-    this.props.validationStages.forEach(function(validationStage, i) {
-      validationStage.validations.forEach(function (validation, j) {
-        if (i + j === 0)
-        {
-          currentStatus = validation.status || 'failed';
-          statusCount = 1;
-        }
-        else if (validation.status === currentStatus) {
-          statusCount++;
-        }
-        else
-        {
-          var newStatus = me.greaterStatus(currentStatus, validation.status || 'failed');
-          if (newStatus !== currentStatus)
-          {
-            currentStatus = newStatus;
-            statusCount = 1;
-          }
-        }
-      });
-    });
-
-    let validationStatusIcon = ClassNames({
-      'validations-icon' : true,
-      'pficon pficon-error-circle-o':     currentStatus === 'failed',
-      'pficon pficon-running':            currentStatus === 'running',
-      'pficon pficon-add-circle-o':       currentStatus === 'new',
-      'pficon pficon-ok':                 currentStatus === 'ok',
-      'pficon pficon-warning-triangle-o': currentStatus === 'unknown'
-    });
-
+    let statusInfo = this.getStatusInfo();
 
     return (
-      <a onClick={this.props.onClick}>
-        <span className={validationStatusIcon}></span>
-        <span> Validations: {statusCount}</span>
+      <a onClick={this.props.onClick} className="indicator">
+        <span className="indicator-title">Validations:</span>
+        <span className="indicator-category">Running</span>
+        <span className="badge running">{statusInfo.running}</span>
+        {this.getStatusBadge(statusInfo)}
       </a>
     );
   }

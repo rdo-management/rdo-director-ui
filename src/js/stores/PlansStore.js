@@ -11,7 +11,7 @@ class PlansStore extends BaseStore {
     this.state = {
       currentPlanName: undefined,
       plans: [],
-      plansLoaded: false,
+      plansLoaded: true,
       conflict: undefined
     };
     this.detectPlan = this._detectPlan.bind(this);
