@@ -20,9 +20,32 @@ export default class ValidationsList extends React.Component {
       );
     });
 
+    let getValidationsContent = function (stages) {
+      if (stages && stages.length > 0)
+      {
+        return (
+          <div>
+            {validationStages}
+          </div>
+        );
+      }
+      else
+      {
+        return (
+          <div className="blank-slate-pf">
+            <div className="blank-slate-pf-icon">
+              <span className="pficon pficon-flag"></span>
+            </div>
+            <h1>No Validations</h1>
+            <p>There are no validations at this time.</p>
+          </div>
+        );
+      }
+    };
+
     return (
       <div className={classes}>
-        {validationStages}
+        {getValidationsContent(this.props.validationStages)}
       </div>
     );
   }
