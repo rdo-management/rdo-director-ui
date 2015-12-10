@@ -21,22 +21,54 @@
   }
 
   .alert {
-    background-color: #fff;
-    border-color: #D1D1D1;
+    border-color: @table-border-color;
     opacity: .95;
     transition: opacity .2s ease-in-out;
     margin-bottom: 0;
-    border-width: 0 0 1px 0;
+    border-width: 1px;
+    border-top-width: 0px;
     padding-top: 6px;
     padding-bottom: 6px;
 
-    &:hover {
-      opacity: 1;
+    &:nth-of-type(even) {
+      background-color: @table-bg-accent;
+
+    }
+    &:nth-of-type(odd) {
+      background-color: transparent;
     }
 
+    &:hover {
+      opacity: 1;
+      background-color: @table-bg-hover;
+      border-color: #a7d7f1;
+      .btn {
+        visibility: visible;
+      }
+    }
+
+    &.unviewed {
+      background-color: #fbeabc;
+      border-color: #f8d885;
+      &:hover {
+        background-color: #f9d67a;
+        border-color: #f5c12e;
+      }
+    }
     .pficon {
       font-size: 18px;
+      line-height: 22px;
       top: 5px;
     }
+
+    .btn {
+      margin-top: -2px;
+      visibility: hidden;
+    }
   }
+}
+
+.notification-time {
+  margin: 0px 10px;
+  float: left;
 }
