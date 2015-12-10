@@ -67,16 +67,19 @@ export default class Validation extends React.Component {
     });
 
     return (
-        <div className="col-lg-4 col-md-6 col-sm-12">
-          <div className="card-pf validation">
+        <div className="validation">
+          <div className="validation-icon-container">
+            <span className={statusIconClass}></span>
+          </div>
+          <div className="validation-info-container">
+            <div className="validation-name">{this.props.name}</div>
             <div>
-              <span className={statusIconClass}></span> <span>{this.props.name}</span>
-              {this.getActionButton()}
+              <div className="validation-message">{this.props.description}</div>
+              <a className="link" onClick={this.viewDetails.bind(this)}>View Details</a>
             </div>
-            <div>
-              <span className="validation-message">{this.props.description}
-              </span> <a className="link" onClick={this.viewDetails.bind(this)}>View Details</a>
-            </div>
+          </div>
+          <div className="validation-action-button-container">
+            {this.getActionButton()}
           </div>
         </div>
     );
