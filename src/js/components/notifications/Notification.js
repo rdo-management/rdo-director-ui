@@ -20,18 +20,29 @@ export default class Notification extends React.Component {
       'pficon-error-circle-o': this.props.type === 'error'
     });
 
+    let getDismissButton = function (dismissable, removeFn) {
+      if (dismissable) {
+        return (
+          <button type="button"
+                  className="close"
+                  aria-label="Close"
+                  onClick={removeFn}>
+            <span className="pficon pficon-close" aria-hidden="true"></span>
+          </button>
+        );
+      }
+      else {
+        return false;
+      }
+    };
+
     return (
       <div className={classes}
            role="alert"
            onMouseEnter={this.props.onMouseEnter}
            onMouseLeave={this.props.onMouseLeave}>
         <span className={iconClass} aria-hidden="true"></span>
-        <button type="button"
-                className="close"
-                aria-label="Close"
-                onClick={this.props.removeNotification}>
-          <span className="pficon pficon-close" aria-hidden="true"></span>
-        </button>
+        {getDismissButton(this.props.dismissable, this.props.removeNotification)}
         <strong>{this.props.title}</strong> {this.props.message}
       </div>
     );
@@ -47,7 +58,7 @@ Notification.propTypes = {
   type: React.PropTypes.string
 };
 Notification.defaultProps = {
-  dismissable: true,
+  dismissable: false,
   title: '',
   type: 'error'
 };

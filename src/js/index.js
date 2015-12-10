@@ -2,6 +2,7 @@ import 'babel/polyfill';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { IntlProvider } from 'react-intl';
 import { Router, Route, IndexRoute, Redirect } from 'react-router';
 
 import App from './components/App';
@@ -78,4 +79,8 @@ TempStorage.initialized.then(() => {
   }
 });
 
-ReactDOM.render(<Router>{routes}</Router>, document.getElementById('react-app-index'));
+ReactDOM.render(
+  <IntlProvider locale="en">
+    <Router>{routes}</Router>
+  </IntlProvider>,
+  document.getElementById('react-app-index'));
