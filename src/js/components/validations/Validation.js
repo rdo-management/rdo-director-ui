@@ -37,7 +37,7 @@ export default class Validation extends React.Component {
   }
 
   getActionButton() {
-    if (_.includes(['new', 'ok', 'failed'], this.props.status)) {
+    if (_.includes(['new', 'success', 'failed'], this.props.status)) {
       return (
         <button className="btn btn-primary btn-xs pull-right"
                 onClick={this.runValidaton.bind(this)}>
@@ -61,22 +61,25 @@ export default class Validation extends React.Component {
     let statusIconClass = ClassNames({
       'validation-icon' : true,
       'pficon pficon-error-circle-o': status === 'failed',
-      'pficon pficon-ok':             status === 'ok',
+      'pficon pficon-ok':             status === 'success',
       'pficon pficon-running':        status === 'running',
       'pficon pficon-flag':           status === 'new'
     });
 
     return (
-        <div className="col-lg-4 col-md-6 col-sm-12">
-          <div className="card-pf validation">
+        <div className="validation">
+          <div className="validation-icon-container">
+            <span className={statusIconClass}></span>
+          </div>
+          <div className="validation-info-container">
+            <div className="validation-name">{this.props.name}</div>
             <div>
-              <span className={statusIconClass}></span> <span>{this.props.name}</span>
-              {this.getActionButton()}
+              <div className="validation-message">{this.props.description}</div>
+              <a className="link" onClick={this.viewDetails.bind(this)}>View Details</a>
             </div>
-            <div>
-              <span className="validation-message">{this.props.description}
-              </span> <a className="link" onClick={this.viewDetails.bind(this)}>View Details</a>
-            </div>
+          </div>
+          <div className="validation-action-button-container">
+            {this.getActionButton()}
           </div>
         </div>
     );

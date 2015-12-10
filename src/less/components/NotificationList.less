@@ -20,23 +20,37 @@
     display: none;
   }
 
-  .alert {
-    background-color: #fff;
-    border-color: #D1D1D1;
-    opacity: .95;
-    transition: opacity .2s ease-in-out;
-    margin-bottom: 0;
-    border-width: 0 0 1px 0;
-    padding-top: 6px;
-    padding-bottom: 6px;
-
-    &:hover {
-      opacity: 1;
+  .table > tbody > tr {
+    &.unviewed {
+      td {
+        background-color: #fbeabc;
+        border-color: #f8d885;
+      }
+      &:hover {
+        td {
+          background-color: #f9d67a;
+          border-color: #f5c12e;
+        }
+      }
     }
 
     .pficon {
       font-size: 18px;
-      top: 5px;
+      line-height: 22px;
+      vertical-align: middle;
+      margin: 0 5px;
+    }
+
+    .btn {
+      visibility: hidden;
+      margin-right: 5px;
+      margin-top: 2px;
+    }
+
+    &:hover {
+      .btn {
+        visibility: visible;
+      }
     }
   }
 }

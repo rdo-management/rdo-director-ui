@@ -16,53 +16,106 @@
 }
 
 .validations-container {
+  margin-left: -1px;
+  margin-right: -1px;
+
   &.collapsed {
     display: none;
   }
-}
 
-.validation-stage-heading {
-  .panel-title {
-    margin-top: 5px;
+  .panel:first-of-type {
+    border-top-width: 0px;
+  }
+  .panel:last-of-type {
+    border-bottom-width: 0px;
   }
 }
 
-.validation-stage-content {
-  border-bottom: solid 1px #D1D1D1;
-  padding-bottom: 0;
+.validation-stage-panel-heading {
+  padding: 5px 10px;
+
+  .panel-title {
+    font-size: 12px;
+    line-height: @line-height-base;
+    padding-top: @padding-base-vertical;
+    padding-bottom: @padding-base-vertical;
+  }
+}
+
+.validations-tile-view {
+  margin-bottom: -1px;
+  margin-right: -1px;
+  overflow: hidden;
+  padding: 0;
+
+  .validation-tile {
+    background: #fff;
+    border-bottom: solid 1px @table-border-color;
+    border-right: solid 1px @table-border-color;
+    display: block;
+    float: left;
+    height: 60px;
+    margin: 0;
+    padding: 10px;
+    position: relative;
+    width: 450px;
+
+    .tile-content {
+      height: 100%;
+      overflow: hidden;
+      width: 100%;
+    }
+  }
 }
 
 .validation {
-  border: solid 1px #D1D1D1;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  .validation-icon-container {
+    float: left;
+    padding-right: 10px;
+    padding-top: 7px;
 
-  .validation-icon {
-    &.pficon-flag {
-      color: @brand-primary;
-    }
-    &.pficon-ok:before {
-      color: #333;
+    .validation-icon {
+      font-size: 18px;
+      &.pficon-flag {
+        color: @brand-primary;
+      }
+      &.pficon-ok:before {
+        color: #333;
+      }
     }
   }
 
-  .validation-name {
-    color: #333;
+  .validation-info-container {
+    color: @gray-pf;
+    float: left;
     font-size: 12px;
-    padding-left: 5px;
-  }
 
-  .validation-message {
-    padding-left: 15px;
-  }
-
-  .details-link {
-    color: #0099d3;
-    margin-left: 15px;
-    visibility: hidden;
-
-    &.available {
-      visibility: visible;
+    .validation-name {
+      font-weight: 600;
     }
+
+    .validation-message {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      float: left;
+      width: 230px;
+    }
+
+    .details-link {
+      color: @link-color;
+      margin-left: 15px;
+      visibility: hidden;
+      float: left;
+
+      &.available {
+        visibility: visible;
+      }
+    }
+  }
+
+  .validation-action-button-container {
+    float: right;
+    padding-top: 7px;
   }
 }
