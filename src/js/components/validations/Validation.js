@@ -37,7 +37,7 @@ export default class Validation extends React.Component {
   }
 
   getActionButton() {
-    if (_.includes(['new', 'ok', 'failed'], this.props.status)) {
+    if (_.includes(['new', 'success', 'failed'], this.props.status)) {
       return (
         <button className="btn btn-primary btn-xs pull-right"
                 onClick={this.runValidaton.bind(this)}>
@@ -61,24 +61,34 @@ export default class Validation extends React.Component {
     let statusIconClass = ClassNames({
       'validation-icon' : true,
       'pficon pficon-error-circle-o': status === 'failed',
-      'pficon pficon-ok':             status === 'ok',
+      'pficon pficon-ok':             status === 'success',
       'pficon pficon-running':        status === 'running',
       'pficon pficon-flag':           status === 'new'
     });
 
+    let messageClass = ClassNames({
+      'validation-message' : true,
+      'no-message' : !this.props.description
+    });
+    // Make sure there is text when there is no description so vertical spacing remains consistent
+    let message = this.props.description || 'Not Available';
+
     return (
-        <div className="col-lg-4 col-md-6 col-sm-12">
-          <div className="card-pf validation">
-            <div>
-              <span className={statusIconClass}></span> <span>{this.props.name}</span>
-              {this.getActionButton()}
-            </div>
-            <div>
-              <span className="validation-message">{this.props.description}
-              </span> <a className="link" onClick={this.viewDetails.bind(this)}>View Details</a>
-            </div>
+      <div className="col-lg-4 col-md-4 col-sm-6 col-xs-12 validation">
+        <div className="validation-content">
+          <span className={statusIconClass}></span>
+          <div className="validation-info-container">
+              <span>{this.props.name}</span>
+              <span className={messageClass}>{message}</span>
+              <a className="link details-link" onClick={this.viewDetails.bind(this)}>
+                View Details
+              </a>
+          </div>
+          <div className="validation-action-button-container">
+            {this.getActionButton()}
           </div>
         </div>
+      </div>
     );
   }
 }

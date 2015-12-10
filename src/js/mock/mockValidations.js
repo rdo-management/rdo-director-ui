@@ -13,7 +13,7 @@ export default {
           description: 'Check basic connectivity to the nodes',
           ref: '/v1/plans/undefined/validations/1/',
           uuid: '1',
-          status: 'ok'
+          status: 'success'
         },
         {
           name: 'Install a package',
@@ -30,6 +30,7 @@ export default {
         },
         {
           name: 'Do something really tricky',
+          description: 'This is a very tricky process that could take a long time to complete',
           ref: '/v1/plans/undefined/validations/4/',
           uuid: '4',
           status: 'failed'

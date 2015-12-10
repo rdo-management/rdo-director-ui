@@ -15,54 +15,82 @@
   }
 }
 
-.validations-container {
+.validation-stages-container {
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 0;
+
   &.collapsed {
     display: none;
   }
 }
 
-.validation-stage-heading {
+.validation-stage-panel-heading {
+  padding: 5px 10px;
+
   .panel-title {
-    margin-top: 5px;
+    font-size: 12px;
+    line-height: @line-height-base;
+    padding-top: @padding-base-vertical;
+    padding-bottom: @padding-base-vertical;
   }
 }
 
-.validation-stage-content {
-  border-bottom: solid 1px #D1D1D1;
-  padding-bottom: 0;
+.validations-container {
+  margin-right: -21px;
 }
 
 .validation {
-  border: solid 1px #D1D1D1;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  border-bottom: solid 1px @card-pf-border-color;
+  border-right: solid 1px @card-pf-border-color;
+  display: block;
+  padding: 15px;
+  position: relative;
 
-  .validation-icon {
-    &.pficon-flag {
-      color: @brand-primary;
+  .validation-content {
+    position: relative;
+    width: 100%;
+
+    .validation-icon {
+      font-size: 18px;
+      position: absolute;
+
+      &.pficon-flag {
+        color: @brand-primary;
+      }
+      &.pficon-ok:before {
+        color: #333;
+      }
     }
-    &.pficon-ok:before {
-      color: #333;
+
+    .validation-info-container {
+      display: block;
+      margin-left: 25px;
+      margin-right: 65px;
+      position: relative;
+
+      .validation-message {
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+
+        &.no-message {
+          visibility: hidden;
+        }
+      }
+
+      .details-link {
+        &.no-details {
+          visibility: hidden;
+        }
+      }
     }
-  }
 
-  .validation-name {
-    color: #333;
-    font-size: 12px;
-    padding-left: 5px;
-  }
-
-  .validation-message {
-    padding-left: 15px;
-  }
-
-  .details-link {
-    color: #0099d3;
-    margin-left: 15px;
-    visibility: hidden;
-
-    &.available {
-      visibility: visible;
+    .validation-action-button-container {
+      position: absolute;
+      right: 0;
+      top: 0;
     }
   }
 }
