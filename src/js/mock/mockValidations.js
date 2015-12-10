@@ -30,6 +30,7 @@ export default {
         },
         {
           name: 'Do something really tricky',
+          description: 'Really long description of what went wrong with this really tricky validation',
           ref: '/v1/plans/undefined/validations/4/',
           uuid: '4',
           status: 'failed'

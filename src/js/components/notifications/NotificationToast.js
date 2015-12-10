@@ -1,17 +1,16 @@
 import React from 'react';
 import ClassNames from 'classnames';
-import moment from 'moment';
 
 export default class Notification extends React.Component {
 
   render() {
     let classes = ClassNames({
       'alert': true,
-      'unviewed': !this.props.viewed,
       'alert-danger': this.props.type === 'error',
       'alert-warning': this.props.type === 'warning',
       'alert-success': this.props.type === 'success',
-      'alert-info': this.props.type === 'info'
+      'alert-info': this.props.type === 'info',
+      'alert-dismissable': true
     });
     let iconClass = ClassNames({
       'pficon': true,
@@ -21,36 +20,30 @@ export default class Notification extends React.Component {
       'pficon-error-circle-o': this.props.type === 'error'
     });
 
-    let timeString = moment(this.props.timestamp).format('MM/DD/YY h:mm:ss A');
-
     return (
-      <div className={classes} role="alert">
+      <div className={classes} role="alert"
+           onMouseEnter={this.props.onMouseEnter} onMouseLeave={this.props.onMouseLeave}>
         <span className={iconClass} aria-hidden="true"></span>
-        <span>
-          <strong>{this.props.title}</strong> {this.props.message}
-        </span>
-        <div className="pull-right">
-          <span className="notification-time">{timeString}</span>
-          <button type="button"
-                  className="btn btn-primary btn-xs pull-right"
-                  onClick={this.props.removeNotification}>
-            Dismiss
-          </button>
-        </div>
+        <button type="button"
+                className="close"
+                aria-label="Close"
+                onClick={this.props.removeNotification}>
+          <span className="pficon pficon-close" aria-hidden="true"></span>
+        </button>
+        <strong>{this.props.title}</strong> {this.props.message}
       </div>
     );
   }
 }
 Notification.propTypes = {
   message: React.PropTypes.string.isRequired,
+  onMouseEnter: React.PropTypes.func,
+  onMouseLeave: React.PropTypes.func,
   removeNotification: React.PropTypes.func,
-  timestamp: React.PropTypes.number,
   title: React.PropTypes.string,
-  type: React.PropTypes.string,
-  viewed: React.PropTypes.bool
+  type: React.PropTypes.string
 };
 Notification.defaultProps = {
-  dismissable: true,
   title: '',
   type: 'error'
 };

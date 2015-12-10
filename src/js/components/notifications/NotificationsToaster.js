@@ -3,15 +3,15 @@ import React from 'react';
 
 import NotificationStore from '../../stores/NotificationStore';
 
-import Notification from './Notification';
+import NotificationToast from './NotificationToast';
 
 export default class NotificationsToaster extends React.Component {
   constructor() {
     super();
     this.state = {
       toasterNotification: null,
+      nextNotification: null,
       timestamp: (new Date()).getTime(),
-      queuedNotifications: [],
       isHovering: false,
       timeout: false
     };
@@ -44,55 +44,33 @@ export default class NotificationsToaster extends React.Component {
     let now = new Date();
     let notifications = NotificationStore.getState();
     let timestamp = this.state.timestamp;
-    let queuedNotifications = this.state.queuedNotifications.slice(0);
 
     // Determine which notifications are new
     let newNotifications = _.filter(notifications, function(notification) {
       return notification.timestamp > timestamp;
     });
 
-    // If we are currently showing a notification push it back onto the queue
-    if (this.state.toasterNotification) {
-      queuedNotifications.push(this.state.toasterNotification);
-    }
-
     if (newNotifications.length > 0) {
-      // Add new notifications to the queue
-      queuedNotifications = queuedNotifications.concat(newNotifications);
-    }
-
-    // Remove any queued notifications that were dismissed
-    queuedNotifications = _.filter(queuedNotifications, function(queuedNotification) {
-      return _.find(notifications, function(notification) {
-        return notification.timestamp === queuedNotification.timestamp &&
-               notification.type === queuedNotification.type &&
-               notification.message === queuedNotification.message;
+      newNotifications = _.sortBy(newNotifications, function(notification) {
+        return notification.timestamp;
       });
-    });
 
-    // Sort the queued notifications
-    queuedNotifications = _.sortBy(queuedNotifications, function(notification) {
-      return notification.timestamp;
-    });
+      let nextNotification = newNotifications.pop();
 
-    // Get the next toaster notification to show
-    let toasterNotification = queuedNotifications.pop();
-
-    // Update the state
-    this.setState({
-      queuedNotifications: queuedNotifications,
-      toasterNotification: toasterNotification,
-      timestamp: now.getTime()
-    });
+      if (!this.state.toasterNotification || !this.state.isHovering) {
+        this.setState({toasterNotification: nextNotification, timestamp: now.getTime()});
+      }
+      else {
+        this.setState({nextNotification: nextNotification, timestamp: now.getTime()});
+      }
+    }
   }
 
   showNextNotification() {
-    let queuedNotifications = this.state.queuedNotifications;
-    let toasterNotification = queuedNotifications.pop();
     this.setState(
       {
-        queuedNotifications: queuedNotifications,
-        toasterNotification: toasterNotification
+        toasterNotification: this.state.nextNotification,
+        nextNotification: null
       }
     );
   }
@@ -133,7 +111,7 @@ export default class NotificationsToaster extends React.Component {
     let notification = false;
     if (this.state.toasterNotification) {
       notification = (
-        <Notification
+        <NotificationToast
           title={this.state.toasterNotification.title}
           message={this.state.toasterNotification.message}
           type={this.state.toasterNotification.type}
