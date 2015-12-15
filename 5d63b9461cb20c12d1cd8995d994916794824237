@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5ac4a560_904c6e44",
+        "filename": "package.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1006608
+      },
+      "writtenOn": "2015-12-15T15:24:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ac4a560_e3ab231c",
+      "revId": "5d63b9461cb20c12d1cd8995d994916794824237",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac4a560_03abbf1d",
         "filename": "src/js/components/Footer.js.real",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "5ac4a560_b047aa1c",
+        "filename": "src/js/components/Footer.js.real",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1006608
+      },
+      "writtenOn": "2015-12-15T15:24:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ac4a560_03abbf1d",
+      "revId": "5d63b9461cb20c12d1cd8995d994916794824237",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac4a560_23a6fb53",
         "filename": "src/js/components/notifications/Notification.js",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2015-12-14T12:30:15Z",
       "side": 1,
       "message": "define DismissButton as a component, dismissable and removeFn are props.",
+      "revId": "5d63b9461cb20c12d1cd8995d994916794824237",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_10605ea4",
+        "filename": "src/js/components/notifications/Notification.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1006608
+      },
+      "writtenOn": "2015-12-15T15:24:49Z",
+      "side": 1,
+      "message": "Do you mean a separate utility component available for reuse?",
+      "parentUuid": "5ac4a560_23a6fb53",
       "revId": "5d63b9461cb20c12d1cd8995d994916794824237",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
@@ -87,6 +141,24 @@
     },
     {
       "key": {
+        "uuid": "5ac4a560_d01b4619",
+        "filename": "src/js/components/notifications/NotificationList.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1006608
+      },
+      "writtenOn": "2015-12-15T15:24:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ac4a560_83450f72",
+      "revId": "5d63b9461cb20c12d1cd8995d994916794824237",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac4a560_a3484b88",
         "filename": "src/js/components/notifications/NotificationList.js",
         "patchSetId": 1
@@ -98,6 +170,24 @@
       "writtenOn": "2015-12-14T12:30:15Z",
       "side": 1,
       "message": "don\u0027t define a function inside render function, define it as a function in a class",
+      "revId": "5d63b9461cb20c12d1cd8995d994916794824237",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_b01c0a15",
+        "filename": "src/js/components/notifications/NotificationList.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1006608
+      },
+      "writtenOn": "2015-12-15T15:24:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ac4a560_a3484b88",
       "revId": "5d63b9461cb20c12d1cd8995d994916794824237",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
@@ -121,6 +211,24 @@
     },
     {
       "key": {
+        "uuid": "5ac4a560_10d5be1b",
+        "filename": "src/js/components/notifications/NotificationListItem.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1006608
+      },
+      "writtenOn": "2015-12-15T15:24:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ac4a560_c35e2745",
+      "revId": "5d63b9461cb20c12d1cd8995d994916794824237",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac4a560_e359635c",
         "filename": "src/js/components/notifications/NotificationListItem.js",
         "patchSetId": 1
@@ -132,6 +240,24 @@
       "writtenOn": "2015-12-14T12:30:15Z",
       "side": 1,
       "message": "use formatjs instead of moment",
+      "revId": "5d63b9461cb20c12d1cd8995d994916794824237",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_50b656fb",
+        "filename": "src/js/components/notifications/NotificationListItem.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1006608
+      },
+      "writtenOn": "2015-12-15T15:24:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ac4a560_e359635c",
       "revId": "5d63b9461cb20c12d1cd8995d994916794824237",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
@@ -155,6 +281,24 @@
     },
     {
       "key": {
+        "uuid": "5ac4a560_70b992e8",
+        "filename": "src/js/components/validations/ValidationsList.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1006608
+      },
+      "writtenOn": "2015-12-15T15:24:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ac4a560_0359ff59",
+      "revId": "5d63b9461cb20c12d1cd8995d994916794824237",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac4a560_23543b20",
         "filename": "src/js/components/validations/ValidationsList.js",
         "patchSetId": 1
@@ -166,6 +310,24 @@
       "writtenOn": "2015-12-14T12:30:15Z",
       "side": 1,
       "message": "This is used multiple times, it could be extracted into a reusable component, which would be used to render when there are no validations or notifications",
+      "revId": "5d63b9461cb20c12d1cd8995d994916794824237",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_b0ca4a6c",
+        "filename": "src/js/components/validations/ValidationsList.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1006608
+      },
+      "writtenOn": "2015-12-15T15:24:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ac4a560_23543b20",
       "revId": "5d63b9461cb20c12d1cd8995d994916794824237",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
