@@ -1,8 +1,7 @@
-import ClassNames from 'classnames';
 import Formsy from 'formsy-react';
 import React from 'react';
 
-class HorizontalInput extends React.Component {
+class HorizontalSelect extends React.Component {
   changeValue(event) {
     this.props.setValue(event.target.value);
   }
@@ -22,28 +21,27 @@ class HorizontalInput extends React.Component {
   }
 
   render() {
-    let divClasses = ClassNames({
-      'form-group': true,
-      'has-error': this.props.showError(),
-      'has-success': this.props.isValid(),
-      'required': this.props.isRequired()
+    let options = this.props.options.map((option, index) => {
+      return (
+        <option key={index}>{option}</option>
+      );
     });
 
     return (
-      <div className={divClasses}>
+      <div className="form-group">
         <label htmlFor={this.props.name}
                className={`${this.props.labelColumnClasses} control-label`}>
           {this.props.title}
         </label>
         <div className={'form-input ' + this.props.inputColumnClasses}>
-          <input type={this.props.type}
-                 name={this.props.name}
-                 ref={this.props.name}
-                 id={this.props.name}
-                 className='form-control'
-                 onChange={this.changeValue.bind(this)}
-                 value={this.props.getValue()}
-                 placeholder={this.props.placeholder} />
+          <select name={this.props.name}
+                  ref={this.props.name}
+                  id={this.props.name}
+                  className='form-control'
+                  onChange={this.changeValue.bind(this)}
+                  value={this.props.getValue()}>
+            {options}
+           </select>
           {this.renderErrorMessage()}
           {this.renderDescription()}
         </div>
@@ -51,24 +49,19 @@ class HorizontalInput extends React.Component {
     );
   }
 }
-HorizontalInput.propTypes = {
+HorizontalSelect.propTypes = {
   description: React.PropTypes.string,
   getErrorMessage: React.PropTypes.func,
   getValue: React.PropTypes.func,
   inputColumnClasses: React.PropTypes.string.isRequired,
-  isRequired: React.PropTypes.func,
-  isValid: React.PropTypes.func,
   labelColumnClasses: React.PropTypes.string.isRequired,
   name: React.PropTypes.string.isRequired,
-  placeholder: React.PropTypes.string,
+  options: React.PropTypes.array.isRequired,
   setValue: React.PropTypes.func,
-  showError: React.PropTypes.func,
-  title: React.PropTypes.string.isRequired,
-  type: React.PropTypes.string
+  title: React.PropTypes.string.isRequired
 };
-HorizontalInput.defaultProps = {
+HorizontalSelect.defaultProps = {
   inputColumnClasses: 'col-sm-10',
-  labelColumnClasses: 'col-sm-2',
-  type: 'text'
+  labelColumnClasses: 'col-sm-2'
 };
-export default Formsy.HOC(HorizontalInput);
+export default Formsy.HOC(HorizontalSelect);
