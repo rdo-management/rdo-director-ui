@@ -60,6 +60,10 @@ export default class Plan extends React.Component {
                      onClick={this.handleDeploy.bind(this)}>
                     <span className="fa fa-send"/> Deploy
                   </a>
+                  <Link to="/nodes/registered/register"
+                        className="btn btn-primary">
+                    <span className="fa fa-plus"/> Register Nodes
+                  </Link>
                 </div>
                 <h1>OpenStack Deployment - {this.state.currentPlanName}</h1>
                 <p>

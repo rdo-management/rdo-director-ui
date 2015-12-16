@@ -2,6 +2,13 @@ import ClassNames from 'classnames';
 import React from 'react';
 
 export default class TabPane extends React.Component {
+  renderChildren() {
+    if (this.props.renderOnlyActive) {
+      return this.props.isActive ? this.props.children : null;
+    }
+    return this.props.children;
+  }
+
   render() {
     let classes = ClassNames({
       'tab-pane': true,
@@ -10,7 +17,7 @@ export default class TabPane extends React.Component {
 
     return (
       <div className={classes}>
-        {this.props.children}
+        {this.renderChildren()}
       </div>
     );
   }
@@ -20,5 +27,9 @@ TabPane.propTypes = {
     React.PropTypes.arrayOf(React.PropTypes.node),
     React.PropTypes.node
   ]),
-  isActive: React.PropTypes.bool
+  isActive: React.PropTypes.bool.isRequired,
+  renderOnlyActive: React.PropTypes.bool.isRequired
+};
+TabPane.defaultProps = {
+  renderOnlyActive: false
 };

@@ -4,13 +4,14 @@ import React from 'react';
 
 class HorizontalInput extends React.Component {
   changeValue(event) {
+    event.stopPropagation(); // https://github.com/christianalfoni/formsy-react/issues/203
     this.props.setValue(event.target.value);
   }
 
   renderErrorMessage() {
     let errorMessage = this.props.getErrorMessage();
     return errorMessage ? (
-      <span className='help-block'>{errorMessage}</span>
+      <small className='help-block'>{errorMessage}</small>
     ) : false;
   }
 
