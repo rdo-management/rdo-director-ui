@@ -25,6 +25,7 @@ import Parameters from './components/parameters/Parameters.js';
 import Plan from './components/plan/Plan.js';
 import Plans from './components/plan/Plans.js';
 import ProvisionedNodesTabPane from './components/nodes/ProvisionedNodesTabPane';
+import RegisterNodesDialog from './components/nodes/RegisterNodesDialog';
 import RegisteredNodesTabPane from './components/nodes/RegisteredNodesTabPane';
 import Roles from './components/roles/Roles.js';
 import TempStorage from './services/TempStorage.js';
@@ -50,7 +51,9 @@ let routes = (
         <Route path="images" component={Images}/>
         <Redirect from="nodes" to="nodes/registered"/>
         <Route path="nodes" component={Nodes}>
-          <Route path="registered" component={RegisteredNodesTabPane}/>
+          <Route path="registered" component={RegisteredNodesTabPane}>
+            <Route path="register" component={RegisterNodesDialog}/>
+          </Route>
           <Route path="discovered" component={DiscoveredNodesTabPane}/>
           <Route path="provisioned" component={ProvisionedNodesTabPane}/>
           <Route path="maintenance" component={MaintenanceNodesTabPane}/>
