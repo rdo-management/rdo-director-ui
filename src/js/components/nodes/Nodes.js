@@ -1,3 +1,4 @@
+import { Link } from 'react-router';
 import React from 'react';
 import when from 'when';
 
@@ -56,15 +57,18 @@ export default class Nodes extends React.Component {
       <div className="row">
         <div className="col-sm-12">
           <div className="page-header">
-            <div className="actions pull-right">
+            <div className="pull-right">
               <a href="" onClick={this.refreshResults.bind(this)}>
-                <span className="pficon pficon-refresh"></span>
-                Refresh Results
+                <span className="pficon pficon-refresh"></span> Refresh Results
               </a>
+              &nbsp;
+              <Link to="/nodes/registered/register"
+                    className="btn btn-primary">
+                <span className="fa fa-plus"/> Register Nodes
+              </Link>
             </div>
             <h1>Nodes</h1>
           </div>
-
           <ul className="nav nav-tabs">
             <NavTab to="nodes/registered">
               Registered<span className="badge">{this.state.nodes.registered.length}</span>

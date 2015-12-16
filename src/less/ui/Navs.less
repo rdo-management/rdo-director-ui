@@ -14,7 +14,7 @@
         top: 0;
         width: 0;
       }
-      .fa-trash-o, &:hover {
+      .tab-action, &:hover {
         color: #fff;
       }
     }
@@ -22,7 +22,7 @@
       padding-right: 30px;
     }
   }
-  .fa-trash-o {
+  .tab-action {
     color: @link-color;
     font-size: @font-size-large;
     position: absolute;
@@ -32,4 +32,11 @@
       color: @link-hover-color;
     }
   }
+}
+
+// Actions bar above nav-stacked
+.nav-stacked-actions {
+  border-bottom: 1px solid @nav-tabs-border-color;
+  margin: 0 0 15px;
+  padding: 0 0 15px 0;
 }
