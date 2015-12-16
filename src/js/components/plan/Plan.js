@@ -36,9 +36,10 @@ export default class Plan extends React.Component {
             <div className="col-sm-12">
               <div className="page-header">
                 <div className="actions pull-right">
-                  <a href="#" className="btn btn-primary">
+                  <Link to="/overview/register"
+                        className="btn btn-primary">
                     <span className="fa fa-plus"/> Register Nodes
-                  </a>
+                  </Link>
                 </div>
                 <h1>OpenStack Deployment - {this.state.currentPlanName}</h1>
                 <p>

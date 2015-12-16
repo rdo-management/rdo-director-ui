@@ -20,11 +20,11 @@ import LoginStore from './stores/LoginStore';
 import MaintenanceNodesTabPane from './components/nodes/MaintenanceNodesTabPane';
 import NewPlan from './components/plan/NewPlan';
 import Nodes from './components/nodes/Nodes';
-import Overview from './components/Overview';
 import Parameters from './components/parameters/Parameters.js';
 import Plan from './components/plan/Plan.js';
 import Plans from './components/plan/Plans.js';
 import ProvisionedNodesTabPane from './components/nodes/ProvisionedNodesTabPane';
+import RegisterNodesDialog from './components/nodes/RegisterNodesDialog';
 import RegisteredNodesTabPane from './components/nodes/RegisteredNodesTabPane';
 import Roles from './components/roles/Roles.js';
 import TempStorage from './services/TempStorage.js';
@@ -45,6 +45,7 @@ let routes = (
           <IndexRoute component={Roles}/>
           <Route path="parameters" component={Parameters}/>
           <Route path="environment" component={EnvironmentConfiguration}/>
+          <Route path="/overview/register" component={RegisterNodesDialog}/>
         </Route>
 
         <Route path="images" component={Images}/>
