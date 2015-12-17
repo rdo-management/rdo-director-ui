@@ -3,3 +3,8 @@ dist/js
 dist/css
 dist/fonts
 dist/img
+app.conf
+.eggs
+*.egg-info
+.venv
+.pyc
