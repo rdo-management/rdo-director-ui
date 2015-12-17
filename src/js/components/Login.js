@@ -59,7 +59,7 @@ export default class Login extends React.Component {
       LoginActions.loginUser(response.access);
     }).catch((error) => {
       this._enableButton();
-      console.error('Error in Login.handleLogin', error);
+      console.error('Error in Login.handleLogin', error); //eslint-disable-line no-console
       let errorHandler = new KeystoneApiErrorHandler(error, Object.keys(this.refs.form.inputs));
       invalidateForm(errorHandler.formFieldErrors);
       this.setState({

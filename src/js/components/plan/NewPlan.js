@@ -48,7 +48,7 @@ export default class NewPlan extends React.Component {
         type: 'success'
       });
     }).catch(error => {
-      console.error('Error in NewPlan.onFormSubmit', error);
+      console.error('Error in NewPlan.onFormSubmit', error); //eslint-disable-line no-console
       let errorHandler = new TripleOApiErrorHandler(error);
       this.setState({
         formErrors: errorHandler.errors.map((error) => {

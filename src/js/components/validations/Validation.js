@@ -9,9 +9,9 @@ import ValidationsApiErrorHandler from '../../services/ValidationsApiErrorHandle
 export default class Validation extends React.Component {
   runValidaton () {
     ValidationsApiService.runValidation(this.props.uuid).then((response) => {
-      console.log(response);
+      console.log(response); //eslint-disable-line no-console
     }).catch((error) => {
-      console.error('Error in Validation.runValidaton', error);
+      console.error('Error in Validation.runValidaton', error); //eslint-disable-line no-console
       let errorHandler = new ValidationsApiErrorHandler(error);
       errorHandler.errors.forEach((error) => {
         NotificationActions.notify(error);
@@ -21,9 +21,9 @@ export default class Validation extends React.Component {
 
   stopValidation () {
     ValidationsApiService.stopValidation(this.props.uuid).then((response) => {
-      console.log(response);
+      console.log(response); //eslint-disable-line no-console
     }).catch((error) => {
-      console.error('Error in Validation.runValidaton', error);
+      console.error('Error in Validation.runValidaton', error); //eslint-disable-line no-console
       let errorHandler = new ValidationsApiErrorHandler(error);
       errorHandler.errors.forEach((error) => {
         NotificationActions.notify(error);

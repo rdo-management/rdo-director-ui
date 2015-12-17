@@ -14,7 +14,7 @@ describe('TripleOApiService', () => {
     });
 
     it('returns a promise that resolves with the status message', () => {
-      console.log(result);
+      console.log(result); //eslint-disable-line no-console
       expect(result).toBe('add status message of http request');
     });
   });
@@ -30,7 +30,7 @@ describe('TripleOApiService', () => {
     });
 
     it('returns a promise that resolves with a result array of plan names.', () => {
-      console.log(result);
+      console.log(result); //eslint-disable-line no-console
       expect(typeof(result.length)).toBe('number');
     });
 
