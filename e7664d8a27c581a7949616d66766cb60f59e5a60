@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3ac1b152_7ab551cc",
+        "filename": "src/js/components/Footer.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1006608
+      },
+      "writtenOn": "2015-12-17T17:02:15Z",
+      "side": 1,
+      "message": "Done - Thanks, much more simple now. I was using a different navigation component (Patternfly secondary navigation) and all the nav stuff was left over and unnecessary. Thanks!",
+      "parentUuid": "3ac1b152_d72e3ea5",
+      "revId": "e7664d8a27c581a7949616d66766cb60f59e5a60",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3ac1b152_5744ee73",
         "filename": "src/js/components/Footer.js",
         "patchSetId": 4
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "3ac1b152_9ac94d5d",
+        "filename": "src/js/components/Footer.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1006608
+      },
+      "writtenOn": "2015-12-17T17:02:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ac1b152_5744ee73",
+      "revId": "e7664d8a27c581a7949616d66766cb60f59e5a60",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3ac1b152_77172a52",
         "filename": "src/js/components/notifications/Notification.js",
         "patchSetId": 4
@@ -47,6 +83,24 @@
       "writtenOn": "2015-12-17T12:33:05Z",
       "side": 1,
       "message": "change this to\nrenderDismissButton() {\n}\n\nyou don\u0027t need to pass dismissable and removeFn, you can access prop directly:\nonClick\u003d{this.props.removeNotification}\n\nor you can even get rid of the whole function by doing\n\n{this.props.dismissable? (\n  \u003cbutton\u003e...\u003c/button\u003e) : (false)}",
+      "revId": "e7664d8a27c581a7949616d66766cb60f59e5a60",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ac1b152_9ad06df9",
+        "filename": "src/js/components/notifications/Notification.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1006608
+      },
+      "writtenOn": "2015-12-17T17:02:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ac1b152_77172a52",
       "revId": "e7664d8a27c581a7949616d66766cb60f59e5a60",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
@@ -98,6 +152,24 @@
       "writtenOn": "2015-12-17T12:33:05Z",
       "side": 1,
       "message": "why not use bootstrap columns here? fixed width and height is quite problematic and breaks the responsiveness",
+      "revId": "e7664d8a27c581a7949616d66766cb60f59e5a60",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ac1b152_dadae516",
+        "filename": "src/js/components/validations/ValidationStage.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1006608
+      },
+      "writtenOn": "2015-12-17T17:02:15Z",
+      "side": 1,
+      "message": "Using bootstrap columns with no gutters makes borders difficult as well as trying to maintain consistent row heights. The model I\u0027ve used is based on a Patternfly tiles model (not yet released) and it handles responsiveness pretty well. As you resize the browser more/less tiles are shown per row.",
+      "parentUuid": "3ac1b152_7a0e3136",
       "revId": "e7664d8a27c581a7949616d66766cb60f59e5a60",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
