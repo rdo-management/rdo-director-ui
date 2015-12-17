@@ -1,0 +1,4 @@
+pbr>=1.6
+Flask
+oslo.config
+oslo.log
