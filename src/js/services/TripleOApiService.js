@@ -115,12 +115,13 @@ class TripleOApiService {
   }
 
   /**
-   * TripleO API: GET /v1/plans/<planName>/deploy
+   * TripleO API: PUT /v1/plans/<planName>/deploy
    */
   deployPlan(planName) {
-    return when(request(this.defaultRequest(
-      { url: `${TRIPLEOAPI_URL}/plans/${planName}/deploy` }
-    )));
+    return when(request(this.defaultRequest({
+      url: `${TRIPLEOAPI_URL}/plans/${planName}/deploy`,
+      method: 'PUT'
+    })));
   }
 
   /**

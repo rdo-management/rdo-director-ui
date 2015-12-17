@@ -19,6 +19,14 @@ export default class ParametersTabPane extends React.Component {
 
     value = parameter.Value || parameter.Default;
 
+    // TODO(jtomasek): this might be problematic. If we don't include it, the value in inputs is wrong.
+    // If we include this, the value of json and arrays are saved as strings, so we probably need to port them
+    // back to json and arrays before sending them to tripleo-api
+    if(_.isObject(value)) {
+      // value = JSON.stringify(value);
+      return false;
+    }
+
     return (
       <HorizontalInput key={index}
                        name={parameter.name}
