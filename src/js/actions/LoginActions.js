@@ -12,7 +12,7 @@ export default {
       this.loginUser(keystoneAccess);
       return true;
     }).catch((error) => {
-      console.error('Error in LoginActions.authenticateUserViaToken', error);
+      console.error('Error in LoginActions.authenticateUserViaToken', error); //eslint-disable-line no-console
       let errorHandler = new KeystoneApiErrorHandler(error);
       errorHandler.errors.forEach((error) => {
         NotificationActions.notify(error);

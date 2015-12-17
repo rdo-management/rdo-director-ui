@@ -78,8 +78,9 @@ export default class EnvironmentConfiguration extends React.Component {
         type: 'success'
       });
     }).catch((error) => {
-      console.error('Error in EnvironmentConfiguration.handleSubmit', error);
-      let errorHandler = new TripleOApiErrorHandler(error, Object.keys(this.refs.environmentConfigurationForm.inputs));
+      console.error('Error in EnvironmentConfiguration.handleSubmit', error); //eslint-disable-line no-console
+      let errorHandler = new TripleOApiErrorHandler(
+        error,Object.keys(this.refs.environmentConfigurationForm.inputs));
       invalidateForm(errorHandler.formFieldErrors);
       this.setState({
         formErrors: errorHandler.errors

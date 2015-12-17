@@ -2,19 +2,19 @@ import React from 'react';
 import TestUtils from 'react-addons-test-utils';
 
 const IronicApiService = require('../../../js/services/IronicApiService');
-const NodesStore = require('../../../js/stores/NodesStore');
+// const NodesStore = require('../../../js/stores/NodesStore');
 
 import Nodes from '../../../js/components/nodes/Nodes';
 
-let nodesStoreState = {
-  nodes: {
-    all: [],
-    registered: [],
-    discovered: [],
-    provisioned: [],
-    maintenance: []
-  }
-};
+// let nodesStoreState = {
+//   nodes: {
+//     all: [],
+//     registered: [],
+//     discovered: [],
+//     provisioned: [],
+//     maintenance: []
+//   }
+// };
 
 describe('Nodes Component', () => {
   let NodesVdom, NodesInstance;
@@ -27,6 +27,7 @@ describe('Nodes Component', () => {
 
   // TODO(jtomasek): not sure how to mock children passed by react router
   xit('should render Nodes nav tabs', () => {
+    expect(NodesVdom).toExist();
   });
 
   xit('should render tab-pane', () => {

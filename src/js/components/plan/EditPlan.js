@@ -34,7 +34,7 @@ export default class EditPlan extends React.Component {
         files: this.createFilesArray()
       }});
     }).catch(error => {
-      console.error('Error in TripleOApiService.getPlan', error);
+      console.error('Error in TripleOApiService.getPlan', error); //eslint-disable-line no-console
       let errorHandler = new TripleOApiErrorHandler(error);
       this.setState({
         formErrors: errorHandler.errors.map((error) => {
@@ -151,7 +151,7 @@ export default class EditPlan extends React.Component {
         type: 'success'
       });
     }).catch(error => {
-      console.error('Error in TripleOApiService.updatePlan', error);
+      console.error('Error in TripleOApiService.updatePlan', error); //eslint-disable-line no-console
       let errorHandler = new TripleOApiErrorHandler(error);
       this.setState({
         formErrors: errorHandler.errors.map((error) => {

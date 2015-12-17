@@ -49,7 +49,7 @@ export default class Parameters extends React.Component {
       });
     }).catch((error) => {
       this.enableButton();
-      console.error('Error in Parameters.handleSubmit', error);
+      console.error('Error in Parameters.handleSubmit', error); //eslint-disable-line no-console
       let errorHandler = new TripleOApiErrorHandler(error,
                                Object.keys(this.refs.parameterConfigurationForm.inputs));
       invalidateForm(errorHandler.formFieldErrors);

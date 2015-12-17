@@ -20,7 +20,6 @@ import LoginStore from './stores/LoginStore';
 import MaintenanceNodesTabPane from './components/nodes/MaintenanceNodesTabPane';
 import NewPlan from './components/plan/NewPlan';
 import Nodes from './components/nodes/Nodes';
-import Overview from './components/Overview';
 import Parameters from './components/parameters/Parameters.js';
 import Plan from './components/plan/Plan.js';
 import Plans from './components/plan/Plans.js';
