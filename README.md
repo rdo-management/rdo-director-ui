@@ -1,6 +1,6 @@
 # Environment setup
 
-## Prerequisities
+## Prerequisites
 
 1. Setup TripleO http://docs.openstack.org/developer/tripleo-docs/index.html
 2. install nodejs and npm ```sudo yum install nodejs``` (probably requires EPEL) In case of problems refer to https://github.com/nodejs/node-v0.x-archive/wiki/Installing-Node.js-via-package-manager#enterprise-linux-and-fedora
@@ -114,17 +114,27 @@ and restart ironic ```systemctl restart openstack-ironic-api```
 2. ```cd rdo-director-ui```
 3. Install Gulp globally ```sudo npm install -g gulp```
 4. Install dependencies ```npm install```
-5. Serve the App ```gulp```
-6. Navigate to ```http://<machine_hostname>:3000/```
+
+### Serve the app during development
+
+1. Serve the App ```gulp```
+2. Navigate to ```http://<machine_hostname>:3000/```
+
+### Serve the app in production
+
+1. Build the static files ```gulp build```
+2. Create and activate the virtual env ```virtualenv .venv```
+3. ```source .venv/bin/activate```
+4. Install the wsgi app ```pip install -r requirements```
+5. python setup.py install
+6. Copy the example configuration file and change the settings, especially the service IP addresses ```cp app.conf.sample app.conf```
+7. Serve the app ```rdo-director-ui --config-file app.conf```
+8. Navigate to ```http://<machine_hostname>:8888/```
 
 #### NPM install troubleshooting
 
 In case of errors during ```npm install```, remove node_modules dir and clean npm cache
 ```npm cache clean```. Then run ```npm install``` again.
-
-Temporary:
-reqwest has a temporary issue in latest version. Downgrade to 2.0.2 to work around ```npm install reqwest@2.0.2```.
-(https://github.com/ded/reqwest/issues/204#issuecomment-145295384)
 
 
 ## Contributing

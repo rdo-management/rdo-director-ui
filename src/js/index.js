@@ -3,6 +3,7 @@ import 'babel/polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, IndexRoute, Redirect } from 'react-router';
+import createBrowserHistory from 'history/lib/createBrowserHistory';
 
 import App from './components/App';
 import AuthenticatedContent from './components/AuthenticatedContent';
@@ -78,4 +79,4 @@ TempStorage.initialized.then(() => {
   }
 });
 
-ReactDOM.render(<Router>{routes}</Router>, document.getElementById('react-app-index'));
+ReactDOM.render(<Router history={createBrowserHistory()}>{routes}</Router>, document.getElementById('react-app-index'));

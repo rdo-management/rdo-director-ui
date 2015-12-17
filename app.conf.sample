@@ -1,0 +1,16 @@
+[app]
+# bind_host = 192.0.2.1
+# bind_port = 8888
+# debug = False
+
+[tripleo_api]
+# bind_host = 192.0.2.1
+# bind_port = 8585
+
+[keystone_api]
+# bind_host = 192.0.2.1
+# bind_port = 5000
+
+[validation_api]
+# bind_host = 192.0.2.1
+# bind_port = 5001
