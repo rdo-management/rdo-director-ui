@@ -1,4 +1,5 @@
 var gulp = require('gulp');
+var _ = require('lodash');
 
 var browserSync = require('browser-sync');
 var less = require('gulp-less');
@@ -17,9 +18,18 @@ gulp.task('webpack-app', ['webpack-tempstorage-worker'], function() {
 });
 
 gulp.task('serve', ['webpack-app', 'less', 'fonts', 'images'], function(){
+  var staticFolders = ['css', 'js', 'fonts', 'img'];
   browserSync.init({
     open: false,
-    server: './dist'
+    server: {
+      baseDir: './dist',
+      middleware: function(req, res, next) {
+        if(_.indexOf(staticFolders, req.url.split('/')[1]) === -1) {
+          req.url = '/index.html';
+        }
+        return next();
+      }
+    }
   });
 
   gulp.watch('src/less/**/*.less', ['less']);
@@ -57,6 +67,9 @@ gulp.task('webpack-tempstorage-worker', function() {
     .pipe(webpack(tempStorageWorkerConfig))
     .pipe(gulp.dest('./dist/js'));
 });
+
+// Build JS app and static files.
+gulp.task('build', ['webpack-app', 'less', 'fonts', 'images'], function(){});
 
 // Start test server, run tests once, then quit.
 gulp.task('test', shell.task('karma start --single-run'));
