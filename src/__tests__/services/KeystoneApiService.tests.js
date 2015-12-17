@@ -29,6 +29,6 @@ describe('KeystoneApiService', () => {
     // });
     // KeystoneApiService.handleAuth(when(wrongApiRequest()));
     // jest.runAllTicks();
-    expect(console.error).toBeCalledWith('Error in handleAuth', expectedError);
+    expect(console.error).toBeCalledWith('Error in handleAuth', expectedError); //eslint-disable-line no-console
   });
 });

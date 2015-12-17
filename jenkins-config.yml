@@ -73,6 +73,7 @@ rdo_director_ui_virt_config:
       $npm_config_prefix/bin/npm run lint;
   archive:
       - ../logs/venv-testrun.log
+      - tests_results.xml
       - tox.ini
       - requirements.txt
       - all-rpms.txt

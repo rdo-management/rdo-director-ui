@@ -40,9 +40,9 @@ export default class ValidationStage extends React.Component {
 
   runStage () {
     ValidationsApiService.runStage(this.props.uuid).then((response) => {
-      console.log(response);
+      console.log(response); //eslint-disable-line no-console
     }).catch((error) => {
-      console.error('Error in ValidationStage.runStage', error);
+      console.error('Error in ValidationStage.runStage', error); //eslint-disable-line no-console
       let errorHandler = new ValidationsApiErrorHandler(error);
       errorHandler.errors.forEach((error) => {
         NotificationActions.notify(error);

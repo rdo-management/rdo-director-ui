@@ -18,7 +18,7 @@
     "formsy-react": "~0.17.0",
     "bootstrap": "~3.3.5",
     "invariant": "~2.1.1",
-    "history": "~1.12.6",
+    "history": "~1.13.x",
     "patternfly": "~2.5.0",
     "keymirror": "~0.1.1",
     "react-modal": "~0.6.1"
@@ -47,7 +47,8 @@
     "karma-phantomjs-launcher": "~0.2.1",
     "karma-sourcemap-loader": "~0.3.5",
     "karma-cli": "~0.1.0",
-    "react-addons-test-utils": "~0.14.1"
+    "react-addons-test-utils": "~0.14.1",
+    "karma-junit-reporter": "~0.3.8"
   },
   "scripts": {
     "test": "karma start --single-run",

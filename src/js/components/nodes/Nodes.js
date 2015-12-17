@@ -38,7 +38,7 @@ export default class Nodes extends React.Component {
     }).then((nodes) => {
       NodesActions.listNodes(nodes);
     }).catch((error) => {
-      console.error('Error in Nodes._fetchNodes', error);
+      console.error('Error in Nodes._fetchNodes', error); //eslint-disable-line no-console
       let errorHandler = new IronicApiErrorHandler(error);
       errorHandler.errors.forEach((error) => {
         NotificationActions.notify(error);

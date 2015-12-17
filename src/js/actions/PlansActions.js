@@ -12,7 +12,7 @@ export default {
         plans: res.plans
       });
     }).catch(error => {
-      console.error('Error retrieving plans PlansActions.listPlans', error);
+      console.error('Error retrieving plans PlansActions.listPlans', error); //eslint-disable-line no-console
       let errorHandler = new TripleOApiErrorHandler(error);
       errorHandler.errors.forEach((error) => {
         NotificationActions.notify(error);

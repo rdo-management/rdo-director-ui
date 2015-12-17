@@ -31,7 +31,7 @@ export default class DeletePlan extends React.Component {
           type: 'success'
         });
       }).catch(error => {
-        console.error('Error in DeletePlan._ondeleteClick', error);
+        console.error('Error in DeletePlan._ondeleteClick', error); //eslint-disable-line no-console
         PlansActions.listPlans();
         let errorHandler = new TripleOApiErrorHandler(error);
         errorHandler.errors.forEach((error) => {

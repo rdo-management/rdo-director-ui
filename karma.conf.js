@@ -23,8 +23,15 @@ module.exports = function(config) {
       captureConsole: true
     },
 
-    reporters: ['dots'],
+    reporters: ['dots', 'junit'],
     singleRun: false, // exit after tests have completed
+
+    junitReporter: {
+      outputDir: '../',
+      outputFile: 'tests_results.xml',
+      suite: '', // suite will become the package name attribute in xml testsuite element
+      useBrowserName: false // add browser name to report and classes names
+    },
 
     webpackMiddleware: {
       noInfo: true
