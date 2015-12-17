@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ac1b152_d72e3ea5",
+        "filename": "src/js/components/Footer.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-12-17T12:33:05Z",
+      "side": 1,
+      "message": "I think the container-fluid needs to be separately inside this div. it causes some padding mess with small browser window. We really need to make sure we don\u0027t break bootstrap\u0027s grid anywhere, otherwise the styling will turn into unmaintainable mess of positional fixes which are fixing another fixes...",
+      "revId": "e7664d8a27c581a7949616d66766cb60f59e5a60",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ac1b152_5744ee73",
+        "filename": "src/js/components/Footer.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-12-17T12:33:05Z",
+      "side": 1,
+      "message": "you\u0027re using row without column afterwards, this breaks the navigation.\n\nDrawer header has fixed height, which is wrong, because with reduced size of window width, the nav items get rendered below each other, causing them to overflow",
+      "revId": "e7664d8a27c581a7949616d66766cb60f59e5a60",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ac1b152_77172a52",
+        "filename": "src/js/components/notifications/Notification.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-12-17T12:33:05Z",
+      "side": 1,
+      "message": "change this to\nrenderDismissButton() {\n}\n\nyou don\u0027t need to pass dismissable and removeFn, you can access prop directly:\nonClick\u003d{this.props.removeNotification}\n\nor you can even get rid of the whole function by doing\n\n{this.props.dismissable? (\n  \u003cbutton\u003e...\u003c/button\u003e) : (false)}",
+      "revId": "e7664d8a27c581a7949616d66766cb60f59e5a60",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ac1b152_f7025a0a",
+        "filename": "src/js/components/notifications/NotificationList.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-12-17T12:33:05Z",
+      "side": 1,
+      "message": "nit: to keep it the same across the codebase, the curly should be on the same line as if condition",
+      "revId": "e7664d8a27c581a7949616d66766cb60f59e5a60",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ac1b152_1afffd02",
+        "filename": "src/js/components/notifications/NotificationList.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-12-17T12:33:05Z",
+      "side": 1,
+      "message": "same as above",
+      "revId": "e7664d8a27c581a7949616d66766cb60f59e5a60",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ac1b152_7a0e3136",
+        "filename": "src/js/components/validations/ValidationStage.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2015-12-17T12:33:05Z",
+      "side": 1,
+      "message": "why not use bootstrap columns here? fixed width and height is quite problematic and breaks the responsiveness",
+      "revId": "e7664d8a27c581a7949616d66766cb60f59e5a60",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
