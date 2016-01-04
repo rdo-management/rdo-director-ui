@@ -25,7 +25,7 @@ class IronicApiService {
    */
   getNodes() {
     return when(request(this.defaultRequest(
-      { url: LoginStore.getServiceUrl('ironic') + 'nodes' }
+      { url: LoginStore.getServiceUrl('ironic') + '/nodes' }
     )));
   }
 
@@ -35,7 +35,7 @@ class IronicApiService {
    */
   getNode(uuid) {
     return when(request(this.defaultRequest(
-      { url: `${LoginStore.getServiceUrl('ironic')}nodes/${uuid}`}
+      { url: `${LoginStore.getServiceUrl('ironic')}/nodes/${uuid}`}
     )));
   }
 

@@ -3,3 +3,4 @@ dist/js
 dist/css
 dist/fonts
 dist/img
+tests_results.xml
