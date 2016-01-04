@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa81d914_9b8854e9",
+        "filename": "src/less/components/Notification.less",
+        "patchSetId": 7
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-01-04T11:12:10Z",
+      "side": 0,
+      "message": "you can remove this file if it is empty now.",
+      "revId": "78cb3f1608af431b1b0400c16fb4fc02bf54ec42",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}

@@ -1,0 +1,141 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa81d914_9bb5b4cf",
+        "filename": "src/js/components/notifications/NotificationList.js",
+        "patchSetId": 7
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-01-04T11:12:10Z",
+      "side": 1,
+      "message": "join lines 10 and 11",
+      "revId": "89833147f48cd330a80c65b4863b2131ab861d13",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_9b3a1435",
+        "filename": "src/js/components/notifications/NotificationList.js",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-01-04T11:12:10Z",
+      "side": 1,
+      "message": "remove spaces",
+      "range": {
+        "startLine": 20,
+        "startChar": 25,
+        "endLine": 20,
+        "endChar": 27
+      },
+      "revId": "89833147f48cd330a80c65b4863b2131ab861d13",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_3b04c87d",
+        "filename": "src/js/components/notifications/NotificationList.js",
+        "patchSetId": 7
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-01-04T11:12:10Z",
+      "side": 1,
+      "message": "wouldn\u0027t it be simpler to use a table here? The notifications in the list are imo a tabular data so there is not semantic problem. Using table we could avoid a lot of styling issues here.",
+      "revId": "89833147f48cd330a80c65b4863b2131ab861d13",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_2003b310",
+        "filename": "src/js/components/validations/Validation.js",
+        "patchSetId": 7
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-01-04T11:12:10Z",
+      "side": 1,
+      "message": "this should be \u0027success\u0027 as that is what we get from API",
+      "range": {
+        "startLine": 64,
+        "startChar": 50,
+        "endLine": 64,
+        "endChar": 52
+      },
+      "revId": "89833147f48cd330a80c65b4863b2131ab861d13",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_40eee78c",
+        "filename": "src/js/components/validations/ValidationStage.js",
+        "patchSetId": 7
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-01-04T11:12:10Z",
+      "side": 1,
+      "message": "rename this to validation-stage-panel-heading",
+      "range": {
+        "startLine": 79,
+        "startChar": 40,
+        "endLine": 79,
+        "endChar": 64
+      },
+      "revId": "89833147f48cd330a80c65b4863b2131ab861d13",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_5b17bca3",
+        "filename": "src/js/components/validations/ValidationsList.js",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-01-04T11:12:10Z",
+      "side": 1,
+      "message": "make the if else markup consistent by putting the curly braces on the same line as if or else",
+      "revId": "89833147f48cd330a80c65b4863b2131ab861d13",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_3ba128aa",
+        "filename": "src/less/components/Validations.less",
+        "patchSetId": 7
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-01-04T11:12:10Z",
+      "side": 1,
+      "message": "I am still not quite convinced that the borders problem is enough to justify the fixed height and widths and using tiles instead of bootstrap grid columns. The constant height is ensured by the ellipsis - the description is always single line.\n\nThe width can be maintained by the bootstrap columns.\nthe elements inside tile can be vertically centered by using display: inline-block and vertical-align: middle.\nusing this we can get rid of unnecessary validation-icon-container.\n\nThe tiles cause problem on small screens, because it is fixed width, the action button is not visible",
+      "revId": "89833147f48cd330a80c65b4863b2131ab861d13",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
