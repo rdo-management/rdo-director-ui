@@ -16,6 +16,24 @@
       "revId": "78cb3f1608af431b1b0400c16fb4fc02bf54ec42",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_b8b51bcf",
+        "filename": "src/less/components/Notification.less",
+        "patchSetId": 7
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1006608
+      },
+      "writtenOn": "2016-01-04T17:44:42Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "fa81d914_9b8854e9",
+      "revId": "78cb3f1608af431b1b0400c16fb4fc02bf54ec42",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }

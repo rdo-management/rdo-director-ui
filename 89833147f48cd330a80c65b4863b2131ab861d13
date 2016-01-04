@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "fa81d914_18ad4789",
+        "filename": "src/js/components/notifications/NotificationList.js",
+        "patchSetId": 7
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1006608
+      },
+      "writtenOn": "2016-01-04T17:44:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa81d914_9bb5b4cf",
+      "revId": "89833147f48cd330a80c65b4863b2131ab861d13",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa81d914_9b3a1435",
         "filename": "src/js/components/notifications/NotificationList.js",
         "patchSetId": 7
@@ -30,6 +48,30 @@
       "writtenOn": "2016-01-04T11:12:10Z",
       "side": 1,
       "message": "remove spaces",
+      "range": {
+        "startLine": 20,
+        "startChar": 25,
+        "endLine": 20,
+        "endChar": 27
+      },
+      "revId": "89833147f48cd330a80c65b4863b2131ab861d13",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_38aa0b71",
+        "filename": "src/js/components/notifications/NotificationList.js",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1006608
+      },
+      "writtenOn": "2016-01-04T17:44:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa81d914_9b3a1435",
       "range": {
         "startLine": 20,
         "startChar": 25,
@@ -82,6 +124,30 @@
     },
     {
       "key": {
+        "uuid": "fa81d914_58b6dfdd",
+        "filename": "src/js/components/validations/Validation.js",
+        "patchSetId": 7
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1006608
+      },
+      "writtenOn": "2016-01-04T17:44:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa81d914_2003b310",
+      "range": {
+        "startLine": 64,
+        "startChar": 50,
+        "endLine": 64,
+        "endChar": 52
+      },
+      "revId": "89833147f48cd330a80c65b4863b2131ab861d13",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa81d914_40eee78c",
         "filename": "src/js/components/validations/ValidationStage.js",
         "patchSetId": 7
@@ -105,6 +171,30 @@
     },
     {
       "key": {
+        "uuid": "fa81d914_78bba3c4",
+        "filename": "src/js/components/validations/ValidationStage.js",
+        "patchSetId": 7
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1006608
+      },
+      "writtenOn": "2016-01-04T17:44:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa81d914_40eee78c",
+      "range": {
+        "startLine": 79,
+        "startChar": 40,
+        "endLine": 79,
+        "endChar": 64
+      },
+      "revId": "89833147f48cd330a80c65b4863b2131ab861d13",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa81d914_5b17bca3",
         "filename": "src/js/components/validations/ValidationsList.js",
         "patchSetId": 7
@@ -116,6 +206,24 @@
       "writtenOn": "2016-01-04T11:12:10Z",
       "side": 1,
       "message": "make the if else markup consistent by putting the curly braces on the same line as if or else",
+      "revId": "89833147f48cd330a80c65b4863b2131ab861d13",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_98b057df",
+        "filename": "src/js/components/validations/ValidationsList.js",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1006608
+      },
+      "writtenOn": "2016-01-04T17:44:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa81d914_5b17bca3",
       "revId": "89833147f48cd330a80c65b4863b2131ab861d13",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
