@@ -115,7 +115,7 @@ export default class NotificationsToaster extends React.Component {
           title={this.state.toasterNotification.title}
           message={this.state.toasterNotification.message}
           type={this.state.toasterNotification.type}
-          dismissable={true}
+          dismissable
           removeNotification={this.closeNotification.bind(this)}
           onMouseEnter={this.notificationHover.bind(this, true)}
           onMouseLeave={this.notificationHover.bind(this, false)}/>

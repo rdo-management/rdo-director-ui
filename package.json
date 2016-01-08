@@ -37,7 +37,7 @@
     "babel-loader": "~5.1.4",
     "gulp-less": "~3.0.3",
     "eslint": "~1.1.0",
-    "babel-eslint": "~4.0.5",
+    "babel-eslint": "~4.1.6",
     "eslint-plugin-react": "~3.2.2",
     "gulp-shell": "~0.4.2",
     "jasmine": "~2.3.2",
