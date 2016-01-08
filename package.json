@@ -19,7 +19,7 @@
     "formsy-react": "~0.17.0",
     "bootstrap": "~3.3.5",
     "invariant": "~2.1.1",
-    "history": "~1.13.x",
+    "history": "~1.17.0",
     "patternfly": "~2.5.0",
     "formatjs": "^0.1.1",
     "keymirror": "~0.1.1",
