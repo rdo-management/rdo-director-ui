@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa81d914_d82ba42e",
+        "filename": "src/js/components/parameters/Parameters.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2016-01-08T11:12:16Z",
+      "side": 1,
+      "message": "nit: parsed into an object, not a JSON string, right?",
+      "revId": "5ed438572088f96c729a44e06007183ade4993a2",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_18e45c0c",
+        "filename": "src/js/components/parameters/ParametersTabPane.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2016-01-08T11:12:16Z",
+      "side": 1,
+      "message": "Are we sure these type definitions are always first upper char, rest lower? Otherwise we could use something like:\n\n  parameter.Type.toLowerCase() \u003d\u003d\u003d \u0027json\u0027",
+      "revId": "5ed438572088f96c729a44e06007183ade4993a2",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_38f120ce",
+        "filename": "src/js/components/parameters/ParametersTabPane.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2016-01-08T11:12:16Z",
+      "side": 1,
+      "message": "see comment above",
+      "revId": "5ed438572088f96c729a44e06007183ade4993a2",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_58eed4ed",
+        "filename": "src/js/components/parameters/ParametersTabPane.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2016-01-08T11:12:16Z",
+      "side": 1,
+      "message": "see above",
+      "revId": "5ed438572088f96c729a44e06007183ade4993a2",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_98bf6cd0",
+        "filename": "src/js/components/parameters/ParametersTabPane.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2016-01-08T11:12:16Z",
+      "side": 1,
+      "message": "see above",
+      "revId": "5ed438572088f96c729a44e06007183ade4993a2",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
