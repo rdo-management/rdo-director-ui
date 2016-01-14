@@ -16,22 +16,6 @@ export default class ValidationStage extends React.Component {
     };
   }
 
-  /**
-  * Generates a string of capitalized statuses with count
-  */
-  getStatusInfo() {
-    // Generate an object of status counts {'status': statusCount...}
-    let stateCounts = _.countBy(_.pluck(this.props.validations, 'status'));
-    // Capitalize keys
-    let capitalizedStateCounts = _.mapKeys(stateCounts, (value, key) => {
-      return _.capitalize(key);
-    });
-    // Transform status counts object to array of pairs, convert to string
-    return _.map(_.pairs(capitalizedStateCounts), (pair) => {
-      return pair.reverse().join(' ');
-    }).join(', ');
-  }
-
   toggleOpen (e) {
     e.preventDefault();
     var nowOpen = !this.state.isOpen;
@@ -48,6 +32,36 @@ export default class ValidationStage extends React.Component {
         NotificationActions.notify(error);
       });
     });
+  }
+
+  getStatusBadge (title, badgeStyle, count) {
+    let badge = false;
+    if (count > 0) {
+      badge = (
+        <div className="status-container">
+          <span className="badge-title">{title}</span>
+          <span className={'badge ' + badgeStyle}>{count}</span>
+        </div>
+      );
+    }
+    return badge;
+  }
+
+  getStatusBadges () {
+    let statusInfo = _.countBy(_.pluck(this.props.validations, 'status'));
+    statusInfo.running = statusInfo.running || 0;
+    statusInfo.available = (statusInfo.available || 0) + (statusInfo.new || 0);
+    statusInfo.success = (statusInfo.success || 0) + (statusInfo.ok || 0);
+    statusInfo.error = (statusInfo.error || 0) + (statusInfo.failed || 0);
+
+    return (
+      <div>
+        {this.getStatusBadge('Running', 'running',   statusInfo.running)}
+        {this.getStatusBadge('New',     'available', statusInfo.available)}
+        {this.getStatusBadge('Success', 'success',   statusInfo.success)}
+        {this.getStatusBadge('Errors',  'error',     statusInfo.error)}
+      </div>
+    );
   }
 
   render() {
@@ -73,21 +87,19 @@ export default class ValidationStage extends React.Component {
 
     return (
         <div className="panel panel-default">
-          <div className="panel-heading validation-stage-panel-heading">
+          <div className="panel-heading validation-stage-panel-heading container-fluid">
             <div className="row">
-              <div className="col-lg-3 col-md-4 col-sm-5 col-xs-5">
+              <div className="col-md-2 col-xs-3">
                 <h4 className="panel-title">
                   <a onClick={this.toggleOpen.bind(this)} className={titleClass}>
                     {this.props.name}
                   </a>
                 </h4>
               </div>
-              <div className="col-lg-3 col-md-4 col-sm-5 col-xs-5">
-                <h4 className="panel-title">
-                  {this.getStatusInfo()}
-                </h4>
+              <div className="col-md-9 col-sm-8 col-xs-7">
+                {this.getStatusBadges()}
               </div>
-              <div className="col-lg-6 col-md-4 col-sm-2 col-xs-2">
+              <div className="col-sm-1 col-xs-2">
                 <button className="btn btn-primary pull-right" onClick={this.runStage.bind(this)}>
                   Run All
                 </button>

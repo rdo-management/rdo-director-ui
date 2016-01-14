@@ -39,7 +39,7 @@ export default class Validation extends React.Component {
   getActionButton() {
     if (_.includes(['new', 'success', 'failed'], this.props.status)) {
       return (
-        <button className="btn btn-primary btn-xs pull-right"
+        <button className="btn btn-default btn-xs pull-right"
                 onClick={this.runValidaton.bind(this)}>
           Run Now
         </button>
