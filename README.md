@@ -37,6 +37,8 @@ export UNDERCLOUD_IP=192.0.2.1
 sudo iptables -t nat -A OUTPUT -d $UNDERCLOUD_IP -j DNAT --to-destination 127.0.0.1
 ```
 
+Copy app.conf.sample to app.conf and uncomment the lines setting keystone_url, tripleo_api_url and validations_url.
+
 Setup ssh tunnel for OpenStack API Services
 
 ```ssh stack@$VIRT_IP -L 8774:$UNDERCLOUD_IP:8774 -L 9292:$UNDERCLOUD_IP:9292 -L 8777:$UNDERCLOUD_IP:8777 -L 9696:$UNDERCLOUD_IP:9696 -L 6385:$UNDERCLOUD_IP:6385 -L 8004:$UNDERCLOUD_IP:8004 -L 5000:$UNDERCLOUD_IP:5000 -L 5001:$UNDERCLOUD_IP:5001 -L 8080:$UNDERCLOUD_IP:8080 -L 8585:$UNDERCLOUD_IP:8585  -L 35357:$UNDERCLOUD_IP:35357```

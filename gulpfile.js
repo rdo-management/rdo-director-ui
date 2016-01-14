@@ -1,6 +1,8 @@
+var fs = require('fs');
 var gulp = require('gulp');
 
 var browserSync = require('browser-sync');
+var ini = require('ini');
 var less = require('gulp-less');
 // var rename = require('gulp-rename');
 var shell = require('gulp-shell');
@@ -16,7 +18,7 @@ gulp.task('webpack-app', ['webpack-tempstorage-worker'], function() {
     .pipe(browserSync.stream());
 });
 
-gulp.task('serve', ['webpack-app', 'less', 'fonts', 'images'], function(){
+gulp.task('serve', ['config-create', 'webpack-app', 'less', 'fonts', 'images'], function(){
   browserSync.init({
     open: false,
     server: './dist'
@@ -56,6 +58,21 @@ gulp.task('webpack-tempstorage-worker', function() {
   return gulp.src('./src/js/workers/TempStorageWorker.js')
     .pipe(webpack(tempStorageWorkerConfig))
     .pipe(gulp.dest('./dist/js'));
+});
+
+gulp.task('config-create', function() {
+  try {
+    var config = ini.parse(fs.readFileSync('./app.conf', 'utf-8'));
+    config.app = config.app || {};
+    var json = JSON.stringify(config.app);
+  }
+  catch (err) {
+    var json = '{}';
+  };
+  fs.writeFileSync(
+    './dist/js/rdo_director_ui_config.js',
+    'window.rdoDirectorUiConfig = ' + json + ';'
+  );
 });
 
 // Start test server, run tests once, then quit.
