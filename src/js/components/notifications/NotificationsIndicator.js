@@ -6,8 +6,6 @@ export default class NotificationsIndicator extends React.Component {
   getStatusInfo() {
     // Generate an object of status counts {'status': statusCount...}
     let stateCounts = _.countBy(_.pluck(this.props.notifications, 'type'));
-    stateCounts.error = (stateCounts.error || 0) + (stateCounts.undefined || 0);
-    stateCounts.warning = (stateCounts.warning || 0);
 
     let unreadCount = _.countBy(this.props.notifications, function(notification) {
         return notification.viewed ? 'read' : 'unread';

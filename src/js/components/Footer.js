@@ -86,7 +86,7 @@ export default class Footer extends React.Component {
     });
 
     let contentClasses = ClassNames({
-      'drawer-content' : true,
+      'drawer-content row' : true,
       'collapsed': !this.state.isOpen
     });
 
@@ -100,8 +100,8 @@ export default class Footer extends React.Component {
     });
 
     return (
-      <div className="wrapper-fixed-footer drawer-container">
-        <div>
+      <div className="wrapper-fixed-footer drawer-container container-fluid">
+        <div className="row">
           <a className={toggleClasses} onClick={this.toggleOpen.bind(this)}></a>
           <ul className={indicatorsClasses}>
             <li className={notificationTabClasses}>
