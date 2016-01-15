@@ -4,6 +4,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { IntlProvider } from 'react-intl';
 import { Router, Route, IndexRoute, Redirect } from 'react-router';
+import createBrowserHistory from 'history/lib/createBrowserHistory';
 
 import App from './components/App';
 import AuthenticatedContent from './components/AuthenticatedContent';
@@ -80,6 +81,6 @@ TempStorage.initialized.then(() => {
 
 ReactDOM.render(
   <IntlProvider locale="en">
-    <Router>{routes}</Router>
+    <Router history={createBrowserHistory()}>{routes}</Router>
   </IntlProvider>,
   document.getElementById('react-app-index'));
