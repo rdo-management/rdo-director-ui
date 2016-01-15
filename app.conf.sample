@@ -1,7 +1,7 @@
 [app]
 # keystone_url = http://192.0.2.1:5000/v2.0
-# validations_url = http://192.0.2.1:8585/v1
-# tripleo_api_url = http://192.0.2.1:5001/v1
+# tripleo_api_url = http://192.0.2.1:8585/v1
+# validations_url = http://192.0.2.1:5001/v1
 
 [service]
 # debug = False

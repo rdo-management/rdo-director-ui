@@ -2,6 +2,7 @@ var fs = require('fs');
 var gulp = require('gulp');
 
 var browserSync = require('browser-sync');
+var historyApiFallback = require('connect-history-api-fallback');
 var ini = require('ini');
 var less = require('gulp-less');
 // var rename = require('gulp-rename');
@@ -21,7 +22,10 @@ gulp.task('webpack-app', ['webpack-tempstorage-worker'], function() {
 gulp.task('serve', ['config-create', 'webpack-app', 'less', 'fonts', 'images'], function(){
   browserSync.init({
     open: false,
-    server: './dist'
+    server: {
+      baseDir: './dist',
+      middleware: [ historyApiFallback() ]
+    }
   });
 
   gulp.watch('src/less/**/*.less', ['less']);
