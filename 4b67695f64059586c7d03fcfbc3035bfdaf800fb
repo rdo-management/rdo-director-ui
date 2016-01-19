@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa81d914_3272f849",
+        "filename": "gulpfile.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-01-19T13:09:26Z",
+      "side": 1,
+      "message": "remove this line",
+      "revId": "4b67695f64059586c7d03fcfbc3035bfdaf800fb",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
