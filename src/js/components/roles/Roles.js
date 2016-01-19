@@ -31,8 +31,15 @@ export default class Roles extends React.Component {
     return (
       <div className="row">
         <div className="col-sm-12">
-          <h3>Hardware</h3>
-          <FlavorPanelList flavors={this.state.flavors}/>
+          <div className="page-header">
+            <h1>Roles</h1>
+          </div>
+          <div className="row">
+            <div className="col-sm-12">
+              <h3>Hardware</h3>
+              <FlavorPanelList flavors={this.state.flavors}/>
+            </div>
+          </div>
         </div>
       </div>
     );
