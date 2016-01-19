@@ -10,6 +10,7 @@ import App from './components/App';
 import AuthenticatedContent from './components/AuthenticatedContent';
 import DeletePlan from './components/plan/DeletePlan';
 import IntrospectedNodesTabPane from './components/nodes/IntrospectedNodesTabPane';
+import DeploymentPlan from './components/deployment-plan/DeploymentPlan';
 import EditPlan from './components/plan/EditPlan';
 import EnvironmentConfiguration from
   './components/environment_configuration/EnvironmentConfiguration.js';
@@ -43,6 +44,11 @@ let routes = (
     <Redirect from="/" to="/overview"/>
     <Route path="/" component={App}>
       <Route component={AuthenticatedContent} onEnter={checkAuth}>
+        <Route path="deployment-plan" component={DeploymentPlan}>
+          <Route path="environment" component={EnvironmentConfiguration}/>
+          <Route path="parameters" component={Parameters}/>
+        </Route>
+
         <Route path="overview" component={Plan}>
           <IndexRoute component={Roles}/>
           <Route path="parameters" component={Parameters}/>
