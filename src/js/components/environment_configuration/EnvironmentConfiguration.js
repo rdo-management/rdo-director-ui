@@ -38,7 +38,7 @@ export default class EnvironmentConfiguration extends React.Component {
         environmentConfigurationLoaded: true
       });
     }).catch((error) => {
-      this.props.history.pushState(null, '/overview');
+      this.props.history.pushState(null, this.props.route.parentPath);
       let errorHandler = new TripleOApiErrorHandler(error);
       errorHandler.errors.forEach((error) => {
         NotificationActions.notify(error);
@@ -71,7 +71,7 @@ export default class EnvironmentConfiguration extends React.Component {
     this.disableButton();
     TripleOApiService.updatePlanEnvironments(this.props.currentPlanName, data).then((response) => {
       this.setState({ environmentConfiguration: response.environments });
-      this.props.history.pushState(null, '/overview');
+      this.props.history.pushState(null, this.props.route.parentPath);
       NotificationActions.notify({
         title: 'Environment Configuration updated',
         message: 'The Environment Configuration has been successfully updated',
@@ -136,7 +136,7 @@ export default class EnvironmentConfiguration extends React.Component {
                            onValid={this.enableButton.bind(this)}
                            onInvalid={this.disableButton.bind(this)}>
                 <div className="modal-header">
-                  <Link to="/overview"
+                  <Link to={this.props.route.parentPath}
                         type="button"
                         className="close">
                     <span aria-hidden="true" className="pficon pficon-close"/>
@@ -168,7 +168,9 @@ export default class EnvironmentConfiguration extends React.Component {
                           className="btn btn-primary">
                     Save Configuration
                   </button>
-                  <Link to="/overview" type="button" className="btn btn-default" >Cancel</Link>
+                  <Link to={this.props.route.parentPath} type="button" className="btn btn-default" >
+                    Cancel
+                  </Link>
                 </div>
               </Formsy.Form>
             </div>
@@ -182,7 +184,8 @@ export default class EnvironmentConfiguration extends React.Component {
 EnvironmentConfiguration.propTypes = {
   currentPlanName: React.PropTypes.string,
   history: React.PropTypes.object,
-  location: React.PropTypes.object
+  location: React.PropTypes.object,
+  route: React.PropTypes.object
 };
 
 /**

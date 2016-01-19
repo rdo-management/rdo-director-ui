@@ -21,6 +21,7 @@ import LoginStore from './stores/LoginStore';
 import MaintenanceNodesTabPane from './components/nodes/MaintenanceNodesTabPane';
 import NewPlan from './components/plan/NewPlan';
 import Nodes from './components/nodes/Nodes';
+import Overview from './components/overview/Overview.js';
 import Parameters from './components/parameters/Parameters.js';
 import Plan from './components/plan/Plan.js';
 import Plans from './components/plan/Plans.js';
@@ -41,10 +42,19 @@ let routes = (
     <Redirect from="/" to="/overview"/>
     <Route path="/" component={App}>
       <Route component={AuthenticatedContent} onEnter={checkAuth}>
+        <Route path="deployment-plan" component={Overview}>
+          <Route path="environment"
+                 parentPath="/deployment-plan"
+                 component={EnvironmentConfiguration}/>
+          <Route path="parameters"
+                 parentPath="/deployment-plan"
+                 component={Parameters}/>
+        </Route>
+
         <Route path="overview" component={Plan}>
           <IndexRoute component={Roles}/>
-          <Route path="parameters" component={Parameters}/>
-          <Route path="environment" component={EnvironmentConfiguration}/>
+          <Route path="parameters" parentPath="/overview" component={Parameters}/>
+          <Route path="environment" parentPath="/overview" component={EnvironmentConfiguration}/>
         </Route>
 
         <Route path="images" component={Images}/>
