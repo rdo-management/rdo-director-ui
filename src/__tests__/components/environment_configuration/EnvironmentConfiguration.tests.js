@@ -10,7 +10,7 @@ describe('EnvironmentConfiguration component', () => {
   beforeEach(() => {
     let shallowRenderer = TestUtils.createRenderer();
     shallowRenderer.render(
-      <EnvironmentConfiguration plan={{}}/>
+      <EnvironmentConfiguration plan={{}} route={{parentPath: '/overview'}}/>
     );
     EnvConfVdom = shallowRenderer.getRenderOutput();
     EnvConfInstance = shallowRenderer._instance._instance;
