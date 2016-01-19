@@ -3,13 +3,14 @@ import 'babel/polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { IntlProvider } from 'react-intl';
-import { Router, Route, IndexRoute, Redirect } from 'react-router';
+import { Router, Route, Redirect } from 'react-router';
 import createBrowserHistory from 'history/lib/createBrowserHistory';
 
 import App from './components/App';
 import AuthenticatedContent from './components/AuthenticatedContent';
 import DeletePlan from './components/plan/DeletePlan';
 import IntrospectedNodesTabPane from './components/nodes/IntrospectedNodesTabPane';
+import DeploymentPlan from './components/deployment-plan/DeploymentPlan';
 import EditPlan from './components/plan/EditPlan';
 import EnvironmentConfiguration from
   './components/environment_configuration/EnvironmentConfiguration.js';
@@ -23,7 +24,6 @@ import MaintenanceNodesTabPane from './components/nodes/MaintenanceNodesTabPane'
 import NewPlan from './components/plan/NewPlan';
 import Nodes from './components/nodes/Nodes';
 import Parameters from './components/parameters/Parameters.js';
-import Plan from './components/plan/Plan.js';
 import Plans from './components/plan/Plans.js';
 import ProvisionedNodesTabPane from './components/nodes/ProvisionedNodesTabPane';
 import RegisterNodesDialog from './components/nodes/RegisterNodesDialog';
@@ -40,16 +40,17 @@ function checkAuth(nextState, replaceState) {
 
 let routes = (
   <Route>
-    <Redirect from="/" to="/overview"/>
+    <Redirect from="/" to="/deployment-plan"/>
     <Route path="/" component={App}>
       <Route component={AuthenticatedContent} onEnter={checkAuth}>
-        <Route path="overview" component={Plan}>
-          <IndexRoute component={Roles}/>
-          <Route path="parameters" component={Parameters}/>
+
+        <Route path="deployment-plan" component={DeploymentPlan}>
           <Route path="environment" component={EnvironmentConfiguration}/>
+          <Route path="parameters" component={Parameters}/>
         </Route>
 
-        <Route path="images" component={Images}/>
+        <Route path="roles" component={Roles}/>
+
         <Redirect from="nodes" to="nodes/registered"/>
         <Route path="nodes" component={Nodes}>
           <Route path="registered" component={RegisteredNodesTabPane}>
@@ -59,7 +60,10 @@ let routes = (
           <Route path="provisioned" component={ProvisionedNodesTabPane}/>
           <Route path="maintenance" component={MaintenanceNodesTabPane}/>
         </Route>
+
         <Route path="flavors" component={Flavors}/>
+
+        <Route path="images" component={Images}/>
 
         <Redirect from="plans" to="plans/list"/>
         <Route path="plans" component={Plans}>
