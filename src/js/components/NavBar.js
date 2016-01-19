@@ -38,6 +38,7 @@ export default class NavBar extends React.Component {
             <li><a href="#" onClick={this.logout}>Logout</a></li>
           </ul>
           <ul className="nav navbar-nav navbar-primary">
+            <NavTab to="/deployment-plan">Deployment Plan</NavTab>
             <NavTab to="/overview">Overview</NavTab>
             <NavTab to="/images">Images</NavTab>
             <NavTab to="/nodes">Nodes</NavTab>
