@@ -47,12 +47,18 @@ export default class Plan extends React.Component {
   }
 
   render() {
+    let children = false;
+    if (this.props.children) {
+      children = React.cloneElement(this.props.children,
+        {currentPlanName: this.state.currentPlanName, parentPath: '/'+ this.props.route.path});
+    }
+
     return (
       <div className="row">
         <Loader loaded={PlansStore.getState().plansLoaded}
                 content="Loading Deployments..."
                 global>
-          {this.state.currentPlanName ? (
+          {this.state.currentPlanName || true? (
             <div className="col-sm-12">
               <div className="page-header">
                 <div className="actions pull-right">
@@ -67,9 +73,14 @@ export default class Plan extends React.Component {
                 </div>
                 <h1>OpenStack Deployment - {this.state.currentPlanName}</h1>
                 <p>
-                  Enabled Environment Names List (TBD) <Link to="/overview/environment">Edit</Link>
+                  Enabled Environment Names List (TBD)
+                  <Link to={'/' + this.props.route.path + '/environment'}>
+                    Edit
+                  </Link>
                   <br/>
-                  <Link to="/overview/parameters">Configure Deployment Parameters</Link>
+                  <Link to={'/' + this.props.route.path + '/parameters'}>
+                    Configure Deployment Parameters
+                  </Link>
                 </p>
               </div>
               {React.cloneElement(this.props.children,
@@ -81,11 +92,13 @@ export default class Plan extends React.Component {
             </div>
           )}
         </Loader>
+        {children}
       </div>
     );
   }
 }
 
 Plan.propTypes = {
-  children: React.PropTypes.node
+  children: React.PropTypes.node,
+  route: React.PropTypes.object
 };
