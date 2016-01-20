@@ -16,6 +16,24 @@
       "revId": "f3cafb1ac50d8059de049a581818abf728f39e45",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_41ff94aa",
+        "filename": "src/less/components/Validations.less",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1006608
+      },
+      "writtenOn": "2016-01-20T13:01:38Z",
+      "side": 1,
+      "message": "What I\u0027m trying to do here is reduce the gutters between the columns. 40px is too much and makes the status badges get too far from the stage name. Removing the 40px allows me to use col-md-2 for the stage name column without it typically needing to wrap.",
+      "parentUuid": "fa81d914_c671dae1",
+      "revId": "f3cafb1ac50d8059de049a581818abf728f39e45",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
