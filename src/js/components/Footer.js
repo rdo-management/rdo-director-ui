@@ -21,7 +21,8 @@ export default class Footer extends React.Component {
       isOpen: false,
       listShown: 'notifications',
       notifications: NotificationStore.getState(),
-      validationStages: ValidationsStore.getState().stages
+      validationStages: ValidationsStore.getState().stages,
+      validationsPolling: undefined
     };
 
     this.validationsChangeListener = this._onValidationsChange.bind(this);
@@ -32,9 +33,14 @@ export default class Footer extends React.Component {
     NotificationStore.addChangeListener(this.notificationsChangeListener);
     ValidationsStore.addChangeListener(this.validationsChangeListener);
     this.getValidationStages();
+    this.setState({
+      validationsPolling: setInterval(this.getValidationStages, this.props.validationsPollInterval)
+    });
   }
 
   componentWillUnmount() {
+    clearInterval(this.state.validationsPolling);
+    this.setState({ validationsPolling: undefined });
     ValidationsStore.removeChangeListener(this.validationsChangeListener);
     NotificationStore.removeChangeListener(this.notificationsChangeListener);
   }
@@ -131,3 +137,9 @@ export default class Footer extends React.Component {
     );
   }
 }
+Footer.propTypes = {
+  validationsPollInterval: React.PropTypes.number.isRequired
+};
+Footer.defaultProps = {
+  validationsPollInterval: 8000
+};
