@@ -62,6 +62,10 @@ gulp.task('webpack-tempstorage-worker', function() {
 
 gulp.task('config-create', function() {
   try {
+    fs.mkdirSync(__dirname + '/dist/js');
+  }
+  catch(err) {};
+  try {
     var config = ini.parse(fs.readFileSync('./app.conf', 'utf-8'));
     config.app = config.app || {};
     var json = JSON.stringify(config.app);
