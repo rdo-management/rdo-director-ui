@@ -52,6 +52,24 @@
       "revId": "f3cafb1ac50d8059de049a581818abf728f39e45",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_21dc6012",
+        "filename": "src/less/components/Validations.less",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1006608
+      },
+      "writtenOn": "2016-01-20T14:01:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa81d914_21ae2086",
+      "revId": "f3cafb1ac50d8059de049a581818abf728f39e45",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
