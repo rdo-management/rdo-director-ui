@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa81d914_c671dae1",
+        "filename": "src/less/components/Validations.less",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-01-20T11:25:24Z",
+      "side": 1,
+      "message": "this is not needed\n\nthe \u0027wrapper-fixed-footer drawer-container\u0027 or \u0027drawer-content\u0027 needs to have also container-fluid class to utilize grid inside correctly.\n\n.drawer-content includes validations col-sm-12 div inside without having .row parent",
+      "revId": "f3cafb1ac50d8059de049a581818abf728f39e45",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
