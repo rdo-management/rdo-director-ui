@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa81d914_ecd15ffc",
+        "filename": "src/less/components/Validations.less",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-01-20T17:46:04Z",
+      "side": 1,
+      "message": "hmm, it makes no sense to put container-fluid to this div and then immediatelly override it.\n\ncontainer-fluid should be put to div.wrapper-fixed-footer and since we want to use grid, we should organize everything in footer in grid. It is not big issue and makes everything clean - set of rows + columns\n\nIn places where we don\u0027t want to have columns, we use just row and the full width is available\n\nput rows to div which wraps drawer-toggle and drawer-nav and to drawer-content. drawer content then does not need widh 100% and overflow-y\n\nhttps://www.dropbox.com/s/6i664dnfix3pxyo/Screenshot%20from%202016-01-20%2018-42-55.png?dl\u003d0",
+      "revId": "bcd6d25fc7e5a31a2da6e45d118f052cdb0a69cc",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
