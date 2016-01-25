@@ -34,7 +34,7 @@ export default class ValidationsList extends React.Component {
 
   render () {
     let classes = ClassNames({
-      'panel-group validation-stages-container': true,
+      'panel-group validation-stages-container col-sm-12': true,
       'collapsed': !this.props.active
     });
 

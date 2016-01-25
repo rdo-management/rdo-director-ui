@@ -16,6 +16,7 @@
 }
 
 .validation-stages-container {
+  margin-bottom: 0;
   overflow-x: hidden;
   overflow-y: auto;
   padding: 0;
@@ -26,13 +27,54 @@
 }
 
 .validation-stage-panel-heading {
-  padding: 5px 10px;
+  > .row {
+    margin-left: 0;
+    margin-right: 0;
+    > [class*='col-'] {
+      padding-right: 0;
+      padding-left: 0;
+    }
+  }
 
   .panel-title {
     font-size: 12px;
     line-height: @line-height-base;
     padding-top: @padding-base-vertical;
     padding-bottom: @padding-base-vertical;
+  }
+
+  .status-container {
+    float: left;
+    margin-left: 20px;
+    margin-top: 2px;
+
+    .badge-title {
+      min-width: 50px;
+      text-align: right;
+      display: inline-block;
+    }
+
+    .badge {
+      color: #fff;
+      &.unread {
+        background-color: @gray-darker;
+      }
+      &.running {
+        background-color: @gray-darker;
+      }
+      &.error {
+        background-color: @brand-danger;
+      }
+      &.warning {
+        background-color: @brand-warning;
+      }
+      &.available {
+        background-color: @brand-info;
+      }
+      &.success {
+        background-color: @brand-success;
+      }
+    }
   }
 }
 
@@ -59,7 +101,7 @@
         color: @brand-primary;
       }
       &.pficon-ok:before {
-        color: #333;
+        color: @brand-success;
       }
     }
 

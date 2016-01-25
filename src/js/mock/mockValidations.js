@@ -52,6 +52,149 @@ export default {
           status: 'new'
         }
       ]
+    },
+    {
+      description: 'Validate nodes that have been registered.',
+      name: 'Node Validations',
+      ref: '/v1/plans/undefined/validation_types/1/',
+      stage: 'discovery',
+      status: 'running',
+      uuid: '1',
+      validations: [
+        {
+          name: 'Node Connectivity',
+          description: 'Check basic connectivity',
+          ref: '/v1/plans/undefined/validations/1/',
+          uuid: '1',
+          status: 'success'
+        },
+        {
+          name: 'Node Availability',
+          description: 'Check the nodes current availability',
+          ref: '/v1/plans/undefined/validations/1/',
+          uuid: '1',
+          status: 'success'
+        },
+        {
+          name: 'Node OS Version',
+          description: 'Check operating system type and version',
+          ref: '/v1/plans/undefined/validations/1/',
+          uuid: '1',
+          status: 'success'
+        },
+        {
+          name: 'Node Storage Requirements',
+          description: 'Check available disk memory',
+          ref: '/v1/plans/undefined/validations/1/',
+          uuid: '1',
+          status: 'failed'
+        },
+        {
+          name: 'Node RAM Requirements',
+          description: 'Check the nodes RAM',
+          ref: '/v1/plans/undefined/validations/1/',
+          uuid: '1',
+          status: 'new'
+        },
+        {
+          name: 'Check CPUs',
+          description: 'Check the CPU count',
+          ref: '/v1/plans/undefined/validations/1/',
+          uuid: '1',
+          status: 'running'
+        }
+      ]
+    },
+    {
+      description: 'Validations that run after the hardware was discovered.',
+      name: 'Some Other Discovery',
+      ref: '/v1/plans/undefined/validation_types/1/',
+      stage: 'discovery',
+      status: 'running',
+      uuid: '1',
+      validations: [
+        {
+          name: 'Basic connectivity',
+          description: 'Check basic connectivity to the nodes',
+          ref: '/v1/plans/undefined/validations/1/',
+          uuid: '1',
+          status: 'success'
+        },
+        {
+          name: 'Install a package',
+          description: 'Install necessary packages on the nodes',
+          ref: '/v1/plans/undefined/validations/2/',
+          uuid: '2',
+          status: 'success'
+        },
+        {
+          name: 'Verify installation',
+          ref: '/v1/plans/undefined/validations/3/',
+          uuid: '3',
+          status: 'success'
+        },
+        {
+          name: 'Do something really tricky',
+          description: 'This is a very tricky process that could take a long time to complete',
+          ref: '/v1/plans/undefined/validations/4/',
+          uuid: '4',
+          status: 'failed'
+        }
+      ]
+    },
+    {
+      description: 'Validations that run after the hardware was discovered.',
+      name: 'Hardware Validations',
+      ref: '/v1/plans/undefined/validation_types/1/',
+      stage: 'discovery',
+      status: 'running',
+      uuid: '1',
+      validations: [
+        {
+          name: 'Basic connectivity',
+          description: 'Check basic connectivity to the nodes',
+          ref: '/v1/plans/undefined/validations/1/',
+          uuid: '1',
+          status: 'running'
+        },
+        {
+          name: 'Install a package',
+          description: 'Install necessary packages on the nodes',
+          ref: '/v1/plans/undefined/validations/2/',
+          uuid: '2',
+          status: 'running'
+        },
+        {
+          name: 'Verify installation',
+          ref: '/v1/plans/undefined/validations/3/',
+          uuid: '3',
+          status: 'new'
+        }
+      ]
+    },
+    {
+      description: 'Validations that run after the hardware was discovered.',
+      name: 'Storage Validations',
+      ref: '/v1/plans/undefined/validation_types/1/',
+      stage: 'discovery',
+      status: 'running',
+      uuid: '1',
+      validations: [
+        {
+          name: 'Basic connectivity',
+          description: 'Check basic connectivity to the nodes',
+          ref: '/v1/plans/undefined/validations/1/',
+          uuid: '1',
+          status: 'success'
+        },
+        {
+          name: 'Install a package',
+          description: 'Install necessary packages on the nodes',
+          ref: '/v1/plans/undefined/validations/2/',
+          uuid: '2',
+          status: 'success'
+        }
+      ]
     }
   ]
 };
