@@ -7,16 +7,56 @@ import ImmutablePropTypes from 'react-immutable-proptypes';
 
 import IronicApiErrorHandler from '../../services/IronicApiErrorHandler';
 import IronicApiService from '../../services/IronicApiService';
+import MistralApiService from '../../services/MistralApiService';
+import MistralApiErrorHandler from '../../services/MistralApiErrorHandler';
 import NavTab from '../ui/NavTab';
 import NodesActions from '../../actions/NodesActions';
 import NotificationActions from '../../actions/NotificationActions';
 
 class Nodes extends React.Component {
   componentDidMount() {
-    this._fetchNodes();
+    this.fetchNodes();
   }
 
-  _fetchNodes() {
+  introspectNodes() {
+    this.props.dispatch(NodesActions.startOperation());
+    MistralApiService.runWorkflow('tripleo.baremetal.bulk_introspect').then((response) => {
+      if(response.state === 'ERROR') {
+        NotificationActions.notify({ title: 'Error', message: response.state_info });
+        this.props.dispatch(NodesActions.finishOperation);
+      } else {
+        this.pollForWorkflow(response.id);
+      }
+    }).catch((error) => {
+      let errorHandler = new MistralApiErrorHandler(error);
+      errorHandler.errors.forEach((error) => {
+        NotificationActions.notify(error);
+      });
+      this.props.dispatch(NodesActions.finishOperation());
+    });
+  }
+
+  pollForWorkflow(id) {
+    MistralApiService.getWorkflowExecution(id).then((response) => {
+      if(response.state === 'RUNNING') {
+        this.fetchNodes();
+        setTimeout(() => this.pollForWorkflow(id), 7000);
+      } else if(response.state === 'ERROR') {
+        NotificationActions.notify({ title: 'Error', message: response.state_info });
+        this.props.dispatch(NodesActions.finishOperation());
+      } else {
+        this.props.dispatch(NodesActions.finishOperation());
+      }
+    }).catch((error) => {
+      let errorHandler = new MistralApiErrorHandler(error);
+      errorHandler.errors.forEach((error) => {
+        NotificationActions.notify(error);
+      });
+      this.props.dispatch(NodesActions.finishOperation());
+    });
+  }
+
+  fetchNodes() {
     IronicApiService.getNodes().then((response) => {
       return when.all(response.nodes.map((node) => {
         return IronicApiService.getNode(node.uuid);
@@ -24,7 +64,7 @@ class Nodes extends React.Component {
     }).then((nodes) => {
       this.props.dispatch(NodesActions.listNodes(nodes));
     }).catch((error) => {
-      console.error('Error in Nodes._fetchNodes', error); //eslint-disable-line no-console
+      console.error('Error in Nodes.fetchNodes', error); //eslint-disable-line no-console
       let errorHandler = new IronicApiErrorHandler(error);
       errorHandler.errors.forEach((error) => {
         NotificationActions.notify(error);
@@ -34,7 +74,7 @@ class Nodes extends React.Component {
 
   refreshResults(e) {
     e.preventDefault();
-    this._fetchNodes();
+    this.fetchNodes();
   }
 
   render() {
@@ -69,7 +109,9 @@ class Nodes extends React.Component {
             </NavTab>
           </ul>
           <div className="tab-pane">
-            {React.cloneElement(this.props.children, {nodes: this.props.nodes})}
+            {React.cloneElement(this.props.children,
+                                { nodes: this.props.nodes,
+                                  introspectNodes: this.introspectNodes.bind(this) })}
           </div>
 
           <div className="panel panel-info">

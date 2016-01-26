@@ -14,4 +14,18 @@ describe('NodesActions', () => {
     };
     expect(NodesActions.listNodes(mockGetNodesResponse)).toEqual(expectedAction);
   });
+
+  it('creates action to notify that nodes operation started', () => {
+    const expectedAction = {
+      type: NodesConstants.START_NODES_OPERATION
+    };
+    expect(NodesActions.startOperation(mockGetNodesResponse)).toEqual(expectedAction);
+  });
+
+  it('creates action to notify that nodes operation finished', () => {
+    const expectedAction = {
+      type: NodesConstants.FINISH_NODES_OPERATION
+    };
+    expect(NodesActions.finishOperation(mockGetNodesResponse)).toEqual(expectedAction);
+  });
 });

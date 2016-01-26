@@ -8,7 +8,6 @@ import PlansStore from '../../stores/PlansStore';
 import TripleOApiService from '../../services/TripleOApiService';
 import TripleOApiErrorHandler from '../../services/TripleOApiErrorHandler';
 
-
 export default class Plan extends React.Component {
   constructor() {
     super();
