@@ -17,6 +17,10 @@ class Nodes extends React.Component {
     this.props.dispatch(NodesActions.fetchNodes());
   }
 
+  introspectNodes() {
+    this.props.dispatch(NodesActions.introspectNodes());
+  }
+
   render() {
     return (
       <div className="row">
@@ -49,7 +53,9 @@ class Nodes extends React.Component {
             </NavTab>
           </ul>
           <div className="tab-pane">
-            {React.cloneElement(this.props.children, {nodes: this.props.nodes})}
+            {React.cloneElement(this.props.children,
+                                { nodes: this.props.nodes,
+                                  introspectNodes: this.introspectNodes.bind(this) })}
           </div>
 
           <div className="panel panel-info">
