@@ -2,6 +2,7 @@ import React from 'react';
 import invariant from 'invariant';
 
 import DataTableRow from './DataTableRow';
+import Loader from '../Loader';
 
 export default class DataTable extends React.Component {
   _getColumns() {
@@ -43,11 +44,7 @@ export default class DataTable extends React.Component {
 
   renderTableActions() {
     if(this.props.tableActions) {
-      return (
-        <div className="dataTables_actions">
-          {this.props.tableActions()}
-        </div>
-      );
+      return this.props.tableActions();
     }
   }
 
@@ -69,7 +66,12 @@ export default class DataTable extends React.Component {
       <div className="dataTables_wrapper">
         <div className="dataTables_header">
           {this.renderFilterInput()}
-          {this.renderTableActions()}
+          <div className="dataTables_actions">
+            <Loader loaded={!this.props.dataOperationInProgress}
+                    size="sm"
+                    inline/>
+            {this.renderTableActions()}
+          </div>
           <div className="dataTables_info">
             Showing <b>{rows.length}</b> of <b>{this.props.data.length}</b> items
           </div>
@@ -96,6 +98,7 @@ DataTable.propTypes = {
     React.PropTypes.node
   ]),
   data: React.PropTypes.array.isRequired,
+  dataOperationInProgress: React.PropTypes.bool.isRequired,
   filterString: React.PropTypes.string,
   noRowsRenderer: React.PropTypes.func.isRequired,
   onFilter: React.PropTypes.func,
@@ -103,5 +106,6 @@ DataTable.propTypes = {
   tableActions: React.PropTypes.func
 };
 DataTable.defaultProps = {
-  className: 'table'
+  className: 'table',
+  dataOperationInProgress: false
 };

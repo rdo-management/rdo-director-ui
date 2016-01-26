@@ -6,7 +6,8 @@ import NodesTable from './NodesTable';
 export default class MaintenanceNodesTabPane extends React.Component {
   render() {
     return (
-      <NodesTable data={this.props.nodes.get('maintenance')}/>
+      <NodesTable data={this.props.nodes.get('maintenance')}
+                  dataOperationInProgress={this.props.nodes.get('dataOperationInProgress')}/>
     );
   }
 }
