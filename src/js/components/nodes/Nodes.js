@@ -7,16 +7,32 @@ import ImmutablePropTypes from 'react-immutable-proptypes';
 
 import IronicApiErrorHandler from '../../services/IronicApiErrorHandler';
 import IronicApiService from '../../services/IronicApiService';
+import MistralApiService from '../../services/MistralApiService';
 import NavTab from '../ui/NavTab';
 import NodesActions from '../../actions/NodesActions';
 import NotificationActions from '../../actions/NotificationActions';
 
 class Nodes extends React.Component {
   componentDidMount() {
-    this._fetchNodes();
+    this.fetchNodes();
   }
 
-  _fetchNodes() {
+  introspectNodes() {
+    this.props.dispatch(NodesActions.startOperation());
+    // MistralApiService.runAction('keystone.services_list').then((response) => {
+    MistralApiService.runWorkflow('tripleo.baremetal.bulk_introspect').then((response) => {
+    // MistralApiService.getWorkflows().then((response) => {
+      let nodesPolling = setInterval(this.fetchNodes.bind(this), 3000);
+      console.log(response);
+      // this.props.dispatch(NodesActions.finishOperation());
+      // clearInterval(nodesPolling);
+    }).catch((error) => {
+      this.props.dispatch(NodesActions.finishOperation());
+      console.log(error);
+    });
+  }
+
+  fetchNodes() {
     IronicApiService.getNodes().then((response) => {
       return when.all(response.nodes.map((node) => {
         return IronicApiService.getNode(node.uuid);
@@ -24,7 +40,7 @@ class Nodes extends React.Component {
     }).then((nodes) => {
       this.props.dispatch(NodesActions.listNodes(nodes));
     }).catch((error) => {
-      console.error('Error in Nodes._fetchNodes', error); //eslint-disable-line no-console
+      console.error('Error in Nodes.fetchNodes', error); //eslint-disable-line no-console
       let errorHandler = new IronicApiErrorHandler(error);
       errorHandler.errors.forEach((error) => {
         NotificationActions.notify(error);
@@ -34,7 +50,7 @@ class Nodes extends React.Component {
 
   refreshResults(e) {
     e.preventDefault();
-    this._fetchNodes();
+    this.fetchNodes();
   }
 
   render() {
@@ -69,7 +85,9 @@ class Nodes extends React.Component {
             </NavTab>
           </ul>
           <div className="tab-pane">
-            {React.cloneElement(this.props.children, {nodes: this.props.nodes})}
+            {React.cloneElement(this.props.children,
+                                { nodes: this.props.nodes,
+                                  introspectNodes: this.introspectNodes.bind(this) })}
           </div>
 
           <div className="panel panel-info">
