@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "fa81d914_b46dd49a",
+        "filename": "src/js/components/overview/DeploymentStep.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1006608
+      },
+      "writtenOn": "2016-01-27T19:50:20Z",
+      "side": 1,
+      "message": "OK, I did that. However I did have to add some css for bolding and sizing the numbers and then setting back again.",
+      "parentUuid": "fa81d914_f103e1b5",
+      "revId": "3bac464b2b29e35a47c4069d27e37a295529b828",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa81d914_7127f164",
         "filename": "src/js/components/overview/DeploymentStep.js",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "fa81d914_541498f4",
+        "filename": "src/js/components/overview/DeploymentStep.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1006608
+      },
+      "writtenOn": "2016-01-27T19:50:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa81d914_7127f164",
+      "revId": "3bac464b2b29e35a47c4069d27e37a295529b828",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa81d914_2c96fef0",
         "filename": "src/js/components/overview/Overview.js",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2016-01-27T14:03:19Z",
       "side": 1,
       "message": "here you can pass the current path as parentPath. the second argument to the cloneElement is an object holding the props.",
+      "revId": "3bac464b2b29e35a47c4069d27e37a295529b828",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_d1edfaf0",
+        "filename": "src/js/components/overview/Overview.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1006608
+      },
+      "writtenOn": "2016-01-27T19:50:20Z",
+      "side": 1,
+      "message": "Cool, much better. Thanks!",
+      "parentUuid": "fa81d914_2c96fef0",
       "revId": "3bac464b2b29e35a47c4069d27e37a295529b828",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
@@ -99,6 +153,24 @@
       "writtenOn": "2016-01-27T10:30:07Z",
       "side": 1,
       "message": "It would be good to call the component the same as the route, so it is not confusing. component\u003d{DeploymentPlan}.",
+      "revId": "3bac464b2b29e35a47c4069d27e37a295529b828",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_94f530cd",
+        "filename": "src/js/index.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1006608
+      },
+      "writtenOn": "2016-01-27T19:50:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa81d914_b1c40993",
       "revId": "3bac464b2b29e35a47c4069d27e37a295529b828",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
@@ -158,6 +230,24 @@
     },
     {
       "key": {
+        "uuid": "fa81d914_b404f4c0",
+        "filename": "src/js/index.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1006608
+      },
+      "writtenOn": "2016-01-27T19:50:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa81d914_0cf85a48",
+      "revId": "3bac464b2b29e35a47c4069d27e37a295529b828",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa81d914_310659cf",
         "filename": "src/less/components/DeploymentPlan.less",
         "patchSetId": 1
@@ -169,6 +259,24 @@
       "writtenOn": "2016-01-27T10:30:07Z",
       "side": 1,
       "message": "I\u0027ll leave it up to you, but maybe making it just inline anchor seems simpler and almost with the same result.\n\nBootstrap also has btn btn-link",
+      "revId": "3bac464b2b29e35a47c4069d27e37a295529b828",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_d4ffa8a8",
+        "filename": "src/less/components/DeploymentPlan.less",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1006608
+      },
+      "writtenOn": "2016-01-27T19:50:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa81d914_310659cf",
       "revId": "3bac464b2b29e35a47c4069d27e37a295529b828",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
