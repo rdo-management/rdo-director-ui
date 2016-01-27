@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa81d914_f103e1b5",
+        "filename": "src/js/components/overview/DeploymentStep.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-01-27T10:30:07Z",
+      "side": 1,
+      "message": "How about using ol\u003eli for listing the steps? That seems more semantically correct.",
+      "revId": "3bac464b2b29e35a47c4069d27e37a295529b828",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_7127f164",
+        "filename": "src/js/components/overview/DeploymentStep.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-01-27T10:30:07Z",
+      "side": 1,
+      "message": "no need if we use ordered list",
+      "revId": "3bac464b2b29e35a47c4069d27e37a295529b828",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_31a2d9ae",
+        "filename": "src/js/components/overview/Overview.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-01-27T10:30:07Z",
+      "side": 1,
+      "message": "Wouldn\u0027t it be better to define the subTitle and links in children?",
+      "revId": "3bac464b2b29e35a47c4069d27e37a295529b828",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_b1c40993",
+        "filename": "src/js/index.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-01-27T10:30:07Z",
+      "side": 1,
+      "message": "It would be good to call the component the same as the route, so it is not confusing. component\u003d{DeploymentPlan}.",
+      "revId": "3bac464b2b29e35a47c4069d27e37a295529b828",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_f1904197",
+        "filename": "src/js/index.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-01-27T10:30:07Z",
+      "side": 1,
+      "message": "what is parentPath? I can\u0027t find it anywhere in react-router docs. The parent path is clear from the nested structure of the routes.",
+      "revId": "3bac464b2b29e35a47c4069d27e37a295529b828",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_310659cf",
+        "filename": "src/less/components/DeploymentPlan.less",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-01-27T10:30:07Z",
+      "side": 1,
+      "message": "I\u0027ll leave it up to you, but maybe making it just inline anchor seems simpler and almost with the same result.\n\nBootstrap also has btn btn-link",
+      "revId": "3bac464b2b29e35a47c4069d27e37a295529b828",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
