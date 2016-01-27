@@ -73,8 +73,8 @@ export default class Nodes extends React.Component {
             <NavTab to="nodes/registered">
               Registered<span className="badge">{this.state.nodes.registered.length}</span>
             </NavTab>
-            <NavTab to="nodes/discovered">
-              Discovered<span className="badge">{this.state.nodes.discovered.length}</span>
+            <NavTab to="nodes/introspected">
+              Introspected<span className="badge">{this.state.nodes.introspected.length}</span>
             </NavTab>
             <NavTab to="nodes/provisioned">
               Provisioned<span className="badge">{this.state.nodes.provisioned.length}</span>

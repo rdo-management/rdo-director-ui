@@ -15,7 +15,7 @@ export default class Flavors extends React.Component {
               </h3>
             </div>
             <div className="panel-body">
-              <p>To create Flavors based on discovered Nodes run</p>
+              <p>To create Flavors based on introspected Nodes run</p>
               <pre>tripleo.sh --flavors</pre>
               <p>To list Flavors run</p>
               <pre>nova flavor-list</pre>

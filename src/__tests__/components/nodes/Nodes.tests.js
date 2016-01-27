@@ -10,7 +10,7 @@ import Nodes from '../../../js/components/nodes/Nodes';
 //   nodes: {
 //     all: [],
 //     registered: [],
-//     discovered: [],
+//     introspected: [],
 //     provisioned: [],
 //     maintenance: []
 //   }

@@ -1,25 +1,25 @@
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
 
-import DiscoveredNodesTabPane from '../../../js/components/nodes/DiscoveredNodesTabPane';
+import IntrospectedNodesTabPane from '../../../js/components/nodes/IntrospectedNodesTabPane';
 
 let nodes = {
-  discovered: [
+  introspected: [
     { uuid: 1 },
     { uuid: 2 }
   ]
 };
 
-describe('DiscoveredNodesTabPane component', () => {
+describe('IntrospectedNodesTabPane component', () => {
   let tabPaneVdom;
   beforeEach(() => {
     let shallowRenderer = TestUtils.createRenderer();
-    shallowRenderer.render(<DiscoveredNodesTabPane nodes={nodes}/>);
+    shallowRenderer.render(<IntrospectedNodesTabPane nodes={nodes}/>);
     tabPaneVdom = shallowRenderer.getRenderOutput();
   });
 
   it('should render NodesTable and pass nodes as data prop', () => {
     expect(tabPaneVdom.type.name).toEqual('NodesTable');
-    expect(tabPaneVdom.props.data).toEqual(nodes.discovered);
+    expect(tabPaneVdom.props.data).toEqual(nodes.introspected);
   });
 });

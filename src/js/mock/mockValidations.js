@@ -1,10 +1,10 @@
 export default {
   validations: [
     {
-      description: 'Validations that run after the hardware was discovered.',
-      name: 'Hardware Discovery',
+      description: 'Validations that run after the hardware was introspected.',
+      name: 'Hardware Introspection',
       ref: '/v1/plans/undefined/validation_types/1/',
-      stage: 'discovery',
+      stage: 'introspection',
       status: 'running',
       uuid: '1',
       validations: [
@@ -41,7 +41,7 @@ export default {
       description: 'Validations verify that the network was configured properly on all nodes',
       name: 'Network Configuration',
       ref: '/v1/plans/undefined/validation_types/2/',
-      stage: 'discovery',
+      stage: 'introspection',
       status: 'new',
       uuid: '2',
       validations: [
@@ -57,7 +57,7 @@ export default {
       description: 'Validate nodes that have been registered.',
       name: 'Node Validations',
       ref: '/v1/plans/undefined/validation_types/1/',
-      stage: 'discovery',
+      stage: 'introspection',
       status: 'running',
       uuid: '1',
       validations: [
@@ -106,10 +106,10 @@ export default {
       ]
     },
     {
-      description: 'Validations that run after the hardware was discovered.',
-      name: 'Some Other Discovery',
+      description: 'Validations that run after the hardware was introspected.',
+      name: 'Some Other Introspection',
       ref: '/v1/plans/undefined/validation_types/1/',
-      stage: 'discovery',
+      stage: 'introspection',
       status: 'running',
       uuid: '1',
       validations: [
@@ -143,10 +143,10 @@ export default {
       ]
     },
     {
-      description: 'Validations that run after the hardware was discovered.',
+      description: 'Validations that run after the hardware was introspected.',
       name: 'Hardware Validations',
       ref: '/v1/plans/undefined/validation_types/1/',
-      stage: 'discovery',
+      stage: 'introspection',
       status: 'running',
       uuid: '1',
       validations: [
@@ -173,10 +173,10 @@ export default {
       ]
     },
     {
-      description: 'Validations that run after the hardware was discovered.',
+      description: 'Validations that run after the hardware was introspected.',
       name: 'Storage Validations',
       ref: '/v1/plans/undefined/validation_types/1/',
-      stage: 'discovery',
+      stage: 'introspection',
       status: 'running',
       uuid: '1',
       validations: [

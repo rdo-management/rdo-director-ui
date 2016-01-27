@@ -8,7 +8,7 @@ import { Router, Route, IndexRoute, Redirect } from 'react-router';
 import App from './components/App';
 import AuthenticatedContent from './components/AuthenticatedContent';
 import DeletePlan from './components/plan/DeletePlan';
-import DiscoveredNodesTabPane from './components/nodes/DiscoveredNodesTabPane';
+import IntrospectedNodesTabPane from './components/nodes/IntrospectedNodesTabPane';
 import EditPlan from './components/plan/EditPlan';
 import EnvironmentConfiguration from
   './components/environment_configuration/EnvironmentConfiguration.js';
@@ -54,7 +54,7 @@ let routes = (
           <Route path="registered" component={RegisteredNodesTabPane}>
             <Route path="register" component={RegisterNodesDialog}/>
           </Route>
-          <Route path="discovered" component={DiscoveredNodesTabPane}/>
+          <Route path="introspected" component={IntrospectedNodesTabPane}/>
           <Route path="provisioned" component={ProvisionedNodesTabPane}/>
           <Route path="maintenance" component={MaintenanceNodesTabPane}/>
         </Route>
