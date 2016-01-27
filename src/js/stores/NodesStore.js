@@ -10,7 +10,7 @@ class NodesStore extends BaseStore {
       nodes: {
         all: [],
         registered: [],
-        discovered: [],
+        introspected: [],
         provisioned: [],
         maintenance: []
       }
@@ -30,7 +30,7 @@ class NodesStore extends BaseStore {
   onListNodes(nodes) {
     this.state.nodes.all = nodes;
     this.state.nodes.registered = this._filterRegisteredNodes(nodes);
-    this.state.nodes.discovered = this._filterDiscoveredNodes(nodes);
+    this.state.nodes.introspected = this._filterIntrospectedNodes(nodes);
     this.state.nodes.provisioned = this._filterProvisionedNodes(nodes);
     this.state.nodes.maintenance = this._filterMaintenanceNodes(nodes);
     this.emitChange();
@@ -45,7 +45,7 @@ class NodesStore extends BaseStore {
     });
   }
 
-  _filterDiscoveredNodes(nodes) {
+  _filterIntrospectedNodes(nodes) {
     return nodes.filter((node) => {
       return node.provision_state === 'available' && !!node.provision_updated_at;
     });
