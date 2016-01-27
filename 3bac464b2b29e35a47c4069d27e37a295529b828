@@ -36,6 +36,23 @@
     },
     {
       "key": {
+        "uuid": "fa81d914_2c96fef0",
+        "filename": "src/js/components/overview/Overview.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-01-27T14:03:19Z",
+      "side": 1,
+      "message": "here you can pass the current path as parentPath. the second argument to the cloneElement is an object holding the props.",
+      "revId": "3bac464b2b29e35a47c4069d27e37a295529b828",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa81d914_31a2d9ae",
         "filename": "src/js/components/overview/Overview.js",
         "patchSetId": 1
@@ -117,6 +134,24 @@
       "side": 1,
       "message": "When the dialogs close, they use the router to go back to the parent page. I can\u0027t seem to get the parent\u0027s path from the route without specifying it.",
       "parentUuid": "fa81d914_f1904197",
+      "revId": "3bac464b2b29e35a47c4069d27e37a295529b828",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_0cf85a48",
+        "filename": "src/js/index.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-01-27T14:03:19Z",
+      "side": 1,
+      "message": "You can pass the parent path as props to children of the parent component\n\nAlthough I am not sure that we want/need to implement this. This approach clutters the routes tree with explicitly listing the places where the given modals can appear.\n\nThe Plan.js is probably getting replaced by DeploymentPlan anyway, so the need for this goes away.\n\nIf we\u0027ll have modals which appear on multiple places, then we probably don\u0027t want them routed, or we want to create their route dynamically somehow",
+      "parentUuid": "fa81d914_acf82e7d",
       "revId": "3bac464b2b29e35a47c4069d27e37a295529b828",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
