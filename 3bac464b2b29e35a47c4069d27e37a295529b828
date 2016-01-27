@@ -53,6 +53,24 @@
     },
     {
       "key": {
+        "uuid": "fa81d914_ecadc689",
+        "filename": "src/js/components/overview/Overview.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1006608
+      },
+      "writtenOn": "2016-01-27T13:46:45Z",
+      "side": 1,
+      "message": "I\u0027m wanted to control this to ensure consistency between steps. The children will be the content between the steps.",
+      "parentUuid": "fa81d914_31a2d9ae",
+      "revId": "3bac464b2b29e35a47c4069d27e37a295529b828",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa81d914_b1c40993",
         "filename": "src/js/index.js",
         "patchSetId": 1
@@ -81,6 +99,24 @@
       "writtenOn": "2016-01-27T10:30:07Z",
       "side": 1,
       "message": "what is parentPath? I can\u0027t find it anywhere in react-router docs. The parent path is clear from the nested structure of the routes.",
+      "revId": "3bac464b2b29e35a47c4069d27e37a295529b828",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_acf82e7d",
+        "filename": "src/js/index.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1006608
+      },
+      "writtenOn": "2016-01-27T13:46:45Z",
+      "side": 1,
+      "message": "When the dialogs close, they use the router to go back to the parent page. I can\u0027t seem to get the parent\u0027s path from the route without specifying it.",
+      "parentUuid": "fa81d914_f1904197",
       "revId": "3bac464b2b29e35a47c4069d27e37a295529b828",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
