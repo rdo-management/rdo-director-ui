@@ -6,7 +6,7 @@ export default class RegisteredNodesTabPane extends React.Component {
   render() {
     return (
       <div>
-        <NodesTable data={this.props.nodes.registered}/>
+        <NodesTable data={this.props.nodes.get('registered')}/>
         {this.props.children}
       </div>
     );

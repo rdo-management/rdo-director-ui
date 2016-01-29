@@ -1,14 +1,15 @@
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
+import { List, Map } from 'immutable';
 
 import RegisteredNodesTabPane from '../../../js/components/nodes/RegisteredNodesTabPane';
 
-const nodes = {
-  registered: [
+const nodes = Map({
+  registered: List([
     { uuid: 1 },
     { uuid: 2 }
-  ]
-};
+  ])
+});
 
 describe('RegisteredNodesTabPane component', () => {
   let tabPaneVdom;
@@ -23,6 +24,6 @@ describe('RegisteredNodesTabPane component', () => {
 
   it('should render NodesTable and pass nodes as data prop', () => {
     expect(tabPaneVdom.props.children[0].type.name).toEqual('NodesTable');
-    expect(tabPaneVdom.props.children[0].props.data).toEqual(nodes.registered);
+    expect(tabPaneVdom.props.children[0].props.data).toEqual(nodes.get('registered'));
   });
 });

@@ -1,5 +1,7 @@
 import 'babel/polyfill';
 
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { IntlProvider } from 'react-intl';
@@ -29,6 +31,7 @@ import RegisterNodesDialog from './components/nodes/RegisterNodesDialog';
 import RegisteredNodesTabPane from './components/nodes/RegisteredNodesTabPane';
 import Roles from './components/roles/Roles.js';
 import TempStorage from './services/TempStorage.js';
+import appReducer from './reducers/appReducer';
 
 function checkAuth(nextState, replaceState) {
   if (!LoginStore.isLoggedIn()) {
@@ -81,8 +84,12 @@ TempStorage.initialized.then(() => {
   }
 });
 
+const store = createStore(appReducer);
+
 ReactDOM.render(
-  <IntlProvider locale="en">
-    <Router>{routes}</Router>
-  </IntlProvider>,
+  <Provider store={store}>
+    <IntlProvider locale="en">
+      <Router>{routes}</Router>
+    </IntlProvider>
+  </Provider>,
   document.getElementById('react-app-index'));
