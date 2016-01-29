@@ -1,5 +1,5 @@
-import * as _ from 'lodash';
 import React from 'react';
+import ImmutablePropTypes from 'react-immutable-proptypes';
 
 import DataTable from '../ui/tables/DataTable';
 import { DataTableDataFieldCell,
@@ -37,16 +37,17 @@ export default class NodesTable extends React.Component {
     let dataKeys = ['uuid'];
     return filterString ? data.filter((row) => {
       let result = dataKeys.filter((dataKey) => {
-        return _.includes(row[dataKey], filterString.toLowerCase());
+        return row[dataKey].toLowerCase().includes(filterString.toLowerCase());
       });
       return result.length > 0;
     }) : data;
   }
 
   render() {
-    let filteredData = this._filterData(this.state.filterString, this.props.data);
+    let filteredData = this._filterData(this.state.filterString, this.props.data).toJS();
     return (
       <DataTable {...this.props}
+        data={this.props.data.toJS()} // TODO(jtomasek): remove this when DataTable is migrated to use ImmutableJS data. It will get passed as part of ...this.props
         rowsCount={filteredData.length}
         noRowsRenderer={this.renderNoNodesFound.bind(this)}
         onFilter={this.onFilter.bind(this)}
@@ -84,5 +85,5 @@ export default class NodesTable extends React.Component {
   }
 }
 NodesTable.propTypes = {
-  data: React.PropTypes.array.isRequired
+  data: ImmutablePropTypes.list.isRequired
 };
