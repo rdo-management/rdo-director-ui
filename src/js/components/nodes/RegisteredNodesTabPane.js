@@ -1,4 +1,5 @@
 import React from 'react';
+import ImmutablePropTypes from 'react-immutable-proptypes';
 
 import NodesTable from './NodesTable';
 
@@ -6,7 +7,7 @@ export default class RegisteredNodesTabPane extends React.Component {
   render() {
     return (
       <div>
-        <NodesTable data={this.props.nodes.registered}/>
+        <NodesTable data={this.props.nodes.get('registered')}/>
         {this.props.children}
       </div>
     );
@@ -14,5 +15,5 @@ export default class RegisteredNodesTabPane extends React.Component {
 }
 RegisteredNodesTabPane.propTypes = {
   children: React.PropTypes.node,
-  nodes: React.PropTypes.object
+  nodes: ImmutablePropTypes.map
 };

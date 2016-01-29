@@ -1,5 +1,6 @@
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
+import { List } from 'immutable';
 
 const NodesTable = require('../../../js/components/nodes/NodesTable');
 
@@ -11,10 +12,10 @@ const initialState = {
 
 const filterString = '1';
 
-let data = [
-  { uuid: 1 },
-  { uuid: 2 }
-];
+let data = List([
+  { uuid: '1' },
+  { uuid: '2' }
+]);
 
 describe('NodesTable component', () => {
   let nodesTableVdom, nodesTableInstance;
@@ -31,7 +32,7 @@ describe('NodesTable component', () => {
 
   it('should render DataTable and pass data', () => {
     expect(nodesTableVdom.type.name).toEqual('DataTable');
-    expect(nodesTableVdom.props.data).toEqual(data);
+    expect(nodesTableVdom.props.data).toEqual(data.toJS());
     expect(nodesTableVdom.props.noRowsRenderer.name).toBeDefined();
     expect(nodesTableVdom.props.children.length).toEqual(7);
   });
