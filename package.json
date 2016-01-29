@@ -23,8 +23,11 @@
     "patternfly": "~2.5.0",
     "formatjs": "^0.1.1",
     "keymirror": "~0.1.1",
-    "react-modal": "~0.6.1",
-    "connect-history-api-fallback": "~1.1.0"
+    "connect-history-api-fallback": "~1.1.0",
+    "redux": "~3.0.6",
+    "react-redux": "~4.0.6",
+    "immutable": "~3.7.6",
+    "react-immutable-proptypes": "~1.5.1"
   },
   "devDependencies": {
     "gulp": "~3.9.0",

@@ -1,14 +1,15 @@
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
+import { List, Map } from 'immutable';
 
 import MaintenanceNodesTabPane from '../../../js/components/nodes/MaintenanceNodesTabPane';
 
-let nodes = {
-  maintenance: [
+let nodes = Map({
+  maintenance: List([
     { uuid: 1 },
     { uuid: 2 }
-  ]
-};
+  ])
+});
 
 describe('MaintenanceNodesTabPane component', () => {
   let tabPaneVdom;
@@ -20,6 +21,6 @@ describe('MaintenanceNodesTabPane component', () => {
 
   it('should render NodesTable and pass nodes as data prop', () => {
     expect(tabPaneVdom.type.name).toEqual('NodesTable');
-    expect(tabPaneVdom.props.data).toEqual(nodes.maintenance);
+    expect(tabPaneVdom.props.data).toEqual(nodes.get('maintenance'));
   });
 });
