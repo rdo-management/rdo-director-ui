@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa81d914_2ee26803",
+        "filename": "src/js/components/deployment-plan/DeploymentPlan.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2016-01-29T15:09:29Z",
+      "side": 1,
+      "message": "Just a nit: \"dit Parameters\" \u003d\u003e \"Edit Parameters\"",
+      "revId": "8201c50c3e3b9890c88f8a3831fe8cab61746701",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
