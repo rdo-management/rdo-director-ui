@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "fa81d914_7f56c9d3",
+        "filename": "src/js/components/deployment-plan/DeploymentPlan.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-02-01T10:56:14Z",
+      "side": 1,
+      "message": "items in those lists need \u0027key\u0027 prop specified",
+      "revId": "8201c50c3e3b9890c88f8a3831fe8cab61746701",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa81d914_2ee26803",
         "filename": "src/js/components/deployment-plan/DeploymentPlan.js",
         "patchSetId": 4
@@ -13,6 +30,63 @@
       "writtenOn": "2016-01-29T15:09:29Z",
       "side": 1,
       "message": "Just a nit: \"dit Parameters\" \u003d\u003e \"Edit Parameters\"",
+      "revId": "8201c50c3e3b9890c88f8a3831fe8cab61746701",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_5fcae56e",
+        "filename": "src/js/components/deployment-plan/DeploymentStep.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-02-01T10:56:14Z",
+      "side": 1,
+      "message": "we already have a container-fluid which initiates the grid so this is not needed. The padding  (if it is really needed) can be set explicitly at deployment-step-content. \n\ndeployment-step-content should specified at div on line 14\n\ndeployment-step-content is needed only to override the font-size. We can avoid this by styling the ol numbers using counter and before pseudo elements as described in this tutorial: http://www.456bereastreet.com/archive/201105/styling_ordered_list_numbers/\n\nUsin that technique we can go quite fancy without needing to re-set the font sizes in children.",
+      "range": {
+        "startLine": 11,
+        "startChar": 24,
+        "endLine": 11,
+        "endChar": 39
+      },
+      "revId": "8201c50c3e3b9890c88f8a3831fe8cab61746701",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_9ffffda9",
+        "filename": "src/js/components/environment_configuration/EnvironmentConfiguration.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-02-01T10:56:14Z",
+      "side": 1,
+      "message": "make this prop required by using isRequired and specify it\u0027s default to \u0027/deployment-plan\u0027",
+      "revId": "8201c50c3e3b9890c88f8a3831fe8cab61746701",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_bf2da148",
+        "filename": "src/js/components/parameters/Parameters.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-02-01T10:56:14Z",
+      "side": 1,
+      "message": "same as comment in environment configuration",
       "revId": "8201c50c3e3b9890c88f8a3831fe8cab61746701",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
