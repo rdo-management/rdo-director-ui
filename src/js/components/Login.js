@@ -72,13 +72,13 @@ export default class Login extends React.Component {
     return (
       <div>
         <span id="badge">
-          <img src="img/logo.svg" alt="RDO Manager"></img>
+          <img src="/img/logo.svg" alt="RDO Manager"></img>
         </span>
         <div className="container">
           <div className="row">
             <div className="col-sm-12">
               <div id="brand">
-                <img src="img/brand.svg" alt="RDO Manager"></img>
+                <img src="/img/brand.svg" alt="RDO Manager"></img>
               </div>
             </div>
             <div className="col-sm-7 col-md-6 col-lg-5 login">
