@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "fa81d914_a5baee07",
+        "filename": "src/js/components/deployment-plan/DeploymentPlan.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1006608
+      },
+      "writtenOn": "2016-02-01T17:23:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa81d914_7f56c9d3",
+      "revId": "8201c50c3e3b9890c88f8a3831fe8cab61746701",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa81d914_2ee26803",
         "filename": "src/js/components/deployment-plan/DeploymentPlan.js",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2016-01-29T15:09:29Z",
       "side": 1,
       "message": "Just a nit: \"dit Parameters\" \u003d\u003e \"Edit Parameters\"",
+      "revId": "8201c50c3e3b9890c88f8a3831fe8cab61746701",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_85bfaafa",
+        "filename": "src/js/components/deployment-plan/DeploymentPlan.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1006608
+      },
+      "writtenOn": "2016-02-01T17:23:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa81d914_2ee26803",
       "revId": "8201c50c3e3b9890c88f8a3831fe8cab61746701",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "fa81d914_c538c2a2",
+        "filename": "src/js/components/deployment-plan/DeploymentStep.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1006608
+      },
+      "writtenOn": "2016-02-01T17:23:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa81d914_5fcae56e",
+      "range": {
+        "startLine": 11,
+        "startChar": 24,
+        "endLine": 11,
+        "endChar": 39
+      },
+      "revId": "8201c50c3e3b9890c88f8a3831fe8cab61746701",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa81d914_9ffffda9",
         "filename": "src/js/components/environment_configuration/EnvironmentConfiguration.js",
         "patchSetId": 4
@@ -76,6 +136,24 @@
     },
     {
       "key": {
+        "uuid": "fa81d914_e53b069a",
+        "filename": "src/js/components/environment_configuration/EnvironmentConfiguration.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1006608
+      },
+      "writtenOn": "2016-02-01T17:23:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa81d914_9ffffda9",
+      "revId": "8201c50c3e3b9890c88f8a3831fe8cab61746701",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa81d914_bf2da148",
         "filename": "src/js/components/parameters/Parameters.js",
         "patchSetId": 4
@@ -87,6 +165,24 @@
       "writtenOn": "2016-02-01T10:56:14Z",
       "side": 1,
       "message": "same as comment in environment configuration",
+      "revId": "8201c50c3e3b9890c88f8a3831fe8cab61746701",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_0543ba14",
+        "filename": "src/js/components/parameters/Parameters.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1006608
+      },
+      "writtenOn": "2016-02-01T17:23:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa81d914_bf2da148",
       "revId": "8201c50c3e3b9890c88f8a3831fe8cab61746701",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
