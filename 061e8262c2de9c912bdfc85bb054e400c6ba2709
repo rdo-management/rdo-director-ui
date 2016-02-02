@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa81d914_76ab4e1d",
+        "filename": "src/js/reducers/nodesReducer.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2016-02-02T12:00:44Z",
+      "side": 1,
+      "message": "Where are the *Filter properties used? Are they necessary?",
+      "revId": "061e8262c2de9c912bdfc85bb054e400c6ba2709",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
