@@ -51,6 +51,24 @@
       "revId": "18c5721e32a95e82176301582d1c7b1127009cc5",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_2e4def3e",
+        "filename": "src/js/reducers/nodesReducer.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2016-02-05T16:49:35Z",
+      "side": 1,
+      "message": "I didn\u0027t notice the import from immutable. That\u0027s really very handy.",
+      "parentUuid": "fa81d914_0ece6bb4",
+      "revId": "18c5721e32a95e82176301582d1c7b1127009cc5",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
