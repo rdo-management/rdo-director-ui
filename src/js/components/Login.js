@@ -1,48 +1,36 @@
+import { connect } from 'react-redux';
+import ImmutablePropTypes from 'react-immutable-proptypes';
 import Formsy from 'formsy-react';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
 import FormErrorList from './ui/forms/FormErrorList';
 import LoginInput from './ui/forms/LoginInput';
-import KeystoneApiErrorHandler from '../services/KeystoneApiErrorHandler';
-import KeystoneApiService from '../services/KeystoneApiService';
 import LoginActions from '../actions/LoginActions';
-import LoginStore from '../stores/LoginStore';
 import NotificationsToaster from './notifications/NotificationsToaster';
 
-export default class Login extends React.Component {
+class Login extends React.Component {
   constructor() {
     super();
     this.state = {
-      canSubmit: false,
-      formErrors: []
+      canSubmit: false
     };
-    this.changeListener = this._onChange.bind(this);
   }
 
   componentWillMount() {
     ReactDOM.findDOMNode(document.documentElement).className = 'login-pf';
-    this._shouldRedirect();
   }
 
-  componentDidMount() {
-    LoginStore.addChangeListener(this.changeListener);
+  componentDidUpdate() {
+    this.invalidateLoginForm(this.props.formFieldErrors.toJS());
   }
 
   componentWillUnmount() {
     ReactDOM.findDOMNode(document.documentElement).className = '';
-    LoginStore.removeChangeListener(this.changeListener);
   }
 
-  _onChange() {
-    this._shouldRedirect();
-  }
-
-  _shouldRedirect() {
-    if (LoginStore.isLoggedIn()) {
-      let nextPath = this.props.location.query.nextPath || '/';
-      this.props.history.pushState(null, nextPath);
-    }
+  invalidateLoginForm(formFieldErrors) {
+    this.refs.form.updateInputsWithError(formFieldErrors);
   }
 
   _enableButton() {
@@ -54,18 +42,11 @@ export default class Login extends React.Component {
   }
 
   handleLogin(formData, resetForm, invalidateForm) {
-    this._disableButton();
-    KeystoneApiService.authenticateUser(formData.username, formData.password).then((response) => {
-      LoginActions.loginUser(response.access);
-    }).catch((error) => {
-      this._enableButton();
-      console.error('Error in Login.handleLogin', error); //eslint-disable-line no-console
-      let errorHandler = new KeystoneApiErrorHandler(error, Object.keys(this.refs.form.inputs));
-      invalidateForm(errorHandler.formFieldErrors);
-      this.setState({
-        formErrors: errorHandler.errors
-      });
-    });
+    const nextPath = this.props.location.query.nextPath || '/';
+    const formFields = Object.keys(this.refs.form.inputs);
+    this.props.dispatch(
+      LoginActions.authenticateUser(formData, formFields, nextPath)
+    );
   }
 
   render() {
@@ -82,7 +63,7 @@ export default class Login extends React.Component {
               </div>
             </div>
             <div className="col-sm-7 col-md-6 col-lg-5 login">
-              <FormErrorList errors={this.state.formErrors}/>
+              <FormErrorList errors={this.props.formErrors.toJS()}/>
               <Formsy.Form ref="form"
                            role="form"
                            className="form-horizontal"
@@ -102,7 +83,8 @@ export default class Login extends React.Component {
                             required/>
                 <div className="form-group">
                   <div className="col-xs-offset-8 col-xs-4 col-sm-4 col-md-4 submit">
-                    <button type="submit" disabled={!this.state.canSubmit}
+                    <button type="submit"
+                            disabled={!this.state.canSubmit || this.props.authInProgress}
                             className="btn btn-primary btn-lg" tabIndex="4">
                       Log In
                     </button>
@@ -125,6 +107,22 @@ export default class Login extends React.Component {
   }
 }
 Login.propTypes = {
+  authInProgress: React.PropTypes.bool.isRequired,
+  dispatch: React.PropTypes.func.isRequired,
+  formErrors: ImmutablePropTypes.list.isRequired,
+  formFieldErrors: ImmutablePropTypes.map.isRequired,
   history: React.PropTypes.object,
-  location: React.PropTypes.object
+  location: React.PropTypes.object,
+  userLoggedIn: React.PropTypes.bool.isRequired
 };
+
+function mapStateToProps(state) {
+  return {
+    formErrors: state.login.getIn(['loginForm', 'formErrors']),
+    formFieldErrors: state.login.getIn(['loginForm', 'formFieldErrors']),
+    userLoggedIn: state.login.hasIn(['keystoneAccess', 'user']),
+    authInProgress: state.login.get('authInProgress')
+  };
+}
+
+export default connect(mapStateToProps)(Login);
