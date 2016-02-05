@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa81d914_ce89b376",
+        "filename": "src/js/reducers/nodesReducer.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2016-02-05T15:19:57Z",
+      "side": 1,
+      "message": "The redux authors recommend to try to keep the state JSON serializable, but that doesn\u0027t work with Maps. So if we want to go along with the recommendation, we should probably use a plain object here instead of a Map.\n\nIt would also make it easier to create a new state in the reducer function, since we could just use Object.assign.",
+      "revId": "18c5721e32a95e82176301582d1c7b1127009cc5",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_ae847f5e",
+        "filename": "src/js/reducers/nodesReducer.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2016-02-05T15:19:57Z",
+      "side": 1,
+      "message": "This returns the original state instead of creating a new one, which creates an unwanted side effect.\n\n(https://github.com/rackt/redux/issues/758)\n\nIf the state was an object, not a Map (see my comment above), we could create a new state as recommended, using Object.assign:\n\nreturn Object.assign({}, state, {\n  // changed contents\n});",
+      "revId": "18c5721e32a95e82176301582d1c7b1127009cc5",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
