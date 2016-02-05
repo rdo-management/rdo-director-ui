@@ -2,14 +2,11 @@ import * as _ from 'lodash';
 import request from 'reqwest';
 import when from 'when';
 
-import TempStorage from './TempStorage';
-import LoginStore from '../stores/LoginStore';
-
 class MistralApiService {
-  defaultRequest(additionalAttributes) {
+  defaultRequest(authTokenId, additionalAttributes) {
     return _.merge({
       headers: {
-        'X-Auth-Token': TempStorage.getItem('keystoneAuthTokenId')
+        'X-Auth-Token': authTokenId
       },
       crossOrigin: true,
       contentType: 'application/json',
@@ -21,13 +18,14 @@ class MistralApiService {
   /**
    * Gets a Workflow execution
    * Mistral API: GET /v2/executions/:execution_id
-   * @param {string} id - Workflow Execution ID
+   * @param {string} mistralUrl - Mistral API service base url
+   * @param {string} authTokenId - keystone authentication token ID
    * @return {object} Execution.
    */
-  getWorkflowExecution(id) {
-    return when(request(this.defaultRequest(
+  getWorkflowExecution(mistralUrl, authTokenId, executionId) {
+    return when(request(this.defaultRequest(authTokenId,
       {
-        url: LoginStore.getServiceUrl('mistral') + '/executions/' + id
+        url: mistralUrl + '/executions/' + executionId
       }
     )));
   }
@@ -35,15 +33,17 @@ class MistralApiService {
   /**
    * Starts a new Workflow execution
    * Mistral API: POST /v2/executions
+   * @param {string} mistralUrl - Mistral API service base url
+   * @param {string} authTokenId - keystone authentication token ID
    * @param {string} workflowName - Workflow name
    * @param {object} input - Workflow input object
    * @return {object} Execution.
    */
-  runWorkflow(workflowName, input = {}) {
-    return when(request(this.defaultRequest(
+  runWorkflow(mistralUrl, authTokenId, workflowName, input = {}) {
+    return when(request(this.defaultRequest(authTokenId,
       {
         method: 'POST',
-        url: LoginStore.getServiceUrl('mistral') + '/executions',
+        url: mistralUrl + '/executions',
         data: JSON.stringify({
           workflow_name: workflowName,
           input: JSON.stringify(input)
@@ -55,15 +55,17 @@ class MistralApiService {
   /**
    * Starts a new Action execution
    * Mistral API: POST /v2/action_executions
+   * @param {string} mistralUrl - Mistral API service base url
+   * @param {string} authTokenId - keystone authentication token ID
    * @param {string} actionName - Name of the Action to be executed
    * @param {object} input - Action input object
    * @return {object} Action Execution.
    */
-  runAction(actionName, input = {}) {
-    return when(request(this.defaultRequest(
+  runAction(mistralUrl, authTokenId, actionName, input = {}) {
+    return when(request(this.defaultRequest(authTokenId,
       {
         method: 'POST',
-        url: LoginStore.getServiceUrl('mistral') + '/action_executions',
+        url: mistralUrl + '/action_executions',
         data: JSON.stringify({
           name: actionName,
           input: JSON.stringify(input)
