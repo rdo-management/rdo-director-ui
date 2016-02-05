@@ -24,10 +24,12 @@
     "formatjs": "^0.1.1",
     "keymirror": "~0.1.1",
     "connect-history-api-fallback": "~1.1.0",
-    "redux": "~3.0.6",
+    "redux": "~3.2.1",
     "react-redux": "~4.0.6",
     "immutable": "~3.7.6",
-    "react-immutable-proptypes": "~1.5.1"
+    "react-immutable-proptypes": "~1.5.1",
+    "redux-thunk": "~1.0.3",
+    "redux-logger": "~2.5.0"
   },
   "devDependencies": {
     "gulp": "~3.9.0",
