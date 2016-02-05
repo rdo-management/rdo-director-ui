@@ -33,6 +33,24 @@
       "revId": "18c5721e32a95e82176301582d1c7b1127009cc5",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_0ece6bb4",
+        "filename": "src/js/reducers/nodesReducer.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-02-05T15:27:59Z",
+      "side": 1,
+      "message": "The Map is an immutable version of object coming from Immutable.js That is actually the beauty of Immutable.js we can use it\u0027s objects as if it was mutable object\n\nMap.set returns a new Map. https://facebook.github.io/immutable-js/docs/#/Map/set\n\nIn redux docs they use Object.assign because they avoid using immutable to make it clear that redux does not depend on immutable.",
+      "parentUuid": "fa81d914_ae847f5e",
+      "revId": "18c5721e32a95e82176301582d1c7b1127009cc5",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
