@@ -10,8 +10,7 @@ const initialState = Map({
   introspectedFilter: '',
   provisionedFilter: '',
   maintenanceFilter: '',
-  all: List(),
-  dataOperationInProgress: false
+  all: List()
 });
 
 export default function nodesReducer(state = initialState, action) {
