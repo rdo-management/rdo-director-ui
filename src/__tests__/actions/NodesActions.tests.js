@@ -1,17 +1,28 @@
-const NodesActions = require('../../js/actions/NodesActions');
-const NodesConstants = require('../../js/constants/NodesConstants');
+import NodesActions from '../../js/actions/NodesActions';
+import NodesConstants from '../../js/constants/NodesConstants';
 
-let mockGetNodesResponse = [
+const mockGetNodesResponse = [
   { uuid: 1 },
   { uuid: 2 }
 ];
 
-describe('NodesActions', () => {
-  it('creates action to list nodes', () => {
+describe('Nodes Actions', () => {
+  it('creates action to request nodes', (done) => {
     const expectedAction = {
-      type: NodesConstants.LIST_NODES,
+      type: NodesConstants.REQUEST_NODES
+    };
+    expect(NodesActions.requestNodes()).toEqual(expectedAction);
+  });
+
+  it('creates action to receive nodes', () => {
+    const expectedAction = {
+      type: NodesConstants.RECEIVE_NODES,
       payload: mockGetNodesResponse
     };
-    expect(NodesActions.listNodes(mockGetNodesResponse)).toEqual(expectedAction);
+    expect(NodesActions.receiveNodes(mockGetNodesResponse)).toEqual(expectedAction);
   });
+});
+
+// TODO(jtomasek): add tests for async actions http://redux.js.org/docs/recipes/WritingTests.html
+describe('Asynchronous Nodes Actions', () => {
 });

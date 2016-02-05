@@ -1,5 +1,6 @@
 import keyMirror from 'keymirror';
 
 export default keyMirror({
-  LIST_NODES: null
+  REQUEST_NODES: null,
+  RECEIVE_NODES: null
 });

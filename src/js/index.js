@@ -1,7 +1,9 @@
 import 'babel/polyfill';
 
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
+import thunkMiddleware from 'redux-thunk';
+import createLogger from 'redux-logger';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { IntlProvider } from 'react-intl';
@@ -85,7 +87,21 @@ TempStorage.initialized.then(() => {
   }
 });
 
-const store = createStore(appReducer);
+const loggerMiddleware = createLogger();
+
+// TODO(jtomasek): http://rackt.org/redux/docs/api/createStore.html
+// Use second param to set initial state (restore user session etc.)
+// if there is a stored auth key, set it as initialState (2nd param)
+// and then right after store is created run store.dispatch(authenticateUserViaToken(token))
+// instead of lines 83-88
+const store = createStore(
+  appReducer,
+  {},
+  applyMiddleware(
+    thunkMiddleware,
+    loggerMiddleware
+  )
+);
 
 ReactDOM.render(
   <Provider store={store}>
