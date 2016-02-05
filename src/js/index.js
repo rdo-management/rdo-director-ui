@@ -8,7 +8,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { IntlProvider } from 'react-intl';
 import { Router, Route, Redirect } from 'react-router';
-import createBrowserHistory from 'history/lib/createBrowserHistory';
+import history from './history';
 
 import App from './components/App';
 import AuthenticatedContent from './components/AuthenticatedContent';
@@ -23,7 +23,6 @@ import Images from './components/images/Images';
 import ListPlans from './components/plan/ListPlans';
 import Login from './components/Login';
 import LoginActions from './actions/LoginActions';
-import LoginStore from './stores/LoginStore';
 import MaintenanceNodesTabPane from './components/nodes/MaintenanceNodesTabPane';
 import NewPlan from './components/plan/NewPlan';
 import Nodes from './components/nodes/Nodes';
@@ -36,81 +35,85 @@ import Roles from './components/roles/Roles.js';
 import TempStorage from './services/TempStorage.js';
 import appReducer from './reducers/appReducer';
 
-function checkAuth(nextState, replaceState) {
-  if (!LoginStore.isLoggedIn()) {
-    replaceState(null, '/login', { nextPath: nextState.location.pathname +
-                                             nextState.location.search });
-  }
-}
-
-let routes = (
-  <Route>
-    <Redirect from="/" to="/deployment-plan"/>
-    <Route path="/" component={App}>
-      <Route component={AuthenticatedContent} onEnter={checkAuth}>
-
-        <Route path="deployment-plan" component={DeploymentPlan}>
-          <Route path="environment" component={EnvironmentConfiguration}/>
-          <Route path="parameters" component={Parameters}/>
-        </Route>
-
-        <Route path="roles" component={Roles}/>
-
-        <Redirect from="nodes" to="nodes/registered"/>
-        <Route path="nodes" component={Nodes}>
-          <Route path="registered" component={RegisteredNodesTabPane}>
-            <Route path="register" component={RegisterNodesDialog}/>
-          </Route>
-          <Route path="introspected" component={IntrospectedNodesTabPane}/>
-          <Route path="provisioned" component={ProvisionedNodesTabPane}/>
-          <Route path="maintenance" component={MaintenanceNodesTabPane}/>
-        </Route>
-
-        <Route path="flavors" component={Flavors}/>
-
-        <Route path="images" component={Images}/>
-
-        <Redirect from="plans" to="plans/list"/>
-        <Route path="plans" component={Plans}>
-          <Route path="list" component={ListPlans}>
-            <Route path="/plans/new" component={NewPlan}/>
-            <Route path="/plans/:planName/delete" component={DeletePlan}/>
-          </Route>
-          <Route path=":planName/edit" component={EditPlan}/>
-        </Route>
-      </Route>
-      <Route path="login" component={Login}/>
-    </Route>
-  </Route>
-);
-
-TempStorage.initialized.then(() => {
-  let keystoneAuthTokenId = TempStorage.getItem('keystoneAuthTokenId');
-  if (keystoneAuthTokenId) {
-    LoginActions.authenticateUserViaToken(keystoneAuthTokenId);
-  }
-});
-
 const loggerMiddleware = createLogger();
 
-// TODO(jtomasek): http://rackt.org/redux/docs/api/createStore.html
-// Use second param to set initial state (restore user session etc.)
-// if there is a stored auth key, set it as initialState (2nd param)
-// and then right after store is created run store.dispatch(authenticateUserViaToken(token))
-// instead of lines 83-88
-const store = createStore(
-  appReducer,
-  {},
-  applyMiddleware(
-    thunkMiddleware,
-    loggerMiddleware
-  )
-);
+TempStorage.initialized.then(() => {
 
-ReactDOM.render(
-  <Provider store={store}>
-    <IntlProvider locale="en">
-      <Router history={createBrowserHistory()}>{routes}</Router>
-    </IntlProvider>
-  </Provider>,
-  document.getElementById('react-app-index'));
+  const store = createStore(
+    appReducer,
+    {},
+    applyMiddleware(
+      thunkMiddleware,
+      loggerMiddleware
+    )
+  );
+
+  /**
+   * @function checkAuth
+   * If user is not logged in, check if there is an auth token in TempStorage
+   * If there is, try to login with this token, else redirect to Login
+   */
+  function checkAuth(nextState, replaceState) {
+    if (!store.getState().login.hasIn(['keystoneAccess','user'])) {
+      const keystoneAuthTokenId = TempStorage.getItem('keystoneAuthTokenId');
+      if (keystoneAuthTokenId) {
+        const nextPath = nextState.location.query.nextPath || '/';
+        store.dispatch(LoginActions.authenticateUserViaToken(keystoneAuthTokenId, nextPath));
+      } else {
+        replaceState(null, '/login', { nextPath: nextState.location.pathname +
+                                                 nextState.location.search });
+      }
+    }
+  }
+
+  let routes = (
+    <Route>
+      <Redirect from="/" to="/deployment-plan"/>
+      <Route path="/" component={App}>
+        <Route component={AuthenticatedContent} onEnter={checkAuth}>
+
+          <Route path="deployment-plan" component={DeploymentPlan}>
+            <Route path="environment" component={EnvironmentConfiguration}/>
+            <Route path="parameters" component={Parameters}/>
+          </Route>
+
+          <Route path="roles" component={Roles}/>
+
+          <Redirect from="nodes" to="nodes/registered"/>
+          <Route path="nodes" component={Nodes}>
+            <Route path="registered" component={RegisteredNodesTabPane}>
+              <Route path="register" component={RegisterNodesDialog}/>
+            </Route>
+            <Route path="introspected" component={IntrospectedNodesTabPane}/>
+            <Route path="provisioned" component={ProvisionedNodesTabPane}/>
+            <Route path="maintenance" component={MaintenanceNodesTabPane}/>
+          </Route>
+
+          <Route path="flavors" component={Flavors}/>
+
+          <Route path="images" component={Images}/>
+
+          <Redirect from="plans" to="plans/list"/>
+          <Route path="plans" component={Plans}>
+            <Route path="list" component={ListPlans}>
+              <Route path="/plans/new" component={NewPlan}/>
+              <Route path="/plans/:planName/delete" component={DeletePlan}/>
+            </Route>
+            <Route path=":planName/edit" component={EditPlan}/>
+          </Route>
+        </Route>
+        <Route path="login" component={Login}/>
+      </Route>
+    </Route>
+  );
+
+  ReactDOM.render(
+    <Provider store={store}>
+      <IntlProvider locale="en">
+        <Router history={history}>{routes}</Router>
+      </IntlProvider>
+    </Provider>,
+    document.getElementById('react-app-index')
+  );
+
+});
