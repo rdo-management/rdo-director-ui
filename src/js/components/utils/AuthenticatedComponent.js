@@ -29,9 +29,9 @@ export default (ComposedComponent) => {
     }
 
     _shouldRedirectToLogin() {
-      if (!LoginStore.userLoggedIn) {
-        this.context.history.pushState(null, '/login');
-      }
+      // if (!LoginStore.userLoggedIn) {
+      //   this.context.history.pushState(null, '/login');
+      // }
     }
 
     _getLoginState() {

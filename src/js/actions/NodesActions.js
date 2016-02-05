@@ -6,6 +6,7 @@ import MistralApiService from '../services/MistralApiService';
 import MistralApiErrorHandler from '../services/MistralApiErrorHandler';
 import NodesConstants from '../constants/NodesConstants';
 import NotificationActions from './NotificationActions';
+import { getServiceUrl, getAuthTokenId } from '../services/utils';
 
 export default {
   startOperation(workflowId) {
@@ -36,9 +37,11 @@ export default {
   fetchNodes() {
     return (dispatch, getState) => {
       dispatch(this.requestNodes());
-      return IronicApiService.getNodes().then((response) => {
+      const getNodesUrl = getServiceUrl(getState(), 'ironic') + '/nodes';
+      const authTokenId = getAuthTokenId(getState());
+      return IronicApiService.getNodes(getNodesUrl, authTokenId).then((response) => {
         return when.all(response.nodes.map((node) => {
-          return IronicApiService.getNode(node.uuid);
+          return IronicApiService.getNode(node.links[0].href, authTokenId);
         }));
       }).then((nodes) => {
         dispatch(this.receiveNodes(nodes));
