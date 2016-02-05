@@ -2,14 +2,11 @@ import * as _ from 'lodash';
 import request from 'reqwest';
 import when from 'when';
 
-import TempStorage from './TempStorage';
-import LoginStore from '../stores/LoginStore';
-
 class IronicApiService {
-  defaultRequest(additionalAttributes) {
+  defaultRequest(authTokenId, additionalAttributes) {
     return _.merge({
       headers: {
-        'X-Auth-Token': TempStorage.getItem('keystoneAuthTokenId'),
+        'X-Auth-Token': authTokenId,
         'X-OpenStack-Ironic-API-Version': '1.14'
       },
       crossOrigin: true,
@@ -23,9 +20,11 @@ class IronicApiService {
    * Ironic API: GET /v1/nodes
    * @returns {array} of nodes.
    */
-  getNodes() {
-    return when(request(this.defaultRequest(
-      { url: LoginStore.getServiceUrl('ironic') + '/nodes' }
+  getNodes(ironicUrl, authTokenId) {
+    return when(request(this.defaultRequest(authTokenId,
+      {
+        url: ironicUrl + '/nodes'
+      }
     )));
   }
 
@@ -33,9 +32,11 @@ class IronicApiService {
    * Ironic API: GET /v1/nodes/<uuid>
    * @returns node object.
    */
-  getNode(uuid) {
-    return when(request(this.defaultRequest(
-      { url: `${LoginStore.getServiceUrl('ironic')}/nodes/${uuid}`}
+  getNode(ironicUrl, authTokenId, nodeId) {
+    return when(request(this.defaultRequest(authTokenId,
+      {
+        url: ironicUrl + '/nodes/' + nodeId
+      }
     )));
   }
 
