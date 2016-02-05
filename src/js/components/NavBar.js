@@ -1,14 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router';
+import ImmutablePropTypes from 'react-immutable-proptypes';
 
-import LoginActions from '../actions/LoginActions';
 import NavTab from './ui/NavTab';
 
 
 export default class NavBar extends React.Component {
   logout(e) {
     e.preventDefault();
-    LoginActions.logoutUser();
+    this.props.onLogout();
   }
 
   render() {
@@ -32,10 +32,10 @@ export default class NavBar extends React.Component {
             <li>
               <a>
                 <span className="pficon pficon-user"></span>
-                {this.context.user.username}
+                {this.props.user.get('username')}
               </a>
             </li>
-            <li><a href="#" onClick={this.logout}>Logout</a></li>
+            <li><a href="#" onClick={this.logout.bind(this)}>Logout</a></li>
           </ul>
           <ul className="nav navbar-nav navbar-primary">
             <NavTab to="/deployment-plan">Deployment Plan</NavTab>
@@ -50,7 +50,7 @@ export default class NavBar extends React.Component {
     );
   }
 }
-NavBar.contextTypes = {
-  user: React.PropTypes.object,
-  userLoggedIn: React.PropTypes.bool
+NavBar.propTypes = {
+  onLogout: React.PropTypes.func.isRequired,
+  user: ImmutablePropTypes.map
 };

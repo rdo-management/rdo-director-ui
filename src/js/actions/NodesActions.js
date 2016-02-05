@@ -6,6 +6,7 @@ import MistralApiService from '../services/MistralApiService';
 import MistralApiErrorHandler from '../services/MistralApiErrorHandler';
 import NodesConstants from '../constants/NodesConstants';
 import NotificationActions from './NotificationActions';
+import { getServiceUrl, getAuthTokenId } from '../services/utils';
 
 export default {
   startOperation(workflowId) {
@@ -36,9 +37,11 @@ export default {
   fetchNodes() {
     return (dispatch, getState) => {
       dispatch(this.requestNodes());
-      return IronicApiService.getNodes().then((response) => {
+      const ironicUrl = getServiceUrl(getState(), 'ironic');
+      const authTokenId = getAuthTokenId(getState());
+      IronicApiService.getNodes(ironicUrl, authTokenId).then((response) => {
         return when.all(response.nodes.map((node) => {
-          return IronicApiService.getNode(node.uuid);
+          return IronicApiService.getNode(ironicUrl, authTokenId, node.uuid);
         }));
       }).then((nodes) => {
         dispatch(this.receiveNodes(nodes));
@@ -56,7 +59,10 @@ export default {
   introspectNodes() {
     return (dispatch, getState) => {
       dispatch(this.startOperation());
-      MistralApiService.runWorkflow('tripleo.baremetal.bulk_introspect').then((response) => {
+      const mistralUrl = getServiceUrl(getState(), 'mistral');
+      const authTokenId = getAuthTokenId(getState());
+      MistralApiService.runWorkflow(mistralUrl, authTokenId, 'tripleo.baremetal.bulk_introspect')
+      .then((response) => {
         if(response.state === 'ERROR') {
           NotificationActions.notify({ title: 'Error', message: response.state_info });
           dispatch(this.finishOperation());
@@ -73,12 +79,15 @@ export default {
     };
   },
 
-  pollForWorkflow(id) {
+  pollForWorkflow(workflowExecutionId) {
     return (dispatch, getState) => {
-      MistralApiService.getWorkflowExecution(id).then((response) => {
+      const mistralUrl = getServiceUrl(getState(), 'mistral');
+      const authTokenId = getAuthTokenId(getState());
+      MistralApiService.getWorkflowExecution(mistralUrl, authTokenId, workflowExecutionId)
+      .then((response) => {
         if(response.state === 'RUNNING') {
           dispatch(this.fetchNodes());
-          setTimeout(() => dispatch(this.pollForWorkflow(id)), 7000);
+          setTimeout(() => dispatch(this.pollForWorkflow(workflowExecutionId)), 7000);
         } else if(response.state === 'ERROR') {
           NotificationActions.notify({ title: 'Error', message: response.state_info });
           dispatch(this.finishOperation());
