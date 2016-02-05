@@ -1,40 +1,20 @@
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import React from 'react';
-import when from 'when';
 import { Map } from 'immutable';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 
-import IronicApiErrorHandler from '../../services/IronicApiErrorHandler';
-import IronicApiService from '../../services/IronicApiService';
 import NavTab from '../ui/NavTab';
 import NodesActions from '../../actions/NodesActions';
-import NotificationActions from '../../actions/NotificationActions';
 
 class Nodes extends React.Component {
   componentDidMount() {
-    this._fetchNodes();
-  }
-
-  _fetchNodes() {
-    IronicApiService.getNodes().then((response) => {
-      return when.all(response.nodes.map((node) => {
-        return IronicApiService.getNode(node.uuid);
-      }));
-    }).then((nodes) => {
-      this.props.dispatch(NodesActions.listNodes(nodes));
-    }).catch((error) => {
-      console.error('Error in Nodes._fetchNodes', error); //eslint-disable-line no-console
-      let errorHandler = new IronicApiErrorHandler(error);
-      errorHandler.errors.forEach((error) => {
-        NotificationActions.notify(error);
-      });
-    });
+    this.props.dispatch(NodesActions.fetchNodes());
   }
 
   refreshResults(e) {
     e.preventDefault();
-    this._fetchNodes();
+    this.props.dispatch(NodesActions.fetchNodes());
   }
 
   render() {
