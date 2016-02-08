@@ -5,6 +5,35 @@ import TripleOApiService from '../services/TripleOApiService';
 import TripleOApiErrorHandler from '../services/TripleOApiErrorHandler';
 
 export default {
+  requestPlanslist() {
+    return {
+      type: PlansConstants.REQUEST_PLANSLIST
+    };
+  },
+
+  receivePlanslist(plans) {
+    return {
+      type: PlansConstants.RECEIVE_PLANSLIST,
+      payload: plans
+    };
+  },
+
+  fetchPlanslist() {
+    return (dispatch, getState) => {
+      dispatch(this.requestPlanslist());
+      return TripleOApiService.getPlans().then(response => {
+        dispatch(this.receivePlanslist(response.plans));
+      }).catch(error => {
+        console.error('Error retrieving plans PlansActions.listPlans', error); //eslint-disable-line no-console
+        dispatch(this.receivePlanslist([]));
+        let errorHandler = new TripleOApiErrorHandler(error);
+        errorHandler.errors.forEach((error) => {
+          NotificationActions.notify(error);
+        });
+      });
+    };
+  },
+
   listPlans() {
     TripleOApiService.getPlans().then(res => {
       AppDispatcher.dispatch({
@@ -12,7 +41,6 @@ export default {
         plans: res.plans
       });
     }).catch(error => {
-      console.error('Error retrieving plans PlansActions.listPlans', error); //eslint-disable-line no-console
       let errorHandler = new TripleOApiErrorHandler(error);
       errorHandler.errors.forEach((error) => {
         NotificationActions.notify(error);
