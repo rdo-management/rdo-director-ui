@@ -1,6 +1,7 @@
+import { connect } from 'react-redux';
 import React from 'react';
 
-export default class Plans extends React.Component {
+class Plans extends React.Component {
   render() {
     return (
       <div className="row">
@@ -13,5 +14,17 @@ export default class Plans extends React.Component {
 }
 
 Plans.propTypes = {
-  children: React.PropTypes.node
+  children: React.PropTypes.node,
+  dispatch: React.PropTypes.func.isRequired
 };
+
+function mapStateToProps(state) {
+  return {
+    currentPlanName: state.currentPlanName,
+    conflict: state.conflict,
+    planData: state.planData,
+    plans: state.plans
+  };
+};
+
+export default connect(mapStateToProps)(Plans);
