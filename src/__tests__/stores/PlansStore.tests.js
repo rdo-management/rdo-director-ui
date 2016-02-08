@@ -20,7 +20,7 @@ describe('PlansStore', () => {
     });
   });
 
-  describe('.onGetPlan', () => {
+  xdescribe('.onGetPlan', () => {
     beforeEach(() => {
       PlansStore.state = {
         currentPlanName: undefined,
