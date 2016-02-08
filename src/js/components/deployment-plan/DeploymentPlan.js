@@ -1,3 +1,4 @@
+import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import React from 'react';
 
@@ -6,43 +7,24 @@ import FlavorStore from '../../stores/FlavorStore';
 import Loader from '../ui/Loader';
 import NoPlans from './NoPlans';
 import NotificationActions from '../../actions/NotificationActions';
-import PlansStore from '../../stores/PlansStore';
 import TripleOApiService from '../../services/TripleOApiService';
 import TripleOApiErrorHandler from '../../services/TripleOApiErrorHandler';
 
-export default class DeploymentPlan extends React.Component {
+class DeploymentPlan extends React.Component {
   constructor() {
     super();
     this.state = {
-      currentPlanName: PlansStore.getCurrentPlanName(),
       readyToDeploy: false,
       flavors: []
     };
-    this.changeListener = this._onChange.bind(this);
-    this.flavorsChangeListener = this._onFlavorsChange.bind(this);
   }
 
   componentDidMount() {
     this.setState({flavors: FlavorStore.getState().flavors});
-    FlavorStore.addChangeListener(this.flavorsChangeListener);
-    PlansStore.addChangeListener(this.changeListener);
-  }
-
-  componentWillUnmount() {
-    FlavorStore.removeChangeListener(this.flavorsChangeListener);
-    PlansStore.removeChangeListener(this.changeListener);
-  }
-
-  _onChange() {
-    this.setState({ currentPlanName: PlansStore.getCurrentPlanName() });
-  }
-
-  _onFlavorsChange() {
-    this.setState({ currentPlanName: PlansStore.getCurrentPlanName() });
   }
 
   handleDeploy() {
-    TripleOApiService.deployPlan(this.state.currentPlanName).then((response) => {
+    TripleOApiService.deployPlan(this.props.currentPlanName).then((response) => {
       this.setState({ parameters: response.parameters });
       NotificationActions.notify({
         title: 'Deployment started',
@@ -73,7 +55,7 @@ export default class DeploymentPlan extends React.Component {
     let children = false;
     if (this.props.children) {
       children = React.cloneElement(this.props.children,
-        {currentPlanName: this.state.currentPlanName, parentPath: '/' + this.props.route.path});
+        {currentPlanName: this.props.currentPlanName, parentPath: '/' + this.props.route.path});
     }
 
     // TODO: Detemerine the real deployment configuration descriptions string
@@ -81,13 +63,13 @@ export default class DeploymentPlan extends React.Component {
 
     return (
       <div className="row">
-        <Loader loaded={PlansStore.getState().plansLoaded}
+        <Loader loaded={this.props.currentPlanName && !this.props.isFetchingPlans}
                 content="Loading Deployments..."
                 global>
-          {this.state.currentPlanName ? (
+          {this.props.hasPlans ? (
             <div className="col-sm-12 deployment-step-list">
               <div className="page-header">
-                <h1>{this.state.currentPlanName}</h1>
+                <h1>{this.props.currentPlanName}</h1>
               </div>
               <ol className="deployment-step-list">
                 <DeploymentStep title="Specify Deployment Configuration"
@@ -124,5 +106,18 @@ export default class DeploymentPlan extends React.Component {
 
 DeploymentPlan.propTypes = {
   children: React.PropTypes.node,
+  currentPlanName: React.PropTypes.string,
+  hasPlans: React.PropTypes.bool,
+  isFetchingPlans: React.PropTypes.bool,
   route: React.PropTypes.object
 };
+
+export function mapStateToProps(state) {
+  return {
+    currentPlanName: state.plans.get('currentPlanName'),
+    isFetchingPlans: state.plans.get('isFetchingPlans'),
+    hasPlans: !state.plans.get('all').isEmpty()
+  };
+}
+
+export default connect(mapStateToProps)(DeploymentPlan);
