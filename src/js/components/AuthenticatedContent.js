@@ -12,11 +12,6 @@ import Footer from './Footer';
 import NotificationsToaster from './notifications/NotificationsToaster';
 
 export default class AuthenticatedContent extends React.Component {
-  componentDidMount() {
-    // TODO(jtomasek): remove this when we start fetching plans in LoginActions on successful login
-    PlansActions.listPlans();
-  }
-
   logoutUser() {
     this.props.dispatch(LoginActions.logoutUser());
   }

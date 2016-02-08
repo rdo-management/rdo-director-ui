@@ -1,7 +1,7 @@
 import PlansConstants from '../../js/constants/PlansConstants';
 import PlansStore from '../../js/stores/PlansStore';
 
-describe('PlansStore', () => {
+xdescribe('PlansStore', () => {
   xit('should call onListPlans on LIST_PLANS action', () => {
     spyOn(PlansStore, 'onListPlans').and.callThrough();
     let payload = { actionType: PlansConstants.LIST_PLANS,
@@ -20,7 +20,7 @@ describe('PlansStore', () => {
     });
   });
 
-  describe('.onGetPlan', () => {
+  xdescribe('.onGetPlan', () => {
     beforeEach(() => {
       PlansStore.state = {
         currentPlanName: undefined,
@@ -35,7 +35,7 @@ describe('PlansStore', () => {
   });
 });
 
-describe('PlansStore plan detection', () => {
+xdescribe('PlansStore plan detection', () => {
   beforeEach(() => {
     spyOn(window.localStorage, 'setItem');
     PlansStore.state = {
