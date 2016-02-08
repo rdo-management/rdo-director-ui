@@ -1,4 +1,6 @@
+import { connect } from 'react-redux';
 import { Link } from 'react-router';
+import ImmutablePropTypes from 'react-immutable-proptypes';
 import React from 'react';
 
 import DataTable from '../ui/tables/DataTable';
@@ -6,31 +8,14 @@ import { DataTableCell, DataTableHeaderCell } from '../ui/tables/DataTableCells'
 import DataTableColumn from '../ui/tables/DataTableColumn';
 import { PageHeader } from '../ui/PageHeader';
 import PlansActions from '../../actions/PlansActions';
-import PlansStore from '../../stores/PlansStore';
 
-export default class ListPlans extends React.Component {
+class ListPlans extends React.Component {
   constructor() {
     super();
-    this.state = {
-      plans: PlansStore.getPlans()
-    };
-    this.changeListener = this._onPlansChange.bind(this);
   }
 
   componentWillMount() {
-    PlansActions.listPlans();
-  }
-
-  componentDidMount() {
-    PlansStore.addChangeListener(this.changeListener);
-  }
-
-  componentWillUnmount() {
-    PlansStore.removeChangeListener(this.changeListener);
-  }
-
-  _onPlansChange() {
-    this.setState({ plans: PlansStore.getPlans() });
+    this.props.fetchPlans();
   }
 
   renderNoPlans() {
@@ -65,16 +50,19 @@ export default class ListPlans extends React.Component {
     return (
       <div>
         <PageHeader>Plans</PageHeader>
-        <DataTable data={this.state.plans}
-                   rowsCount={this.state.plans.length}
+        <DataTable data={this.props.plans.toJS()}
+                   rowsCount={this.props.plans.size}
                    noRowsRenderer={this.renderNoPlans.bind(this)}
                    tableActions={this.renderTableActions}>
           <DataTableColumn header={<DataTableHeaderCell key="name">Name</DataTableHeaderCell>}
-                           cell={<PlanNameCell data={this.state.plans}/>}/>
+                           cell={<PlanNameCell
+                           data={this.props.plans.toJS()}
+                           currentPlanName={this.props.currentPlanName}
+                           choosePlan={this.props.choosePlan}/>}/>
 
           <DataTableColumn header={<DataTableHeaderCell key="actions">Actions</DataTableHeaderCell>}
                            cell={<RowActionsCell className="actions text-right"
-                                                 data={this.state.plans}/>}/>
+                                                 data={this.props.plans.toJS()}/>}/>
         </DataTable>
         {this.props.children}
       </div>
@@ -82,8 +70,36 @@ export default class ListPlans extends React.Component {
   }
 }
 ListPlans.propTypes = {
-  children: React.PropTypes.node
+  children: React.PropTypes.node,
+  choosePlan: React.PropTypes.func,
+  conflict: React.PropTypes.string,
+  currentPlanName: React.PropTypes.string,
+  fetchPlans: React.PropTypes.func,
+  planData: ImmutablePropTypes.map,
+  plans: ImmutablePropTypes.list
 };
+
+function mapStateToProps(state) {
+  return {
+    currentPlanName: state.plans.get('currentPlanName'),
+    conflict: state.plans.get('conflict'),
+    planData: state.plans.get('planData'),
+    plans: state.plans.get('all')
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    fetchPlans: () => {
+      dispatch(PlansActions.fetchPlans());
+    },
+    choosePlan: planName => {
+      dispatch(PlansActions.choosePlan(planName));
+    }
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ListPlans);
 
 class RowActionsCell extends React.Component {
   render() {
@@ -97,11 +113,12 @@ class RowActionsCell extends React.Component {
       return (
         <DataTableCell {...this.props}>
           <Link key="edit"
-                to={`/plans/${plan.name}/edit`}
+                to={`/plans/${plan}/edit`}
+                query={{tab: 'editPlan'}}
                 className="btn btn-xs btn-default">Edit</Link>
           &nbsp;
           <Link key="delete"
-                to={`/plans/${plan.name}/delete`}
+                to={`/plans/${plan}/delete`}
                 className="btn btn-xs btn-danger">Delete</Link>
         </DataTableCell>
       );
@@ -116,11 +133,11 @@ RowActionsCell.propTypes = {
 export class PlanNameCell extends React.Component {
   onPlanClick(e) {
     e.preventDefault();
-    PlansActions.choosePlan(e.target.textContent);
+    this.props.choosePlan(e.target.textContent);
   }
 
   getActiveIcon(planName) {
-    if(planName === PlansStore.getCurrentPlanName()) {
+    if(planName === this.props.currentPlanName) {
       return (
         <span className="pficon pficon-flag"></span>
       );
@@ -134,19 +151,21 @@ export class PlanNameCell extends React.Component {
     if(plan.transition) {
       return (
         <DataTableCell {...this.props} colSpan="2" className={plan.transition}>
-          <em>Deleting <strong>{plan.name}</strong>&hellip;</em>
+          <em>Deleting <strong>{plan}</strong>&hellip;</em>
         </DataTableCell>
       );
     } else {
       return (
         <DataTableCell {...this.props}>
-          {this.getActiveIcon(plan.name)} <a href="" onClick={this.onPlanClick}>{plan.name}</a>
+          {this.getActiveIcon(plan)} <a href="" onClick={this.onPlanClick.bind(this)}>{plan}</a>
         </DataTableCell>
       );
     }
   }
 }
 PlanNameCell.propTypes = {
+  choosePlan: React.PropTypes.func,
+  currentPlanName: React.PropTypes.string,
   data: React.PropTypes.array.isRequired,
   rowIndex: React.PropTypes.number
 };
