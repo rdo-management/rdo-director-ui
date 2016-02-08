@@ -2,6 +2,7 @@ import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import nock from 'nock';
 
+import createMockStoreDone from '../utils/createMockStoreDone';
 import NodesActions from '../../js/actions/NodesActions';
 import NodesConstants from '../../js/constants/NodesConstants';
 
@@ -44,10 +45,10 @@ describe('Asynchronous Nodes Actions', () => {
       .reply(200, mockGetNodesResponse[1]);
 
     const expectedActions = [
-      { type: NodesActions.REQUEST_NODES },
-      { type: NodesActions.RECEIVE_NODES, payload: mockGetNodesResponse }
+      { type: NodesConstants.REQUEST_NODES },
+      { type: NodesConstants.RECEIVE_NODES, payload: mockGetNodesResponse }
     ];
-    const store = mockStore({ nodes: [] }, expectedActions, done);
+    const store = mockStore({ nodes: [] }, expectedActions, createMockStoreDone(done));
     store.dispatch(NodesActions.fetchNodes());
   });
 });
