@@ -5,6 +5,7 @@ import TempStorage from '../services/TempStorage.js';
 import KeystoneApiErrorHandler from '../services/KeystoneApiErrorHandler';
 import KeystoneApiService from '../services/KeystoneApiService';
 import LoginConstants from '../constants/LoginConstants';
+import PlansActions from './PlansActions';
 
 export default {
   authenticateUserViaToken(keystoneAuthTokenId, nextPath) {
@@ -14,8 +15,7 @@ export default {
         TempStorage.setItem('keystoneAuthTokenId', response.access.token.id);
         dispatch(this.userAuthSuccess(response.access));
         history.pushState(null, nextPath);
-        // TODO(jtomasek): fetch plans here instead of in AuthenticatedContent
-        // dispatch(PlansActions.fetchPlans());
+        dispatch(PlansActions.fetchPlans());
       }).catch((error) => {
         console.error('Error in LoginActions.authenticateUserViaToken', error); //eslint-disable-line no-console
         let errorHandler = new KeystoneApiErrorHandler(error);
@@ -33,8 +33,7 @@ export default {
         TempStorage.setItem('keystoneAuthTokenId', response.access.token.id);
         dispatch(this.userAuthSuccess(response.access));
         history.pushState(null, nextPath);
-        // TODO(jtomasek): fetch plans here instead of in AuthenticatedContent
-        // dispatch(PlansActions.fetchPlans());
+        dispatch(PlansActions.fetchPlans());
       }).catch((error) => {
         console.error('Error in LoginActions.authenticateUser', error); //eslint-disable-line no-console
         let errorHandler = new KeystoneApiErrorHandler(error, formFields);
