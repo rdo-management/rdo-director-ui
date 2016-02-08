@@ -99,8 +99,8 @@ TempStorage.initialized.then(() => {
             <Route path="list" component={ListPlans}>
               <Route path="/plans/new" component={NewPlan}/>
               <Route path="/plans/:planName/delete" component={DeletePlan}/>
+              <Route path="/plans/:planName/edit" component={EditPlan}/>
             </Route>
-            <Route path=":planName/edit" component={EditPlan}/>
           </Route>
         </Route>
         <Route path="login" component={Login}/>

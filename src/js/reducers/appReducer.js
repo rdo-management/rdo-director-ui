@@ -1,10 +1,12 @@
 import { combineReducers } from 'redux';
-import nodesReducer from './nodesReducer';
 import loginReducer from './loginReducer';
+import nodesReducer from './nodesReducer';
+import plansReducer from './plansReducer';
 
 const appReducer = combineReducers({
   login: loginReducer,
-  nodes: nodesReducer
+  nodes: nodesReducer,
+  plans: plansReducer
 });
 
 export default appReducer;

@@ -36,7 +36,7 @@ describe('TempStorage', () => {
       setTimeout(() => {
         expect(TempStorage.getItem('someKey')).toEqual('updated');
         expect(sessionStorage.getItem('someKey')).toEqual('updated');
-      }, 10);
+      }, 20);
     });
   });
 
