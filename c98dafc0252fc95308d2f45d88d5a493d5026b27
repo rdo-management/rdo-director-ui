@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "fa81d914_9d2d21ab",
+        "filename": "src/js/actions/NodesActions.js",
+        "patchSetId": 9
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2016-02-11T14:39:17Z",
+      "side": 1,
+      "message": "I see that there\u0027s some overhead to having separate flags. But what if there are two operations running, only one of which returns, calling finishOperation. The other operation is still pending, but to the app it looks like everything\u0027s finished. \n\nBut I assume this can easily be changed later if we actually do have multiple actions.",
+      "parentUuid": "fa81d914_fd38ddf0",
+      "revId": "c98dafc0252fc95308d2f45d88d5a493d5026b27",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa81d914_fdf53d57",
         "filename": "src/js/actions/NodesActions.js",
         "patchSetId": 9
