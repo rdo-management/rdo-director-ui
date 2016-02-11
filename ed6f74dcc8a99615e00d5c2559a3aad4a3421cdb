@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa81d914_1d25b15b",
+        "filename": "src/js/actions/PlansActions.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-02-11T12:32:56Z",
+      "side": 1,
+      "message": "We can call this just requestPlans",
+      "revId": "ed6f74dcc8a99615e00d5c2559a3aad4a3421cdb",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_3d2a752c",
+        "filename": "src/js/actions/PlansActions.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-02-11T12:32:56Z",
+      "side": 1,
+      "message": "receivePlans",
+      "revId": "ed6f74dcc8a99615e00d5c2559a3aad4a3421cdb",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_5d22c952",
+        "filename": "src/js/actions/PlansActions.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-02-11T12:32:56Z",
+      "side": 1,
+      "message": "fetchPlans",
+      "revId": "ed6f74dcc8a99615e00d5c2559a3aad4a3421cdb",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_7d1f8d08",
+        "filename": "src/js/actions/PlansActions.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-02-11T12:32:56Z",
+      "side": 1,
+      "message": "no need to \u0027return\u0027",
+      "revId": "ed6f74dcc8a99615e00d5c2559a3aad4a3421cdb",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_9d18c11f",
+        "filename": "src/js/actions/PlansActions.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-02-11T12:32:56Z",
+      "side": 1,
+      "message": "add TODO to remove this action as it won\u0027t be used any more once we apply my Login patch",
+      "revId": "ed6f74dcc8a99615e00d5c2559a3aad4a3421cdb",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
