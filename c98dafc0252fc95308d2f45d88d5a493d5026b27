@@ -90,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "fa81d914_cf8efc78",
+        "filename": "src/js/actions/NodesActions.js",
+        "patchSetId": 9
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-02-11T15:07:50Z",
+      "side": 1,
+      "message": "Oh, good point, In future, we\u0027ll want to have this an object in state instead of boolean, so that object could hold the map of running things (list of running operations and probably also list of nodes on which the operation is running). OPERATION_FINISHED can then specify what is finished and reducer updates the object accordingly",
+      "parentUuid": "fa81d914_9d2d21ab",
+      "revId": "c98dafc0252fc95308d2f45d88d5a493d5026b27",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa81d914_fdf53d57",
         "filename": "src/js/actions/NodesActions.js",
         "patchSetId": 9
