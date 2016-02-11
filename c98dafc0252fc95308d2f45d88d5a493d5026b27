@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa81d914_7d014d37",
+        "filename": "src/__tests__/actions/NodesActions.tests.js",
+        "patchSetId": 9
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2016-02-11T13:44:37Z",
+      "side": 1,
+      "message": "Since nock isn\u0027t really working with jasmine, why not remove the whole test or add a TODO note to it?",
+      "revId": "c98dafc0252fc95308d2f45d88d5a493d5026b27",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_ddf07969",
+        "filename": "src/js/actions/NodesActions.js",
+        "patchSetId": 9
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2016-02-11T13:44:37Z",
+      "side": 1,
+      "message": "Rename to \"startIntrospection\" for better clarity?",
+      "revId": "c98dafc0252fc95308d2f45d88d5a493d5026b27",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_fdf53d57",
+        "filename": "src/js/actions/NodesActions.js",
+        "patchSetId": 9
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2016-02-11T13:44:37Z",
+      "side": 1,
+      "message": "Rename to \"finishIntrospection\"?",
+      "revId": "c98dafc0252fc95308d2f45d88d5a493d5026b27",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_bde02597",
+        "filename": "src/js/actions/NodesActions.js",
+        "patchSetId": 9
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2016-02-11T13:44:37Z",
+      "side": 1,
+      "message": "Is this supposed to be used for any workflows other than introspection? If it\u0027s not, why not rename it to sth like \"pollForIntrospection\" or \"pollIntrospectionWorkflow\"?",
+      "revId": "c98dafc0252fc95308d2f45d88d5a493d5026b27",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_bdf74558",
+        "filename": "src/js/reducers/nodesReducer.js",
+        "patchSetId": 9
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2016-02-11T13:44:37Z",
+      "side": 1,
+      "message": "Similar to my comment in NodesActions.js, I\u0027d go with a less generic name here.",
+      "revId": "c98dafc0252fc95308d2f45d88d5a493d5026b27",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_dd9799ea",
+        "filename": "src/js/reducers/nodesReducer.js",
+        "patchSetId": 9
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2016-02-11T13:44:37Z",
+      "side": 1,
+      "message": "Dee above.",
+      "revId": "c98dafc0252fc95308d2f45d88d5a493d5026b27",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
