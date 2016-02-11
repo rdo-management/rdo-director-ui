@@ -116,6 +116,24 @@
       "revId": "9ca17eb42aabe08a543994fe84e409574327ea60",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_6feb50b0",
+        "filename": "src/js/reducers/plansReducer.js",
+        "patchSetId": 6
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-02-11T16:04:04Z",
+      "side": 1,
+      "message": "you could use Lodash for it https://lodash.com/docs#map\nList(_.map(action.payload, \u0027name\u0027))",
+      "parentUuid": "fa81d914_6f0d1037",
+      "revId": "9ca17eb42aabe08a543994fe84e409574327ea60",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
