@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fa81d914_5d0e493c",
+        "filename": "src/js/reducers/plansReducer.js",
+        "patchSetId": 6
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2016-02-11T14:48:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa81d914_fd51bd36",
+      "range": {
+        "startLine": 8,
+        "startChar": 2,
+        "endLine": 8,
+        "endChar": 22
+      },
+      "revId": "9ca17eb42aabe08a543994fe84e409574327ea60",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa81d914_1d6cd107",
         "filename": "src/js/reducers/plansReducer.js",
         "patchSetId": 6
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "fa81d914_3d16f555",
+        "filename": "src/js/reducers/plansReducer.js",
+        "patchSetId": 6
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2016-02-11T14:48:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa81d914_1d6cd107",
+      "revId": "9ca17eb42aabe08a543994fe84e409574327ea60",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa81d914_bd7ca5b6",
         "filename": "src/js/reducers/plansReducer.js",
         "patchSetId": 6
@@ -53,6 +95,24 @@
       "writtenOn": "2016-02-11T14:21:35Z",
       "side": 1,
       "message": "I think that all you need to do in this \u0027case\u0027 is:\nreturn state.set(\u0027isFetchingPlans\u0027, false)\n            .set(\u0027all\u0027, fromJS(action.payload));",
+      "revId": "9ca17eb42aabe08a543994fe84e409574327ea60",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_6f0d1037",
+        "filename": "src/js/reducers/plansReducer.js",
+        "patchSetId": 6
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2016-02-11T14:48:18Z",
+      "side": 1,
+      "message": "I need the first four lines, because the payload contains a list of objects ({ name: \u0027xy\u0027, links: ...}), but all I want to store here is a list of plan names.",
+      "parentUuid": "fa81d914_bd7ca5b6",
       "revId": "9ca17eb42aabe08a543994fe84e409574327ea60",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
