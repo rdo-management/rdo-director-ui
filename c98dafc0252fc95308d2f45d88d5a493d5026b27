@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "fa81d914_bd53c537",
+        "filename": "src/__tests__/actions/NodesActions.tests.js",
+        "patchSetId": 9
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-02-11T14:27:59Z",
+      "side": 1,
+      "message": "I can remove it completely together with nock and mockstore npm packages. I\u0027ll update the patch.",
+      "parentUuid": "fa81d914_7d014d37",
+      "revId": "c98dafc0252fc95308d2f45d88d5a493d5026b27",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa81d914_ddf07969",
         "filename": "src/js/actions/NodesActions.js",
         "patchSetId": 9
@@ -30,6 +48,24 @@
       "writtenOn": "2016-02-11T13:44:37Z",
       "side": 1,
       "message": "Rename to \"startIntrospection\" for better clarity?",
+      "revId": "c98dafc0252fc95308d2f45d88d5a493d5026b27",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_fd38ddf0",
+        "filename": "src/js/actions/NodesActions.js",
+        "patchSetId": 9
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-02-11T14:27:59Z",
+      "side": 1,
+      "message": "I named it this way, because I intend to use this \u0027flag\u0027 to mark that there is some operation going on with the nodes. So if there are multiple actions on the nodes table, they can use this to disable the action buttons etc. I don\u0027t thing we need separate flag for each action on the nodes.",
+      "parentUuid": "fa81d914_ddf07969",
       "revId": "c98dafc0252fc95308d2f45d88d5a493d5026b27",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
@@ -64,6 +100,24 @@
       "writtenOn": "2016-02-11T13:44:37Z",
       "side": 1,
       "message": "Is this supposed to be used for any workflows other than introspection? If it\u0027s not, why not rename it to sth like \"pollForIntrospection\" or \"pollIntrospectionWorkflow\"?",
+      "revId": "c98dafc0252fc95308d2f45d88d5a493d5026b27",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_3d3fd5d7",
+        "filename": "src/js/actions/NodesActions.js",
+        "patchSetId": 9
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-02-11T14:27:59Z",
+      "side": 1,
+      "message": "It could be used on any operation, though I see there are limitations of this implementation. I can rename it to pollForIntrospectionWorkflow yeah.\n\nWe\u0027ll hopefully get rid of this soon as we\u0027ll have zaqar messages and we won\u0027t need to poll",
+      "parentUuid": "fa81d914_bde02597",
       "revId": "c98dafc0252fc95308d2f45d88d5a493d5026b27",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
