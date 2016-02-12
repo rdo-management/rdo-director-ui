@@ -63,10 +63,6 @@ class Nodes extends React.Component {
               <pre>tripleo.sh --register-nodes</pre>
               <p>To introspect registered Nodes run</p>
               <pre>tripleo.sh --introspect-nodes</pre>
-              <p>To create Flavors run</p>
-              <pre>tripleo.sh --flavors</pre>
-              <p>To list Flavors run</p>
-              <pre>tripleo.sh --flavors</pre>
             </div>
           </div>
         </div>
