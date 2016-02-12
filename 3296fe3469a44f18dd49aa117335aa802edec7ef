@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "fa81d914_83277bc9",
+        "filename": "src/js/actions/PlansActions.js",
+        "patchSetId": 13
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2016-02-12T15:07:13Z",
+      "side": 1,
+      "message": "Agreed.",
+      "parentUuid": "fa81d914_83605b02",
+      "revId": "3296fe3469a44f18dd49aa117335aa802edec7ef",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa81d914_4343c36b",
         "filename": "src/js/reducers/plansReducer.js",
         "patchSetId": 13
@@ -47,6 +65,24 @@
       "writtenOn": "2016-02-12T15:01:47Z",
       "side": 1,
       "message": "I think this should be moved into detectPlan action (so this action would be \u0027thunk\u0027 one and it would then dispatch planDetected action which returns { type: PLAN_DETECTED, payload: { currentPlanName, conflict } and reducer just updates state with it.",
+      "revId": "3296fe3469a44f18dd49aa117335aa802edec7ef",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_433ae3e7",
+        "filename": "src/js/reducers/plansReducer.js",
+        "patchSetId": 13
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2016-02-12T15:07:13Z",
+      "side": 1,
+      "message": "Good point, fully agreed.",
+      "parentUuid": "fa81d914_4343c36b",
       "revId": "3296fe3469a44f18dd49aa117335aa802edec7ef",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
