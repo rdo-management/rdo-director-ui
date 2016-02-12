@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa81d914_a35d5f49",
+        "filename": "src/js/actions/PlansActions.js",
+        "patchSetId": 13
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-02-12T15:01:47Z",
+      "side": 1,
+      "message": "see plansReducer comments:\n\ndetectPlan(plans) {\n  return dispatch \u003d\u003e {\n    do the plan detection things..\n    dispatch(this.planDetected);\n  }",
+      "revId": "3296fe3469a44f18dd49aa117335aa802edec7ef",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_83605b02",
+        "filename": "src/js/actions/PlansActions.js",
+        "patchSetId": 13
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-02-12T15:01:47Z",
+      "side": 1,
+      "message": "this needs to be thunk action which then dispatches planChosen action. When we have notifications turned to redux this action will dispatch(NotificationsActions.notify({...}));",
+      "revId": "3296fe3469a44f18dd49aa117335aa802edec7ef",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_4343c36b",
+        "filename": "src/js/reducers/plansReducer.js",
+        "patchSetId": 13
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-02-12T15:01:47Z",
+      "side": 1,
+      "message": "I think this should be moved into detectPlan action (so this action would be \u0027thunk\u0027 one and it would then dispatch planDetected action which returns { type: PLAN_DETECTED, payload: { currentPlanName, conflict } and reducer just updates state with it.",
+      "revId": "3296fe3469a44f18dd49aa117335aa802edec7ef",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
