@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa81d914_df494332",
+        "filename": "src/__tests__/components/Login.tests.js",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2016-02-15T11:16:07Z",
+      "side": 1,
+      "message": "We should add a ticket to fix broken tests or remove stale ones before moving upstream.",
+      "revId": "229e08d9face9dab0d45fc805efab8205b6c1c8b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_1f159be4",
+        "filename": "src/js/components/AuthenticatedContent.js",
+        "patchSetId": 6
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2016-02-15T11:16:07Z",
+      "side": 1,
+      "message": "Can this be removed?",
+      "revId": "229e08d9face9dab0d45fc805efab8205b6c1c8b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_5fdab34c",
+        "filename": "src/js/components/utils/AuthenticatedComponent.js",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2016-02-15T11:16:07Z",
+      "side": 1,
+      "message": "Can this module go for good? I don\u0027t see it used anywhere anymore.",
+      "revId": "229e08d9face9dab0d45fc805efab8205b6c1c8b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_9f442b1c",
+        "filename": "src/js/index.js",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2016-02-15T11:16:07Z",
+      "side": 1,
+      "message": "Good idea.",
+      "revId": "229e08d9face9dab0d45fc805efab8205b6c1c8b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
