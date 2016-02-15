@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "da86d52c_490f01e2",
+        "filename": "src/js/components/deployment-plan/DeploymentPlan.js",
+        "patchSetId": 14
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2016-02-15T13:08:22Z",
+      "side": 1,
+      "message": "You\u0027re right, I changed the condition. But it has to be the other way round:\n\nloaded\u003d{this.props.currentPlanName \u0026\u0026 !this.props.isFetchingPlans}",
+      "parentUuid": "fa81d914_5cbd61b6",
+      "revId": "ded98c840bccf4c73714f476856c9029b614ad18",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa81d914_7caea582",
         "filename": "src/js/components/deployment-plan/DeploymentPlan.js",
         "patchSetId": 14
@@ -30,6 +48,24 @@
       "writtenOn": "2016-02-15T10:09:48Z",
       "side": 1,
       "message": "!state.plans.get(\u0027all\u0027).isEmpty()",
+      "revId": "ded98c840bccf4c73714f476856c9029b614ad18",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_bf6e4f2d",
+        "filename": "src/js/components/deployment-plan/DeploymentPlan.js",
+        "patchSetId": 14
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2016-02-15T13:08:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa81d914_7caea582",
       "revId": "ded98c840bccf4c73714f476856c9029b614ad18",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "da86d52c_4958e1fa",
+        "filename": "src/js/components/plan/ListPlans.js",
+        "patchSetId": 14
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2016-02-15T13:08:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa81d914_9ceb5977",
+      "revId": "ded98c840bccf4c73714f476856c9029b614ad18",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa81d914_dccf9154",
         "filename": "src/js/components/plan/ListPlans.js",
         "patchSetId": 14
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "da86d52c_2963adb2",
+        "filename": "src/js/components/plan/ListPlans.js",
+        "patchSetId": 14
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2016-02-15T13:08:22Z",
+      "side": 1,
+      "message": "I removed componentDidMount and added the binding to the click attr in the render method.",
+      "parentUuid": "fa81d914_dccf9154",
+      "revId": "ded98c840bccf4c73714f476856c9029b614ad18",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa81d914_9ca27949",
         "filename": "src/js/components/plan/Plans.js",
         "patchSetId": 14
@@ -81,6 +153,24 @@
       "writtenOn": "2016-02-15T10:09:48Z",
       "side": 1,
       "message": "I think it would be better to make ListPlans connected component. This component is used just to achieve correct routes. So connecting ListPlans will reduce the props passing by one level.\n\nThere is an issue in routes defined in index.js The routes should look like this:\n\n\u003cRedirect from\u003d\"plans\" to\u003d\"plans/list\"/\u003e\n\u003cRoute path\u003d\"plans\" component\u003d{Plans}\u003e\n  \u003cRoute path\u003d\"list\" component\u003d{ListPlans}\u003e\n    \u003cRoute path\u003d\"/plans/new\" component\u003d{NewPlan}/\u003e\n    \u003cRoute path\u003d\"/plans/:planName/delete\" component\u003d{DeletePlan}/\u003e\n    \u003cRoute path\u003d\"/plans/:planName/edit\" component\u003d{EditPlan}/\u003e\n  \u003c/Route\u003e\n\u003c/Route\u003e\n\nCan you please fix it as part of this patch?",
+      "revId": "ded98c840bccf4c73714f476856c9029b614ad18",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da86d52c_09e9891a",
+        "filename": "src/js/components/plan/Plans.js",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2016-02-15T13:08:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa81d914_9ca27949",
       "revId": "ded98c840bccf4c73714f476856c9029b614ad18",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
