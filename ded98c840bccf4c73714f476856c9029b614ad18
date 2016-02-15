@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa81d914_5cbd61b6",
+        "filename": "src/js/components/deployment-plan/DeploymentPlan.js",
+        "patchSetId": 14
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-02-15T10:09:48Z",
+      "side": 1,
+      "message": "This needs different condition. If there are no plans, then NoPlans component is rendered (see line 97).\n\nThe loader is supposed to be shown (loaded\u003dfalse) only when there is no currentPlanName and plans are fetching. So \nloaded\u003d{!currentPlanName \u0026\u0026 isFetchingPlans}",
+      "revId": "ded98c840bccf4c73714f476856c9029b614ad18",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_7caea582",
+        "filename": "src/js/components/deployment-plan/DeploymentPlan.js",
+        "patchSetId": 14
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-02-15T10:09:48Z",
+      "side": 1,
+      "message": "!state.plans.get(\u0027all\u0027).isEmpty()",
+      "revId": "ded98c840bccf4c73714f476856c9029b614ad18",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_9ceb5977",
+        "filename": "src/js/components/plan/ListPlans.js",
+        "patchSetId": 14
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-02-15T10:09:48Z",
+      "side": 1,
+      "message": "add query\u003d{{tab: \u0027editPlan\u0027}} after this line to make the first tab in modal selected",
+      "revId": "ded98c840bccf4c73714f476856c9029b614ad18",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_dccf9154",
+        "filename": "src/js/components/plan/ListPlans.js",
+        "patchSetId": 14
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-02-15T10:09:48Z",
+      "side": 1,
+      "message": "I think this belongs to constructor. Doing this._onPlanClick.bind(this) on line 140 feels simpler to me. Then this is not needed at all. What do you think?",
+      "revId": "ded98c840bccf4c73714f476856c9029b614ad18",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_9ca27949",
+        "filename": "src/js/components/plan/Plans.js",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-02-15T10:09:48Z",
+      "side": 1,
+      "message": "I think it would be better to make ListPlans connected component. This component is used just to achieve correct routes. So connecting ListPlans will reduce the props passing by one level.\n\nThere is an issue in routes defined in index.js The routes should look like this:\n\n\u003cRedirect from\u003d\"plans\" to\u003d\"plans/list\"/\u003e\n\u003cRoute path\u003d\"plans\" component\u003d{Plans}\u003e\n  \u003cRoute path\u003d\"list\" component\u003d{ListPlans}\u003e\n    \u003cRoute path\u003d\"/plans/new\" component\u003d{NewPlan}/\u003e\n    \u003cRoute path\u003d\"/plans/:planName/delete\" component\u003d{DeletePlan}/\u003e\n    \u003cRoute path\u003d\"/plans/:planName/edit\" component\u003d{EditPlan}/\u003e\n  \u003c/Route\u003e\n\u003c/Route\u003e\n\nCan you please fix it as part of this patch?",
+      "revId": "ded98c840bccf4c73714f476856c9029b614ad18",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
