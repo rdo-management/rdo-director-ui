@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "fa81d914_df3dc32c",
+        "filename": "src/__tests__/components/Login.tests.js",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-02-15T11:56:44Z",
+      "side": 1,
+      "message": "Yep, we can do it as part of the cleanup after we\u0027re ported to redux",
+      "parentUuid": "fa81d914_df494332",
+      "revId": "229e08d9face9dab0d45fc805efab8205b6c1c8b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa81d914_1f159be4",
         "filename": "src/js/components/AuthenticatedContent.js",
         "patchSetId": 6
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "fa81d914_7f0a177a",
+        "filename": "src/js/components/AuthenticatedContent.js",
+        "patchSetId": 6
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-02-15T11:56:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa81d914_1f159be4",
+      "revId": "229e08d9face9dab0d45fc805efab8205b6c1c8b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa81d914_5fdab34c",
         "filename": "src/js/components/utils/AuthenticatedComponent.js",
         "patchSetId": 6
@@ -47,6 +83,24 @@
       "writtenOn": "2016-02-15T11:16:07Z",
       "side": 1,
       "message": "Can this module go for good? I don\u0027t see it used anywhere anymore.",
+      "revId": "229e08d9face9dab0d45fc805efab8205b6c1c8b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_9f0fcb87",
+        "filename": "src/js/components/utils/AuthenticatedComponent.js",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-02-15T11:56:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa81d914_5fdab34c",
       "revId": "229e08d9face9dab0d45fc805efab8205b6c1c8b",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
