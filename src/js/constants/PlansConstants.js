@@ -7,7 +7,7 @@ export default keyMirror({
   RECEIVE_PLAN: null,
   REQUEST_PLAN_DELETE: null,
   RECEIVE_PLAN_DELETE: null,
-  CHOOSE_PLAN: null,
+  PLAN_CHOSEN: null,
   PLAN_DETECTED: null,
 
   GET_PLAN: null,

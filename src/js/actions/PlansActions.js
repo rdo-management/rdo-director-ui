@@ -82,7 +82,7 @@ export default {
         dispatch(this.detectPlan([]));
         let errorHandler = new TripleOApiErrorHandler(error);
         errorHandler.errors.forEach((error) => {
-          NotificationActions.notify(error);
+          dispatch(NotificationActions.notify(error));
         });
       });
     };
@@ -111,21 +111,27 @@ export default {
         dispatch(this.receivePlan({}));
         let errorHandler = new TripleOApiErrorHandler(error);
         errorHandler.errors.forEach((error) => {
-          NotificationActions.notify(error);
+          dispatch(NotificationActions.notify(error));
         });
       });
     };
   },
 
   choosePlan(planName) {
-    NotificationActions.notify({
-      title: 'Plan Activated',
-      message: 'The plan ' + planName + ' was activated.',
-      type: 'success'
-    });
-    storePlan(planName);
+    return dispatch => {
+      dispatch(NotificationActions.notify({
+        title: 'Plan Activated',
+        message: 'The plan ' + planName + ' was activated.',
+        type: 'success'
+      }));
+      storePlan(planName);
+      dispatch(this.planChosen(planName));
+    };
+  },
+
+  planChosen(planName) {
     return {
-      type: PlansConstants.CHOOSE_PLAN,
+      type: PlansConstants.PLAN_CHOSEN,
       payload: planName
     };
   },

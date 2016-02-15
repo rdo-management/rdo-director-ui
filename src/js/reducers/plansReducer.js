@@ -31,7 +31,7 @@ export default function plansReducer(state = initialState, action) {
             .set('isFetchingPlans', false)
             .set('all', List(action.payload).map(plan => plan.name).sort());
 
-  case PlansConstants.CHOOSE_PLAN:
+  case PlansConstants.PLAN_CHOSEN:
     return state.set('currentPlanName', action.payload);
 
   case PlansConstants.PLAN_DETECTED:

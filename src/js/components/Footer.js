@@ -1,7 +1,8 @@
+import { connect } from 'react-redux';
+import ImmutablePropTypes from 'react-immutable-proptypes';
 import React from 'react';
 import ClassNames from 'classnames';
 
-import NotificationStore from '../stores/NotificationStore';
 import NotificationActions from '../actions/NotificationActions';
 import ValidationsActions from '../actions/ValidationsActions';
 import ValidationsApiService from '../services/ValidationsApiService';
@@ -20,23 +21,19 @@ export default class Footer extends React.Component {
     this.state = {
       isOpen: false,
       listShown: 'notifications',
-      notifications: NotificationStore.getState(),
       validationStages: ValidationsStore.getState().stages
     };
 
     this.validationsChangeListener = this._onValidationsChange.bind(this);
-    this.notificationsChangeListener = this._onNotificationsChange.bind(this);
   }
 
   componentDidMount() {
-    NotificationStore.addChangeListener(this.notificationsChangeListener);
     ValidationsStore.addChangeListener(this.validationsChangeListener);
     this.getValidationStages();
   }
 
   componentWillUnmount() {
     ValidationsStore.removeChangeListener(this.validationsChangeListener);
-    NotificationStore.removeChangeListener(this.notificationsChangeListener);
   }
 
   getValidationStages() {
@@ -46,17 +43,13 @@ export default class Footer extends React.Component {
       console.error('Error in Footer.getValidationStages', error); //eslint-disable-line no-console
       let errorHandler = new ValidationsApiErrorHandler(error);
       errorHandler.errors.forEach((error) => {
-        NotificationActions.notify(error);
+        this.props.dispatch(NotificationActions.notify(error));
       });
     });
   }
 
   _onValidationsChange() {
     this.setState({validationStages: ValidationsStore.getState().stages});
-  }
-
-  _onNotificationsChange() {
-    this.setState({notifications: NotificationStore.getState()});
   }
 
   toggleOpen(e) {
@@ -111,7 +104,7 @@ export default class Footer extends React.Component {
               <a className="link" onClick={this.showValidations.bind(this)}>Validations</a>
             </li>
             <li className={this.state.isOpen ? 'hidden' : ''}>
-              <NotificationsIndicator notifications={this.state.notifications}
+              <NotificationsIndicator notifications={this.props.notifications}
                                       onClick={this.showNotifications.bind(this)}/>
             </li>
             <li className={(this.state.isOpen ? 'hidden' : '') + ' separator'}></li>
@@ -123,7 +116,9 @@ export default class Footer extends React.Component {
         </div>
         <div className={contentClasses}>
           <NotificationList active={this.state.isOpen && this.state.listShown === 'notifications'}
-                            notifications={this.state.notifications}/>
+                            notifications={this.props.notifications}
+                            notificationsViewed={this.props.notificationsViewed}
+                            removeNotification={this.props.removeNotification}/>
           <ValidationsList  active={this.state.isOpen && this.state.listShown === 'validations'}
                             validationStages={this.state.validationStages}/>
         </div>
@@ -131,3 +126,28 @@ export default class Footer extends React.Component {
     );
   }
 }
+Footer.propTypes = {
+  dispatch: React.PropTypes.func,
+  notifications: ImmutablePropTypes.map.isRequired,
+  notificationsViewed: React.PropTypes.func.isRequired,
+  removeNotification: React.PropTypes.func.isRequired
+};
+
+function mapDispatchToProps(dispatch) {
+  return {
+    notificationsViewed: () => {
+      dispatch(NotificationActions.notificationsViewed());
+    },
+    removeNotification: id => {
+      dispatch(NotificationActions.removeNotification(id));
+    }
+  };
+}
+
+function mapStateToProps(state) {
+  return {
+    notifications: state.notifications.get('all').sortBy(n => n.timestamp)
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Footer);

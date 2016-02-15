@@ -1,25 +1,27 @@
-import AppDispatcher from '../dispatchers/AppDispatcher.js';
+import shortid from 'shortid';
+import { Notification } from '../immutableRecords';
 import NotificationConstants from '../constants/NotificationConstants';
 
 export default {
   notify(notification) {
-    AppDispatcher.dispatch({
-      actionType: NotificationConstants.NOTIFY,
-      notification: notification
-    });
+    notification.timestamp = Date.now();
+    notification.id = shortid.generate();
+    return {
+      type: NotificationConstants.NOTIFY,
+      payload: new Notification(notification)
+    };
   },
 
-  removeNotification(notification) {
-    AppDispatcher.dispatch({
-      actionType: NotificationConstants.REMOVE_NOTIFICATION,
-      notification: notification
-    });
+  removeNotification(notificationId) {
+    return {
+      type: NotificationConstants.REMOVE_NOTIFICATION,
+      payload: notificationId
+    };
   },
 
-  notificationViewed(notification) {
-    AppDispatcher.dispatch({
-      actionType: NotificationConstants.NOTIFICATION_VIEWED,
-      notification: notification
-    });
+  notificationsViewed() {
+    return {
+      type: NotificationConstants.NOTIFICATIONS_VIEWED
+    };
   }
 };

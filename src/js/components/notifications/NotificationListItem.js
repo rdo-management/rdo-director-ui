@@ -43,14 +43,13 @@ export default class NotificationListItem extends React.Component {
 }
 NotificationListItem.propTypes = {
   message: React.PropTypes.string.isRequired,
-  removeNotification: React.PropTypes.func,
-  timestamp: React.PropTypes.number,
-  title: React.PropTypes.string,
-  type: React.PropTypes.string,
-  viewed: React.PropTypes.bool
+  removeNotification: React.PropTypes.func.isRequired,
+  timestamp: React.PropTypes.number.isRequired,
+  title: React.PropTypes.string.isRequired,
+  type: React.PropTypes.string.isRequired,
+  viewed: React.PropTypes.bool.isRequired
 };
 NotificationListItem.defaultProps = {
-  dismissable: true,
   title: '',
   type: 'error'
 };

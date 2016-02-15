@@ -1,18 +1,18 @@
-import * as _ from 'lodash';
+import ImmutablePropTypes from 'react-immutable-proptypes';
 import React from 'react';
 
 export default class NotificationsIndicator extends React.Component {
 
   getStatusInfo() {
     // Generate an object of status counts {'status': statusCount...}
-    let stateCounts = _.countBy(_.pluck(this.props.notifications, 'type'));
+    let stateCounts = this.props.notifications.countBy(n => n.type);
 
-    let unreadCount = _.countBy(this.props.notifications, function(notification) {
-        return notification.viewed ? 'read' : 'unread';
-      })['unread'] || 0;
+    let unreadCount = this.props.notifications.countBy(notification => {
+      return notification.viewed ? 'read' : 'unread';
+    }).get('unread') || 0;
 
     return {
-      total: this.props.notifications.length,
+      total: this.props.notifications.size,
       unread: unreadCount,
       error: (stateCounts.error || 0) + (stateCounts.undefined || 0),
       warning: stateCounts.warning || 0
@@ -61,6 +61,6 @@ export default class NotificationsIndicator extends React.Component {
   }
 }
 NotificationsIndicator.propTypes = {
-  notifications: React.PropTypes.array,
+  notifications: ImmutablePropTypes.map.isRequired,
   onClick: React.PropTypes.func
 };

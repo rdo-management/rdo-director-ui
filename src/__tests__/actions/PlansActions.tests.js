@@ -43,7 +43,7 @@ describe('plansReducer default state', () => {
     });
   });
 
-  describe('CHOOSE_PLAN', () => {
+  describe('PLAN_CHOSEN', () => {
     let state;
 
     beforeEach(() => {
@@ -52,7 +52,7 @@ describe('plansReducer default state', () => {
           currentPlanName: undefined,
           all: List.of(...['overcloud', 'another-cloud'])
         }),
-        PlansActions.choosePlan('another-cloud')
+        PlansActions.planChosen('another-cloud')
       );
     });
 
@@ -208,4 +208,3 @@ describe('PlansActions', () => {
 
   });
 });
-

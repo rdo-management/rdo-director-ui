@@ -1,35 +1,32 @@
 import React from 'react';
+import ImmutablePropTypes from 'react-immutable-proptypes';
 import ClassNames from 'classnames';
 
 import BlankSlate from '../ui/BlankSlate';
 import NotificationListItem from './NotificationListItem';
-import NotificationActions from '../../actions/NotificationActions';
 
 export default class NotificationList extends React.Component {
-  componentWillReceiveProps (nextProps) {
+  componentWillReceiveProps(nextProps) {
     if (this.props.active && !nextProps.active) {
-      NotificationActions.notificationViewed(this.props.notifications);
+      this.props.notificationsViewed();
     }
   }
 
-  _removeNotification (index) {
-    NotificationActions.removeNotification(index);
-  }
-
-  getNotificationsContent (notifications) {
-    let notificationListItems = notifications.map((notification, index) => {
+  getNotificationsContent(notifications) {
+    let notificationListItems = notifications.toList().map(notification => {
       return (
-        <NotificationListItem key={index}
-                              title={notification.title}
-                              message={notification.message}
-                              type={notification.type}
-                              timestamp={notification.timestamp}
-                              viewed={notification.viewed}
-                              removeNotification={this._removeNotification.bind(this, index)}/>
+        <NotificationListItem
+          key={notification.id}
+          title={notification.title}
+          message={notification.message}
+          type={notification.type}
+          timestamp={notification.timestamp}
+          viewed={notification.viewed}
+          removeNotification={this.props.removeNotification.bind(this, notification.id)}/>
       );
     });
 
-    if (notifications && notifications.length > 0) {
+    if (notifications && notifications.size > 0) {
       return (
         <table className="table table-striped table-hover">
           <tbody>
@@ -64,5 +61,7 @@ export default class NotificationList extends React.Component {
 
 NotificationList.propTypes = {
   active: React.PropTypes.bool,
-  notifications: React.PropTypes.array
+  notifications: ImmutablePropTypes.map.isRequired,
+  notificationsViewed: React.PropTypes.func.isRequired,
+  removeNotification: React.PropTypes.func.isRequired
 };
