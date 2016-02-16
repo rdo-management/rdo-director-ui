@@ -1,3 +1,4 @@
+import ImmutablePropTypes from 'react-immutable-proptypes';
 import React from 'react';
 
 import FileList from './FileList';
@@ -13,5 +14,5 @@ export default class PlanFilesTab extends React.Component {
 }
 PlanFilesTab.propTypes = {
   active: React.PropTypes.string,
-  planFiles: React.PropTypes.array
+  planFiles: ImmutablePropTypes.list
 };
