@@ -6,6 +6,8 @@ const initialState = Map({
   isFetchingPlans: false,
   isFetchingPlan: false,
   isDeletingPlan: false,
+  isCreatingPlan: false,
+  isUpdatingPlan: false,
   conflict: undefined,
   currentPlanName: undefined,
   planData: Map(),
@@ -38,6 +40,30 @@ export default function plansReducer(state = initialState, action) {
     return state
             .set('currentPlanName', action.payload.currentPlanName)
             .set('conflict', action.payload.conflict);
+
+  case PlansConstants.DELETING_PLAN:
+    return state
+            .set('isDeletingPlan', action.payload);
+
+  case PlansConstants.PLAN_DELETED:
+    return state
+            .set('isDeletingPlan', false);
+
+  case PlansConstants.CREATING_PLAN:
+    return state
+            .set('isCreatingPlan', true);
+
+  case PlansConstants.PLAN_CREATED:
+    return state
+            .set('isCreatingPlan', false);
+
+  case PlansConstants.UPDATING_PLAN:
+    return state
+            .set('isUpdatingPlan', true);
+
+  case PlansConstants.PLAN_UPDATED:
+    return state
+            .set('isUpdatingPlan', false);
 
   default:
     return state;

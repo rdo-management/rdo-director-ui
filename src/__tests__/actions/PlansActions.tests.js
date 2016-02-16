@@ -132,6 +132,26 @@ describe('plansReducer default state', () => {
       expect(state.get('planData').get('overcloud').name).toBe('overcloud');
     });
   });
+
+  describe('Plan deletion', () => {
+    let state;
+
+    it('DELETING_PLAN sets `isDeletingPlan` to a plan name', () => {
+      state = plansReducer(
+        undefined,
+        PlansActions.deletingPlan('somecloud')
+      );
+      expect(state.get('isDeletingPlan')).toBe('somecloud');
+    });
+
+    it('PLAN_DETECTED sets `isDeletingPlan` to false', () => {
+      state = plansReducer(
+        Map({isDeletingPlan: 'somecloud'}),
+        PlansActions.planDeleted('somecloud')
+      );
+      expect(state.get('isDeletingPlan')).toBe(false);
+    });
+  });
 });
 
 // Use this to mock asynchronous functions which return a promise.
@@ -143,6 +163,28 @@ let createResolvingPromise = (data) => {
 };
 
 describe('PlansActions', () => {
+  describe('deletePlans', () => {
+    beforeEach(done => {
+      spyOn(PlansActions, 'deletingPlan');
+      spyOn(PlansActions, 'planDeleted');
+      // Mock the service call.
+      spyOn(TripleOApiService, 'deletePlan').and.callFake(createResolvingPromise());
+      // Call the action creator and the resulting action.
+      // In this case, dispatch and getState are just empty placeHolders.
+      PlansActions.deletePlan('somecloud')(() => {}, () => {});
+      // Call done with a minimal timeout.
+      setTimeout(() => { done(); }, 1);
+    });
+
+    it('dispatches deletingPlan', () => {
+      expect(PlansActions.deletingPlan).toHaveBeenCalledWith('somecloud');
+    });
+
+    it('dispatches planDeleted', () => {
+      expect(PlansActions.planDeleted).toHaveBeenCalled();
+    });
+  });
+
   describe('fetchPlans', () => {
     let apiResponse = {
       plans: [
