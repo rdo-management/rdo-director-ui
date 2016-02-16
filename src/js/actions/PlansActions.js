@@ -1,6 +1,6 @@
 import * as _ from 'lodash';
 
-import AppDispatcher from '../dispatchers/AppDispatcher.js';
+import history from '../history';
 import NotificationActions from '../actions/NotificationActions';
 import PlansConstants from '../constants/PlansConstants';
 import TripleOApiService from '../services/TripleOApiService';
@@ -66,14 +66,6 @@ export default {
     return dispatch => {
       dispatch(this.requestPlans());
       TripleOApiService.getPlans().then(response => {
-        /*
-         * TODO(flfuchs) remove when delete plans is implemented as redux action
-         */
-        AppDispatcher.dispatch({
-          actionType: PlansConstants.LIST_PLANS,
-          plans: response.plans
-        });
-
         dispatch(this.receivePlans(response.plans));
         dispatch(this.detectPlan(response.plans));
       }).catch(error => {
@@ -144,18 +136,41 @@ export default {
   },
 
   deletingPlan(planName) {
-    AppDispatcher.dispatch({
-      actionType: PlansConstants.DELETING_PLAN,
-      planName: planName
-    });
+    return {
+      type: PlansConstants.DELETING_PLAN,
+      payload: planName
+    };
   },
 
   planDeleted(planName) {
-    AppDispatcher.dispatch({
-      actionType: PlansConstants.PLAN_DELETED,
-      planName: planName
+    NotificationActions.notify({
+      title: 'Plan Deleted',
+      message: `The plan ${planName} was successfully deleted.`,
+      type: 'success'
     });
+    return {
+      type: PlansConstants.PLAN_DELETED
+    };
+  },
+
+  deletePlan(planName) {
+    return dispatch => {
+      dispatch(this.deletingPlan(planName));
+      history.pushState(null, '/plans/list');
+      TripleOApiService.deletePlan(planName).then(response => {
+        dispatch(this.planDeleted());
+        dispatch(this.fetchPlans());
+      }).catch(error => {
+        console.error('Error retrieving plan TripleOApiService.deletePlan', error); //eslint-disable-line no-console
+        dispatch(this.planDeleted());
+        let errorHandler = new TripleOApiErrorHandler(error);
+        errorHandler.errors.forEach((error) => {
+          NotificationActions.notify(error);
+        });
+      });
+    };
   }
+
 };
 
 function storePlan(name) {

@@ -39,6 +39,14 @@ export default function plansReducer(state = initialState, action) {
             .set('currentPlanName', action.payload.currentPlanName)
             .set('conflict', action.payload.conflict);
 
+  case PlansConstants.DELETING_PLAN:
+    return state
+            .set('isDeletingPlan', action.payload);
+
+  case PlansConstants.PLAN_DELETED:
+    return state
+            .set('isDeletingPlan', false);
+
   default:
     return state;
 
