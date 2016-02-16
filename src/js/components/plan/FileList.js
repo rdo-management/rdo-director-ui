@@ -1,12 +1,14 @@
 import ClassNames from 'classnames';
+import ImmutablePropTypes from 'react-immutable-proptypes';
 import React from 'react';
 
 export default class FileList extends React.Component {
 
   render() {
-    if(this.props.files.length === 0) {
+    if(this.props.files.size === 0) {
       return null;
     }
+
     let files = this.props.files.map(file => {
       let info = file.info || {};
       let classes = ClassNames({
@@ -14,8 +16,8 @@ export default class FileList extends React.Component {
         'new-plan-file': info.newFile
       });
       return (
-        <tr key={file.name}>
-          <td className={classes}>{file.name}</td>
+        <tr key={file.get('name')}>
+          <td className={classes}>{file.get('name')}</td>
         </tr>
       );
     });
@@ -35,7 +37,7 @@ export default class FileList extends React.Component {
 }
 
 FileList.propTypes = {
-  files: React.PropTypes.array.isRequired
+  files: ImmutablePropTypes.list
 };
 
 FileList.defaultProps = {

@@ -1,15 +1,15 @@
+import { connect } from 'react-redux';
 import Formsy from 'formsy-react';
+import ImmutablePropTypes from 'react-immutable-proptypes';
 import { Link } from 'react-router';
 import React from 'react';
 
 import FormErrorList from '../ui/forms/FormErrorList';
-import NotificationActions from '../../actions/NotificationActions';
+import { getFilesList } from '../../selectors/plans';
 import PlansActions from '../../actions/PlansActions';
 import PlanFormTabs from './PlanFormTabs';
-import TripleOApiErrorHandler from '../../services/TripleOApiErrorHandler';
-import TripleOApiService from '../../services/TripleOApiService';
 
-export default class NewPlan extends React.Component {
+class NewPlan extends React.Component {
 
   constructor() {
     super();
@@ -20,46 +20,29 @@ export default class NewPlan extends React.Component {
     };
   }
 
+  componentWillUnmount() {
+    this.props.discardPlanEdit();
+  }
+
   onPlanFilesChange(currentValues, isChanged) {
     let files = currentValues.planFiles;
     if (files && files != []) {
-      this.setState({ files: files });
+      this.props.selectFiles(currentValues.planFiles);
     }
   }
 
   onFormSubmit(formData, resetForm, invalidateForm) {
     let planFiles = {};
-    this.state.files.forEach(item => {
-      planFiles[item.name] = {};
-      planFiles[item.name].contents = item.content;
+    this.props.filesList.map(item => {
+      planFiles[item.get('name')] = {};
+      planFiles[item.get('name')].contents = item.get('contents');
       // TODO(jtomasek): user can identify capabilities-map in the list of files
       // (dropdown select or sth)
-      if(item.name === 'capabilities_map.yaml') {
-        planFiles[item.name].meta = { 'file-type': 'capabilities-map' };
+      if(item.get('name').match('^capabilities[-|_]map\.yaml$')) {
+        planFiles[item.get('name')].meta = { 'file-type': 'capabilities-map' };
       }
     });
-
-    TripleOApiService.createPlan(formData.planName, planFiles).then(result => {
-      PlansActions.listPlans();
-      this.props.history.pushState(null, 'plans/list');
-      NotificationActions.notify({
-        title: 'Plan Created',
-        message: `The plan ${formData.planName} was successfully created.`,
-        type: 'success'
-      });
-    }).catch(error => {
-      console.error('Error in NewPlan.onFormSubmit', error); //eslint-disable-line no-console
-      let errorHandler = new TripleOApiErrorHandler(error);
-      this.setState({
-        formErrors: errorHandler.errors.map((error) => {
-          return {
-            title: 'Error Creating Plan',
-            message: `The plan ${formData.planName} could not be created. ${error.message}`,
-            type: 'error'
-          };
-        })
-      });
-    });
+    this.props.createPlan(formData.planName, planFiles);
   }
 
   onFormValid() {
@@ -94,7 +77,7 @@ export default class NewPlan extends React.Component {
                 <div className="modal-body">
                   <FormErrorList errors={this.state.formErrors}/>
                   <PlanFormTabs currentTab={this.props.location.query.tab || 'newPlan'}
-                                planFiles={this.state.files} />
+                                planFiles={this.props.filesList} />
                 </div>
                 <div className="modal-footer">
                   <button disabled={!this.state.canSubmit}
@@ -114,6 +97,31 @@ export default class NewPlan extends React.Component {
   }
 }
 NewPlan.propTypes = {
-  history: React.PropTypes.object,
-  location: React.PropTypes.object
+  createPlan: React.PropTypes.func,
+  discardPlanEdit: React.PropTypes.func,
+  filesList: ImmutablePropTypes.list,
+  location: React.PropTypes.object,
+  selectFiles: React.PropTypes.func
 };
+
+function mapStateToProps(state) {
+  return {
+    filesList: getFilesList(state)
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    createPlan: (planName, files) => {
+      dispatch(PlansActions.createPlan(planName, files));
+    },
+    discardPlanEdit: () => {
+      dispatch(PlansActions.discardPlanEdit());
+    },
+    selectFiles: (files, planName) => {
+      dispatch(PlansActions.selectFiles(files, planName));
+    }
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewPlan);
