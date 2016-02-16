@@ -1,3 +1,5 @@
+import ImmutablePropTypes from 'react-immutable-proptypes';
+import { List } from 'immutable';
 import React from 'react';
 
 import HorizontalStaticText from '../ui/forms/HorizontalStaticText';
@@ -10,7 +12,16 @@ export default class PlanEditFormTabs extends React.Component {
     return this.props.currentTab === tabName ? 'active' : '';
   }
 
+  getFileCount() {
+    let planFiles = this.props.planFiles || List();
+    let selectedFiles = this.props.selectedFiles || [];
+    return selectedFiles.length > planFiles.size
+      ? selectedFiles.length
+      : planFiles.size;
+  }
+
   render() {
+
     return (
       <div>
         <ul className="nav nav-tabs">
@@ -18,14 +29,15 @@ export default class PlanEditFormTabs extends React.Component {
                   query={{tab: 'editPlan'}}>Update Plan</NavTab>
           <NavTab to={`/plans/${this.props.planName}/edit`}
                   query={{tab: 'planFiles'}}>
-            Files <span className="badge">{this.props.planFiles.length}</span>
+            Files <span className="badge">{this.getFileCount.bind(this)()}</span>
           </NavTab>
         </ul>
         <div className="tab-content">
           <PlanFormTab active={this.setActiveTab('editPlan')}
                        planName={this.props.planName}/>
           <PlanFilesTab active={this.setActiveTab('planFiles')}
-                        planFiles={this.props.planFiles} />
+                        planFiles={this.props.planFiles}
+                        selectedFiles={this.props.selectedFiles}/>
         </div>
       </div>
     );
@@ -33,8 +45,9 @@ export default class PlanEditFormTabs extends React.Component {
 }
 PlanEditFormTabs.propTypes = {
   currentTab: React.PropTypes.string,
-  planFiles: React.PropTypes.array.isRequired,
-  planName: React.PropTypes.string
+  planFiles: ImmutablePropTypes.list,
+  planName: React.PropTypes.string,
+  selectedFiles: React.PropTypes.array
 };
 PlanEditFormTabs.defaultProps = {
   currentTtab: 'editPlan'
