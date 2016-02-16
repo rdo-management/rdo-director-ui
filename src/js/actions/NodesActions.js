@@ -1,12 +1,12 @@
 import when from 'when';
 
+import { getServiceUrl, getAuthTokenId } from '../services/utils';
 import IronicApiErrorHandler from '../services/IronicApiErrorHandler';
 import IronicApiService from '../services/IronicApiService';
 import MistralApiService from '../services/MistralApiService';
 import MistralApiErrorHandler from '../services/MistralApiErrorHandler';
 import NodesConstants from '../constants/NodesConstants';
 import NotificationActions from './NotificationActions';
-import { getServiceUrl, getAuthTokenId } from '../services/utils';
 
 export default {
   startOperation(workflowId) {

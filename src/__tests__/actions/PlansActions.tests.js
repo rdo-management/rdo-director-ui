@@ -2,6 +2,7 @@ import { List, Map } from 'immutable';
 import when from 'when';
 
 import TripleOApiService from '../../js/services/TripleOApiService';
+import * as utils from '../../js/services/utils';
 
 const PlansActions = require('../../js/actions/PlansActions');
 const plansReducer = require('../../js/reducers/plansReducer');
@@ -34,8 +35,8 @@ describe('plansReducer default state', () => {
       expect(state.get('currentPlanName')).not.toBeDefined();
     });
 
-    it('`planData` is defined', () => {
-      expect(state.get('planData').size).toBeDefined();
+    it('`currentPlanFiles` is defined', () => {
+      expect(state.get('currentPlanFiles').size).toBeDefined();
     });
 
     it('`all` is empty', () => {
@@ -121,15 +122,35 @@ describe('plansReducer default state', () => {
     beforeEach(() => {
       state = plansReducer(
         undefined,
-        PlansActions.receivePlan({ name: 'overcloud' }));
+        PlansActions.receivePlan({ name: 'overcloud', files: {}}));
     });
 
     it('sets `isFetchingPlan` to false', () => {
       expect(state.get('isFetchingPlan')).toBe(false);
     });
 
-    it('updates `planData`', () => {
-      expect(state.get('planData').get('overcloud').name).toBe('overcloud');
+    it('updates `currentPlanFiles`', () => {
+      expect(state.get('currentPlanFiles')).toEqual(Map());
+    });
+  });
+
+  describe('Plan deletion', () => {
+    let state;
+
+    it('DELETING_PLAN sets `isDeletingPlan` to a plan name', () => {
+      state = plansReducer(
+        undefined,
+        PlansActions.deletingPlan('somecloud')
+      );
+      expect(state.get('isDeletingPlan')).toBe('somecloud');
+    });
+
+    it('PLAN_DETECTED sets `isDeletingPlan` to false', () => {
+      state = plansReducer(
+        Map({isDeletingPlan: 'somecloud'}),
+        PlansActions.planDeleted('somecloud')
+      );
+      expect(state.get('isDeletingPlan')).toBe(false);
     });
   });
 });
@@ -143,6 +164,91 @@ let createResolvingPromise = (data) => {
 };
 
 describe('PlansActions', () => {
+  beforeEach(() => {
+    spyOn(utils, 'getAuthTokenId').and.returnValue('mock-auth-token');
+  });
+
+  describe('updatePlan', () => {
+    beforeEach(done => {
+      spyOn(PlansActions, 'updatingPlan');
+      spyOn(PlansActions, 'planUpdated');
+      spyOn(PlansActions, 'fetchPlans');
+      // Mock the service call.
+      spyOn(TripleOApiService, 'updatePlan').and.callFake(createResolvingPromise());
+      // Call the action creator and the resulting action.
+      // In this case, dispatch and getState are just empty placeHolders.
+      PlansActions.updatePlan('somecloud', {})(() => {}, () => {});
+      // Call done with a minimal timeout.
+      setTimeout(() => { done(); }, 1);
+    });
+
+    it('dispatches updatingPlan', () => {
+      expect(PlansActions.updatingPlan).toHaveBeenCalled();
+    });
+
+    it('dispatches planUpdated', () => {
+      expect(PlansActions.planUpdated).toHaveBeenCalled();
+    });
+
+    it('dispatches fetchPlans', () => {
+      expect(PlansActions.fetchPlans).toHaveBeenCalled();
+    });
+  });
+
+  describe('crutils', () => {
+    beforeEach(done => {
+      spyOn(PlansActions, 'creatingPlan');
+      spyOn(PlansActions, 'planCreated');
+      spyOn(PlansActions, 'fetchPlans');
+      // Mock the service call.
+      spyOn(TripleOApiService, 'createPlan').and.callFake(createResolvingPromise());
+      // Call the action creator and the resulting action.
+      // In this case, dispatch and getState are just empty placeHolders.
+      PlansActions.createPlan('somecloud', {})(() => {}, () => {});
+      // Call done with a minimal timeout.
+      setTimeout(() => { done(); }, 1);
+    });
+
+    it('dispatches creatingPlan', () => {
+      expect(PlansActions.creatingPlan).toHaveBeenCalled();
+    });
+
+    it('dispatches planCreated', () => {
+      expect(PlansActions.planCreated).toHaveBeenCalled();
+    });
+
+    it('dispatches fetchPlans', () => {
+      expect(PlansActions.fetchPlans).toHaveBeenCalled();
+    });
+  });
+
+  describe('deletePlans', () => {
+    beforeEach(done => {
+      spyOn(PlansActions, 'deletingPlan');
+      spyOn(PlansActions, 'planDeleted');
+      spyOn(PlansActions, 'fetchPlans');
+      // Mock the service call.
+      spyOn(TripleOApiService, 'deletePlan').and.callFake(createResolvingPromise());
+      // Call the action creator and the resulting action.
+      // In this case, dispatch and getState are just empty placeHolders.
+      PlansActions.deletePlan('somecloud')(() => {}, () => {});
+      // Call done with a minimal timeout.
+      setTimeout(() => { done(); }, 1);
+    });
+
+    it('dispatches deletingPlan', () => {
+      expect(PlansActions.deletingPlan).toHaveBeenCalledWith('somecloud');
+    });
+
+    it('dispatches planDeleted', () => {
+      expect(PlansActions.planDeleted).toHaveBeenCalled();
+    });
+
+    it('dispatches fetchPlans', () => {
+      expect(PlansActions.fetchPlans).toHaveBeenCalled();
+    });
+  });
+
   describe('fetchPlans', () => {
     let apiResponse = {
       plans: [
@@ -208,4 +314,3 @@ describe('PlansActions', () => {
 
   });
 });
-

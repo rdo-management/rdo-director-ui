@@ -3,6 +3,7 @@ import when from 'when';
 import IronicApiService from '../../js/services/IronicApiService';
 import NodesActions from '../../js/actions/NodesActions';
 import NodesConstants from '../../js/constants/NodesConstants';
+import * as utils from '../../js/services/utils';
 
 const mockGetNodesResponse = [
   { uuid: 1 },
@@ -62,9 +63,10 @@ let createResolvingPromise = (data) => {
   };
 };
 
-// TODO(flfuchs): Fix this test (missing appState login property error after rebase).
-xdescribe('Asynchronous Nodes Actions', () => {
+describe('Asynchronous Nodes Actions', () => {
   beforeEach(done => {
+    spyOn(utils, 'getAuthTokenId').and.returnValue('mock-auth-token');
+    spyOn(utils, 'getServiceUrl').and.returnValue('mock-url');
     spyOn(NodesActions, 'requestNodes');
     spyOn(NodesActions, 'receiveNodes');
     // Mock the service call.
