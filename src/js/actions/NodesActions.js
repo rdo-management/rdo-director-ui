@@ -1,5 +1,6 @@
 import when from 'when';
 
+import { getServiceUrl, getAuthTokenId } from '../services/utils';
 import IronicApiErrorHandler from '../services/IronicApiErrorHandler';
 import IronicApiService from '../services/IronicApiService';
 import MistralApiService from '../services/MistralApiService';

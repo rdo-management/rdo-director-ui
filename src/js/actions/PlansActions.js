@@ -1,6 +1,7 @@
 import * as _ from 'lodash';
 
-import AppDispatcher from '../dispatchers/AppDispatcher.js';
+import { getAuthTokenId } from '../services/utils';
+import history from '../history';
 import NotificationActions from '../actions/NotificationActions';
 import PlansConstants from '../constants/PlansConstants';
 import TripleOApiService from '../services/TripleOApiService';
@@ -63,21 +64,13 @@ export default {
   },
 
   fetchPlans() {
-    return dispatch => {
+    return (dispatch, getState) => {
       dispatch(this.requestPlans());
-      TripleOApiService.getPlans().then(response => {
-        /*
-         * TODO(flfuchs) remove when delete plans is implemented as redux action
-         */
-        AppDispatcher.dispatch({
-          actionType: PlansConstants.LIST_PLANS,
-          plans: response.plans
-        });
-
+      TripleOApiService.getPlans(getAuthTokenId(getState())).then(response => {
         dispatch(this.receivePlans(response.plans));
         dispatch(this.detectPlan(response.plans));
       }).catch(error => {
-        console.error('Error retrieving plans PlansActions.fetchPlanslist', error); //eslint-disable-line no-console
+        console.error('Error retrieving plans PlansActions.fetchPlans', error); //eslint-disable-line no-console
         dispatch(this.receivePlans([]));
         dispatch(this.detectPlan([]));
         let errorHandler = new TripleOApiErrorHandler(error);
@@ -102,9 +95,9 @@ export default {
   },
 
   fetchPlan(planName) {
-    return dispatch => {
+    return (dispatch, getState) => {
       dispatch(this.requestPlan());
-      TripleOApiService.getPlan(planName).then(response => {
+      TripleOApiService.getPlan(getAuthTokenId(getState()), planName).then(response => {
         dispatch(this.receivePlan(response.plan));
       }).catch(error => {
         console.error('Error retrieving plan PlansActions.fetchPlan', error); //eslint-disable-line no-console
@@ -114,6 +107,13 @@ export default {
           dispatch(NotificationActions.notify(error));
         });
       });
+    };
+  },
+
+  planFilesSelected(files) {
+    return {
+      type: PlansConstants.PLAN_FILES_SELECTED,
+      payload: files
     };
   },
 
@@ -136,32 +136,118 @@ export default {
     };
   },
 
-  /*
-   * TODO(flfuchs) remove when delete plans is implemented as redux action
-   */
-  listPlans() {
-    TripleOApiService.getPlans().then(res => {
-    }).catch(error => {
-      let errorHandler = new TripleOApiErrorHandler(error);
-      errorHandler.errors.forEach((error) => {
-        NotificationActions.notify(error);
+  creatingPlan() {
+    return {
+      type: PlansConstants.CREATING_PLAN
+    };
+  },
+
+  planCreated() {
+    return {
+      type: PlansConstants.PLAN_CREATED
+    };
+  },
+
+  updatePlan(planName, planFiles) {
+    return (dispatch, getState) => {
+      dispatch(this.updatingPlan());
+      TripleOApiService.updatePlan(
+        getAuthTokenId(getState()),
+        planName,
+        planFiles
+      ).then(result => {
+        dispatch(this.planUpdated(planName));
+        dispatch(this.fetchPlans());
+        history.pushState(null, '/plans/list');
+        dispatch(NotificationActions.notify({
+          title: 'Plan Updated',
+          message: `The plan ${planName} was successfully updated.`,
+          type: 'success'
+        }));
+      }).catch(error => {
+        console.error('Error in PlansActions.updatePlan', error); //eslint-disable-line no-console
+        let errorHandler = new TripleOApiErrorHandler(error);
+        errorHandler.errors.forEach((error) => {
+          dispatch(NotificationActions.notify(error));
+        });
       });
-    });
+    };
+  },
+
+  createPlan(planName, planFiles) {
+    return (dispatch, getState) => {
+      dispatch(this.creatingPlan());
+      TripleOApiService.createPlan(
+        getAuthTokenId(getState()),
+        planName,
+        planFiles
+      ).then(result => {
+        dispatch(this.planCreated(planName));
+        dispatch(this.fetchPlans());
+        history.pushState(null, '/plans/list');
+        dispatch(NotificationActions.notify({
+          title: 'Plan Created',
+          message: `The plan ${planName} was successfully created.`,
+          type: 'success'
+        }));
+      }).catch(error => {
+        console.error('Error in PlansActions.createPlan', error); //eslint-disable-line no-console
+        let errorHandler = new TripleOApiErrorHandler(error);
+        errorHandler.errors.forEach((error) => {
+          dispatch(NotificationActions.notify(error));
+        });
+      });
+    };
+  },
+
+  updatingPlan() {
+    return {
+      type: PlansConstants.UPDATING_PLAN
+    };
+  },
+
+  planUpdated() {
+    return {
+      type: PlansConstants.PLAN_UPDATED
+    };
   },
 
   deletingPlan(planName) {
-    AppDispatcher.dispatch({
-      actionType: PlansConstants.DELETING_PLAN,
-      planName: planName
-    });
+    return {
+      type: PlansConstants.DELETING_PLAN,
+      payload: planName
+    };
   },
 
   planDeleted(planName) {
-    AppDispatcher.dispatch({
-      actionType: PlansConstants.PLAN_DELETED,
-      planName: planName
-    });
+    return {
+      type: PlansConstants.PLAN_DELETED
+    };
+  },
+
+  deletePlan(planName) {
+    return (dispatch, getState) => {
+      dispatch(this.deletingPlan(planName));
+      history.pushState(null, '/plans/list');
+      TripleOApiService.deletePlan(getAuthTokenId(getState()), planName).then(response => {
+        dispatch(this.planDeleted());
+        dispatch(this.fetchPlans());
+        dispatch(NotificationActions.notify({
+          title: 'Plan Deleted',
+          message: `The plan ${planName} was successfully deleted.`,
+          type: 'success'
+        }));
+      }).catch(error => {
+        console.error('Error retrieving plan TripleOApiService.deletePlan', error); //eslint-disable-line no-console
+        dispatch(this.planDeleted());
+        let errorHandler = new TripleOApiErrorHandler(error);
+        errorHandler.errors.forEach((error) => {
+          dispatch(NotificationActions.notify(error));
+        });
+      });
+    };
   }
+
 };
 
 function storePlan(name) {
