@@ -1,3 +1,4 @@
+import ImmutablePropTypes from 'react-immutable-proptypes';
 import React from 'react';
 
 import HorizontalStaticText from '../ui/forms/HorizontalStaticText';
@@ -18,7 +19,7 @@ export default class PlanEditFormTabs extends React.Component {
                   query={{tab: 'editPlan'}}>Update Plan</NavTab>
           <NavTab to={`/plans/${this.props.planName}/edit`}
                   query={{tab: 'planFiles'}}>
-            Files <span className="badge">{this.props.planFiles.length}</span>
+            Files <span className="badge">{this.props.planFiles.size}</span>
           </NavTab>
         </ul>
         <div className="tab-content">
@@ -33,7 +34,7 @@ export default class PlanEditFormTabs extends React.Component {
 }
 PlanEditFormTabs.propTypes = {
   currentTab: React.PropTypes.string,
-  planFiles: React.PropTypes.array.isRequired,
+  planFiles: ImmutablePropTypes.list,
   planName: React.PropTypes.string
 };
 PlanEditFormTabs.defaultProps = {

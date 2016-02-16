@@ -1,3 +1,4 @@
+import ImmutablePropTypes from 'react-immutable-proptypes';
 import React from 'react';
 
 import HorizontalInput from '../ui/forms/HorizontalInput';
@@ -16,7 +17,7 @@ export default class PlanFormTabs extends React.Component {
         <ul className="nav nav-tabs">
           <NavTab to="/plans/new" query={{tab: 'newPlan'}}>New Plan</NavTab>
           <NavTab to="/plans/new" query={{tab: 'planFiles'}}>
-            Files <span className="badge">{this.props.planFiles.length}</span>
+            Files <span className="badge">{this.props.planFiles.size}</span>
           </NavTab>
         </ul>
         <div className="tab-content">
@@ -30,7 +31,7 @@ export default class PlanFormTabs extends React.Component {
 }
 PlanFormTabs.propTypes = {
   currentTab: React.PropTypes.string,
-  planFiles: React.PropTypes.array.isRequired
+  planFiles: ImmutablePropTypes.list
 };
 PlanFormTabs.defaultProps = {
   currentTtab: 'newPlan'
