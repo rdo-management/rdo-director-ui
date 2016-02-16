@@ -9,9 +9,10 @@ export default keyMirror({
   RECEIVE_PLAN_DELETE: null,
   CHOOSE_PLAN: null,
   PLAN_DETECTED: null,
-
-  GET_PLAN: null,
-  LIST_PLANS: null,
   DELETING_PLAN: null,
-  PLAN_DELETED: null
+  PLAN_DELETED: null,
+  CREATING_PLAN: null,
+  PLAN_CREATED: null,
+  UPDATING_PLAN: null,
+  PLAN_UPDATED: null
 });
