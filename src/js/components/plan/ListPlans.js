@@ -50,19 +50,18 @@ class ListPlans extends React.Component {
     return (
       <div>
         <PageHeader>Plans</PageHeader>
-        <DataTable data={this.props.plans.toJS()}
-                   rowsCount={this.props.plans.size}
+        <DataTable data={this.props.planData.toJS()}
+                   rowsCount={this.props.planNames.size}
                    noRowsRenderer={this.renderNoPlans.bind(this)}
                    tableActions={this.renderTableActions}>
           <DataTableColumn header={<DataTableHeaderCell key="name">Name</DataTableHeaderCell>}
                            cell={<PlanNameCell
-                           data={this.props.plans.toJS()}
+                           data={this.props.planData.toJS()}
                            currentPlanName={this.props.currentPlanName}
                            choosePlan={this.props.choosePlan}/>}/>
-
           <DataTableColumn header={<DataTableHeaderCell key="actions">Actions</DataTableHeaderCell>}
                            cell={<RowActionsCell className="actions text-right"
-                                                 data={this.props.plans.toJS()}/>}/>
+                                                 data={this.props.planData.toJS()}/>}/>
         </DataTable>
         {this.props.children}
       </div>
@@ -75,16 +74,17 @@ ListPlans.propTypes = {
   conflict: React.PropTypes.string,
   currentPlanName: React.PropTypes.string,
   fetchPlans: React.PropTypes.func,
-  planData: ImmutablePropTypes.map,
-  plans: ImmutablePropTypes.list
+  planData: ImmutablePropTypes.list,
+  planNames: ImmutablePropTypes.list
 };
 
 function mapStateToProps(state) {
+  let all = state.plans.get('all');
   return {
     currentPlanName: state.plans.get('currentPlanName'),
     conflict: state.plans.get('conflict'),
-    planData: state.plans.get('planData'),
-    plans: state.plans.get('all')
+    planData: all,
+    planNames: all.map(plan => plan.get('name'))
   };
 }
 
@@ -105,7 +105,7 @@ class RowActionsCell extends React.Component {
   render() {
     let plan = this.props.data[this.props.rowIndex];
 
-    if(plan.transition) {
+    if(!!plan.transition) {
       // TODO(jtomasek): this causes DOMNesting validation error which should eventually go away
       // in future React versions. See https://github.com/facebook/react/issues/5506
       return null;
@@ -113,12 +113,12 @@ class RowActionsCell extends React.Component {
       return (
         <DataTableCell {...this.props}>
           <Link key="edit"
-                to={`/plans/${plan}/edit`}
+                to={`/plans/${plan.name}/edit`}
                 query={{tab: 'editPlan'}}
                 className="btn btn-xs btn-default">Edit</Link>
           &nbsp;
           <Link key="delete"
-                to={`/plans/${plan}/delete`}
+                to={`/plans/${plan.name}/delete`}
                 className="btn btn-xs btn-danger">Delete</Link>
         </DataTableCell>
       );
@@ -126,7 +126,7 @@ class RowActionsCell extends React.Component {
   }
 }
 RowActionsCell.propTypes = {
-  data: React.PropTypes.array.isRequired,
+  data: React.PropTypes.array,
   rowIndex: React.PropTypes.number
 };
 
@@ -148,16 +148,17 @@ export class PlanNameCell extends React.Component {
   render() {
     let plan = this.props.data[this.props.rowIndex];
 
-    if(plan.transition) {
+    if(plan.transition === 'deleting') {
       return (
-        <DataTableCell {...this.props} colSpan="2" className={plan.transition}>
-          <em>Deleting <strong>{plan}</strong>&hellip;</em>
+        <DataTableCell {...this.props} colSpan="2" className={plan.isDeleting}>
+          <em>Deleting <strong>{plan.name}</strong>&hellip;</em>
         </DataTableCell>
       );
     } else {
       return (
         <DataTableCell {...this.props}>
-          {this.getActiveIcon(plan)} <a href="" onClick={this.onPlanClick.bind(this)}>{plan}</a>
+          {this.getActiveIcon(plan.name)} <a href=""
+                                             onClick={this.onPlanClick.bind(this)}>{plan.name}</a>
         </DataTableCell>
       );
     }
@@ -166,6 +167,6 @@ export class PlanNameCell extends React.Component {
 PlanNameCell.propTypes = {
   choosePlan: React.PropTypes.func,
   currentPlanName: React.PropTypes.string,
-  data: React.PropTypes.array.isRequired,
+  data: React.PropTypes.array,
   rowIndex: React.PropTypes.number
 };
