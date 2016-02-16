@@ -1,14 +1,15 @@
+import { connect } from 'react-redux';
 import Formsy from 'formsy-react';
 import { Link } from 'react-router';
 import React from 'react';
 
 import FormErrorList from '../ui/forms/FormErrorList';
-import NotificationActions from '../../actions/NotificationActions';
 import PlanEditFormTabs from './PlanEditFormTabs';
+import PlansActions from '../../actions/PlansActions';
 import TripleOApiErrorHandler from '../../services/TripleOApiErrorHandler';
 import TripleOApiService from '../../services/TripleOApiService';
 
-export default class EditPlan extends React.Component {
+class EditPlan extends React.Component {
 
   constructor() {
     super();
@@ -138,31 +139,14 @@ export default class EditPlan extends React.Component {
         planFiles[item.name].contents = item.content;
         // TODO(jtomasek): user can identify capabilities-map in the list of files
         // (dropdown select or sth)
-        if(item.name === 'capabilities_map.yaml') {
+        if(item.name.match('^capabilities[-|_]map\.yaml$')) {
           planFiles[item.name].meta = { 'file-type': 'capabilities-map' };
         }
       }
     });
-    TripleOApiService.updatePlan(this.state.plan.name, planFiles).then(result => {
-      this.props.history.pushState(null, 'plans/list');
-      NotificationActions.notify({
-        title: 'Plan Updated',
-        message: `The plan ${this.state.plan.name} was successfully updated.`,
-        type: 'success'
-      });
-    }).catch(error => {
-      console.error('Error in TripleOApiService.updatePlan', error); //eslint-disable-line no-console
-      let errorHandler = new TripleOApiErrorHandler(error);
-      this.setState({
-        formErrors: errorHandler.errors.map((error) => {
-          return {
-            title: 'Error Updating Plan',
-            message: `The plan ${this.state.plan.name} could not be updated. ${error.message}`,
-            type: 'error'
-          };
-        })
-      });
-    });
+    this.props.updatePlan(this.state.plan.name, planFiles);
+    /*
+    */
   }
 
   onFormValid() {
@@ -225,5 +209,16 @@ export default class EditPlan extends React.Component {
 EditPlan.propTypes = {
   history: React.PropTypes.object,
   location: React.PropTypes.object,
-  params: React.PropTypes.object
+  params: React.PropTypes.object,
+  updatePlan: React.PropTypes.func
 };
+
+function mapDispatchToProps(dispatch) {
+  return {
+    updatePlan: (planName, files) => {
+      dispatch(PlansActions.updatePlan(planName, files));
+    }
+  };
+}
+
+export default connect(() => { return {}; }, mapDispatchToProps)(EditPlan);

@@ -1,47 +1,19 @@
+import { connect } from 'react-redux';
 import React from 'react';
 import { Link } from 'react-router';
 
-import NotificationActions from '../../actions/NotificationActions';
 import PlansActions from '../../actions/PlansActions';
-import TripleOApiErrorHandler from '../../services/TripleOApiErrorHandler';
-import TripleOApiService from '../../services/TripleOApiService';
 
-export default class DeletePlan extends React.Component {
-
-  constructor() {
-    super();
-    this.onDeleteClick = this._onDeleteClick.bind(this);
-  }
-
+class DeletePlan extends React.Component {
   getNameFromUrl() {
     let planName = this.props.params.planName || '';
     return planName.replace(/[^A-Za-z0-9_-]*/g, '');
   }
 
-  _onDeleteClick() {
+  onDeleteClick() {
     let planName = this.getNameFromUrl();
     if(planName) {
-      PlansActions.deletingPlan(planName);
-      this.props.history.pushState(null, 'plans/list');
-      TripleOApiService.deletePlan(planName).then(result => {
-        PlansActions.planDeleted(planName);
-        NotificationActions.notify({
-          title: 'Plan Deleted',
-          message: `The plan ${planName} was successfully deleted.`,
-          type: 'success'
-        });
-      }).catch(error => {
-        console.error('Error in DeletePlan._ondeleteClick', error); //eslint-disable-line no-console
-        PlansActions.listPlans();
-        let errorHandler = new TripleOApiErrorHandler(error);
-        errorHandler.errors.forEach((error) => {
-          NotificationActions.notify({
-            title: 'Error Deleting Plan',
-            message: `The plan ${planName} could not be deleted. ${error.message}`,
-            type: 'error'
-          });
-        });
-      });
+      this.props.deletePlan(planName);
     }
   }
 
@@ -68,7 +40,7 @@ export default class DeletePlan extends React.Component {
               </div>
               <div className="modal-footer">
                 <button className="btn btn-danger"
-                        onClick={this.onDeleteClick}
+                        onClick={this.onDeleteClick.bind(this)}
                         type="submit">
                   Delete Plan
                 </button>
@@ -84,6 +56,26 @@ export default class DeletePlan extends React.Component {
 }
 
 DeletePlan.propTypes = {
-  history: React.PropTypes.object,
+  deletePlan: React.PropTypes.func,
+  isDeletingPlan: React.PropTypes.oneOfType([
+    React.PropTypes.bool,
+    React.PropTypes.string
+  ]),
   params: React.PropTypes.object
 };
+
+function mapStateToProps(state) {
+  return {
+    isDeletingPlan: state.plans.get('isDeletingPlan')
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    deletePlan: planName => {
+      dispatch(PlansActions.deletePlan(planName));
+    }
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(DeletePlan);
