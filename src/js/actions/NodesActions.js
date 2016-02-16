@@ -6,7 +6,7 @@ import MistralApiService from '../services/MistralApiService';
 import MistralApiErrorHandler from '../services/MistralApiErrorHandler';
 import NodesConstants from '../constants/NodesConstants';
 import NotificationActions from './NotificationActions';
-import { getServiceUrl, getAuthTokenId } from '../services/utils';
+import utils from '../services/utils';
 
 export default {
   startOperation(workflowId) {
@@ -37,8 +37,8 @@ export default {
   fetchNodes() {
     return (dispatch, getState) => {
       dispatch(this.requestNodes());
-      const ironicUrl = getServiceUrl(getState(), 'ironic');
-      const authTokenId = getAuthTokenId(getState());
+      const ironicUrl = utils.getServiceUrl(getState(), 'ironic');
+      const authTokenId = utils.getAuthTokenId(getState());
       IronicApiService.getNodes(ironicUrl, authTokenId).then((response) => {
         return when.all(response.nodes.map((node) => {
           return IronicApiService.getNode(ironicUrl, authTokenId, node.uuid);
@@ -59,8 +59,8 @@ export default {
   introspectNodes() {
     return (dispatch, getState) => {
       dispatch(this.startOperation());
-      const mistralUrl = getServiceUrl(getState(), 'mistral');
-      const authTokenId = getAuthTokenId(getState());
+      const mistralUrl = utils.getServiceUrl(getState(), 'mistral');
+      const authTokenId = utils.getAuthTokenId(getState());
       MistralApiService.runWorkflow(mistralUrl, authTokenId, 'tripleo.baremetal.bulk_introspect')
       .then((response) => {
         if(response.state === 'ERROR') {
@@ -81,8 +81,8 @@ export default {
 
   pollForIntrospectionWorkflow(workflowExecutionId) {
     return (dispatch, getState) => {
-      const mistralUrl = getServiceUrl(getState(), 'mistral');
-      const authTokenId = getAuthTokenId(getState());
+      const mistralUrl = utils.getServiceUrl(getState(), 'mistral');
+      const authTokenId = utils.getAuthTokenId(getState());
       MistralApiService.getWorkflowExecution(mistralUrl, authTokenId, workflowExecutionId)
       .then((response) => {
         if(response.state === 'RUNNING') {
