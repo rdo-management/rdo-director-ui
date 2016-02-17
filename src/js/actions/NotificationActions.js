@@ -1,5 +1,5 @@
 import shortid from 'shortid';
-import { Notification } from '../immutableRecords';
+import { Notification } from '../immutableRecords/notifications';
 import NotificationConstants from '../constants/NotificationConstants';
 
 export default {

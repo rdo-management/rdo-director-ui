@@ -1,46 +1,36 @@
-import React from 'react';
+import ImmutablePropTypes from 'react-immutable-proptypes';
 import ClassNames from 'classnames';
+import React from 'react';
 
 import BlankSlate from '../ui/BlankSlate';
 import ValidationStage from './ValidationStage';
 
 export default class ValidationsList extends React.Component {
-
-  getValidationsContent  (stages) {
-    let validationStages = this.props.validationStages.map((validationStage, index) => {
-      return (
-        <ValidationStage key={index}
-                         validations={validationStage.validations}
-                         name={validationStage.name}
-                         uuid={validationStage.uuid} />
-      );
-    });
-
-    if (stages && stages.length > 0) {
-      return (
-        <div>
-          {validationStages}
-        </div>
-      );
-    }
-    else {
-      return (
-        <BlankSlate iconClass="pficon pficon-flag"
-                    title="No Validations"
-                    message="There are no validations at this time." />
-      );
-    }
-  }
-
   render () {
-    let classes = ClassNames({
+    const classes = ClassNames({
       'panel-group validation-stages-container col-sm-12': true,
       'collapsed': !this.props.active
     });
 
+    const stages = this.props.validationStages.toList().map(stage => {
+      return (
+        <ValidationStage key={stage.uuid}
+                         validations={stage.validations}
+                         name={stage.name}
+                         status={stage.status}
+                         runValidationStage={this.props.runValidationStage}
+                         runValidation={this.props.runValidation}
+                         stopValidation={this.props.stopValidation}
+                         uuid={stage.uuid}/>
+      );
+    });
+
     return (
       <div className={classes}>
-        {this.getValidationsContent(this.props.validationStages)}
+        {this.props.validationStages.isEmpty() ?
+          <BlankSlate iconClass="pficon pficon-flag"
+                      title="No Validations"
+                      message="There are no validations at this time." /> : stages}
       </div>
     );
   }
@@ -48,5 +38,8 @@ export default class ValidationsList extends React.Component {
 
 ValidationsList.propTypes = {
   active: React.PropTypes.bool,
-  validationStages: React.PropTypes.array
+  runValidation: React.PropTypes.func.isRequired,
+  runValidationStage: React.PropTypes.func.isRequired,
+  stopValidation: React.PropTypes.func.isRequired,
+  validationStages: ImmutablePropTypes.map.isRequired
 };

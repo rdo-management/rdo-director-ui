@@ -1,7 +1,7 @@
 import matchers from 'jasmine-immutable-matchers';
 import { Map } from 'immutable';
 
-import { Notification } from '../../js/immutableRecords';
+import { Notification } from '../../js/immutableRecords/notifications';
 import NotificationConstants from '../../js/constants/NotificationConstants';
 import notificationsReducer from '../../js/reducers/notificationsReducer';
 
