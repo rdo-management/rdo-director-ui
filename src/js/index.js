@@ -48,6 +48,19 @@ TempStorage.initialized.then(() => {
     )
   );
 
+  const socket = new WebSocket('ws://192.0.2.1:9000/');
+  socket.onopen = function () {
+    console.log('Succesfully connected to Zaqar queue');
+  };
+
+  socket.onerror = function (error) {
+    console.log('WebSocket Error ' + error);
+  };
+
+  socket.onmessage = function (e) {
+    console.log('Server: ' + e.data);
+  };
+
   /**
    * @function checkAuth
    * If user is not logged in, check if there is an auth token in TempStorage
