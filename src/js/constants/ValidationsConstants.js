@@ -1,5 +1,8 @@
 import keyMirror from 'keymirror';
 
 export default keyMirror({
-  LIST_STAGES: null
+  REQUEST_STAGES: null,
+  RECEIVE_STAGES: null,
+  UPDATE_STAGE_STATUS: null,
+  UPDATE_VALIDATION_STATUS: null
 });

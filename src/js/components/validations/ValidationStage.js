@@ -1,11 +1,9 @@
-import * as _ from 'lodash';
-import React from 'react';
+import ImmutablePropTypes from 'react-immutable-proptypes';
 import ClassNames from 'classnames';
+import React from 'react';
 
-import NotificationActions from '../../actions/NotificationActions';
 import Validation from './Validation';
-import ValidationsApiService from '../../services/ValidationsApiService';
-import ValidationsApiErrorHandler from '../../services/ValidationsApiErrorHandler';
+import { ValidationsStatusCounts } from '../../immutableRecords';
 
 
 export default class ValidationStage extends React.Component {
@@ -16,50 +14,39 @@ export default class ValidationStage extends React.Component {
     };
   }
 
-  toggleOpen (e) {
+  toggleOpen(e) {
     e.preventDefault();
     var nowOpen = !this.state.isOpen;
     this.setState({isOpen: nowOpen});
   }
 
-  runStage () {
-    ValidationsApiService.runStage(this.props.uuid).then((response) => {
-      console.log(response); //eslint-disable-line no-console
-    }).catch((error) => {
-      console.error('Error in ValidationStage.runStage', error); //eslint-disable-line no-console
-      let errorHandler = new ValidationsApiErrorHandler(error);
-      errorHandler.errors.forEach((error) => {
-        NotificationActions.notify(error);
-      });
-    });
+  runStage(e) {
+    e.preventDefault(),
+    this.props.runValidationStage(this.props.uuid);
   }
 
-  getStatusBadge (title, badgeStyle, count) {
-    let badge = false;
+  getStatusBadge(title, badgeStyle, count) {
     if (count > 0) {
-      badge = (
+      return (
         <div className="status-container">
           <span className="badge-title">{title}</span>
           <span className={'badge ' + badgeStyle}>{count}</span>
         </div>
       );
     }
-    return badge;
+    return false;
   }
 
-  getStatusBadges () {
-    let statusInfo = _.countBy(_.pluck(this.props.validations, 'status'));
-    statusInfo.running = statusInfo.running || 0;
-    statusInfo.available = (statusInfo.available || 0) + (statusInfo.new || 0);
-    statusInfo.success = (statusInfo.success || 0) + (statusInfo.ok || 0);
-    statusInfo.error = (statusInfo.error || 0) + (statusInfo.failed || 0);
-
+  getStatusBadges() {
+    const statusCounts = new ValidationsStatusCounts(
+      this.props.validations.countBy(validation => validation.status));
     return (
       <div>
-        {this.getStatusBadge('Running', 'running',   statusInfo.running)}
-        {this.getStatusBadge('New',     'available', statusInfo.available)}
-        {this.getStatusBadge('Success', 'success',   statusInfo.success)}
-        {this.getStatusBadge('Errors',  'error',     statusInfo.error)}
+        {this.getStatusBadge('Running', 'running',   statusCounts.running)}
+        {this.getStatusBadge('New',     'available', statusCounts.new)}
+        {this.getStatusBadge('Success', 'success',   statusCounts.success)}
+        {this.getStatusBadge('Errors',  'error',     statusCounts.error)}
+        {this.getStatusBadge('Failed',  'error',     statusCounts.failed)}
       </div>
     );
   }
@@ -75,51 +62,57 @@ export default class ValidationStage extends React.Component {
       'in' : this.state.isOpen
     });
 
-    let validations = this.props.validations.map((validation, index) => {
+    let validations = this.props.validations.map(validation => {
       return (
-        <Validation key={index}
+        <Validation key={validation.uuid}
                     name={validation.name}
                     status={validation.status}
+                    runValidation={this.props.runValidation}
+                    stopValidation={this.props.stopValidation}
                     description={validation.description}
                     uuid={validation.uuid} />
       );
     });
 
     return (
-        <div className="panel panel-default">
-          <div className="panel-heading validation-stage-panel-heading container-fluid">
-            <div className="row">
-              <div className="col-md-2 col-xs-3">
-                <h4 className="panel-title">
-                  <a onClick={this.toggleOpen.bind(this)} className={titleClass}>
-                    {this.props.name}
-                  </a>
-                </h4>
-              </div>
-              <div className="col-md-9 col-sm-8 col-xs-7">
-                {this.getStatusBadges()}
-              </div>
-              <div className="col-sm-1 col-xs-2">
-                <button className="btn btn-primary pull-right" onClick={this.runStage.bind(this)}>
-                  Run All
-                </button>
-              </div>
+      <div className="panel panel-default">
+        <div className="panel-heading validation-stage-panel-heading container-fluid">
+          <div className="row">
+            <div className="col-md-2 col-xs-3">
+              <h4 className="panel-title">
+                <a onClick={this.toggleOpen.bind(this)} className={titleClass}>
+                  {this.props.name}
+                </a>
+              </h4>
             </div>
-          </div>
-          <div className={contentClass}>
-            <div className="container-fluid">
-              <div className="row validations-container">
-                {validations}
-              </div>
+            <div className="col-md-9 col-sm-8 col-xs-7">
+              {this.getStatusBadges()}
+            </div>
+            <div className="col-sm-1 col-xs-2">
+              <button className="btn btn-primary pull-right" onClick={this.runStage.bind(this)}>
+                Run All
+              </button>
             </div>
           </div>
         </div>
+        <div className={contentClass}>
+          <div className="container-fluid">
+            <div className="row validations-container">
+              {validations}
+            </div>
+          </div>
+        </div>
+      </div>
     );
   }
 }
 
 ValidationStage.propTypes = {
-  name: React.PropTypes.string,
-  uuid: React.PropTypes.string,
-  validations: React.PropTypes.array
+  name: React.PropTypes.string.isRequired,
+  runValidation: React.PropTypes.func.isRequired,
+  runValidationStage: React.PropTypes.func.isRequired,
+  status: React.PropTypes.string.isRequired,
+  stopValidation: React.PropTypes.func.isRequired,
+  uuid: React.PropTypes.string.isRequired,
+  validations: ImmutablePropTypes.list.isRequired
 };
