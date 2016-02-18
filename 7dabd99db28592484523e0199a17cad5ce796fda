@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da86d52c_fc0228b3",
+        "filename": "src/js/actions/PlansActions.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2016-02-18T11:38:54Z",
+      "side": 1,
+      "message": "What\u0027s the benefit of having two actions here?\n\nI get that the wording \"choosePlan\" isn\u0027t ideal and could be misread as just the intent to choose (but not the completion). But that could be ameliorated by picking a better term (maybe a noun, e.g. planActivation).\n\nOther than that it\u0027s a completely synchronous action.",
+      "revId": "7dabd99db28592484523e0199a17cad5ce796fda",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
