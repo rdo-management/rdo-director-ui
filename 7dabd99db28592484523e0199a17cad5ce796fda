@@ -16,6 +16,24 @@
       "revId": "7dabd99db28592484523e0199a17cad5ce796fda",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba7be1f8_084d0773",
+        "filename": "src/js/actions/PlansActions.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-02-18T12:01:26Z",
+      "side": 1,
+      "message": "It is not possible to dispatch action from non-thunk action, so  I had to do this to be able to dispatch the notify action.\n\nOther solution would be to dispatch the notification from the component right after the choosePlan",
+      "parentUuid": "da86d52c_fc0228b3",
+      "revId": "7dabd99db28592484523e0199a17cad5ce796fda",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
