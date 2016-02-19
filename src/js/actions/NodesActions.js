@@ -6,7 +6,6 @@ import MistralApiService from '../services/MistralApiService';
 import MistralApiErrorHandler from '../services/MistralApiErrorHandler';
 import NodesConstants from '../constants/NodesConstants';
 import NotificationActions from './NotificationActions';
-import { getServiceUrl, getAuthTokenId } from '../services/utils';
 
 export default {
   startOperation(workflowId) {
@@ -37,11 +36,9 @@ export default {
   fetchNodes() {
     return (dispatch, getState) => {
       dispatch(this.requestNodes());
-      const ironicUrl = getServiceUrl(getState(), 'ironic');
-      const authTokenId = getAuthTokenId(getState());
-      IronicApiService.getNodes(ironicUrl, authTokenId).then((response) => {
+      IronicApiService.getNodes().then((response) => {
         return when.all(response.nodes.map((node) => {
-          return IronicApiService.getNode(ironicUrl, authTokenId, node.uuid);
+          return IronicApiService.getNode(node.uuid);
         }));
       }).then((nodes) => {
         dispatch(this.receiveNodes(nodes));
@@ -59,9 +56,7 @@ export default {
   introspectNodes() {
     return (dispatch, getState) => {
       dispatch(this.startOperation());
-      const mistralUrl = getServiceUrl(getState(), 'mistral');
-      const authTokenId = getAuthTokenId(getState());
-      MistralApiService.runWorkflow(mistralUrl, authTokenId, 'tripleo.baremetal.bulk_introspect')
+      MistralApiService.runWorkflow('tripleo.baremetal.bulk_introspect')
       .then((response) => {
         if(response.state === 'ERROR') {
           dispatch(NotificationActions.notify({ title: 'Error', message: response.state_info }));
@@ -81,9 +76,7 @@ export default {
 
   pollForIntrospectionWorkflow(workflowExecutionId) {
     return (dispatch, getState) => {
-      const mistralUrl = getServiceUrl(getState(), 'mistral');
-      const authTokenId = getAuthTokenId(getState());
-      MistralApiService.getWorkflowExecution(mistralUrl, authTokenId, workflowExecutionId)
+      MistralApiService.getWorkflowExecution(workflowExecutionId)
       .then((response) => {
         if(response.state === 'RUNNING') {
           dispatch(this.fetchNodes());

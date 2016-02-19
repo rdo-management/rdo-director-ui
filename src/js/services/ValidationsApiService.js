@@ -2,13 +2,13 @@ import * as _ from 'lodash';
 import request from 'reqwest';
 import when from 'when';
 
-import TempStorage from './TempStorage';
+import { getAuthTokenId } from '../services/utils';
 import { VALIDATIONS_URL } from '../constants/APIEndpointUrls';
 
 class ValidationsApiService {
   defaultRequest(additionalAttributes) {
     return _.merge({
-      headers: { 'X-Auth-Token': TempStorage.getItem('keystoneAuthTokenId') },
+      headers: { 'X-Auth-Token': getAuthTokenId() },
       crossOrigin: true,
       contentType: 'application/json',
       type: 'json',
