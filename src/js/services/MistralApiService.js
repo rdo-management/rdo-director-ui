@@ -2,11 +2,13 @@ import * as _ from 'lodash';
 import request from 'reqwest';
 import when from 'when';
 
+import { getServiceUrl, getAuthTokenId } from './utils';
+
 class MistralApiService {
-  defaultRequest(authTokenId, additionalAttributes) {
+  defaultRequest(additionalAttributes) {
     return _.merge({
       headers: {
-        'X-Auth-Token': authTokenId
+        'X-Auth-Token': getAuthTokenId()
       },
       crossOrigin: true,
       contentType: 'application/json',
@@ -22,10 +24,10 @@ class MistralApiService {
    * @param {string} authTokenId - keystone authentication token ID
    * @return {object} Execution.
    */
-  getWorkflowExecution(mistralUrl, authTokenId, executionId) {
-    return when(request(this.defaultRequest(authTokenId,
+  getWorkflowExecution(executionId) {
+    return when(request(this.defaultRequest(
       {
-        url: mistralUrl + '/executions/' + executionId
+        url: getServiceUrl('mistral') + '/executions/' + executionId
       }
     )));
   }
@@ -39,11 +41,11 @@ class MistralApiService {
    * @param {object} input - Workflow input object
    * @return {object} Execution.
    */
-  runWorkflow(mistralUrl, authTokenId, workflowName, input = {}) {
-    return when(request(this.defaultRequest(authTokenId,
+  runWorkflow(workflowName, input = {}) {
+    return when(request(this.defaultRequest(
       {
         method: 'POST',
-        url: mistralUrl + '/executions',
+        url: getServiceUrl('mistral') + '/executions',
         data: JSON.stringify({
           workflow_name: workflowName,
           input: JSON.stringify(input)
@@ -61,11 +63,11 @@ class MistralApiService {
    * @param {object} input - Action input object
    * @return {object} Action Execution.
    */
-  runAction(mistralUrl, authTokenId, actionName, input = {}) {
-    return when(request(this.defaultRequest(authTokenId,
+  runAction(actionName, input = {}) {
+    return when(request(this.defaultRequest(
       {
         method: 'POST',
-        url: mistralUrl + '/action_executions',
+        url: getServiceUrl('mistral') + '/action_executions',
         data: JSON.stringify({
           name: actionName,
           input: JSON.stringify(input)

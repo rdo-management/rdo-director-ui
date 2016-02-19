@@ -1,9 +1,6 @@
 import 'babel/polyfill';
 
-import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import thunkMiddleware from 'redux-thunk';
-import createLogger from 'redux-logger';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { IntlProvider } from 'react-intl';
@@ -33,21 +30,9 @@ import RegisterNodesDialog from './components/nodes/RegisterNodesDialog';
 import RegisteredNodesTabPane from './components/nodes/RegisteredNodesTabPane';
 import Roles from './components/roles/Roles.js';
 import TempStorage from './services/TempStorage.js';
-import appReducer from './reducers/appReducer';
-
-const loggerMiddleware = createLogger();
+import store from './store';
 
 TempStorage.initialized.then(() => {
-
-  const store = createStore(
-    appReducer,
-    {},
-    applyMiddleware(
-      thunkMiddleware,
-      loggerMiddleware
-    )
-  );
-
   /**
    * @function checkAuth
    * If user is not logged in, check if there is an auth token in TempStorage
