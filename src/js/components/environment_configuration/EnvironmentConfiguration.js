@@ -1,49 +1,29 @@
 import * as _ from 'lodash';
+import { connect } from 'react-redux';
 import Formsy from 'formsy-react';
+import ImmutablePropTypes from 'react-immutable-proptypes';
 import { Link } from 'react-router';
 import React from 'react';
 
+import EnvironmentConfigurationActions from '../../actions/EnvironmentConfigurationActions';
 import EnvironmentConfigurationTopic from './EnvironmentConfigurationTopic';
 import FormErrorList from '../ui/forms/FormErrorList';
 import Loader from '../ui/Loader';
 import Tab from '../ui/Tab';
 import TabPane from '../ui/TabPane';
-import NotificationActions from '../../actions/NotificationActions';
-import TripleOApiService from '../../services/TripleOApiService';
-import TripleOApiErrorHandler from '../../services/TripleOApiErrorHandler';
 
-export default class EnvironmentConfiguration extends React.Component {
+class EnvironmentConfiguration extends React.Component {
   constructor() {
     super();
     this.state = {
       canSubmit: false,
       formErrors: [],
-      environmentConfiguration: {
-        topics: []
-      },
-      activeTab: undefined,
-      environmentConfigurationLoaded: false
+      activeTab: undefined
     };
   }
 
   componentDidMount() {
-    this._fetchEnvironmentConfiguration();
-  }
-
-  _fetchEnvironmentConfiguration() {
-    this.setState({ environmentConfigurationLoaded: false });
-    TripleOApiService.getPlanEnvironments(this.props.currentPlanName).then((response) => {
-      this.setState({
-        environmentConfiguration: response.environments,
-        environmentConfigurationLoaded: true
-      });
-    }).catch((error) => {
-      this.props.history.pushState(null, this.props.parentPath);
-      let errorHandler = new TripleOApiErrorHandler(error);
-      errorHandler.errors.forEach((error) => {
-        NotificationActions.notify(error);
-      });
-    });
+    this.props.fetchEnvironment(this.props.currentPlanName);
   }
 
   enableButton() {
@@ -69,23 +49,17 @@ export default class EnvironmentConfiguration extends React.Component {
   handleSubmit(formData, resetForm, invalidateForm) {
     let data = this._convertFormData(formData);
     this.disableButton();
-    TripleOApiService.updatePlanEnvironments(this.props.currentPlanName, data).then((response) => {
-      this.setState({ environmentConfiguration: response.environments });
-      this.props.history.pushState(null, this.props.parentPath);
-      NotificationActions.notify({
-        title: 'Environment Configuration updated',
-        message: 'The Environment Configuration has been successfully updated',
-        type: 'success'
-      });
-    }).catch((error) => {
-      console.error('Error in EnvironmentConfiguration.handleSubmit', error); //eslint-disable-line no-console
+    this.props.updateEnvironment(this.props.currentPlanName, data, this.props.parentPath);
+
+    // TODO(flfuchs) implement environmentUpdateFaild action for error handling
+    /*
       let errorHandler = new TripleOApiErrorHandler(
         error,Object.keys(this.refs.environmentConfigurationForm.inputs));
       invalidateForm(errorHandler.formFieldErrors);
       this.setState({
         formErrors: errorHandler.errors
       });
-    });
+    */
   }
 
   activateTab(tabName, e) {
@@ -94,13 +68,15 @@ export default class EnvironmentConfiguration extends React.Component {
   }
 
   isTabActive(tabName) {
-    let firstTabName = _.camelCase(_.first(this.state.environmentConfiguration.topics).title);
+    let firstTabName = _.camelCase(
+      _.first(this.props.environmentConfiguration.get('topics')).title
+    );
     let currentTab = this.state.activeTab || firstTabName;
     return currentTab === tabName;
   }
 
   render() {
-    let topics = this.state.environmentConfiguration.topics.map((topic, index) => {
+    let topics = this.props.environmentConfiguration.get('topics').map((topic, index) => {
       let tabName = _.camelCase(topic.title);
       return (
         <TabPane isActive={this.isTabActive(tabName)}
@@ -113,7 +89,7 @@ export default class EnvironmentConfiguration extends React.Component {
       );
     });
 
-    let topicTabs = this.state.environmentConfiguration.topics.map((topic, index) => {
+    let topicTabs = this.props.environmentConfiguration.get('topics').map((topic, index) => {
       let tabName = _.camelCase(topic.title);
       return (
         <Tab key={index} isActive={this.isTabActive(tabName)}>
@@ -146,7 +122,7 @@ export default class EnvironmentConfiguration extends React.Component {
                 <div className="modal-body">
 
                   <Loader height={60}
-                          loaded={this.state.environmentConfigurationLoaded}>
+                          loaded={this.props.environmentConfigurationLoaded}>
                     <FormErrorList errors={this.state.formErrors}/>
                     <div className="row">
                       <div className="col-xs-5">
@@ -183,14 +159,42 @@ export default class EnvironmentConfiguration extends React.Component {
 }
 EnvironmentConfiguration.propTypes = {
   currentPlanName: React.PropTypes.string,
-  history: React.PropTypes.object,
+  environmentConfiguration: ImmutablePropTypes.map,
+  environmentConfigurationLoaded: React.PropTypes.bool,
+  fetchEnvironment: React.PropTypes.func,
   location: React.PropTypes.object,
-  parentPath: React.PropTypes.string.isRequired
+  parentPath: React.PropTypes.string.isRequired,
+  updateEnvironment: React.PropTypes.func
 };
 
 EnvironmentConfiguration.defaultProps = {
   parentPath: '/deployment-plan'
 };
+
+function mapStateToProps(state) {
+  return {
+    currentPlanName: state.plans.get('currentPlanName'),
+    environmentConfiguration: state.environmentConfiguration.get(
+      'currentEnvironment'
+    ),
+    environmentConfigurationLoaded: state.environmentConfiguration.get(
+      'environmentConfigurationLoaded'
+    )
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    fetchEnvironment: planName => {
+      dispatch(EnvironmentConfigurationActions.fetchEnvironment(planName));
+    },
+    updateEnvironment: (planName, data, parentPath) => {
+      dispatch(EnvironmentConfigurationActions.updateEnvironment(planName, data, parentPath));
+    }
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(EnvironmentConfiguration);
 
 /**
 * requiresEnvironments validation
