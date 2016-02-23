@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a72e520_79b00ff5",
+        "filename": "src/js/immutableRecords.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2016-02-23T10:54:37Z",
+      "side": 1,
+      "message": "I would prefer to keep the record definitions separated by major components, just like we do with actions, reducers, etc. \n\nSo instead of having one file for all we could organize them like this:\n\n- src/immutablerecords/notifications.js\n- src/immutablerecords/validations.js\n- ...\n\nThoughts?",
+      "revId": "5f60a3d521f566667205a9b291e087a883af7d75",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a72e520_b991a754",
+        "filename": "src/js/normalizrSchemas.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2016-02-23T10:54:37Z",
+      "side": 1,
+      "message": "Just like with immutable records, I think it would make sense to separate the schema definitions by components and in a separate folder:\n\n- src/schemas/validations.js (or similar).",
+      "revId": "5f60a3d521f566667205a9b291e087a883af7d75",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
