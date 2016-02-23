@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a72e520_1f37fbb1",
+        "filename": "src/js/components/plan/DeletePlan.js",
+        "patchSetId": 12
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-02-23T16:01:55Z",
+      "side": 1,
+      "message": "this prop seems not to be used",
+      "revId": "a477e71a33369b0131bc213930e48bca6a3fcd4c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a72e520_5fab3389",
+        "filename": "src/js/components/plan/FileList.js",
+        "patchSetId": 12
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-02-23T16:01:55Z",
+      "side": 1,
+      "message": "!this.props.files.isEmpty()",
+      "revId": "a477e71a33369b0131bc213930e48bca6a3fcd4c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a72e520_ff9bff6f",
+        "filename": "src/js/components/plan/NewPlan.js",
+        "patchSetId": 12
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-02-23T16:01:55Z",
+      "side": 1,
+      "message": "not sure, but maybe just \u0027null\u0027 would work here",
+      "range": {
+        "startLine": 106,
+        "startChar": 23,
+        "endLine": 106,
+        "endChar": 43
+      },
+      "revId": "a477e71a33369b0131bc213930e48bca6a3fcd4c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a72e520_9fe68b15",
+        "filename": "src/js/reducers/plansReducer.js",
+        "patchSetId": 12
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-02-23T16:01:55Z",
+      "side": 1,
+      "message": "I think we should make isFetchingPlan, isDeletingPlan, isCreatingPlan part of the plan object. There is a case when multiple plans are deleted at once (or possibly even updated eventually). So I think it would be better to define plan as an ImmutableRecord like:\n\nconst Plan \u003d Record({\n  name: \u0027\u0027,\n  transition: \u0027\u0027\n})\n\nDELETING_PLAN, CREATING_PLAN, UPDATING_PLAN actions would then udpate the transition string.\n\nAlso, the RowActionsCell and PlanNameCell in ListPlans.js are broken, because they expect the plan to be an object with transition property. Based on that the transition animation is shown.",
+      "revId": "a477e71a33369b0131bc213930e48bca6a3fcd4c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
