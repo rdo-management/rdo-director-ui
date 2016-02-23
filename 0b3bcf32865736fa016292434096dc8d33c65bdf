@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5a72e520_f95ebf11",
+        "filename": "src/js/actions/PlansActions.js",
+        "patchSetId": 8
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2016-02-23T10:00:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a72e520_a5697e27",
+      "revId": "0b3bcf32865736fa016292434096dc8d33c65bdf",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a72e520_856c8238",
         "filename": "src/js/services/utils.js",
         "patchSetId": 8
@@ -30,6 +48,24 @@
       "writtenOn": "2016-02-22T15:53:27Z",
       "side": 1,
       "message": "Please don\u0027t put this into single object. I meant to use services/utils.js for various utility functions which can be quite independent on each other, so I think it is better to let user specify which of the functions he want to import, so he does not have to import all of the functions every time. If the user wants to import all of them for some reason import * as utils from ... can be used.",
+      "revId": "0b3bcf32865736fa016292434096dc8d33c65bdf",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a72e520_d9b8232d",
+        "filename": "src/js/services/utils.js",
+        "patchSetId": 8
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2016-02-23T10:00:36Z",
+      "side": 1,
+      "message": "Done. The reason for the change was to make mocking a little easier. Didn\u0027t think of \"import * as utils\", which is definitely better.",
+      "parentUuid": "5a72e520_856c8238",
       "revId": "0b3bcf32865736fa016292434096dc8d33c65bdf",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
