@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5a72e520_396857f5",
+        "filename": "src/js/components/Footer.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-02-23T12:26:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a72e520_79b56fcc",
+      "revId": "5f60a3d521f566667205a9b291e087a883af7d75",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a72e520_99c94b5d",
         "filename": "src/js/components/Footer.js",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2016-02-23T11:15:44Z",
       "side": 1,
       "message": "This can be removed.",
+      "revId": "5f60a3d521f566667205a9b291e087a883af7d75",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a72e520_596d1304",
+        "filename": "src/js/components/Footer.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-02-23T12:26:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a72e520_99c94b5d",
       "revId": "5f60a3d521f566667205a9b291e087a883af7d75",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "5a72e520_7972cfe6",
+        "filename": "src/js/components/Footer.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-02-23T12:26:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a72e520_b9c60748",
+      "revId": "5f60a3d521f566667205a9b291e087a883af7d75",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a72e520_d9c3c336",
         "filename": "src/js/components/Footer.js",
         "patchSetId": 3
@@ -64,6 +118,24 @@
       "writtenOn": "2016-02-23T11:15:44Z",
       "side": 1,
       "message": "All lines until 52 can be removed.",
+      "revId": "5f60a3d521f566667205a9b291e087a883af7d75",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a72e520_9976abd7",
+        "filename": "src/js/components/Footer.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-02-23T12:26:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a72e520_d9c3c336",
       "revId": "5f60a3d521f566667205a9b291e087a883af7d75",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "5a72e520_79ed6f8b",
+        "filename": "src/js/immutableRecords.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-02-23T12:26:00Z",
+      "side": 1,
+      "message": "right, makes sense. Will do",
+      "parentUuid": "5a72e520_79b00ff5",
+      "revId": "5f60a3d521f566667205a9b291e087a883af7d75",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a72e520_b991a754",
         "filename": "src/js/normalizrSchemas.js",
         "patchSetId": 3
@@ -104,6 +194,24 @@
     },
     {
       "key": {
+        "uuid": "5a72e520_391db774",
+        "filename": "src/js/normalizrSchemas.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-02-23T12:26:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a72e520_b991a754",
+      "revId": "5f60a3d521f566667205a9b291e087a883af7d75",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a72e520_7903af73",
         "filename": "src/js/selectors.js",
         "patchSetId": 3
@@ -115,6 +223,24 @@
       "writtenOn": "2016-02-23T11:15:44Z",
       "side": 1,
       "message": "I think these would also be organized best in \"src/selectors/validations.js\"",
+      "revId": "5f60a3d521f566667205a9b291e087a883af7d75",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a72e520_d41c6a6d",
+        "filename": "src/js/selectors.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-02-23T12:26:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a72e520_7903af73",
       "revId": "5f60a3d521f566667205a9b291e087a883af7d75",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
