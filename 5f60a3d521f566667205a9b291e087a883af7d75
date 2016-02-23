@@ -2,6 +2,74 @@
   "comments": [
     {
       "key": {
+        "uuid": "5a72e520_79b56fcc",
+        "filename": "src/js/components/Footer.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2016-02-23T11:15:44Z",
+      "side": 1,
+      "message": "This can be removed.",
+      "revId": "5f60a3d521f566667205a9b291e087a883af7d75",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a72e520_99c94b5d",
+        "filename": "src/js/components/Footer.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2016-02-23T11:15:44Z",
+      "side": 1,
+      "message": "This can be removed.",
+      "revId": "5f60a3d521f566667205a9b291e087a883af7d75",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a72e520_b9c60748",
+        "filename": "src/js/components/Footer.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2016-02-23T11:15:44Z",
+      "side": 1,
+      "message": "These 2 lines can be removed.",
+      "revId": "5f60a3d521f566667205a9b291e087a883af7d75",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a72e520_d9c3c336",
+        "filename": "src/js/components/Footer.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2016-02-23T11:15:44Z",
+      "side": 1,
+      "message": "All lines until 52 can be removed.",
+      "revId": "5f60a3d521f566667205a9b291e087a883af7d75",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a72e520_79b00ff5",
         "filename": "src/js/immutableRecords.js",
         "patchSetId": 3
@@ -30,6 +98,23 @@
       "writtenOn": "2016-02-23T10:54:37Z",
       "side": 1,
       "message": "Just like with immutable records, I think it would make sense to separate the schema definitions by components and in a separate folder:\n\n- src/schemas/validations.js (or similar).",
+      "revId": "5f60a3d521f566667205a9b291e087a883af7d75",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a72e520_7903af73",
+        "filename": "src/js/selectors.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2016-02-23T11:15:44Z",
+      "side": 1,
+      "message": "I think these would also be organized best in \"src/selectors/validations.js\"",
       "revId": "5f60a3d521f566667205a9b291e087a883af7d75",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
