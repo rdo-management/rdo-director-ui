@@ -1,3 +1,4 @@
+import ImmutablePropTypes from 'react-immutable-proptypes';
 import React from 'react';
 
 import HorizontalInput from '../../ui/forms/HorizontalInput';
@@ -26,7 +27,7 @@ export default class PXEAndIPMIToolDriverFields extends React.Component {
                          title="IPMI IP Address"
                          inputColumnClasses="col-sm-7"
                          labelColumnClasses="col-sm-5"
-                         value={this.props.driver_info.ipmi_address}
+                         value={this.props.driver_info.get('ipmi_address')}
                          validations={this.ipValidator}
                          validationError={this.ipValidatorMessage}
                          required />
@@ -35,5 +36,5 @@ export default class PXEAndIPMIToolDriverFields extends React.Component {
   }
 }
 PXEAndIPMIToolDriverFields.propTypes = {
-  driver_info: React.PropTypes.object
+  driver_info: ImmutablePropTypes.map.isRequired
 };
