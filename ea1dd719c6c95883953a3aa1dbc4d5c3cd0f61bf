@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a72e520_e44a8f54",
+        "filename": "src/js/immutableRecords/login.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2016-02-24T11:00:45Z",
+      "side": 1,
+      "message": "How about we make it a convention to name flags that indicate ongoing api calls \"is\u003cverb\u003eing\" (in this case: \"isAuthenticating\")?",
+      "revId": "ea1dd719c6c95883953a3aa1dbc4d5c3cd0f61bf",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
