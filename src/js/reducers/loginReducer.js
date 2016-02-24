@@ -1,17 +1,7 @@
-import { Map, Record, List } from 'immutable';
-
 import LoginConstants from '../constants/LoginConstants';
+import { InitialLoginState } from '../immutableRecords/login';
 
-const InitialState = Record({
-  keystoneAccess: Map(),
-  loginForm: Map({
-    formErrors: List(),
-    formFieldErrors: Map()
-  }),
-  authInProgress: false
-});
-
-const initialState = new InitialState;
+const initialState = new InitialLoginState;
 
 export default function loginReducer(state = initialState, action) {
   switch(action.type) {
