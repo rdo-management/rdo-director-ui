@@ -1,31 +1,29 @@
-import * as _ from 'lodash';
+import { connect } from 'react-redux';
+import ImmutablePropTypes from 'react-immutable-proptypes';
 import ClassNames from 'classnames';
 import { Link } from 'react-router';
+import { Map } from 'immutable';
 import React from 'react';
 
 import BlankSlate from '../ui/BlankSlate';
+import { NodeToRegister } from '../../immutableRecords/nodes';
 import NotificationActions from '../../actions/NotificationActions';
+import RegisterNodesActions from '../../actions/RegisterNodesActions';
 import RegisterNodeForm from './RegisterNodeForm';
 import Tab from '../ui/Tab';
 import TabPane from '../ui/TabPane';
 
-export default class RegisterNodesDialog extends React.Component {
+class RegisterNodesDialog extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      nodesToRegister: [],
-      selectedNodeIndex: undefined,
       canSubmit: false,
       formErrors: []
     };
   }
 
   onNodeChange(updatedNode) {
-    let nodesToRegister = this.state.nodesToRegister.slice();
-    let index = _.findIndex(nodesToRegister,
-                            (node) => { return node.id === this.state.selectedNodeIndex; });
-    nodesToRegister[index] = updatedNode;
-    this.setState({nodesToRegister: nodesToRegister});
+    this.props.dispatch(RegisterNodesActions.updateNode(updatedNode));
   }
 
   addNodesFromInstackenvJSON(fileContents) {
@@ -33,18 +31,17 @@ export default class RegisterNodesDialog extends React.Component {
     nodes.forEach(node => {
       switch(node.pm_type) {
       case 'pxe_ssh':
-        this.addNode({
+        this.addNode(new NodeToRegister({
+          id: Date.now(),
           driver: node.pm_type,
           nicMacAddress: node.mac,
-          driver_info: {
+          driver_info: Map({
             ssh_virt_type: 'virsh',
             ssh_address: node.pm_addr,
             ssh_user: node.pm_user,
-            ssh_key_contents: node.pm_password,
-            deploy_kernel: '',
-            deploy_ramdisk: ''
-          }
-        });
+            ssh_key_contents: node.pm_password
+          })
+        }));
         break;
       case 'pxe_ipmitool':
         this.addNode();
@@ -66,21 +63,20 @@ export default class RegisterNodesDialog extends React.Component {
         } else if (file.name.match(/(\.csv)$/)) {
           // TODO(jtomasek): add CSV file support
           // this.addNodesFromCSV(e.target.result);
-          NotificationActions.notify({
+          this.props.dispatch(NotificationActions.notify({
             title: 'CSV Upload Unsupported',
-            message: 'The selected file format is not supported yet',
-            type: 'error'
-          });
+            message: 'The selected file format is not supported yet'
+          }));
         } else {
-          NotificationActions.notify({
+          this.props.dispatch(NotificationActions.notify({
             title: 'Unsuported File Format',
-            message: 'Please provide csv file or instackenv.json',
-            type: 'error'
-          });
+            message: 'Please provide csv file or instackenv.json'
+          }));
         }
       });
     })(file);
     reader.readAsText(file);
+    this.refs.regNodesUploadFileForm.reset();
   }
 
   selectFile() {
@@ -92,33 +88,26 @@ export default class RegisterNodesDialog extends React.Component {
     this.addNode();
   }
 
-  addNode(newNode={driver: 'pxe_ssh', driver_info: {}}) {
-    let nodesToRegister = this.state.nodesToRegister.slice();
-    newNode.id = Date.now(); // generate unique id for component identification
-    newNode.valid = false;
-    nodesToRegister.push(newNode);
-    this.setState({nodesToRegister: nodesToRegister,
-                   selectedNodeIndex: newNode.id,
-                   canSubmit: false});
+  addNode(newNode=new NodeToRegister({id: Date.now()})) {
+    this.setState({canSubmit: false});
+    this.props.dispatch(RegisterNodesActions.addNode(newNode));
+    this.props.dispatch(RegisterNodesActions.selectNode(newNode.id));
   }
 
   removeNode(id, e) {
     e.preventDefault();
-    let nodesToRegister = this.state.nodesToRegister.slice();
-    _.remove(nodesToRegister, (node) => { return node.id === id; });
-    let nodeToSelect = _.last(nodesToRegister);
-    this.setState({nodesToRegister: nodesToRegister},
-                  () => { this.selectNode(nodeToSelect ? nodeToSelect.id : undefined); });
+    e.stopPropagation();
+    this.props.dispatch(RegisterNodesActions.removeNode(id));
   }
 
   selectNode(id) {
-    this.setState({selectedNodeIndex: id});
+    this.props.dispatch(RegisterNodesActions.selectNode(id));
   }
 
   renderNode(node, index) {
     // TODO(jtomasek): fix the name setting here
-    let nodeName = node.driver_info.ssh_address ||
-                   node.driver_info.ipmi_address ||
+    let nodeName = node.driver_info.get('ssh_address') ||
+                   node.driver_info.get('ipmi_address') ||
                    `Undefined Node`;
     let validationIconClasses = ClassNames({
       'pficon': true,
@@ -126,7 +115,7 @@ export default class RegisterNodesDialog extends React.Component {
     });
 
     return (
-      <Tab key={index} isActive={node.id === this.state.selectedNodeIndex}>
+      <Tab key={index} isActive={node.id === this.props.selectedNodeId}>
         <a className="link" onClick={this.selectNode.bind(this, node.id)}>
           <span className={validationIconClasses}/> {nodeName}
           <span className="tab-action fa fa-trash-o" onClick={this.removeNode.bind(this, node.id)}/>
@@ -136,17 +125,17 @@ export default class RegisterNodesDialog extends React.Component {
 
   renderNodeTabs() {
     let renderNode = this.renderNode.bind(this);
-    return this.state.nodesToRegister.map(function(node, i) {
+    return this.props.nodesToRegister.toList().map(function(node, i) {
       return renderNode(node, i);
     });
   }
 
   renderTabPanes() {
-    if (this.state.selectedNodeIndex) {
-      return this.state.nodesToRegister.map((node, index) => {
+    if (this.props.selectedNodeId) {
+      return this.props.nodesToRegister.toList().map((node) => {
         return (
-          <TabPane key={index}
-                   isActive={this.state.selectedNodeIndex === node.id}
+          <TabPane key={node.id}
+                   isActive={this.props.selectedNodeId === node.id}
                    renderOnlyActive>
             <RegisterNodeForm selectedNode={node} onUpdateNode={this.onNodeChange.bind(this)}/>
           </TabPane>
@@ -167,63 +156,58 @@ export default class RegisterNodesDialog extends React.Component {
         <div className="modal modal-routed in" role="dialog">
           <div className="modal-dialog modal-lg">
             <div className="modal-content">
-              {/* <Formsy.Form ref="RegisterNodesForm"
-                               role="form"
-                               className="form-horizontal"
-                               onChange={this.onNodeChange.bind(this)}
-                               onValidSubmit={this.onFormSubmit.bind(this)}
-                               onValid={this.onFormValid.bind(this)}
-                              onInvalid={this.onFormInvalid.bind(this)}>*/}
-                <div className="modal-header">
-                  <Link to="/nodes/registered"
-                        type="button"
-                        className="close">
-                    <span className="pficon pficon-close"></span>
-                  </Link>
-                  <h4 className="modal-title">Register Nodes</h4>
-                </div>
-                <div className="modal-body">
-                  <div className="row">
-                    <div className="col-xs-5">
-                      <div className="nav-stacked-actions">
-                        <button className="btn btn-default"
-                                onClick={this.onAddNewClick.bind(this)}>
-                          <span className="fa fa-plus"/> Add New
-                        </button>
-                        &nbsp; or &nbsp;
-                        <button className="btn btn-default"
-                                onClick={this.selectFile.bind(this)}
-                                type="button">
-                          <span className="fa fa-upload"/> Upload From File
-                        </button>
+              <div className="modal-header">
+                <Link to="/nodes/registered"
+                      type="button"
+                      className="close">
+                  <span className="pficon pficon-close"></span>
+                </Link>
+                <h4 className="modal-title">Register Nodes</h4>
+              </div>
+              <div className="modal-body">
+                <div className="row">
+                  <div className="col-xs-5">
+                    <div className="nav-stacked-actions">
+                      <button className="btn btn-default"
+                              type="button"
+                              onClick={this.onAddNewClick.bind(this)}>
+                        <span className="fa fa-plus"/> Add New
+                      </button>
+                      &nbsp; or &nbsp;
+                      <button className="btn btn-default"
+                              onClick={this.selectFile.bind(this)}
+                              type="button">
+                        <span className="fa fa-upload"/> Upload From File
+                      </button>
+                      <form ref="regNodesUploadFileForm">
                         <input style={{display: 'none'}}
                                ref="regNodesUploadFileInput"
                                id="regNodesUploadFileInput"
                                type="file" accept="text/csv,text/json"
                                onChange={this.uploadFromFile.bind(this)}/>
-                      </div>
-                      <ul className="nav nav-pills nav-stacked nav-arrows">
-                        {this.renderNodeTabs().reverse()}
-                      </ul>
+                       </form>
                     </div>
-                    <div className="col-xs-7">
-                      <div className="tab-content">
-                        {this.renderTabPanes()}
-                      </div>
+                    <ul className="nav nav-pills nav-stacked nav-arrows">
+                      {this.renderNodeTabs().reverse()}
+                    </ul>
+                  </div>
+                  <div className="col-xs-7">
+                    <div className="tab-content">
+                      {this.renderTabPanes()}
                     </div>
                   </div>
                 </div>
-                <div className="modal-footer">
-                  <Link to="/nodes/registered"
-                        type="button"
-                        className="btn btn-default">Cancel</Link>
-                  <button disabled={!this.state.canSubmit}
-                          className="btn btn-primary"
-                          type="submit">
-                    Register Nodes
-                  </button>
-                </div>
-              {/*</Formsy.Form>*/}
+              </div>
+              <div className="modal-footer">
+                <Link to="/nodes/registered"
+                      type="button"
+                      className="btn btn-default">Cancel</Link>
+                <button disabled={!this.state.canSubmit}
+                        className="btn btn-primary"
+                        type="submit">
+                  Register Nodes
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -232,3 +216,17 @@ export default class RegisterNodesDialog extends React.Component {
     );
   }
 }
+RegisterNodesDialog.propTypes = {
+  dispatch: React.PropTypes.func.isRequired,
+  nodesToRegister: ImmutablePropTypes.map.isRequired,
+  selectedNodeId: React.PropTypes.number
+};
+
+function mapStateToProps(state) {
+  return {
+    nodesToRegister: state.registerNodes.get('nodesToRegister'),
+    selectedNodeId: state.registerNodes.get('selectedNodeId')
+  };
+}
+
+export default connect(mapStateToProps)(RegisterNodesDialog);
