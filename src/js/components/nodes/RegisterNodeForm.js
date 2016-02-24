@@ -9,6 +9,9 @@ import PXEAndIPMIToolDriverFields from './driver_fields/PXEAndIPMIToolDriverFiel
 export default class RegisterNodeForm extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      driver: 'pxe_ssh'
+    };
 
     this.driverOptions = ['pxe_ipmitool', 'pxe_ssh'];
 
@@ -21,6 +24,9 @@ export default class RegisterNodeForm extends React.Component {
   onNodeFormValidSubmit(formData, resetForm, invalidateForm) {
     let updatedNode = formData;
     updatedNode.id = this.props.selectedNode.id;
+    if (this.props.selectedNode.driver !== formData.driver) {
+      updatedNode.driver_info = {};
+    }
     updatedNode.valid = true;
     this.props.onUpdateNode(updatedNode);
   }
@@ -28,6 +34,9 @@ export default class RegisterNodeForm extends React.Component {
   onNodeFormInvalidSubmit(formData, resetForm, invalidateForm) {
     let updatedNode = formData;
     updatedNode.id = this.props.selectedNode.id;
+    if (this.props.selectedNode.driver !== formData.driver) {
+      updatedNode.driver_info = {};
+    }
     updatedNode.valid = false;
     this.props.onUpdateNode(updatedNode);
   }
@@ -51,35 +60,37 @@ export default class RegisterNodeForm extends React.Component {
 
   render () {
     return (
-      <Formsy.Form ref="nodeForm"
-                   className="form-horizontal"
-                   onValidSubmit={this.onNodeFormValidSubmit.bind(this)}
-                   onInvalidSubmit={this.onNodeFormInvalidSubmit.bind(this)}
-                   onValid={this.onValid.bind(this)}
-                   onInvalid={this.onInvalid.bind(this)}>
+      <div>
         <h4>Node Detail</h4>
-        <fieldset>
-          <legend>Management</legend>
-          <HorizontalSelect name="driver"
-                            title="Driver"
-                            inputColumnClasses="col-sm-7"
-                            labelColumnClasses="col-sm-5"
-                            value={this.props.selectedNode.driver}
-                            options={this.driverOptions} />
-          {this.renderDriverFields()}
-        </fieldset>
-        <fieldset>
-          <legend>Networking</legend>
-          <HorizontalInput name="nicMacAddress"
-                           title="NIC MAC Address"
-                           inputColumnClasses="col-sm-7"
-                           labelColumnClasses="col-sm-5"
-                           value={this.props.selectedNode.nicMacAddress}
-                           validations={this.macAddressValidator}
-                           validationError={this.macAddressValidatorMessage}
-                           required/>
-        </fieldset>
-      </Formsy.Form>
+        <Formsy.Form ref="nodeForm"
+                     className="form-horizontal"
+                     onValidSubmit={this.onNodeFormValidSubmit.bind(this)}
+                     onInvalidSubmit={this.onNodeFormInvalidSubmit.bind(this)}
+                     onValid={this.onValid.bind(this)}
+                     onInvalid={this.onInvalid.bind(this)}>
+          <fieldset>
+            <legend>Management</legend>
+            <HorizontalSelect name="driver"
+                              title="Driver"
+                              inputColumnClasses="col-sm-7"
+                              labelColumnClasses="col-sm-5"
+                              value={this.props.selectedNode.driver}
+                              options={this.driverOptions} />
+            {this.renderDriverFields()}
+          </fieldset>
+          <fieldset>
+            <legend>Networking</legend>
+            <HorizontalInput name="nicMacAddress"
+                             title="NIC MAC Address"
+                             inputColumnClasses="col-sm-7"
+                             labelColumnClasses="col-sm-5"
+                             value={this.props.selectedNode.nicMacAddress}
+                             validations={this.macAddressValidator}
+                             validationError={this.macAddressValidatorMessage}
+                             required/>
+          </fieldset>
+        </Formsy.Form>
+      </div>
     );
   }
 }
