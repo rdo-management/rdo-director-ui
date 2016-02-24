@@ -34,6 +34,24 @@
       "revId": "ea1dd719c6c95883953a3aa1dbc4d5c3cd0f61bf",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a72e520_c41cb316",
+        "filename": "src/js/immutableRecords/login.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-02-24T12:07:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a72e520_4487e361",
+      "revId": "ea1dd719c6c95883953a3aa1dbc4d5c3cd0f61bf",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
