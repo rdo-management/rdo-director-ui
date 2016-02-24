@@ -4,7 +4,9 @@ import createLogger from 'redux-logger';
 
 import appReducer from './reducers/appReducer';
 
-const loggerMiddleware = createLogger();
+const loggerMiddleware = createLogger({
+  collapsed: true
+});
 
 const store = createStore(
   appReducer,
