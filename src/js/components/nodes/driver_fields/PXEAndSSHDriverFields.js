@@ -1,3 +1,4 @@
+import ImmutablePropTypes from 'react-immutable-proptypes';
 import React from 'react';
 
 import HorizontalInput from '../../ui/forms/HorizontalInput';
@@ -28,13 +29,13 @@ export default class PXEAndSSHDriverFields extends React.Component {
                           title="SSH Virt Type"
                           inputColumnClasses="col-sm-7"
                           labelColumnClasses="col-sm-5"
-                          value={this.props.driver_info.ssh_virt_type}
+                          value={this.props.driver_info.get('ssh_virt_type')}
                           options={['vbox', 'virsh', 'vmware', 'parallels', 'xenserver']} />
         <HorizontalInput name="driver_info.ssh_address"
                          title="SSH IP Address"
                          inputColumnClasses="col-sm-7"
                          labelColumnClasses="col-sm-5"
-                         value={this.props.driver_info.ssh_address}
+                         value={this.props.driver_info.get('ssh_address')}
                          validations={this.ipValidator}
                          validationError={this.ipValidatorMessage}
                          required />
@@ -42,7 +43,7 @@ export default class PXEAndSSHDriverFields extends React.Component {
                          title="SSH User"
                          inputColumnClasses="col-sm-7"
                          labelColumnClasses="col-sm-5"
-                         value={this.props.driver_info.ssh_user}
+                         value={this.props.driver_info.get('ssh_user')}
                          validations={this.sshUserValidator}
                          validationError={this.sshUserValidationMessage}
                          required />
@@ -50,12 +51,12 @@ export default class PXEAndSSHDriverFields extends React.Component {
                          title="SSH Key"
                          inputColumnClasses="col-sm-7"
                          labelColumnClasses="col-sm-5"
-                         value={this.props.driver_info.ssh_key_contents}
+                         value={this.props.driver_info.get('ssh_key_contents')}
                          required />
       </div>
     );
   }
 }
 PXEAndSSHDriverFields.propTypes = {
-  driver_info: React.PropTypes.object
+  driver_info: ImmutablePropTypes.map.isRequired
 };
