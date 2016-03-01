@@ -1,6 +1,6 @@
 import when from 'when';
 
-const WORKER_URL = '/js/rdo_director_ui_tempstorage_worker.js';
+const WORKER_URL = '/js/tripleo_ui_tempstorage_worker.js';
 
 class TempStorage {
 
