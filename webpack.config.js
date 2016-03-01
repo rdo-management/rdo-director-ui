@@ -1,8 +1,8 @@
 module.exports = {
   devtool: 'source-map',
   output: {
-    filename: 'rdo_director_ui.js',
-    sourceMapFilename: '../js/rdo_director_ui.js.map'
+    filename: 'tripleo_ui.js',
+    sourceMapFilename: '../js/tripleo_ui.js.map'
   },
   module: {
     loaders: [

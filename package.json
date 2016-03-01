@@ -1,7 +1,7 @@
 {
-  "name": "rdo-director-ui",
+  "name": "tripleo-ui",
   "version": "0.0.1",
-  "description": "RDO Director UI - TripleO-based OpenStack deployment UI",
+  "description": "TripleO UI - TripleO-based OpenStack deployment UI",
   "main": "index.js",
   "dependencies": {
     "babel": "~5.5.8",

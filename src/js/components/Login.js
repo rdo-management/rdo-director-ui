@@ -53,13 +53,13 @@ class Login extends React.Component {
     return (
       <div>
         <span id="badge">
-          <img src="/img/logo.svg" alt="RDO Manager"></img>
+          <img src="/img/logo.svg" alt="TripleO UI"></img>
         </span>
         <div className="container">
           <div className="row">
             <div className="col-sm-12">
               <div id="brand">
-                <img src="/img/brand.svg" alt="RDO Manager"></img>
+                <img src="/img/owl.png" alt="TripleO UI"></img>
               </div>
             </div>
             <div className="col-sm-7 col-md-6 col-lg-5 login">
@@ -94,8 +94,8 @@ class Login extends React.Component {
             </div>
             <div className="col-sm-5 col-md-6 col-lg-7 details">
               <p>
-                <strong>Welcome to the RDO Manager.</strong><br/>
-                The RDO Manager will help you manage your OpenStack deployments. It's the best
+                <strong>Welcome to the TripleO UI.</strong><br/>
+                The TripleO UI will help you manage your OpenStack deployments. It's the best
                 thing since sliced bread. We think you will really enjoy it!
               </p>
             </div>
