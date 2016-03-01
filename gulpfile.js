@@ -78,8 +78,8 @@ gulp.task('config-create', function() {
     var json = '{}';
   };
   fs.writeFileSync(
-    './dist/js/rdo_director_ui_config.js',
-    'window.rdoDirectorUiConfig = ' + json + ';'
+    './dist/js/tripleo_ui_config.js',
+    'window.tripleOUiConfig = ' + json + ';'
   );
 });
 

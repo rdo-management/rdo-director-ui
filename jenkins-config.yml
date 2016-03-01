@@ -50,7 +50,7 @@ product:
         RedHat: http://rhos-release.virt.bos.redhat.com/repos/rhos-release/
 
 
-rdo_director_ui_rpm_deps: [
+tripleo_ui_rpm_deps: [
   'gcc',
   'git',
   'gcc-c++',
@@ -60,9 +60,9 @@ rdo_director_ui_rpm_deps: [
 ]
 #  'npm'
 
-rdo_director_ui_virt_config:
+tripleo_ui_virt_config:
   setup:
-    install: "{{rdo_director_ui_rpm_deps}}"
+    install: "{{tripleo_ui_rpm_deps}}"
   run: >
       set -o pipefail;
       mkdir node_install;
@@ -82,9 +82,9 @@ rdo_director_ui_virt_config:
 ### NOTE: test_config.virt must be defined ###
 test_config:
   virt:
-    Fedora-20:  "{{rdo_director_ui_virt_config}}"
-    RedHat-7: "{{rdo_director_ui_virt_config}}"
-    Centos-7: "{{rdo_director_ui_virt_config}}"
+    Fedora-20:  "{{tripleo_ui_virt_config}}"
+    RedHat-7: "{{tripleo_ui_virt_config}}"
+    Centos-7: "{{tripleo_ui_virt_config}}"
 
 # How this works!
 # ==============

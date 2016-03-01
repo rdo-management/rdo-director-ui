@@ -1,5 +1,5 @@
 const TempStorage = require('../../js/services/TempStorage.js');
-const WORKER_URL = '/js/rdo_director_ui_tempstorage_worker.js';
+const WORKER_URL = '/js/tripleo_ui_tempstorage_worker.js';
 
 describe('TempStorage', () => {
   describe('.getItem', () => {
