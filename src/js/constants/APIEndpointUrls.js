@@ -1,4 +1,4 @@
-let appConfig = window.rdoDirectorUiConfig || {};
+let appConfig = window.tripleOUiConfig || {};
 let host = location.protocol + '//' + location.hostname;
 
 // Use API URLs from config or fall back to current host and default paths
