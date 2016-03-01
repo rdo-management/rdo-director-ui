@@ -1,8 +1,8 @@
 module.exports = {
   devtool: 'source-map',
   output: {
-    filename: 'rdo_director_ui_tempstorage_worker.js',
-    sourceMapFilename: 'rdo_director_ui_tempstorage_worker.js.map'
+    filename: 'tripleo_ui_tempstorage_worker.js',
+    sourceMapFilename: 'tripleo_ui_tempstorage_worker.js.map'
   },
   module: {
     loaders: [
