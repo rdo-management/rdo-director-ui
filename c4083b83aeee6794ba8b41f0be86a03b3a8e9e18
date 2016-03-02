@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5a72e520_fd120b61",
+        "filename": "dist/index.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1003803
+      },
+      "writtenOn": "2016-03-02T12:05:54Z",
+      "side": 1,
+      "message": "Sure, that makes sense.",
+      "parentUuid": "5a72e520_5df6bfd8",
+      "revId": "c4083b83aeee6794ba8b41f0be86a03b3a8e9e18",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a72e520_7d037bb8",
         "filename": "package.json",
         "patchSetId": 1
