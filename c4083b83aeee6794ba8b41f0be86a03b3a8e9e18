@@ -1,0 +1,147 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a72e520_5df6bfd8",
+        "filename": "dist/index.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-03-02T09:45:08Z",
+      "side": 1,
+      "message": "How about using just TripleO? It feels much more natural to me. Sure, the UI project is called TripleO UI but I think from within the UI itself it should be referenced as TripleO",
+      "revId": "c4083b83aeee6794ba8b41f0be86a03b3a8e9e18",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a72e520_7d037bb8",
+        "filename": "package.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-03-02T09:45:08Z",
+      "side": 1,
+      "message": "TripleO UI here is fine",
+      "revId": "c4083b83aeee6794ba8b41f0be86a03b3a8e9e18",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a72e520_bd2c134c",
+        "filename": "src/js/components/Login.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-03-02T09:45:08Z",
+      "side": 1,
+      "message": "TripleO",
+      "range": {
+        "startLine": 56,
+        "startChar": 40,
+        "endLine": 56,
+        "endChar": 50
+      },
+      "revId": "c4083b83aeee6794ba8b41f0be86a03b3a8e9e18",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a72e520_7d1a9b18",
+        "filename": "src/js/components/Login.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-03-02T09:45:08Z",
+      "side": 1,
+      "message": "TripleO\n\nThe image is too tiny because of stylesheet constraint coming from patternfly. We need to override it:\nin src/less/utils/patternflyOverrides.less add\nimg {\n  height: 65px;\n}\ninto .login-pf #brand",
+      "range": {
+        "startLine": 62,
+        "startChar": 45,
+        "endLine": 62,
+        "endChar": 55
+      },
+      "revId": "c4083b83aeee6794ba8b41f0be86a03b3a8e9e18",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a72e520_fd268b67",
+        "filename": "src/js/components/Login.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-03-02T09:45:08Z",
+      "side": 1,
+      "message": "TripleO",
+      "range": {
+        "startLine": 97,
+        "startChar": 39,
+        "endLine": 97,
+        "endChar": 49
+      },
+      "revId": "c4083b83aeee6794ba8b41f0be86a03b3a8e9e18",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a72e520_9d1757ed",
+        "filename": "src/js/components/Login.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-03-02T09:45:08Z",
+      "side": 1,
+      "message": "TripleO",
+      "range": {
+        "startLine": 98,
+        "startChar": 20,
+        "endLine": 98,
+        "endChar": 30
+      },
+      "revId": "c4083b83aeee6794ba8b41f0be86a03b3a8e9e18",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a72e520_dd0aafd1",
+        "filename": "src/js/components/NavBar.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-03-02T09:45:08Z",
+      "side": 1,
+      "message": "We\u0027ll need another image here. The owl image is too big and does not fit the NavBar. The constraint to the image which is supposed to be placed in NavBar is height of 10px. When we do this with the Owl image, it gets tiny and unusable.\n\nWe might eventually consider using Vertical navigation. https://www.patternfly.org/patterns/vertical-with-persistent-secondary/",
+      "revId": "c4083b83aeee6794ba8b41f0be86a03b3a8e9e18",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
