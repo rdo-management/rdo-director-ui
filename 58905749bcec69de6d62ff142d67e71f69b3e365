@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a72e520_fde76be2",
+        "filename": "src/js/components/plan/NewPlan.js",
+        "patchSetId": 14
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-03-04T10:20:29Z",
+      "side": 1,
+      "message": "not used",
+      "revId": "58905749bcec69de6d62ff142d67e71f69b3e365",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
