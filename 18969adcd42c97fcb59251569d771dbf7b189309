@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5a72e520_d7b443f4",
+        "filename": "src/js/components/Login.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1003803
+      },
+      "writtenOn": "2016-03-04T13:45:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a72e520_1c13605d",
+      "revId": "18969adcd42c97fcb59251569d771dbf7b189309",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a72e520_dc09c82d",
         "filename": "src/js/components/NavBar.js",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2016-03-04T09:16:50Z",
       "side": 1,
       "message": "Please use this instead:\n{/*TODO: new logo goes here instead of the div*/}\n\u003cdiv style\u003d{{height: \u002710px\u0027}}\u003e\u003c/div\u003e",
+      "revId": "18969adcd42c97fcb59251569d771dbf7b189309",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a72e520_b7bfc7cf",
+        "filename": "src/js/components/NavBar.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1003803
+      },
+      "writtenOn": "2016-03-04T13:45:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a72e520_dc09c82d",
       "revId": "18969adcd42c97fcb59251569d771dbf7b189309",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
