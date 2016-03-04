@@ -1,0 +1,214 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a72e520_3cac9ced",
+        "filename": "src/js/actions/PlansActions.js",
+        "patchSetId": 17
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-03-04T10:20:29Z",
+      "side": 1,
+      "message": "isEmpty()",
+      "revId": "71a086d98acbddc103ccd08b9bb3c8eb355c7e8b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a72e520_7c8d347b",
+        "filename": "src/js/components/plan/FileList.js",
+        "patchSetId": 17
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-03-04T10:20:29Z",
+      "side": 1,
+      "message": "you can use getIn([\u0027info\u0027, \u0027newFile\u0027])\n\nor\n\nfor Records, it is possible to access attributes directly via fileA.info, so you can use fileA.info.get(\u0027newFile\u0027) but in this case using getIn is probably better.",
+      "revId": "71a086d98acbddc103ccd08b9bb3c8eb355c7e8b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a72e520_9cd03055",
+        "filename": "src/js/components/plan/FileList.js",
+        "patchSetId": 17
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-03-04T10:20:29Z",
+      "side": 1,
+      "message": "file.info",
+      "revId": "71a086d98acbddc103ccd08b9bb3c8eb355c7e8b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a72e520_3cdadc78",
+        "filename": "src/js/components/plan/FileList.js",
+        "patchSetId": 17
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-03-04T10:20:29Z",
+      "side": 1,
+      "message": "file.name",
+      "revId": "71a086d98acbddc103ccd08b9bb3c8eb355c7e8b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a72e520_fc468422",
+        "filename": "src/js/components/plan/ListPlans.js",
+        "patchSetId": 17
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-03-04T10:20:29Z",
+      "side": 1,
+      "message": "this.props.plans.toJS()",
+      "revId": "71a086d98acbddc103ccd08b9bb3c8eb355c7e8b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a72e520_dc41c80c",
+        "filename": "src/js/components/plan/ListPlans.js",
+        "patchSetId": 17
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-03-04T10:20:29Z",
+      "side": 1,
+      "message": "this.props.plans.size",
+      "revId": "71a086d98acbddc103ccd08b9bb3c8eb355c7e8b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a72e520_3cc1fc80",
+        "filename": "src/js/components/plan/ListPlans.js",
+        "patchSetId": 17
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-03-04T10:20:29Z",
+      "side": 1,
+      "message": "If we store plans as a Map with plan name as key, you can use\nplanNames: all.keySeq()\n\nalthough do we don\u0027t really use this prop, so it can be removed and just rename \u0027planData\u0027 to \u0027plans\u0027\n\nalso it will be\nplans: ImmutablePropTypes.map",
+      "revId": "71a086d98acbddc103ccd08b9bb3c8eb355c7e8b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a72e520_1c4b602c",
+        "filename": "src/js/components/plan/ListPlans.js",
+        "patchSetId": 17
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-03-04T10:20:29Z",
+      "side": 1,
+      "message": "plan.transition",
+      "range": {
+        "startLine": 153,
+        "startChar": 62,
+        "endLine": 153,
+        "endChar": 77
+      },
+      "revId": "71a086d98acbddc103ccd08b9bb3c8eb355c7e8b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a72e520_fc5cc427",
+        "filename": "src/js/reducers/plansReducer.js",
+        "patchSetId": 17
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-03-04T10:20:29Z",
+      "side": 1,
+      "message": "just a tiny nit, maybe editedPlan or currentlyEditedPlan is better, editingPlan seems like a boolean value. I\u0027ll leave it up to you. I am not inclined to any of the three...\n\nActually I can\u0027t find this being used anywhere any more",
+      "revId": "71a086d98acbddc103ccd08b9bb3c8eb355c7e8b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a72e520_bca08cf5",
+        "filename": "src/js/reducers/plansReducer.js",
+        "patchSetId": 17
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-03-04T10:20:29Z",
+      "side": 1,
+      "message": "you can wrap the contents of each \u0027case\u0027 in curly braces to create a scoped block, with that you can define planIndex and filesList inside the \u0027case\u0027 and each cases won\u0027t interfere.\n\ncase PlansConstants.RECEIVE_PLAN: {}",
+      "revId": "71a086d98acbddc103ccd08b9bb3c8eb355c7e8b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a72e520_dc6e28c9",
+        "filename": "src/js/reducers/plansReducer.js",
+        "patchSetId": 17
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-03-04T10:20:29Z",
+      "side": 1,
+      "message": "It would be better to store Plans as a Map with plan name as key, so we can access the plan by name instead of using array/list index. Using index is not safe because it can change. See my Nodes Registration patch where I use it.\n\nProbably the same applies to filesList",
+      "revId": "71a086d98acbddc103ccd08b9bb3c8eb355c7e8b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a72e520_3c657ce1",
+        "filename": "src/js/reducers/plansReducer.js",
+        "patchSetId": 17
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-03-04T10:20:29Z",
+      "side": 1,
+      "message": "when storing plans as a Map this becomes:\nstate.update(\u0027all\u0027, all \u003d\u003e all.set(plan.name, newPlan({\n name: action.payload.name,\n files: filesList\n})));",
+      "revId": "71a086d98acbddc103ccd08b9bb3c8eb355c7e8b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
