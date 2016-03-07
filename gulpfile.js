@@ -30,9 +30,9 @@ gulp.task('serve', ['config-create', 'webpack-app', 'less', 'fonts', 'images'], 
 
   gulp.watch('src/less/**/*.less', ['less']);
   // Re-build app and run tests on app change.
-  gulp.watch('src/js/**/*.js', ['webpack-app', 'test-run']);
+  gulp.watch('src/js/**/*.js', ['webpack-app', 'test']);
   // Run tests on test change.
-  gulp.watch('src/__tests__/**/*.js', ['test-run']);
+  gulp.watch('src/__tests__/**/*.js', ['test']);
   gulp.watch('src/*.html').on('change', browserSync.reload);
 });
 
@@ -65,31 +65,26 @@ gulp.task('webpack-tempstorage-worker', function() {
 });
 
 gulp.task('config-create', function() {
+  var json;
   try {
     fs.mkdirSync(__dirname + '/dist/js');
   }
-  catch(err) {};
+  catch(err) {}
   try {
     var config = ini.parse(fs.readFileSync('./app.conf', 'utf-8'));
     config.app = config.app || {};
-    var json = JSON.stringify(config.app);
+    json = JSON.stringify(config.app);
   }
   catch (err) {
-    var json = '{}';
-  };
+    json = '{}';
+  }
   fs.writeFileSync(
     './dist/js/tripleo_ui_config.js',
     'window.tripleOUiConfig = ' + json + ';'
   );
 });
 
-// Start test server, run tests once, then quit.
-gulp.task('test', shell.task('karma start --single-run'));
+// Do a single jasmine test run
+gulp.task('test', shell.task('npm test'));
 
-// Start test server, run tests, keep server running..
-gulp.task('test-start', shell.task('karma start'));
-
-// Do a single test run (expects Karma server to be running).
-gulp.task('test-run', shell.task('karma run'));
-
-gulp.task('default', [ 'serve', 'test-start' ], function() {});
+gulp.task('default', [ 'serve' ], function() {});

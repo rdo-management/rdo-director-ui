@@ -28,12 +28,12 @@ class TempStorage {
           for(let key in e.data) {
             let val = e.data[key];
             if(val === undefined) {
-              sessionStorage.removeItem(key);
+              window.sessionStorage.removeItem(key);
             }
             else {
               // sessionStorage can only store text, so serialize if necessary.
               val = (typeof(val) === 'object') ? JSON.stringify(val) : val;
-              sessionStorage.setItem(key, val);
+              window.sessionStorage.setItem(key, val);
             }
           }
           this._def.resolve(e.data);
@@ -47,7 +47,7 @@ class TempStorage {
    * Get an item from the store.
    */
   getItem(key) {
-    let item = sessionStorage.getItem(key);
+    let item = window.sessionStorage.getItem(key);
     // Try to deserialize, if the original value was an object/array.
     try {
       return JSON.parse(item);
