@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a72e520_8ccb9571",
+        "filename": "src/js/actions/RegisterNodesActions.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1004551
+      },
+      "writtenOn": "2016-03-07T15:54:36Z",
+      "side": 1,
+      "message": "why all these commented out imports?",
+      "revId": "0a8db996d9b578151d78b1c6d0c6c7354baa75a4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a72e520_acc85175",
+        "filename": "src/js/components/nodes/RegisterNodeForm.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1004551
+      },
+      "writtenOn": "2016-03-07T15:54:36Z",
+      "side": 1,
+      "message": "is this added because of redux?",
+      "revId": "0a8db996d9b578151d78b1c6d0c6c7354baa75a4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a72e520_2c0d4191",
+        "filename": "src/js/components/nodes/RegisterNodesDialog.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1004551
+      },
+      "writtenOn": "2016-03-07T15:54:36Z",
+      "side": 1,
+      "message": "is this safe enough?",
+      "revId": "0a8db996d9b578151d78b1c6d0c6c7354baa75a4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a72e520_6c265918",
+        "filename": "src/js/immutableRecords/nodes.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1004551
+      },
+      "writtenOn": "2016-03-07T15:54:36Z",
+      "side": 1,
+      "message": "why are you keeping this around?",
+      "revId": "0a8db996d9b578151d78b1c6d0c6c7354baa75a4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a72e520_8c239504",
+        "filename": "src/js/reducers/registerNodesReducer.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1004551
+      },
+      "writtenOn": "2016-03-07T15:54:36Z",
+      "side": 1,
+      "message": "super minor nit but nodes \u003d\u003e instead of nodes\u003d",
+      "revId": "0a8db996d9b578151d78b1c6d0c6c7354baa75a4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a72e520_ac2051f8",
+        "filename": "src/js/store.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1004551
+      },
+      "writtenOn": "2016-03-07T15:54:36Z",
+      "side": 1,
+      "message": "what is this for? is it related to converting to redux?",
+      "revId": "0a8db996d9b578151d78b1c6d0c6c7354baa75a4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
