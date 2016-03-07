@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a72e520_117fc2e1",
+        "filename": "src/js/components/plan/PlanFileInput.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2016-03-07T13:05:16Z",
+      "side": 1,
+      "message": "This needs to be \"})(file);\"\n\n(encapsulating the function in () first, then adding the call with \"(file)\" at the end)",
+      "revId": "b5421c58ce633471b59f3d192c4b97655f9aa5de",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
