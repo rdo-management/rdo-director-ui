@@ -6,9 +6,15 @@ module.exports = {
   },
   module: {
     loaders: [
-      { test: /\.js$/, include: /src/,
-        exclude: /src\/js\/workers/, loader: 'babel-loader' }
-      // { test: /\.json$/, loader: 'json-loader' }
+      {
+        test: /\.js$/,
+        include: /src/,
+        exclude: /src\/js\/workers/,
+        loader: 'babel-loader',
+        query: {
+          presets: ['es2015', 'stage-0', 'react']
+        }
+      }
     ]
   },
   node: {

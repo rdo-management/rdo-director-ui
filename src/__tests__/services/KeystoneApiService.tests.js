@@ -1,10 +1,6 @@
-// jest.autoMockOff();
-
-// jest.mock('../../js/actions/LoginActions');
-
-const KeystoneApiService = require('../../js/services/KeystoneApiService');
-const LoginActions = require('../../js/actions/LoginActions');
-const when = require('when');
+import KeystoneApiService from '../../js/services/KeystoneApiService';
+import LoginActions from '../../js/actions/LoginActions';
+import when from 'when';
 
 describe('KeystoneApiService', () => {
   xit('logs user in when response is received', () => {

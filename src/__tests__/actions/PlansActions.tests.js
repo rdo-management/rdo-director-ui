@@ -7,8 +7,8 @@ import { Plan } from '../../js/immutableRecords/plans';
 import { planSchema } from '../../js/normalizrSchemas/plans';
 import TripleOApiService from '../../js/services/TripleOApiService';
 
-const PlansActions = require('../../js/actions/PlansActions');
-const plansReducer = require('../../js/reducers/plansReducer');
+import PlansActions from '../../js/actions/PlansActions';
+import plansReducer from '../../js/reducers/plansReducer';
 
 describe('plansReducer default state', () => {
   describe('default state', () => {
