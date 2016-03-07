@@ -16,13 +16,13 @@ export default class PlanFormTabs extends React.Component {
         <ul className="nav nav-tabs">
           <NavTab to="/plans/new" query={{tab: 'newPlan'}}>New Plan</NavTab>
           <NavTab to="/plans/new" query={{tab: 'planFiles'}}>
-            Files <span className="badge">{this.props.planFiles.length}</span>
+            Files <span className="badge">{this.props.selectedFiles.length}</span>
           </NavTab>
         </ul>
         <div className="tab-content">
           <PlanFormTab active={this.setActiveTab('newPlan')} />
           <PlanFilesTab active={this.setActiveTab('planFiles')}
-                        planFiles={this.props.planFiles} />
+                        selectedFiles={this.props.selectedFiles} />
         </div>
       </div>
     );
@@ -30,10 +30,11 @@ export default class PlanFormTabs extends React.Component {
 }
 PlanFormTabs.propTypes = {
   currentTab: React.PropTypes.string,
-  planFiles: React.PropTypes.array.isRequired
+  selectedFiles: React.PropTypes.array
 };
 PlanFormTabs.defaultProps = {
-  currentTtab: 'newPlan'
+  currentTtab: 'newPlan',
+  selectedFiles: []
 };
 
 class PlanFormTab extends React.Component {
