@@ -1,4 +1,4 @@
-import 'babel/polyfill';
+import 'babel-polyfill';
 
 import { Provider } from 'react-redux';
 import React from 'react';
