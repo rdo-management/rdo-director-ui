@@ -1,0 +1,152 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a72e520_2ce8e1b3",
+        "filename": "src/js/components/environment_configuration/EnvironmentConfiguration.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-03-07T15:58:11Z",
+      "side": 1,
+      "message": "I\u0027d rather keep calling this fetchEnvironmentConfiguration because just Environment is quite confusing",
+      "revId": "5a52a1fdb4b1b290b2e1f34d7a56620fde4fd970",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a72e520_4ced1dc3",
+        "filename": "src/js/components/environment_configuration/EnvironmentConfiguration.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-03-07T15:58:11Z",
+      "side": 1,
+      "message": "updateEnvironmentConfiguration",
+      "revId": "5a52a1fdb4b1b290b2e1f34d7a56620fde4fd970",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a72e520_4c043d7b",
+        "filename": "src/js/components/environment_configuration/EnvironmentConfiguration.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-03-07T15:58:11Z",
+      "side": 1,
+      "message": "_.first can be replaced by this.props.environmentConfiguration.get(\u0027topics\u0027).first().title",
+      "revId": "5a52a1fdb4b1b290b2e1f34d7a56620fde4fd970",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a72e520_2c362153",
+        "filename": "src/js/reducers/environmentConfigurationReducer.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-03-07T15:58:11Z",
+      "side": 1,
+      "message": "this one is not used so we can have just single \u0027isLoading\u0027 boolean which can be used instead of isUpdatingEnvironment and environmentConfigurationLoaded.",
+      "revId": "5a52a1fdb4b1b290b2e1f34d7a56620fde4fd970",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a72e520_ac76913c",
+        "filename": "src/js/reducers/environmentConfigurationReducer.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-03-07T15:58:11Z",
+      "side": 1,
+      "message": "this can probably be called just isLoaded since it is scoped in app state to EnvironmentConfiguration",
+      "range": {
+        "startLine": 7,
+        "startChar": 2,
+        "endLine": 7,
+        "endChar": 32
+      },
+      "revId": "5a52a1fdb4b1b290b2e1f34d7a56620fde4fd970",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a72e520_8c3c7531",
+        "filename": "src/js/reducers/environmentConfigurationReducer.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-03-07T15:58:11Z",
+      "side": 1,
+      "message": "how about just calling this \u0027entity\u0027? so it is available at state.environmentConfiguration.entity",
+      "revId": "5a52a1fdb4b1b290b2e1f34d7a56620fde4fd970",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a72e520_8c79d531",
+        "filename": "src/js/reducers/environmentConfigurationReducer.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-03-07T15:58:11Z",
+      "side": 1,
+      "message": "List() instead of []",
+      "revId": "5a52a1fdb4b1b290b2e1f34d7a56620fde4fd970",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a72e520_ac4931d2",
+        "filename": "src/js/reducers/environmentConfigurationReducer.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-03-07T15:58:11Z",
+      "side": 1,
+      "message": "this is exactly the case for using normalizr and selectors. the action.payload is a nested tree of entities, so we should define schemas and immutableRecords but the structure is pretty deep and it will change in future, so how about just using fromJS here to convert the payload to immutable and do the normalization later in separate patch when we are sure about the structure?",
+      "range": {
+        "startLine": 22,
+        "startChar": 35,
+        "endLine": 22,
+        "endChar": 38
+      },
+      "revId": "5a52a1fdb4b1b290b2e1f34d7a56620fde4fd970",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
