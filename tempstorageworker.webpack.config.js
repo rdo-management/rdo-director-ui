@@ -6,7 +6,14 @@ module.exports = {
   },
   module: {
     loaders: [
-      { test: /\.js$/, include: /src\/js\/workers/, loader: 'babel-loader' }//,
+      {
+        test: /\.js$/,
+        include: /src\/js\/workers/,
+        loader: 'babel-loader',
+        query: {
+          presets: ['es2015', 'stage-0', 'react']
+        }
+      }
     ]
   },
   node: {

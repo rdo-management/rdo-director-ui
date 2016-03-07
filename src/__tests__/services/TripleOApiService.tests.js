@@ -1,5 +1,6 @@
 import when from 'when';
-const TripleOApiService = require('../../js/services/TripleOApiService.js');
+
+import TripleOApiService from '../../js/services/TripleOApiService.js';
 
 describe('TripleOApiService', () => {
 

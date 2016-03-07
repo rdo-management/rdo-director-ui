@@ -1,9 +1,9 @@
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
 
-const Login = require('../../js/components/Login');
-const LoginActions = require('../../js/actions/LoginActions');
-const LoginStore = require('../../js/stores/LoginStore');
+import Login from '../../js/components/Login';
+import LoginActions from '../../js/actions/LoginActions';
+import LoginStore from '../../js/stores/LoginStore';
 
 let loginInstance;
 

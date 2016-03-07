@@ -39,7 +39,7 @@ class PlanFileInput extends React.Component {
             }
           });
         };
-      }(file));
+      });
       reader.readAsText(file);
     }
   }

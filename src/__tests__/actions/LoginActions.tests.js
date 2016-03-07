@@ -1,8 +1,8 @@
-const AppDispatcher = require('../../js/dispatchers/AppDispatcher');
-const KeystoneApiService = require('../../js/services/KeystoneApiService');
-const LoginActions = require('../../js/actions/LoginActions');
-const LoginConstants = require('../../js/constants/LoginConstants');
-const TempStorage = require('../../js/services/TempStorage.js');
+import AppDispatcher from '../../js/dispatchers/AppDispatcher';
+import KeystoneApiService from '../../js/services/KeystoneApiService';
+import LoginActions from '../../js/actions/LoginActions';
+import LoginConstants from '../../js/constants/LoginConstants';
+import TempStorage from '../../js/services/TempStorage.js';
 
 let mockKeystoneAccess = {
   token: {

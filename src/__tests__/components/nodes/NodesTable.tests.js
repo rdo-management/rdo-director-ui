@@ -2,7 +2,7 @@ import React from 'react';
 import TestUtils from 'react-addons-test-utils';
 import { List } from 'immutable';
 
-const NodesTable = require('../../../js/components/nodes/NodesTable');
+import NodesTable from '../../../js/components/nodes/NodesTable';
 
 const initialState = {
   filterString: '',
