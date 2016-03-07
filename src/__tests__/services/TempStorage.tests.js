@@ -1,4 +1,4 @@
-const TempStorage = require('../../js/services/TempStorage.js');
+import TempStorage from '../../js/services/TempStorage.js';
 const WORKER_URL = '/js/tripleo_ui_tempstorage_worker.js';
 
 describe('TempStorage', () => {

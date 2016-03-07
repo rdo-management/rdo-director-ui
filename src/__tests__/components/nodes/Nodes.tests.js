@@ -2,19 +2,8 @@ import React from 'react';
 import TestUtils from 'react-addons-test-utils';
 
 const IronicApiService = require('../../../js/services/IronicApiService');
-// const NodesStore = require('../../../js/stores/NodesStore');
 
 import Nodes from '../../../js/components/nodes/Nodes';
-
-// let nodesStoreState = {
-//   nodes: {
-//     all: [],
-//     registered: [],
-//     introspected: [],
-//     provisioned: [],
-//     maintenance: []
-//   }
-// };
 
 describe('Nodes Component', () => {
   let NodesVdom, NodesInstance;

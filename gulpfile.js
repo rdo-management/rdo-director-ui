@@ -8,7 +8,7 @@ var less = require('gulp-less');
 // var rename = require('gulp-rename');
 var shell = require('gulp-shell');
 // var uglify = require('gulp-uglify');
-var webpack = require('gulp-webpack');
+var webpack = require('webpack-stream');
 var webpackConfig = require('./webpack.config.js');
 var tempStorageWorkerConfig = require('./tempstorageworker.webpack.config.js');
 
