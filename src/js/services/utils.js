@@ -6,8 +6,8 @@ import store from '../store';
  */
 export function getServiceUrl(serviceName) {
   return store.getState().login.getIn(['keystoneAccess','serviceCatalog'])
-                             .find(service => service.get('name') === serviceName)
-                             .get('endpoints').first().get('adminURL');
+                               .find(service => service.get('name') === serviceName)
+                               .get('endpoints').first().get('adminURL');
 }
 
 /**

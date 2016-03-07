@@ -17,7 +17,7 @@ export default class AuthenticatedContent extends React.Component {
   render() {
     return (
       <div>
-        <Loader loaded={!this.props.authInProgress}
+        <Loader loaded={!this.props.isAuthenticating}
                 content="Authenticating ..."
                 global>
           <header>
@@ -35,7 +35,7 @@ export default class AuthenticatedContent extends React.Component {
   }
 }
 AuthenticatedContent.propTypes = {
-  authInProgress: React.PropTypes.bool.isRequired,
+  isAuthenticating: React.PropTypes.bool.isRequired,
   children: React.PropTypes.node,
   dispatch: React.PropTypes.func.isRequired,
   user: ImmutablePropTypes.map
@@ -43,7 +43,7 @@ AuthenticatedContent.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    authInProgress: state.login.get('authInProgress'),
+    isAuthenticating: state.login.get('isAuthenticating'),
     user: state.login.getIn(['keystoneAccess', 'user'])
   };
 }

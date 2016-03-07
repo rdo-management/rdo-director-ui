@@ -84,7 +84,7 @@ class Login extends React.Component {
                 <div className="form-group">
                   <div className="col-xs-offset-8 col-xs-4 col-sm-4 col-md-4 submit">
                     <button type="submit"
-                            disabled={!this.state.canSubmit || this.props.authInProgress}
+                            disabled={!this.state.canSubmit || this.props.isAuthenticating}
                             className="btn btn-primary btn-lg" tabIndex="4">
                       Log In
                     </button>
@@ -107,7 +107,7 @@ class Login extends React.Component {
   }
 }
 Login.propTypes = {
-  authInProgress: React.PropTypes.bool.isRequired,
+  isAuthenticating: React.PropTypes.bool.isRequired,
   dispatch: React.PropTypes.func.isRequired,
   formErrors: ImmutablePropTypes.list.isRequired,
   formFieldErrors: ImmutablePropTypes.map.isRequired,
@@ -121,7 +121,7 @@ function mapStateToProps(state) {
     formErrors: state.login.getIn(['loginForm', 'formErrors']),
     formFieldErrors: state.login.getIn(['loginForm', 'formFieldErrors']),
     userLoggedIn: state.login.hasIn(['keystoneAccess', 'user']),
-    authInProgress: state.login.get('authInProgress')
+    isAuthenticating: state.login.get('isAuthenticating')
   };
 }
 
