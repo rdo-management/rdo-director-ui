@@ -1,5 +1,5 @@
 let appConfig = window.tripleOUiConfig || {};
-let host = location.protocol + '//' + location.hostname;
+let host = window.location.protocol + '//' + window.location.hostname;
 
 // Use API URLs from config or fall back to current host and default paths
 let keystoneUrl = appConfig.keystone_url || host + ':5000/v2.0';
