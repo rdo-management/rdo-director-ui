@@ -71,8 +71,8 @@ export default {
         dispatch(this.receivePlans(normalizedData));
         dispatch(this.detectPlan(normalizedData));
       }).catch(error => {
-        console.error('Error retrieving plans PlansActions.fetchPlans', error); //eslint-disable-line no-console
-        dispatch(this.receivePlans([]));
+        console.error('Error retrieving plans PlansActions.fetchPlans', error.stack || error); //eslint-disable-line no-console
+        dispatch(this.receivePlans(normalize([], arrayOf(planSchema))));
         dispatch(this.detectPlan(normalize([], arrayOf(planSchema))));
         let errorHandler = new TripleOApiErrorHandler(error);
         errorHandler.errors.forEach((error) => {

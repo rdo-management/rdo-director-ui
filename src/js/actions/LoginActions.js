@@ -12,6 +12,7 @@ export default {
     return dispatch => {
       dispatch(this.userAuthStarted());
       KeystoneApiService.authenticateUserViaToken(keystoneAuthTokenId).then((response) => {
+        console.log(response);
         TempStorage.setItem('keystoneAuthTokenId', response.access.token.id);
         dispatch(this.userAuthSuccess(response.access));
         history.pushState(null, nextPath);

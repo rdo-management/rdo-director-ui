@@ -31,6 +31,9 @@ export default function validationsReducer(state = initialState, action) {
                 .set('isFetching', false);
   }
 
+  case ValidationsConstants.FETCH_VALIDATION_STAGES_FAILED:
+    return state.set('isFetching', false);
+
   case ValidationsConstants.UPDATE_STAGE_STATUS: {
     return state.setIn(['validationStages', action.payload.uuid, 'status'],
                           action.payload.status);
