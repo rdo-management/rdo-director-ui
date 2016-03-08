@@ -63,7 +63,8 @@ class DeploymentPlan extends React.Component {
 
     return (
       <div className="row">
-        <Loader loaded={this.props.currentPlanName && !this.props.isFetchingPlans}
+        <Loader loaded={(this.props.currentPlanName || !this.props.hasPlans)
+                        && !this.props.isFetchingPlans}
                 content="Loading Deployments..."
                 global>
           {this.props.hasPlans ? (
