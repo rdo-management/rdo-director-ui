@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a72e520_80099933",
+        "filename": "src/js/components/nodes/RegisterNodesDialog.js",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2016-03-08T08:13:15Z",
+      "side": 1,
+      "message": "I can\u0027t see canSubmit being set to true anywhere, even if the form is complete. Of course, this isn\u0027t related to the port to redux.",
+      "revId": "862702d35e3dca378e2f08281d4e7f7305fb22db",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
