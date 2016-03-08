@@ -14,10 +14,11 @@ export default {
         response = normalize(response, arrayOf(validationStageSchema));
         dispatch(this.receiveValidationStages(response));
       }).catch((error) => {
-        console.error('Error in ValidationActions.fetchValidationStages', error.stack); //eslint-disable-line no-console
+        console.error('Error in ValidationActions.fetchValidationStages', error.stack || error); //eslint-disable-line no-console
+        dispatch(this.fetchValidationStagesFailed());
         let errorHandler = new ValidationsApiErrorHandler(error);
         errorHandler.errors.forEach((error) => {
-          this.props.dispatch(NotificationActions.notify(error));
+          dispatch(NotificationActions.notify(error));
         });
       });
     };
@@ -33,6 +34,12 @@ export default {
     return {
       type: ValidationsConstants.RECEIVE_STAGES,
       payload: stages
+    };
+  },
+
+  fetchValidationStagesFailed() {
+    return {
+      type: ValidationsConstants.FETCH_VALIDATION_STAGES_FAILED
     };
   },
 
