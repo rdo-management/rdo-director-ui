@@ -16,6 +16,24 @@
       "revId": "230b9a3b0712668ab6a18cf018a00429d5c2fdd2",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a72e520_afee7eea",
+        "filename": "src/js/selectors/registerNodes.js",
+        "patchSetId": 7
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-03-08T15:08:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a72e520_af5f5e0d",
+      "revId": "230b9a3b0712668ab6a18cf018a00429d5c2fdd2",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
