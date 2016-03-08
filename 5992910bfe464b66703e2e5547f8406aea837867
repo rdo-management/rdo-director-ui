@@ -16,6 +16,24 @@
       "revId": "5992910bfe464b66703e2e5547f8406aea837867",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a72e520_af74befd",
+        "filename": "src/js/components/deployment-plan/DeploymentPlan.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1006073
+      },
+      "writtenOn": "2016-03-08T16:09:21Z",
+      "side": 1,
+      "message": "Yes and no. Just checking isFetchingPlans doesn\u0027t cover the state where the plans have been loaded, but no plan has been detected yet. The deployment page would be shown while the plan is still being detected. That tiny gap isn\u0027t really visible, I admit, but technically we want the loader to be shown during detection as well.",
+      "parentUuid": "5a72e520_cfd3ba36",
+      "revId": "5992910bfe464b66703e2e5547f8406aea837867",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
