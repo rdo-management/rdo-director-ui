@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a72e520_cfd3ba36",
+        "filename": "src/js/components/deployment-plan/DeploymentPlan.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-03-08T15:06:19Z",
+      "side": 1,
+      "message": "how about just !this.props.isFetchingPlans ? is it any different?",
+      "revId": "5992910bfe464b66703e2e5547f8406aea837867",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
