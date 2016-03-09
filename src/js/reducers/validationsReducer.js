@@ -13,11 +13,11 @@ const initialState = Map({
 export default function validationsReducer(state = initialState, action) {
   switch(action.type) {
 
-  case ValidationsConstants.REQUEST_STAGES: {
+  case ValidationsConstants.FETCH_VALIDATION_STAGES_PENDING: {
     return state.set('isFetching', true);
   }
 
-  case ValidationsConstants.RECEIVE_STAGES: {
+  case ValidationsConstants.FETCH_VALIDATION_STAGES_SUCCESS: {
     const validationStages = fromJS(action.payload.entities.validationStages)
                              .map(stage => new ValidationStage(stage));
     const validations = fromJS(action.payload.entities.validations)

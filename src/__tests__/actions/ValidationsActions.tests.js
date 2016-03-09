@@ -2,14 +2,14 @@ import ValidationsActions from '../../js/actions/ValidationsActions';
 import ValidationsConstants from '../../js/constants/ValidationsConstants';
 
 describe('Validations actions', () => {
-  it('should create an action to request Validation Stages', () => {
+  it('should create an action for pending Validation Stages request', () => {
     const expectedAction = {
-      type: ValidationsConstants.REQUEST_STAGES
+      type: ValidationsConstants.FETCH_VALIDATION_STAGES_PENDING
     };
-    expect(ValidationsActions.requestValidationStages()).toEqual(expectedAction);
+    expect(ValidationsActions.fetchValidationStagesPending()).toEqual(expectedAction);
   });
 
-  it('should create an action to receive Validation Stages', () => {
+  it('should create an action for successful Validation Stages retrieval', () => {
     const normalizedStagesResponse = {
       entities: {
         1: 'first stage',
@@ -18,10 +18,10 @@ describe('Validations actions', () => {
       result: [1, 2]
     };
     const expectedAction = {
-      type: ValidationsConstants.RECEIVE_STAGES,
+      type: ValidationsConstants.FETCH_VALIDATION_STAGES_SUCCESS,
       payload: normalizedStagesResponse
     };
-    expect(ValidationsActions.receiveValidationStages(normalizedStagesResponse))
+    expect(ValidationsActions.fetchValidationStagesSuccess(normalizedStagesResponse))
       .toEqual(expectedAction);
   });
 
