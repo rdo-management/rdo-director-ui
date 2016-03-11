@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a6ff13c_2b8f1a25",
+        "filename": "src/js/components/AuthenticatedContent.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1004551
+      },
+      "writtenOn": "2016-03-11T18:05:53Z",
+      "side": 1,
+      "message": "Just curious on why you moved this down.",
+      "revId": "108e96530afc4967748fe697507e619cc0d63580",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a6ff13c_4b945637",
+        "filename": "src/js/components/Login.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1004551
+      },
+      "writtenOn": "2016-03-11T18:05:53Z",
+      "side": 1,
+      "message": "And this",
+      "revId": "108e96530afc4967748fe697507e619cc0d63580",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
