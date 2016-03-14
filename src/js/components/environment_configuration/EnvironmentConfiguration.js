@@ -17,13 +17,16 @@ class EnvironmentConfiguration extends React.Component {
     super();
     this.state = {
       canSubmit: false,
-      formErrors: [],
       activeTab: undefined
     };
   }
 
   componentDidMount() {
-    this.props.fetchEnvironmentConfiguration(this.props.currentPlanName);
+    this.props.fetchEnvironmentConfiguration(this.props.currentPlanName, this.props.parentPath);
+  }
+
+  componentDidUpdate() {
+    this.invalidateForm(this.props.formFieldErrors.toJS());
   }
 
   enableButton() {
@@ -32,6 +35,10 @@ class EnvironmentConfiguration extends React.Component {
 
   disableButton() {
     this.setState({ canSubmit: false });
+  }
+
+  invalidateForm(formFieldErrors) {
+    this.refs.environmentConfigurationForm.updateInputsWithError(formFieldErrors);
   }
 
   /*
@@ -47,23 +54,15 @@ class EnvironmentConfiguration extends React.Component {
   }
 
   handleSubmit(formData, resetForm, invalidateForm) {
-    let data = this._convertFormData(formData);
+    const data = this._convertFormData(formData);
+    const formFields = Object.keys(this.refs.environmentConfigurationForm.inputs);
     this.disableButton();
     this.props.updateEnvironmentConfiguration(
       this.props.currentPlanName,
       data,
+      formFields,
       this.props.parentPath
     );
-
-    // TODO(flfuchs) implement environmentUpdateFaild action for error handling
-    /*
-      let errorHandler = new TripleOApiErrorHandler(
-        error,Object.keys(this.refs.environmentConfigurationForm.inputs));
-      invalidateForm(errorHandler.formFieldErrors);
-      this.setState({
-        formErrors: errorHandler.errors
-      });
-    */
   }
 
   activateTab(tabName, e) {
@@ -73,14 +72,14 @@ class EnvironmentConfiguration extends React.Component {
 
   isTabActive(tabName) {
     let firstTabName = _.camelCase(
-      this.props.environmentConfiguration.get('topics').first().get('title')
+      this.props.environmentConfigurationTopics.first().get('title')
     );
     let currentTab = this.state.activeTab || firstTabName;
     return currentTab === tabName;
   }
 
   render() {
-    let topics = this.props.environmentConfiguration.get('topics').toArray().map((topic, index) => {
+    let topics = this.props.environmentConfigurationTopics.toArray().map((topic, index) => {
       let tabName = _.camelCase(topic.get('title'));
       return (
         <TabPane isActive={this.isTabActive(tabName)}
@@ -93,8 +92,7 @@ class EnvironmentConfiguration extends React.Component {
       );
     });
 
-    let topicsArray = this.props.environmentConfiguration.get('topics').toArray();
-    let topicTabs = topicsArray.map((topic, index) => {
+    let topicTabs = this.props.environmentConfigurationTopics.toArray().map((topic, index) => {
       let tabName = _.camelCase(topic.get('title'));
       return (
         <Tab key={index} isActive={this.isTabActive(tabName)}>
@@ -128,7 +126,7 @@ class EnvironmentConfiguration extends React.Component {
 
                   <Loader height={60}
                           loaded={this.props.isLoaded}>
-                    <FormErrorList errors={this.state.formErrors}/>
+                    <FormErrorList errors={this.props.formErrors.toJS()}/>
                     <div className="row">
                       <div className="col-xs-5">
                         <ul className="nav nav-pills nav-stacked nav-arrows">
@@ -164,8 +162,10 @@ class EnvironmentConfiguration extends React.Component {
 }
 EnvironmentConfiguration.propTypes = {
   currentPlanName: React.PropTypes.string,
-  environmentConfiguration: ImmutablePropTypes.map,
+  environmentConfigurationTopics: ImmutablePropTypes.list.isRequired,
   fetchEnvironmentConfiguration: React.PropTypes.func,
+  formErrors: ImmutablePropTypes.list.isRequired,
+  formFieldErrors: ImmutablePropTypes.map.isRequired,
   isLoaded: React.PropTypes.bool,
   location: React.PropTypes.object,
   parentPath: React.PropTypes.string.isRequired,
@@ -179,8 +179,10 @@ EnvironmentConfiguration.defaultProps = {
 function mapStateToProps(state) {
   return {
     currentPlanName: state.plans.get('currentPlanName'),
-    environmentConfiguration: state.environmentConfiguration.get('entity'),
-    isLoaded: state.environmentConfiguration.get('isLoaded')
+    environmentConfigurationTopics: state.environmentConfiguration.topics,
+    formErrors: state.environmentConfiguration.getIn(['form', 'formErrors']),
+    formFieldErrors: state.environmentConfiguration.getIn(['form', 'formFieldErrors']),
+    isLoaded: state.environmentConfiguration.isLoaded
   };
 }
 
