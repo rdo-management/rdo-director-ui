@@ -1,48 +1,9 @@
-import { List, Map } from 'immutable';
 import when from 'when';
 
 import * as utils from '../../js/services/utils';
 import EnvironmentConfigurationActions from '../../js/actions/EnvironmentConfigurationActions';
-import environmentConfigurationReducer from '../../js/reducers/environmentConfigurationReducer';
 import history from '../../js/history';
 import TripleOApiService from '../../js/services/TripleOApiService';
-
-describe('environmentConfigurationReducer', () => {
-  describe('default state', () => {
-    let state;
-
-    beforeEach(() => {
-      state = environmentConfigurationReducer(undefined, {type: 'undefined-action'});
-    });
-
-    it('`isLoaded` is false', () => {
-      expect(state.get('isLoaded')).toBe(false);
-    });
-    it('`entity` is an empty Map', () => {
-      expect(state.get('entity')).toEqual(Map({ topics: List() }));
-    });
-  });
-
-  describe('fetchEnvironmentConfigurationSuccess', () => {
-    let state;
-    let payload = {foo: 'bar'};
-
-    beforeEach(() => {
-      state = environmentConfigurationReducer(
-        undefined,
-        EnvironmentConfigurationActions.fetchEnvironmentConfigurationSuccess(payload)
-      );
-    });
-
-    it('sets ``isLoaded`` to false', () => {
-      expect(state.get('isLoaded')).toBe(true);
-    });
-
-    it('sets ``entity``', () => {
-      expect(state.get('entity')).toEqual(Map(payload));
-    });
-  });
-});
 
 // Use this to mock asynchronous functions which return a promise.
 // The promise will immediately resolve with `data`.
@@ -87,7 +48,7 @@ describe('EnvironmentConfigurationActions', () => {
         topics: []
       }));
       EnvironmentConfigurationActions.updateEnvironmentConfiguration(
-        'overcloud', {}, '/redirect/url')(() => {}, () => {}
+        'overcloud', {}, {}, '/redirect/url')(() => {}, () => {}
       );
       // Call done with a minimal timeout.
       setTimeout(() => { done(); }, 1);
