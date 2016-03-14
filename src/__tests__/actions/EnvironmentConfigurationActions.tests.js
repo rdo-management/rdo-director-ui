@@ -1,4 +1,4 @@
-import { List, Map } from 'immutable';
+import { List } from 'immutable';
 import when from 'when';
 
 import * as utils from '../../js/services/utils';
@@ -18,14 +18,14 @@ describe('environmentConfigurationReducer', () => {
     it('`isLoaded` is false', () => {
       expect(state.get('isLoaded')).toBe(false);
     });
-    it('`entity` is an empty Map', () => {
-      expect(state.get('entity')).toEqual(Map({ topics: List() }));
+    it('`topics` is an empty List', () => {
+      expect(state.get('topics')).toEqual(List());
     });
   });
 
   describe('fetchEnvironmentConfigurationSuccess', () => {
     let state;
-    let payload = {foo: 'bar'};
+    let payload = {topics: ['bar']};
 
     beforeEach(() => {
       state = environmentConfigurationReducer(
@@ -34,12 +34,12 @@ describe('environmentConfigurationReducer', () => {
       );
     });
 
-    it('sets ``isLoaded`` to false', () => {
+    it('sets ``isLoaded`` to true', () => {
       expect(state.get('isLoaded')).toBe(true);
     });
 
-    it('sets ``entity``', () => {
-      expect(state.get('entity')).toEqual(Map(payload));
+    it('sets ``topics``', () => {
+      expect(state.get('topics')).toEqual(List(payload.topics));
     });
   });
 });
@@ -87,7 +87,7 @@ describe('EnvironmentConfigurationActions', () => {
         topics: []
       }));
       EnvironmentConfigurationActions.updateEnvironmentConfiguration(
-        'overcloud', {}, '/redirect/url')(() => {}, () => {}
+        'overcloud', {}, {}, '/redirect/url')(() => {}, () => {}
       );
       // Call done with a minimal timeout.
       setTimeout(() => { done(); }, 1);
