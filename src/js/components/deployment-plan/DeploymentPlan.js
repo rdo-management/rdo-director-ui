@@ -98,8 +98,8 @@ class DeploymentPlan extends React.Component {
               <NoPlans/>
             </div>
           )}
+          {children}
         </Loader>
-        {children}
       </div>
     );
   }
