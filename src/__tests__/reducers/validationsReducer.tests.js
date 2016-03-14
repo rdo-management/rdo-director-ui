@@ -55,17 +55,17 @@ describe('validationsReducer', () => {
     expect(validationsReducer(initialState, {})).toEqual(initialState);
   });
 
-  it('should handle REQUEST_STAGES', () => {
+  it('should handle FETCH_VALIDATION_STAGES_PENDING', () => {
     const action = {
-      type: ValidationsConstants.REQUEST_STAGES
+      type: ValidationsConstants.FETCH_VALIDATION_STAGES_PENDING
     };
     const newState = validationsReducer(initialState, action);
     expect(newState.get('isFetching')).toEqual(true);
   });
 
-  it('should handle RECEIVE_STAGES', () => {
+  it('should handle FETCH_VALIDATION_STAGES_SUCCESS', () => {
     const action = {
-      type: ValidationsConstants.RECEIVE_STAGES,
+      type: ValidationsConstants.FETCH_VALIDATION_STAGES_SUCCESS,
       payload: {
         entities: {
           validationStages: {

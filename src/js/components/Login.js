@@ -107,11 +107,11 @@ class Login extends React.Component {
   }
 }
 Login.propTypes = {
-  isAuthenticating: React.PropTypes.bool.isRequired,
   dispatch: React.PropTypes.func.isRequired,
   formErrors: ImmutablePropTypes.list.isRequired,
   formFieldErrors: ImmutablePropTypes.map.isRequired,
   history: React.PropTypes.object,
+  isAuthenticating: React.PropTypes.bool.isRequired,
   location: React.PropTypes.object,
   userLoggedIn: React.PropTypes.bool.isRequired
 };

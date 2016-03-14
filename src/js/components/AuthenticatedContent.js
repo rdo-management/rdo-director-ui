@@ -35,9 +35,9 @@ export default class AuthenticatedContent extends React.Component {
   }
 }
 AuthenticatedContent.propTypes = {
-  isAuthenticating: React.PropTypes.bool.isRequired,
   children: React.PropTypes.node,
   dispatch: React.PropTypes.func.isRequired,
+  isAuthenticating: React.PropTypes.bool.isRequired,
   user: ImmutablePropTypes.map
 };
 

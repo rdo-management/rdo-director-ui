@@ -13,22 +13,21 @@ const initialState = Map({
 export default function validationsReducer(state = initialState, action) {
   switch(action.type) {
 
-  case ValidationsConstants.REQUEST_STAGES: {
+  case ValidationsConstants.FETCH_VALIDATION_STAGES_PENDING: {
     return state.set('isFetching', true);
   }
 
-  case ValidationsConstants.RECEIVE_STAGES: {
-    const validationStages = fromJS(action.payload.entities.validationStages)
-                             .map(stage => new ValidationStage(stage));
-    const validations = fromJS(action.payload.entities.validations)
-                        .map(validation => new Validation(validation));
-    const validationResults = fromJS(action.payload.entities.validationResults)
-                              .map(result => new ValidationResult(result));
+  case ValidationsConstants.FETCH_VALIDATION_STAGES_SUCCESS: {
+    const { validationStages, validations, validationResults } = action.payload.entities;
 
-    return state.set('validationStages', validationStages)
-                .set('validations', validations)
-                .set('validationResults', validationResults)
+    return state.set('validationStages', validationStages ? fromJS(validationStages)
+                  .map(stage => new ValidationStage(stage)) : Map())
+                .set('validations', validations ? fromJS(validations)
+                  .map(validation => new Validation(validation)) : Map())
+                .set('validationResults', validationResults ? fromJS(validationResults)
+                  .map(result => new ValidationResult(result)) : Map())
                 .set('isFetching', false);
+
   }
 
   case ValidationsConstants.FETCH_VALIDATION_STAGES_FAILED:

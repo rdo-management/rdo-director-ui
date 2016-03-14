@@ -9,10 +9,10 @@ import { validationStageSchema } from '../normalizrSchemas/validations';
 export default {
   fetchValidationStages() {
     return (dispatch, getState) => {
-      dispatch(this.requestValidationStages());
+      dispatch(this.fetchValidationStagesPending());
       ValidationsApiService.getStages().then((response) => {
         response = normalize(response, arrayOf(validationStageSchema));
-        dispatch(this.receiveValidationStages(response));
+        dispatch(this.fetchValidationStagesSuccess(response));
       }).catch((error) => {
         console.error('Error in ValidationActions.fetchValidationStages', error.stack || error); //eslint-disable-line no-console
         dispatch(this.fetchValidationStagesFailed());
@@ -24,15 +24,15 @@ export default {
     };
   },
 
-  requestValidationStages() {
+  fetchValidationStagesPending() {
     return {
-      type: ValidationsConstants.REQUEST_STAGES
+      type: ValidationsConstants.FETCH_VALIDATION_STAGES_PENDING
     };
   },
 
-  receiveValidationStages(stages) {
+  fetchValidationStagesSuccess(stages) {
     return {
-      type: ValidationsConstants.RECEIVE_STAGES,
+      type: ValidationsConstants.FETCH_VALIDATION_STAGES_SUCCESS,
       payload: stages
     };
   },
