@@ -1,3 +1,4 @@
+import { fromJS } from 'immutable';
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
 
@@ -15,7 +16,7 @@ describe('EnvironmentConfigurationTopic component', () => {
       <EnvironmentConfigurationTopic key={0}
                                      title={topic.title}
                                      description={topic.description}
-                                     environmentGroups={topic.environment_groups}/>
+                                     environmentGroups={fromJS(topic.environment_groups)}/>
     );
     EnvConfTopicVdom = shallowRenderer.getRenderOutput();
   });

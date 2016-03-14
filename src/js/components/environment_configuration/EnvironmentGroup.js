@@ -1,4 +1,4 @@
-import * as _ from 'lodash';
+import ImmutablePropTypes from 'react-immutable-proptypes';
 import React from 'react';
 
 import GenericCheckBox from '../ui/forms/GenericCheckBox';
@@ -7,7 +7,9 @@ import GroupedCheckBox from '../ui/forms/GroupedCheckBox';
 export default class EnvironmentGroup extends React.Component {
   constructor(props) {
     super(props);
-    let firstCheckedEnvironment = _.find(_.filter(props.environments, 'enabled', true));
+    let firstCheckedEnvironment = props.environments
+                                    .filter(env => env.get('enabled') === true)
+                                    .first();
     this.state = {
       checkedEnvironment: firstCheckedEnvironment ? firstCheckedEnvironment.file : null
     };
@@ -19,33 +21,42 @@ export default class EnvironmentGroup extends React.Component {
 
   _generateInputs() {
     let environments = this.props.environments;
-    if (environments.length > 1) {
-      return environments.map((environment, index) => {
+    if (environments.size > 1) {
+      return environments.toArray().map((environment, index) => {
+        let checkBoxValue = this.state.checkedEnvironment === environment.get('file')
+          ? true
+          : false;
+        let requiresEnvironments = environment.get('requires')
+          ? environment.get('requires').toArray()
+          : undefined;
         return (
           <GroupedCheckBox key={index}
-                           name={environment.file}
-                           id={environment.file}
-                           title={environment.title}
-                           value={this.state.checkedEnvironment === environment.file ? true : false}
-                           validations={{requiresEnvironments: environment.requires}}
+                           name={environment.get('file')}
+                           id={environment.get('file')}
+                           title={environment.get('title')}
+                           value={checkBoxValue}
+                           validations={{requiresEnvironments: requiresEnvironments}}
                            validationError={`This environment requires
-                                             '${environment.requires}'`}
-                           checked={this.state.checkedEnvironment === environment.file}
+                                             '${requiresEnvironments}'`}
+                           checked={this.state.checkedEnvironment === environment.get('file')}
                            onChange={this.onGroupedCheckBoxChange.bind(this)}
-                           description={environment.description}/>
+                           description={environment.get('description')}/>
         );
       });
     } else {
-      let environment = environments[0];
+      let environment = environments.first();
+      let requiresEnvironments = environment.get('requires')
+        ? environment.get('requires').toArray()
+        : undefined;
       return (
-        <GenericCheckBox name={environment.file}
-                         id={environment.file}
-                         title={environment.title}
-                         value={environment.enabled || false}
-                         validations={{requiresEnvironments: environment.requires}}
+        <GenericCheckBox name={environment.get('file')}
+                         id={environment.get('file')}
+                         title={environment.get('title')}
+                         value={environment.get('enabled') || false}
+                         validations={{requiresEnvironments: requiresEnvironments}}
                          validationError={`This environment requires
-                                           '${environment.requires}'`}
-                         description={environment.description}/>
+                                           '${requiresEnvironments}'`}
+                         description={environment.get('description')}/>
       );
     }
   }
@@ -64,7 +75,7 @@ export default class EnvironmentGroup extends React.Component {
 }
 EnvironmentGroup.propTypes = {
   description: React.PropTypes.string,
-  environments: React.PropTypes.array,
+  environments: ImmutablePropTypes.list,
   title: React.PropTypes.string
 };
 

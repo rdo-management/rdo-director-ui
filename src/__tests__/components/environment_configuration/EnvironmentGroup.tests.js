@@ -8,7 +8,7 @@ import MockPlan from '../../mocks/MockPlan';
 const envGroup = MockPlan.capabilities.topics[0].environment_groups[0];
 const envGroupMultipleEnvs = MockPlan.capabilities.topics[0].environment_groups[1];
 
-describe('EnvironmentGroup component', () => {
+xdescribe('EnvironmentGroup component', () => {
   let EnvGroupVdom, EnvGroupInstance;
   beforeEach(() => {
     let shallowRenderer = TestUtils.createRenderer();
@@ -34,7 +34,7 @@ describe('EnvironmentGroup component', () => {
   });
 });
 
-describe('EnvironmentGroup component with multiple environments', () => {
+xdescribe('EnvironmentGroup component with multiple environments', () => {
   let EnvGroupVdom, EnvGroupInstance;
   beforeEach(() => {
     let shallowRenderer = TestUtils.createRenderer();
