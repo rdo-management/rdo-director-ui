@@ -52,10 +52,12 @@ class DeploymentPlan extends React.Component {
       </Link>
     ];
 
-    let children = false;
-    if (this.props.children) {
+    let children;
+    // Render children only when current plan is already selected
+    if (this.props.children && this.props.currentPlanName) {
       children = React.cloneElement(this.props.children,
-        {currentPlanName: this.props.currentPlanName, parentPath: '/' + this.props.route.path});
+                                    {currentPlanName: this.props.currentPlanName,
+                                     parentPath: '/' + this.props.route.path});
     }
 
     // TODO: Detemerine the real deployment configuration descriptions string
@@ -98,8 +100,8 @@ class DeploymentPlan extends React.Component {
               <NoPlans/>
             </div>
           )}
+          {children}
         </Loader>
-        {children}
       </div>
     );
   }
