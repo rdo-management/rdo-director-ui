@@ -5,6 +5,7 @@ import React from 'react';
 
 import Loader from '../ui/Loader';
 import NotificationActions from '../../actions/NotificationActions';
+import ParametersActions from '../../actions/ParametersActions';
 import ParameterTree from './ParameterTree';
 import TripleOApiService from '../../services/TripleOApiService';
 import TripleOApiErrorHandler from '../../services/TripleOApiErrorHandler';
@@ -13,14 +14,13 @@ export default class Parameters extends React.Component {
   constructor() {
     super();
     this.state = {
-      canSubmit: false,
-      formErrors: [],
-      parameters: {},
-      parametersLoaded: false
+      canSubmit: false
     };
   }
 
   componentDidMount() {
+    ParametersActions.fetchParameters(this.props.currentPlanName);
+
     this.setState({ parametersLoaded: false });
     TripleOApiService.getPlanParameters(this.props.currentPlanName).then(response => {
       this.setState({
