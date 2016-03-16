@@ -13,10 +13,7 @@ export default class Parameters extends React.Component {
   constructor() {
     super();
     this.state = {
-      canSubmit: false,
-      formErrors: [],
-      parameters: {},
-      parametersLoaded: false
+      canSubmit: false
     };
   }
 

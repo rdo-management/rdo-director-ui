@@ -48,3 +48,7 @@ ParameterTree.propTypes = {
   formErrors: React.PropTypes.array,
   parameters: React.PropTypes.object
 };
+
+ParameterTree.defaultProps = {
+  formErrors: []
+};
