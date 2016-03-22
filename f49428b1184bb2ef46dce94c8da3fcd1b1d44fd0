@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a6ced46_b2ab7ed5",
+        "filename": "src/js/components/parameters/Parameters.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-03-22T14:51:11Z",
+      "side": 1,
+      "message": "To make the form also display potential field errors, you need to add invalidateForm method to componentDidUpdate method as I do here: https://review.gerrithub.io/#/c/266158/5/src/js/components/environment_configuration/EnvironmentConfiguration.js",
+      "revId": "f49428b1184bb2ef46dce94c8da3fcd1b1d44fd0",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
