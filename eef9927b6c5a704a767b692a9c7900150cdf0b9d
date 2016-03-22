@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a6ced46_77cf38b1",
+        "filename": "src/js/components/Login.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-03-22T10:27:31Z",
+      "side": 1,
+      "message": "Please use just \u0027TripleO\u0027 so it aligns with what we use everywhere else.\n\nThe image contains a padding which makes it hard to align. The image should be aligned to the left with the form labels below it.",
+      "range": {
+        "startLine": 62,
+        "startChar": 53,
+        "endLine": 62,
+        "endChar": 79
+      },
+      "revId": "eef9927b6c5a704a767b692a9c7900150cdf0b9d",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a6ced46_b7c0d07d",
+        "filename": "src/less/utils/patternflyOverrides.less",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-03-22T10:27:31Z",
+      "side": 1,
+      "message": "150px seems quite overkill to me, how about something around 100-120px? It would be nice if some graphic designer told us...",
+      "revId": "eef9927b6c5a704a767b692a9c7900150cdf0b9d",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a6ced46_97f834c6",
+        "filename": "src/less/utils/patternflyOverrides.less",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1003878
+      },
+      "writtenOn": "2016-03-22T10:27:31Z",
+      "side": 1,
+      "message": "Logo placement in navbar-brand is problematic, because the space allowed for this image is 10px vertically. If the size is different, then the buttons on the right get broken.",
+      "revId": "eef9927b6c5a704a767b692a9c7900150cdf0b9d",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
