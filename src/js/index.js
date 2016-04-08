@@ -15,8 +15,6 @@ import DeploymentPlan from './components/deployment-plan/DeploymentPlan';
 import EditPlan from './components/plan/EditPlan';
 import EnvironmentConfiguration from
   './components/environment_configuration/EnvironmentConfiguration.js';
-import Flavors from './components/flavors/Flavors';
-import Images from './components/images/Images';
 import ListPlans from './components/plan/ListPlans';
 import Login from './components/Login';
 import LoginActions from './actions/LoginActions';
@@ -74,10 +72,6 @@ TempStorage.initialized.then(() => {
             <Route path="provisioned" component={ProvisionedNodesTabPane}/>
             <Route path="maintenance" component={MaintenanceNodesTabPane}/>
           </Route>
-
-          <Route path="flavors" component={Flavors}/>
-
-          <Route path="images" component={Images}/>
 
           <Redirect from="plans" to="plans/list"/>
           <Route path="plans" component={Plans}>
