@@ -1,5 +1,6 @@
 import { List, Map } from 'immutable';
 
+import { InitialPlanState } from '../../../js/immutableRecords/plans';
 import { mapStateToProps } from '../../../js/components/deployment-plan/DeploymentPlan.js';
 
 describe('DeploymentPlan mapStateToProps', () => {
@@ -7,7 +8,7 @@ describe('DeploymentPlan mapStateToProps', () => {
     it('returns ``hasPlans`` as `false`', () => {
       let props = mapStateToProps(
         {
-          plans: Map({ all: List() }),
+          plans: InitialPlanState({ all: List() }),
           roles: Map({
             loaded: false,
             isFetching: false,
@@ -24,7 +25,7 @@ describe('DeploymentPlan mapStateToProps', () => {
     it('returns ``hasPlans`` as `false`', () => {
       let props = mapStateToProps(
         {
-          plans: Map({ all: List(['foo', 'bar']) }),
+          plans: InitialPlanState({ all: List(['foo', 'bar']) }),
           roles: Map({
             loaded: false,
             isFetching: false,
