@@ -61,20 +61,6 @@ class Nodes extends React.Component {
                                 { nodes: this.props.nodes,
                                   introspectNodes: this.introspectNodes.bind(this) })}
           </div>
-
-          <div className="panel panel-info">
-            <div className="panel-heading">
-              <h3 className="panel-title">
-                <span className="pficon pficon-help"></span> Nodes
-              </h3>
-            </div>
-            <div className="panel-body">
-              <p>To register Nodes specified in instackenv.json run</p>
-              <pre>tripleo.sh --register-nodes</pre>
-              <p>To introspect registered Nodes run</p>
-              <pre>tripleo.sh --introspect-nodes</pre>
-            </div>
-          </div>
         </div>
       </div>
     );
