@@ -17,10 +17,6 @@ export default class AuthenticatedContent extends React.Component {
     this.props.fetchValidationStages();
   }
 
-  logoutUser() {
-    this.props.dispatch(LoginActions.logoutUser());
-  }
-
   render() {
     return (
       <div>
@@ -29,7 +25,7 @@ export default class AuthenticatedContent extends React.Component {
                 global>
           <header>
             <NavBar user={this.props.user}
-                    onLogout={this.logoutUser.bind(this)}/>
+                    onLogout={this.props.logoutUser.bind(this)}/>
           </header>
           <div className="wrapper-fixed-body container-fluid">
             <div className="row">
@@ -76,6 +72,7 @@ AuthenticatedContent.propTypes = {
   fetchValidationStages: React.PropTypes.func.isRequired,
   isAuthenticating: React.PropTypes.bool.isRequired,
   isFetchingValidationStages: React.PropTypes.bool.isRequired,
+  logoutUser: React.PropTypes.func.isRequired,
   runValidation: React.PropTypes.func.isRequired,
   runValidationStage: React.PropTypes.func.isRequired,
   stopValidation: React.PropTypes.func.isRequired,
@@ -98,7 +95,8 @@ const mapDispatchToProps = dispatch => {
     },
     stopValidation: (uuid) => {
       dispatch(ValidationsActions.stopValidation(uuid));
-    }
+    },
+    logoutUser: () => dispatch(LoginActions.logoutUser())
   };
 };
 
