@@ -7,11 +7,13 @@ const initialState = Map({
 });
 
 export default function notificationsReducer(state = initialState, action) {
+
   switch(action.type) {
 
-  case NotificationConstants.NOTIFY:
+  case NotificationConstants.NOTIFY: {
     const notification = action.payload;
     return state.update('all', all => all.set(notification.id, notification));
+  }
 
   case NotificationConstants.REMOVE_NOTIFICATION:
     return state.update('all', all => all.delete(action.payload));

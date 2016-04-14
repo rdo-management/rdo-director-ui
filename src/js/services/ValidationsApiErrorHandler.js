@@ -10,13 +10,14 @@ export default class ValidationsApiErrorHandler extends BaseHttpRequestErrorHand
         message: 'Connection to Validations API is not available'
       });
       break;
-    case 401:
+    case 401: {
       let error = JSON.parse(xmlHttpRequestError.responseText).error;
       errors.push({
         title: 'Unauthorized',
         message: error.message
       });
       break;
+    }
     default:
       break;
     }
