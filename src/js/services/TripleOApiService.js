@@ -49,11 +49,12 @@ class TripleOApiService {
 
   /**
    * TripleO API: PATCH /v1/plans/<planName>/environments
+   * Deletes temporary environment after updating
    * @returns Plan's environments mapping.
    */
   updatePlanEnvironments(planName, data) {
     return when(request(this.defaultRequest({
-      url: `${TRIPLEOAPI_URL}/plans/${planName}/environments`,
+      url: `${TRIPLEOAPI_URL}/plans/${planName}/environments?delete`,
       method: 'PATCH',
       data: JSON.stringify(data)
     })));
