@@ -13,6 +13,7 @@ import RegisterNodesActions from '../../actions/RegisterNodesActions';
 import RegisterNodeForm from './RegisterNodeForm';
 import Tab from '../ui/Tab';
 import TabPane from '../ui/TabPane';
+import Modal from '../ui/Modal';
 
 class RegisterNodesDialog extends React.Component {
   onNodeChange(updatedNode) {
@@ -144,10 +145,7 @@ class RegisterNodesDialog extends React.Component {
 
   render() {
     return (
-      <div>
-        <div className="modal modal-routed in" role="dialog">
-          <div className="modal-dialog modal-lg">
-            <div className="modal-content">
+      <Modal dialogClasses="modal-lg">
               <div className="modal-header">
                 <Link to="/nodes/registered"
                       type="button"
@@ -198,13 +196,9 @@ class RegisterNodesDialog extends React.Component {
                         className="btn btn-primary"
                         type="submit">
                   Register Nodes
-                </button>
-              </div>
-            </div>
-          </div>
+          </button>
         </div>
-        <div className="modal-backdrop in"></div>
-      </div>
+      </Modal>
     );
   }
 }
