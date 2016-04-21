@@ -112,8 +112,8 @@ and restart ironic ```systemctl restart openstack-ironic-api```
 
 ## Running the App
 
-1. ```git clone https://github.com/rdo-management/rdo-director-ui.git```
-2. ```cd rdo-director-ui```
+1. ```git clone https://github.com/openstack/tripleo-ui.git```
+2. ```cd tripleo-ui```
 3. Install Gulp globally ```sudo npm install -g gulp```
 4. Install dependencies ```npm install```
 5. Serve the App ```gulp```
@@ -131,14 +131,14 @@ reqwest has a temporary issue in latest version. Downgrade to 2.0.2 to work arou
 
 ## Contributing
 
-Use GerritHub for patches and reviews (http://docs.openstack.org/infra/manual/developers.html).
+Use OpenStack Gerrit for patches and reviews (http://docs.openstack.org/infra/manual/developers.html).
 
-1. ```git clone https://github.com/rdo-management/rdo-director-ui.git``` (if you didn't already)
+1. ```git clone https://github.com/openstack/tripleo-ui.git``` (if you didn't already)
 2. Install git-review ```sudo dnf install git-review```
 3. Setup Gerrit by running ```git review -s```
 4. Develop on feature-branch locally
 5. run ```git review``` to push patch for review.
-6. Review and merge patches on GerritHub: https://review.gerrithub.io/#/q/project:rdo-management/rdo-director-ui
+6. Review and merge patches on OpenStack Gerrit: https://review.openstack.org/#/q/project:openstack/tripleo-ui
 
 
 ## Tests
