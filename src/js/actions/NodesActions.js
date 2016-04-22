@@ -1,4 +1,5 @@
 import { normalize, arrayOf } from 'normalizr';
+import { Map } from 'immutable';
 import when from 'when';
 
 import IronicApiErrorHandler from '../services/IronicApiErrorHandler';
@@ -43,11 +44,11 @@ export default {
           return IronicApiService.getNode(node.uuid);
         }));
       }).then((nodes) => {
-        const normalizedNodes = normalize(nodes, arrayOf(nodeSchema)).entities.nodes;
+        const normalizedNodes = normalize(nodes, arrayOf(nodeSchema)).entities.nodes || Map();
         dispatch(this.receiveNodes(normalizedNodes));
       }).catch((error) => {
         dispatch(this.receiveNodes({}));
-        console.error('Error in NodesActions.fetchNodes', error); //eslint-disable-line no-console
+        console.error('Error in NodesActions.fetchNodes', error.stack || error); //eslint-disable-line no-console
         let errorHandler = new IronicApiErrorHandler(error);
         errorHandler.errors.forEach((error) => {
           dispatch(NotificationActions.notify(error));

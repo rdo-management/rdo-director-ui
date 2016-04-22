@@ -1,4 +1,5 @@
 import { normalize, arrayOf } from 'normalizr';
+import { Map } from 'immutable';
 
 // import NotificationActions from './NotificationActions';
 import RolesConstants from '../constants/RolesConstants';
@@ -12,7 +13,7 @@ export default {
 
       // TODO(jtomasek): Replace this with an actual action which fetches Roles from HEAT
       // fake the reques/response delay
-      const normalizedRoles = normalize(roles, arrayOf(roleSchema)).entities.roles;
+      const normalizedRoles = normalize(roles, arrayOf(roleSchema)).entities.roles || Map();
       setTimeout(() => dispatch(this.fetchRolesSuccess(normalizedRoles)), 500);
 
       // TODO(jtomasek): Use this when roles are fetched from Heat
