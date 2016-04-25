@@ -39,6 +39,33 @@ describe('plansReducer state', () => {
     });
   });
 
+  describe('CREATING_PLAN', () => {
+    let state;
+
+    beforeEach(() => {
+      state = plansReducer(new InitialPlanState, PlansActions.creatingPlan());
+    });
+
+    it('sets isCreatingPlan to `true`', () => {
+      expect(state.isCreatingPlan).toBe(true);
+    });
+  });
+
+  describe('PLAN_CREATED', () => {
+    let state;
+
+    beforeEach(() => {
+      state = plansReducer(
+        new InitialPlanState({ isCreatingPlan: true }),
+        PlansActions.planCreated()
+      );
+    });
+
+    it('sets isCreatingPlan to `false`', () => {
+      expect(state.isCreatingPlan).toBe(false);
+    });
+  });
+
   describe('PLAN_CHOSEN', () => {
     let state;
 
