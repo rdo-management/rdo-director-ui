@@ -152,7 +152,16 @@ Use OpenStack Gerrit for patches and reviews (http://docs.openstack.org/infra/ma
 (Info on Linting setup here: https://medium.com/@dan_abramov/lint-like-it-s-2015-6987d44c5b48,
 .eslintrc rules tweaks here: http://blog.javascripting.com/2015/09/07/fine-tuning-airbnbs-eslint-config/)
 
+
+#### Style guide and conventions
+
 Style guide: https://github.com/airbnb/javascript
+
+Multiple words in folder names should be separated by an underscore:
+
+```
+src/js/components/environment_configuration
+```
 
 #### Tests during development:
 
