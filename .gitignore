@@ -4,5 +4,6 @@ dist/js
 dist/css
 dist/fonts
 dist/img
+dist/.module-cache
 tests_results.xml
 .DS_Store
