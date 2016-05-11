@@ -95,7 +95,7 @@ class DeploymentPlan extends React.Component {
             to={'/deployment-plan/configuration'}>
         Edit Configuration
       </Link>,
-      <p>
+      <p key="networkValidationHint">
         At this point you
         should <a className="link"
                  onClick={this.runNetworkValidations.bind(this)}>run Network Validations</a>.
@@ -180,13 +180,11 @@ class DeploymentPlan extends React.Component {
                 </DeploymentStep>
                 <DeploymentStep title="Deploy">
                   {this.renderDeployStep()}
-                  <div style={{clear: 'both'}}>
-                    <p>
-                      At this point you should run <a className="link"
-                       onClick={this.runPostDeploymentValidations.bind(this)}>
-                      the Post Deployment Validations</a>.
-                    </p>
-                  </div>
+                  <p style={{clear: 'both'}}>
+                    At this point you should run <a className="link"
+                     onClick={this.runPostDeploymentValidations.bind(this)}>
+                    the Post Deployment Validations</a>.
+                  </p>
                 </DeploymentStep>
               </ol>
             </div>
