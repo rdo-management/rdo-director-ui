@@ -101,14 +101,23 @@
   vertical-align: middle;
 }
 
-// Dropdowns use backdrop same as Modals
-.dropdown {
-  z-index: 1050;
+// Dropdown Component
+.dropdown-wrapper {
+  // isolate z-index for Dropdown
+  position: relative;
+  z-index: 1;
+  .dropdown {
+    // make z-index to play with modal-backdrop we use in Dropdown
+    z-index: 1050;
+  }
 }
 
 // Sidebar
-.sidebar-header {
-  padding-bottom: 12px;
+.sidebar-pf {
+  background-color: @sidebar-pf-bg; // keep sidebar background for all screen sizes
+  .sidebar-header {
+    padding-bottom: 12px;
+  }
 }
 
 // logo
