@@ -25,7 +25,7 @@ class DeletePlan extends React.Component {
           <Link to="/plans/list"
                 type="button"
                 className="close">
-            <span className="pficon pficon-close"></span>
+            <span aria-hidden="true" className="pficon pficon-close"/>
           </Link>
           <h4 className="modal-title">
             <span className="pficon pficon-delete"></span> Delete {this.getNameFromUrl()}
