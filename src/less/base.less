@@ -1,9 +1,81 @@
-// @import "utils/bootstrapAndOverrides";
+/*
+  Combination of default Patternfly import files:
 
-@import "../../node_modules/patternfly/less/patternfly-additions.less";
+  @import "../../node_modules/patternfly/less/patternfly.less";
+  @import "../../node_modules/patternfly/less/patternfly-additions.less";
+
+  is broken at the moment because patternfly-additions.less file imports
+  bootstrap dependencies that in a wrong way override sylesheets defined
+  in previously imported patternfly.less. A solution to separate bootstrap
+  imports into separate file that would get imported first has been proposed
+  upstream.
+
+  As a workaround we explicitly include imports from patternfly-additions.less
+  and import patternfly.less in between them. Those imports need to be
+  checked/updated with every patternfly package update to make sure we import
+  all available files.
+*/
+
+/* PatternFly additions to Bootstrap - patternfly-additions.less part 1 */
+
+// Bootstrap variables and mixins
+@import "../../node_modules/patternfly/components/bootstrap/less/variables.less";
+@import "../../node_modules/patternfly/components/bootstrap/less/mixins.less";
+// Font Awesome variables
+@import "../../node_modules/patternfly/components/font-awesome/less/variables.less";
+
+// Bootstrap-Combobox
+@import "../../node_modules/patternfly/components/bootstrap-combobox/less/combobox.less";
+// Bootstrap-Datepicker
+@import "../../node_modules/patternfly/components/bootstrap-datepicker/less/datepicker3.less";
+// Bootstrap-Select
+@import "../../node_modules/patternfly/components/bootstrap-select/less/bootstrap-select.less";
+// Bootstrap Switch
+@import "../../node_modules/patternfly/components/bootstrap-switch/src/less/bootstrap3/bootstrap-switch.less";
+// Bootstrap Touchspin
+@import (less) "../../node_modules/patternfly/components/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.css";
+// C3 charts
+@import (less) "../../node_modules/patternfly/components/c3/c3.css";
+
+
+/* Patternfly */
+
 @import "../../node_modules/patternfly/less/patternfly.less";
+
+
+/* Patternfly additions - patternfly-additions.less part 2 */
+
+@import "../../node_modules/patternfly/less/variables.less";
+@import "../../node_modules/patternfly/less/mixins.less";
+@import "../../node_modules/patternfly/less/blank-slate.less";
+@import "../../node_modules/patternfly/less/bootstrap-combobox.less";
+@import "../../node_modules/patternfly/less/bootstrap-datepicker.less";
+@import "../../node_modules/patternfly/less/bootstrap-select.less";
+@import "../../node_modules/patternfly/less/bootstrap-switch.less";
+@import "../../node_modules/patternfly/less/bootstrap-touchspin.less";
+@import "../../node_modules/patternfly/less/bootstrap-treeview.less";
+@import "../../node_modules/patternfly/less/cards.less";
+@import "../../node_modules/patternfly/less/charts.less";
+@import "../../node_modules/patternfly/less/close.less";
+@import "../../node_modules/patternfly/less/datatables.less";
+@import "../../node_modules/patternfly/less/footer.less";
+@import "../../node_modules/patternfly/less/icons.less";
+@import "../../node_modules/patternfly/less/infotip.less";
+@import "../../node_modules/patternfly/less/layouts.less";
+@import "../../node_modules/patternfly/less/list-view.less";
+@import "../../node_modules/patternfly/less/login.less";
 @import "../../node_modules/patternfly/less/navbar.less";
 @import "../../node_modules/patternfly/less/navbar-alt.less";
+@import "../../node_modules/patternfly/less/nav-vertical-alt.less";
+@import "../../node_modules/patternfly/less/search.less";
+@import "../../node_modules/patternfly/less/sidebar.less";
+@import "../../node_modules/patternfly/less/spinner.less";
+@import "../../node_modules/patternfly/less/syntax-highlighting.less";
+@import "../../node_modules/patternfly/less/toast.less";
+@import "../../node_modules/patternfly/less/toolbar.less";
+
+
+/* TripleO UI styles */
 
 @import "utils/variables";
 
