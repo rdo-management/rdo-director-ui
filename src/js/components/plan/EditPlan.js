@@ -74,9 +74,9 @@ class EditPlan extends React.Component {
                      onInvalid={this.onFormInvalid.bind(this)}>
         <div className="modal-header">
           <Link to="/plans/list"
-               type="button"
-               className="close">
-               <span aria-hidden="true">&times;</span>
+                type="button"
+                className="close">
+            <span aria-hidden="true" className="pficon pficon-close"/>
           </Link>
           <h4>Update {this.state.planName} Files</h4>
         </div>

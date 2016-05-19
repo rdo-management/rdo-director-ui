@@ -63,7 +63,7 @@ class NewPlan extends React.Component {
             <Link to="/plans/list"
                   type="button"
                   className="close">
-              <span aria-hidden="true">&times;</span>
+              <span aria-hidden="true" className="pficon pficon-close"/>
             </Link>
             <h4 className="modal-title">Create New Plan</h4>
           </div>
