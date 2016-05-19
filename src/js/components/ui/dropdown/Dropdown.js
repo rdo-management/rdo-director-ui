@@ -32,7 +32,7 @@ export default class Dropdown extends React.Component {
     };
 
     return (
-      <span>
+      <span className="dropdown-wrapper">
         <div className={ClassNames('dropdown btn-group', dropdownClasses, this.props.className)}>
           {otherChildren}
           {React.cloneElement(toggle, { toggleDropdown: this.toggleDropdown.bind(this) })}
