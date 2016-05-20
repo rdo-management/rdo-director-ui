@@ -7,3 +7,4 @@ dist/img
 dist/.module-cache
 tests_results.xml
 .DS_Store
+.idea
