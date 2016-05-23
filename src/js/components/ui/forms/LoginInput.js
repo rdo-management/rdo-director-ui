@@ -26,10 +26,9 @@ class LoginInput extends React.Component {
                  className="form-control"
                  id={this.props.name}
                  onChange={this.changeValue.bind(this)}
-                 value={this.props.getValue()}
+                 value={this.props.getValue() || ''}
                  placeholder={this.props.placeholder}
-                 autoFocus={this.props.autoFocus}
-          />
+                 autoFocus={this.props.autoFocus}/>
           {this.renderErrorMessage()}
         </div>
       </div>
