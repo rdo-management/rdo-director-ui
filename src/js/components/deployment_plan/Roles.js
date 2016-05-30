@@ -12,7 +12,7 @@ export default class Roles extends React.Component {
   }
 
   componentDidUpdate() {
-    if(!this.props.loaded) {
+    if(!this.props.loaded && !this.props.isFetchingRoles) {
       this.props.fetchRoles();
       this.props.fetchNodes();
     }
@@ -60,6 +60,7 @@ Roles.propTypes = {
   fetchRoles: React.PropTypes.func.isRequired,
   introspectedNodes: ImmutablePropTypes.map,
   isFetchingNodes: React.PropTypes.bool,
+  isFetchingRoles: React.PropTypes.bool,
   loaded: React.PropTypes.bool.isRequired,
   roles: React.PropTypes.array.isRequired,
   unassignedIntrospectedNodes: ImmutablePropTypes.map
