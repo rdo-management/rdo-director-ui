@@ -171,6 +171,7 @@ class DeploymentPlan extends React.Component {
                          fetchRoles={this.props.fetchRoles}
                          fetchNodes={this.props.fetchNodes}
                          isFetchingNodes={this.props.isFetchingNodes}
+                         isFetchingRoles={this.props.isFetchingRoles}
                          loaded={this.props.rolesLoaded}/>
                   <p>
                     At this point you should run the <a className="link"
