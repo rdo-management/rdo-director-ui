@@ -80,7 +80,7 @@ class DeploymentPlan extends React.Component {
   runHardwareValidations(e) {
     e.preventDefault();
     this.props.runValidationStage(
-      getValidationStageUuidByName(this.props.validationStages, 'discovery'));
+      getValidationStageUuidByName(this.props.validationStages, 'pre-deployment'));
   }
 
   runPostDeploymentValidations(e) {
