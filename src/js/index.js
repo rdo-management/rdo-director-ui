@@ -9,6 +9,7 @@ import { browserHistory } from 'react-router';
 
 import App from './components/App';
 import AuthenticatedContent from './components/AuthenticatedContent';
+import UserAuthenticator from './components/UserAuthenticator';
 import DeletePlan from './components/plan/DeletePlan';
 import DeploymentConfiguration from './components/deployment_plan/DeploymentConfiguration';
 import DeploymentPlan from './components/deployment_plan/DeploymentPlan';
@@ -71,36 +72,38 @@ TempStorage.initialized.then(() => {
     <Route>
       <Redirect from="/" to="/deployment-plan"/>
       <Route path="/" component={App}>
-        <Route component={AuthenticatedContent} onEnter={checkAuth}>
+        <Route component={UserAuthenticator} onEnter={checkAuth}>
+          <Route component={AuthenticatedContent}>
 
-          <Route path="deployment-plan" component={DeploymentPlan}>
-            <Redirect from="configuration" to="configuration/environment"/>
-            <Route path="configuration"
-                   component={DeploymentConfiguration}
-                   onEnter={checkRunningDeployment}>
-              <Route path="environment" component={EnvironmentConfiguration}/>
-              <Route path="parameters" component={Parameters}/>
+            <Route path="deployment-plan" component={DeploymentPlan}>
+              <Redirect from="configuration" to="configuration/environment"/>
+              <Route path="configuration"
+                     component={DeploymentConfiguration}
+                     onEnter={checkRunningDeployment}>
+                <Route path="environment" component={EnvironmentConfiguration}/>
+                <Route path="parameters" component={Parameters}/>
+              </Route>
+              <Route path=":roleName/assignNodes"
+                     component={NodesAssignment}
+                     onEnter={checkRunningDeployment}/>
             </Route>
-            <Route path=":roleName/assignNodes"
-                   component={NodesAssignment}
-                   onEnter={checkRunningDeployment}/>
-          </Route>
 
-          <Redirect from="nodes" to="nodes/registered"/>
-          <Route path="nodes" component={Nodes}>
-            <Route path="registered" component={RegisteredNodesTabPane}>
-              <Route path="register" component={RegisterNodesDialog}/>
+            <Redirect from="nodes" to="nodes/registered"/>
+            <Route path="nodes" component={Nodes}>
+              <Route path="registered" component={RegisteredNodesTabPane}>
+                <Route path="register" component={RegisterNodesDialog}/>
+              </Route>
+            <Route path="deployed" component={DeployedNodesTabPane}/>
+              <Route path="maintenance" component={MaintenanceNodesTabPane}/>
             </Route>
-          <Route path="deployed" component={DeployedNodesTabPane}/>
-            <Route path="maintenance" component={MaintenanceNodesTabPane}/>
-          </Route>
 
-          <Redirect from="plans" to="plans/list"/>
-          <Route path="plans" component={Plans}>
-            <Route path="list" component={ListPlans}>
-              <Route path="/plans/new" component={NewPlan}/>
-              <Route path="/plans/:planName/delete" component={DeletePlan}/>
-              <Route path="/plans/:planName/edit" component={EditPlan}/>
+            <Redirect from="plans" to="plans/list"/>
+            <Route path="plans" component={Plans}>
+              <Route path="list" component={ListPlans}>
+                <Route path="/plans/new" component={NewPlan}/>
+                <Route path="/plans/:planName/delete" component={DeletePlan}/>
+                <Route path="/plans/:planName/edit" component={EditPlan}/>
+              </Route>
             </Route>
           </Route>
         </Route>

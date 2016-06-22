@@ -11,11 +11,13 @@ export default function loginReducer(state = initialState, action) {
 
   case LoginConstants.USER_AUTH_SUCCESS:
     return state.set('keystoneAccess', action.payload)
-                .set('isAuthenticating', false);
+                .set('isAuthenticating', false)
+                .set('isAuthenticated', true);
 
   case LoginConstants.USER_AUTH_FAILURE:
     return state.set('loginForm', action.payload)
-                .set('isAuthenticating', false);
+                .set('isAuthenticating', false)
+                .set('isAuthenticated', false);
 
   case LoginConstants.LOGOUT_USER_SUCCESS:
     return initialState;
