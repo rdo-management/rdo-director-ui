@@ -3,3 +3,4 @@ host=review.gerrithub.io
 port=29418
 project=rdo-management/rdo-director-ui.git
 defaultbranch=poc
+defaultremote=rdo-director-ui
