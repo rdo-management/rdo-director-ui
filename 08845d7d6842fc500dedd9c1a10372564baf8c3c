@@ -1,0 +1,7 @@
+Code-Review+2: Jiri Tomasek <jtomasek@redhat.com>
+Verified+1: Jiri Tomasek <jtomasek@redhat.com>
+Submitted-by: Jiri Tomasek <jtomasek@redhat.com>
+Submitted-at: Fri, 24 Jun 2016 12:11:45 -0400
+Reviewed-on: https://review.gerrithub.io/281747
+Project: rdo-management/rdo-director-ui
+Branch: refs/heads/poc
