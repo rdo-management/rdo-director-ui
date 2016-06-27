@@ -104,9 +104,10 @@ class DeploymentPlan extends React.Component {
     ];
 
     const registerAndAssignLinks = [
-      <Link className="btn btn-default" key="registerNodes" to="/nodes/registered/register">
-        <span className="fa fa-plus"/> Register Nodes
-      </Link>,
+      // TODO: Temporarily disabling Register Nodes
+      //<Link className="btn btn-default" key="registerNodes" to="/nodes/registered/register">
+      //  <span className="fa fa-plus"/> Register Nodes
+      //</Link>,
       <span key="space">&nbsp;</span>,
       <Loader key="rolesLoader"
               loaded={!(this.props.rolesLoaded && this.props.isFetchingRoles)}

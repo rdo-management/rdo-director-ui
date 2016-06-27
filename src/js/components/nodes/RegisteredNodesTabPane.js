@@ -48,6 +48,7 @@ class RegisteredNodesTabPane extends React.Component {
   getTableActions() {
     return (
       <div className="btn-group">
+        {/* TODO: Temporarily disabling Introspect Nodes and Provide Nodes
         <button className="btn btn-default"
                 type="button"
                 name="introspect"
@@ -62,6 +63,7 @@ class RegisteredNodesTabPane extends React.Component {
                 disabled={!this.state.canSubmit || this.props.nodesOperationInProgress}>
           Provide Nodes
         </button>
+        */}
         <button className="btn btn-danger"
                 type="button"
                 name="delete"

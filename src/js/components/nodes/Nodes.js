@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { Link } from 'react-router';
+//import { Link } from 'react-router';
 import React from 'react';
 import { Map } from 'immutable';
 import ImmutablePropTypes from 'react-immutable-proptypes';
@@ -34,10 +34,12 @@ class Nodes extends React.Component {
                 <span className="pficon pficon-refresh"></span> Refresh Results
               </a>
               &nbsp;
+              {/* TODO: Temporarily disabling Register Nodes
               <Link to="/nodes/registered/register"
                     className="btn btn-primary">
                 <span className="fa fa-plus"/> Register Nodes
               </Link>
+              */}
             </div>
             <h1>Nodes</h1>
           </div>
