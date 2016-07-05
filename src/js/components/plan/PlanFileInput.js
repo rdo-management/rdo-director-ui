@@ -6,7 +6,8 @@ class PlanFileInput extends React.Component {
   constructor() {
     super();
     this.state = {
-      progress: 0
+      progress: 0,
+      unreadableFile: null
     };
   }
 
@@ -25,9 +26,19 @@ class PlanFileInput extends React.Component {
   processFolderFiles(inputFiles) {
     let files = [];
     let processedFilesCount = 0;
+
     for(let i=0, l=inputFiles.length; i<l; i++) {
       let reader = new FileReader();
       let file = inputFiles[i];
+
+      reader.onerror = (f => {
+        return (e => {
+          this.setState({
+            unreadableFile: f.webkitRelativePath
+          });
+        });
+      })(file);
+
       reader.onload = (f => {
         return e => {
           if(file.name.match(/(\.yaml|\.json|\.pp|\.sh)$/)) {
@@ -49,6 +60,7 @@ class PlanFileInput extends React.Component {
       })(file);
       reader.readAsText(file);
     }
+
   }
 
   processTarball(file) {
@@ -66,6 +78,9 @@ class PlanFileInput extends React.Component {
 
   renderErrorMessage() {
     let errorMessage = this.props.getErrorMessage();
+    if (!errorMessage && this.state.unreadableFile) {
+      errorMessage = `${this.state.unreadableFile} could not be read.`;
+    }
     return errorMessage ? (
       <span className="help-block">{errorMessage}</span>
     ) : false;
