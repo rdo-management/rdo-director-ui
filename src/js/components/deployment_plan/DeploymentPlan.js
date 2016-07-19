@@ -143,59 +143,54 @@ class DeploymentPlan extends React.Component {
 
     return (
       <div className="row">
-        <Loader loaded={(this.props.currentPlanName || !this.props.hasPlans)
-                        && !this.props.isFetchingPlans}
-                content="Loading Deployments..."
-                global>
-          {this.props.hasPlans ? (
-            <div className="col-sm-12 deployment-step-list">
-              <div className="page-header page-header-bleed-right">
-                <h1>
-                  {this.props.currentPlanName}
-                  <PlansDropdown currentPlanName={this.props.currentPlanName}
-                                 plans={this.props.inactivePlans}
-                                 choosePlan={this.props.choosePlan}/>
-                </h1>
-              </div>
-              <ol className="deployment-step-list">
-                <DeploymentStep title="Specify Deployment Configuration"
-                                subTitle={deploymentConfigurationSummary}
-                                links={deploymentConfigLinks}
-                                disabled={this.props.currentStackDeploymentProgress}/>
-                <DeploymentStep title="Register and Assign Nodes"
-                                links={registerAndAssignLinks}
-                                disabled={this.props.currentStackDeploymentProgress}>
-                  <Roles roles={this.props.roles.toList().toJS()}
-                         introspectedNodes={this.props.introspectedNodes}
-                         unassignedIntrospectedNodes={this.props.unassignedIntrospectedNodes}
-                         fetchRoles={this.props.fetchRoles}
-                         fetchNodes={this.props.fetchNodes}
-                         isFetchingNodes={this.props.isFetchingNodes}
-                         isFetchingRoles={this.props.isFetchingRoles}
-                         loaded={this.props.rolesLoaded}/>
-                  <p>
-                    At this point you should run the <a className="link"
-                    onClick={this.runHardwareValidations.bind(this)}>Hardware
-                    Validations</a>.
-                  </p>
-                </DeploymentStep>
-                <DeploymentStep title="Deploy">
-                  {this.renderDeployStep()}
-                  <p style={{clear: 'both'}}>
-                    At this point you should run <a className="link"
-                     onClick={this.runPostDeploymentValidations.bind(this)}>
-                    the Post Deployment Validations</a>.
-                  </p>
-                </DeploymentStep>
-              </ol>
+        {this.props.hasPlans ? (
+          <div className="col-sm-12 deployment-step-list">
+            <div className="page-header page-header-bleed-right">
+              <h1>
+                {this.props.currentPlanName}
+                <PlansDropdown currentPlanName={this.props.currentPlanName}
+                               plans={this.props.inactivePlans}
+                               choosePlan={this.props.choosePlan}/>
+              </h1>
             </div>
-          ) : (
-            <div className="col-sm-12">
-              <NoPlans/>
-            </div>
-          )}
-          {children}
-        </Loader>
+            <ol className="deployment-step-list">
+              <DeploymentStep title="Specify Deployment Configuration"
+                              subTitle={deploymentConfigurationSummary}
+                              links={deploymentConfigLinks}
+                              disabled={this.props.currentStackDeploymentProgress}/>
+              <DeploymentStep title="Register and Assign Nodes"
+                              links={registerAndAssignLinks}
+                              disabled={this.props.currentStackDeploymentProgress}>
+                <Roles roles={this.props.roles.toList().toJS()}
+                       introspectedNodes={this.props.introspectedNodes}
+                       unassignedIntrospectedNodes={this.props.unassignedIntrospectedNodes}
+                       fetchRoles={this.props.fetchRoles}
+                       fetchNodes={this.props.fetchNodes}
+                       isFetchingNodes={this.props.isFetchingNodes}
+                       isFetchingRoles={this.props.isFetchingRoles}
+                       loaded={this.props.rolesLoaded}/>
+                <p>
+                  At this point you should run the <a className="link"
+                  onClick={this.runHardwareValidations.bind(this)}>Hardware
+                  Validations</a>.
+                </p>
+              </DeploymentStep>
+              <DeploymentStep title="Deploy">
+                {this.renderDeployStep()}
+                <p style={{clear: 'both'}}>
+                  At this point you should run <a className="link"
+                   onClick={this.runPostDeploymentValidations.bind(this)}>
+                  the Post Deployment Validations</a>.
+                </p>
+              </DeploymentStep>
+            </ol>
+          </div>
+        ) : (
+          <div className="col-sm-12">
+            <NoPlans/>
+          </div>
+        )}
+        {children}
       </div>
     );
   }
@@ -218,7 +213,6 @@ DeploymentPlan.propTypes = {
   introspectedNodes: ImmutablePropTypes.map,
   isFetchingEnvironmentConfiguration: React.PropTypes.bool,
   isFetchingNodes: React.PropTypes.bool,
-  isFetchingPlans: React.PropTypes.bool,
   isFetchingRoles: React.PropTypes.bool,
   notify: React.PropTypes.func,
   roles: ImmutablePropTypes.map,
@@ -238,7 +232,6 @@ export function mapStateToProps(state) {
     environmentConfigurationSummary: getEnvironmentConfigurationSummary(state),
     isFetchingEnvironmentConfiguration: state.environmentConfiguration.isFetching,
     isFetchingNodes: state.nodes.get('isFetching'),
-    isFetchingPlans: state.plans.get('isFetchingPlans'),
     isFetchingRoles: state.roles.get('isFetching'),
     hasPlans: !state.plans.get('all').isEmpty(),
     inactivePlans: getAllPlansButCurrent(state),

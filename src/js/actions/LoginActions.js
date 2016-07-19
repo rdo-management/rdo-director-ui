@@ -5,12 +5,9 @@ import TempStorage from '../services/TempStorage.js';
 import KeystoneApiErrorHandler from '../services/KeystoneApiErrorHandler';
 import KeystoneApiService from '../services/KeystoneApiService';
 import LoginConstants from '../constants/LoginConstants';
-import PlansActions from './PlansActions';
 import ZaqarWebSocketService from '../services/ZaqarWebSocketService';
 
 export default {
-
-
   authenticateUserViaToken(keystoneAuthTokenId, nextPath) {
     return (dispatch, getState) => {
       dispatch(this.userAuthStarted());
@@ -19,7 +16,6 @@ export default {
         dispatch(this.userAuthSuccess(response.access));
         ZaqarWebSocketService.init(getState, dispatch);
         browserHistory.push(nextPath);
-        dispatch(PlansActions.fetchPlans());
       }).catch((error) => {
         console.error('Error in LoginActions.authenticateUserViaToken', error.stack || error); //eslint-disable-line no-console
         let errorHandler = new KeystoneApiErrorHandler(error);
@@ -38,7 +34,6 @@ export default {
         dispatch(this.userAuthSuccess(response.access));
         ZaqarWebSocketService.init(getState, dispatch);
         browserHistory.push(nextPath);
-        dispatch(PlansActions.fetchPlans());
       }).catch((error) => {
         console.error('Error in LoginActions.authenticateUser', error); //eslint-disable-line no-console
         let errorHandler = new KeystoneApiErrorHandler(error, formFields);

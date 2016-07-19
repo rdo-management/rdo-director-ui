@@ -40,6 +40,7 @@ export default function plansReducer(state = initialState, action) {
     });
     return state
             .set('isFetchingPlans', false)
+            .set('plansLoaded', true)
             .set('all', Map(planData));
   }
 

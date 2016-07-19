@@ -63,8 +63,7 @@ class MistralApiService {
       method: 'POST',
       data: JSON.stringify({
         name: actionName,
-        input: JSON.stringify(input),
-        params: JSON.stringify({save_result: true})
+        input: JSON.stringify(input)
       })
     });
   }

@@ -6,5 +6,6 @@ export const InitialLoginState = Record({
     formErrors: List(),
     formFieldErrors: Map()
   }),
-  isAuthenticating: false
+  isAuthenticating: false,
+  isAuthenticated: false
 });
