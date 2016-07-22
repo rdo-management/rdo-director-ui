@@ -53,7 +53,7 @@ export default {
       TripleOApiService.updatePlanEnvironments(planName, data).then((response) => {
         const entities = normalize(response.environments.topics, arrayOf(topicSchema)).entities;
         dispatch(this.updateEnvironmentConfigurationSuccess(entities));
-        browserHistory.push(parentPath);
+        if(parentPath) { browserHistory.push(parentPath); }
         dispatch(NotificationActions.notify({
           title: 'Environment Configuration updated',
           message: 'The Environment Configuration has been successfully updated',
