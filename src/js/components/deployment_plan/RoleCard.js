@@ -16,10 +16,8 @@ export default class RoleCard extends React.Component {
               {this.props.assignedNodesCount}
             </span>
             <span className="card-pf-utilization-card-details-description">
-              <span className="card-pf-utilization-card-details-line-1">Nodes assigned</span>
-              <span className="card-pf-utilization-card-details-line-2">
-                of {this.props.availableNodesCount} available
-              </span>
+              <span className="card-pf-utilization-card-details-line-1">&nbsp;</span>
+              <span className="card-pf-utilization-card-details-line-2">Nodes assigned</span>
             </span>
           </p>
         </div>
