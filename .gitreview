@@ -1,4 +1,6 @@
 [gerrit]
-host=review.openstack.org
+host=review.gerrithub.io
 port=29418
-project=openstack/tripleo-ui.git
+project=rdo-management/rdo-director-ui.git
+defaultbranch=poc2
+defaultremote=gerrithub
