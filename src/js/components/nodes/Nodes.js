@@ -55,6 +55,9 @@ class Nodes extends React.Component {
           <div className="tab-pane">
             {this.props.children}
           </div>
+          <Link to="/deployment-plan">
+            &larr; Back to Deployment Plan
+          </Link>
         </div>
       </div>
     );
