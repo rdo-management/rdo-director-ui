@@ -60,6 +60,11 @@ export default class DeploymentStatus extends React.Component {
       <div className={statusClass}>
         <span className={iconClass}></span>
         {msg}
+        <p style={{clear: 'both'}}>
+          At this point you should run <a className="link"
+           onClick={this.props.runPostDeploymentValidations}>
+          Post-deployment Validations</a>.
+        </p>
       </div>
     );
   }
@@ -79,5 +84,6 @@ export default class DeploymentStatus extends React.Component {
 
 DeploymentStatus.propTypes = {
   fetchStacks: React.PropTypes.func.isRequired,
+  runPostDeploymentValidations: React.PropTypes.func.isRequired,
   stack: ImmutablePropTypes.record.isRequired
 };

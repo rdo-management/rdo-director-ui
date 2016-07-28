@@ -61,11 +61,12 @@ class DeploymentPlan extends React.Component {
         <a className={'link btn btn-primary btn-lg ' +
                       (this.state.readyToDeploy ? '' : 'disabled')}
            onClick={this.handleDeploy.bind(this)}>
-          <span className="fa fa-send"/> Verify and Deploy
+          <span className="fa fa-send"/> Deploy
         </a>
       </div>
     ) : (
       <DeploymentStatus stack={this.props.currentStack}
+                        runPostDeploymentValidations={this.runPostDeploymentValidations.bind(this)}
                         fetchStacks={this.props.fetchStacks}/>
     );
   }
@@ -77,7 +78,7 @@ class DeploymentPlan extends React.Component {
     this.props.runValidationStage(validationStageUuid);
   }
 
-  runHardwareValidations(e) {
+  runPreDeploymentValidations(e) {
     e.preventDefault();
     this.props.runValidationStage(
       getValidationStageUuidByName(this.props.validationStages, 'pre-deployment'));
@@ -91,23 +92,26 @@ class DeploymentPlan extends React.Component {
 
   render() {
     const deploymentConfigLinks = [
-      <Link className="btn btn-link"
+      <span key="space">&nbsp;</span>,
+      <Link className="btn btn-default"
             key="deploymentConfiguration"
             to="/deployment-plan/configuration">
         Edit Configuration
       </Link>,
       <p key="networkValidationHint">
         At this point you
-        should <a className="link"
-                 onClick={this.runNetworkValidations.bind(this)}>run Network Validations</a>.
+        should run <a className="link"
+                 onClick={this.runNetworkValidations.bind(this)}>Network Validations</a>.
       </p>
     ];
 
-    const registerAndAssignLinks = [
+    const registerNodesLinks = [
       <Link className="btn btn-default" key="registerNodes" to="/nodes/registered/register">
         <span className="fa fa-plus"/> Register Nodes
-      </Link>,
-      <span key="space">&nbsp;</span>,
+      </Link>
+    ];
+
+    const assignLinks = [
       <Loader key="rolesLoader"
               loaded={!(this.props.rolesLoaded && this.props.isFetchingRoles)}
               content="Loading Deployment Roles..."
@@ -119,8 +123,7 @@ class DeploymentPlan extends React.Component {
               content="Loading Nodes..."
               component="span"
               inline>
-        There are <strong>{this.props.unassignedIntrospectedNodes.size}</strong> of <strong>
-        {this.props.introspectedNodes.size}</strong> Nodes available to assign
+        <strong>{this.props.unassignedIntrospectedNodes.size}</strong> Nodes available to assign
       </Loader>
     ];
 
@@ -145,7 +148,7 @@ class DeploymentPlan extends React.Component {
       <div className="row">
         {this.props.hasPlans ? (
           <div className="col-sm-12 deployment-step-list">
-            <div className="page-header page-header-bleed-right">
+            <div className="page-header">
               <h1>
                 {this.props.currentPlanName}
                 <PlansDropdown currentPlanName={this.props.currentPlanName}
@@ -153,13 +156,17 @@ class DeploymentPlan extends React.Component {
                                choosePlan={this.props.choosePlan}/>
               </h1>
             </div>
+            <p>Build out a deployment plan below based on how you want to run OpenStack.</p>
             <ol className="deployment-step-list">
-              <DeploymentStep title="Specify Deployment Configuration"
+              <DeploymentStep title="Register Nodes"
+                              links={registerNodesLinks}
+                              disabled={this.props.currentStackDeploymentProgress}/>
+              <DeploymentStep title="Configure and Validate Plan"
                               subTitle={deploymentConfigurationSummary}
                               links={deploymentConfigLinks}
                               disabled={this.props.currentStackDeploymentProgress}/>
-              <DeploymentStep title="Register and Assign Nodes"
-                              links={registerAndAssignLinks}
+              <DeploymentStep title="Assign Nodes"
+                              links={assignLinks}
                               disabled={this.props.currentStackDeploymentProgress}>
                 <Roles roles={this.props.roles.toList().toJS()}
                        introspectedNodes={this.props.introspectedNodes}
@@ -170,18 +177,13 @@ class DeploymentPlan extends React.Component {
                        isFetchingRoles={this.props.isFetchingRoles}
                        loaded={this.props.rolesLoaded}/>
                 <p>
-                  At this point you should run the <a className="link"
-                  onClick={this.runHardwareValidations.bind(this)}>Hardware
+                  At this point you should run <a className="link"
+                  onClick={this.runPreDeploymentValidations.bind(this)}>Pre-deployment
                   Validations</a>.
                 </p>
               </DeploymentStep>
               <DeploymentStep title="Deploy">
                 {this.renderDeployStep()}
-                <p style={{clear: 'both'}}>
-                  At this point you should run <a className="link"
-                   onClick={this.runPostDeploymentValidations.bind(this)}>
-                  the Post Deployment Validations</a>.
-                </p>
               </DeploymentStep>
             </ol>
           </div>

@@ -26,7 +26,7 @@ export default class PlansDropdown extends React.Component {
     } else {
       return (
         <Dropdown>
-          <DropdownButton className="btn-link">Select Deployment</DropdownButton>
+          <DropdownButton className="btn-link">Change Plan</DropdownButton>
           {this.renderRecentPlans()}
           <DropdownItem key="divider" divider/>
           <DropdownItem key="plansLink" to="/plans/list">Manage Deployments</DropdownItem>
