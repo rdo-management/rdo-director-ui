@@ -60,13 +60,15 @@ export default class ValidationStage extends React.Component {
 
     let validations = this.props.validations.map(validation => {
       return (
-        <Validation key={validation.uuid}
-                    name={validation.name}
-                    status={validation.status}
-                    runValidation={this.props.runValidation}
-                    stopValidation={this.props.stopValidation}
-                    description={validation.description}
-                    uuid={validation.uuid} />
+        <Validation
+          key={validation.uuid}
+          name={validation.name}
+          status={validation.status}
+          runValidation={this.props.runValidation}
+          showValidationDetail={this.props.showValidationDetail.bind(this, validation.uuid)}
+          stopValidation={this.props.stopValidation}
+          description={validation.description}
+          uuid={validation.uuid} />
       );
     });
 
@@ -101,6 +103,7 @@ ValidationStage.propTypes = {
   name: React.PropTypes.string.isRequired,
   runValidation: React.PropTypes.func.isRequired,
   runValidationStage: React.PropTypes.func.isRequired,
+  showValidationDetail: React.PropTypes.func.isRequired,
   status: React.PropTypes.string.isRequired,
   stopValidation: React.PropTypes.func.isRequired,
   toggleValidationStageVisibility: React.PropTypes.func.isRequired,
