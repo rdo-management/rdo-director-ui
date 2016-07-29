@@ -14,12 +14,23 @@ export const getValidationStages = createSelector(
   (stages, validations, results) => {
     return stages.map(stage => {
       return stage.update('validations', vals => {
-        return vals.map(validation => validations.get(validation));
+        return vals.map(validationId => {
+          const validation = validations.get(validationId);
+          return validation.set('latest_result', results.get(validation.get('latest_result')));
+        });
       });
     });
   }
 );
 
+export const getValidations = createSelector(
+  [validations, validationResults],
+  (validations, results) => {
+    return validations.map(validation => {
+      return validation.set('latest_result', results.get(validation.get('latest_result')));
+    });
+  }
+);
 /**
  * Returns Status Counts across all validations - instance of ValidationsStatusCounts Record
  */

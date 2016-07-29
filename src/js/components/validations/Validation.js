@@ -5,11 +5,6 @@ import React from 'react';
 import Loader from '../ui/Loader';
 
 export default class Validation extends React.Component {
-  viewDetails (e) {
-    e.preventDefault();
-    // TODO: Show the details
-  }
-
   getActionButton() {
     if (_.includes(['new', 'success', 'error', 'failed'], this.props.status)) {
       return (
@@ -62,7 +57,7 @@ export default class Validation extends React.Component {
           <div className="validation-info-container">
               <span>{this.props.name}</span>
               <span className={messageClass}>{message}</span>
-              <a className="link details-link" onClick={this.viewDetails.bind(this)}>
+              <a className="link details-link" onClick={() => this.props.showValidationDetail()}>
                 View Details
               </a>
           </div>
@@ -79,6 +74,7 @@ Validation.propTypes = {
   description: React.PropTypes.string,
   name: React.PropTypes.string.isRequired,
   runValidation: React.PropTypes.func.isRequired,
+  showValidationDetail: React.PropTypes.func.isRequired,
   status: React.PropTypes.string.isRequired,
   stopValidation: React.PropTypes.func.isRequired,
   uuid: React.PropTypes.string.isRequired
