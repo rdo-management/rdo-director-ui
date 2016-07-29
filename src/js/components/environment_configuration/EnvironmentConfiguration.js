@@ -81,6 +81,7 @@ class EnvironmentConfiguration extends React.Component {
   }
 
   render() {
+    console.log(this.props.environmentConfigurationTopics.toJS());
     let topics = this.props.environmentConfigurationTopics.toList().map((topic, index) => {
       let tabName = _.camelCase(topic.get('title'));
       return (

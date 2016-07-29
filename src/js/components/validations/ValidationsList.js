@@ -8,10 +8,39 @@ import BlankSlate from '../ui/BlankSlate';
 import Loader from '../ui/Loader';
 import ValidationsActions from '../../actions/ValidationsActions';
 import ValidationStage from './ValidationStage';
+import ValidationDetail from './ValidationDetail';
 
 class ValidationsList extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      showDetail: null
+    };
+  }
+
   componentDidMount() {
     this.props.fetchValidationStages();
+  }
+
+  showValidationDetail(uuid) {
+    console.log('show that detail!');
+    this.setState({ showDetail: uuid });
+  }
+
+  hideValidationDetail() {
+    this.setState({ showDetail: null });
+  }
+
+  renderValidationDetail() {
+    if (this.state.showDetail) {
+      const validation = this.props.validations.get(this.state.showDetail);
+      return (
+        <ValidationDetail name={validation.name}
+                          description={validation.description}
+                          status={validation.status}
+                          hideValidationDetail={this.hideValidationDetail.bind(this)}/>
+      );
+    }
   }
 
   render () {
@@ -24,6 +53,7 @@ class ValidationsList extends React.Component {
         <ValidationStage key={stage.uuid}
                          validations={stage.validations}
                          name={stage.name}
+                         showValidationDetail={this.showValidationDetail.bind(this)}
                          status={stage.status}
                          runValidationStage={this.props.runValidationStage}
                          runValidation={this.props.runValidation}
@@ -66,6 +96,7 @@ class ValidationsList extends React.Component {
                             message="There are no validations at this time." /> : stages}
             </div>
           </div>
+          {this.renderValidationDetail()}
         </Loader>
       </div>
     );
@@ -82,6 +113,7 @@ ValidationsList.propTypes = {
   toggleValidationStageVisibility: React.PropTypes.func.isRequired,
   validationStages: ImmutablePropTypes.map.isRequired,
   validationStagesLoaded: React.PropTypes.bool.isRequired,
+  validations: ImmutablePropTypes.map.isRequired,
   validationsStatusCounts: ImmutablePropTypes.record.isRequired
 };
 
@@ -112,6 +144,7 @@ const mapStateToProps = state => {
     isFetchingValidationStages: state.validations.get('isFetching'),
     validationStages: getValidationStages(state),
     validationStagesLoaded: state.validations.get('loaded'),
+    validations: state.validations.get('validations'),
     validationsStatusCounts: getValidationsStatusCounts(state)
   };
 };
