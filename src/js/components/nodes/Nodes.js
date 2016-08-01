@@ -52,12 +52,12 @@ class Nodes extends React.Component {
               Maintenance<span className="badge">{this.props.nodes.get('maintenance').size}</span>
             </NavTab>
           </ul>
-          <div className="tab-pane">
-            {this.props.children}
-          </div>
           <Link to="/deployment-plan">
             &larr; Back to Deployment Plan
           </Link>
+          <div className="tab-pane">
+            {this.props.children}
+          </div>
         </div>
       </div>
     );
