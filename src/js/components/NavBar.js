@@ -31,8 +31,7 @@ export default class NavBar extends React.Component {
           <ul className="nav navbar-nav navbar-utility">
             <li>
               <a>
-                <span className="pficon pficon-user"></span>
-                {this.props.user.get('username')}
+                <span className="pficon pficon-user"></span> {this.props.user.get('username')}
               </a>
             </li>
             <li><a href="#" onClick={this.logout.bind(this)}>Logout</a></li>
@@ -40,6 +39,11 @@ export default class NavBar extends React.Component {
           <ul className="nav navbar-nav navbar-primary">
             <NavTab to="/deployment-plan">Deployment Plan</NavTab>
             <NavTab to="/nodes">Nodes</NavTab>
+            <li className={`pull-right ${this.props.showValidations ? 'open' : null}`}>
+              <a className="link" onClick={this.props.onShowValidationsToggle}>
+                <span className="fa fa-check-square-o" title="Validations"/> Validations
+              </a>
+            </li>
           </ul>
         </div>
       </nav>
@@ -48,5 +52,7 @@ export default class NavBar extends React.Component {
 }
 NavBar.propTypes = {
   onLogout: React.PropTypes.func.isRequired,
+  onShowValidationsToggle: React.PropTypes.func.isRequired,
+  showValidations: React.PropTypes.bool.isRequired,
   user: ImmutablePropTypes.map
 };

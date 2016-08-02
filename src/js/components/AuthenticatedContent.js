@@ -7,6 +7,7 @@ import LoginActions from '../actions/LoginActions';
 import PlansActions from '../actions/PlansActions';
 import NavBar from './NavBar';
 import ValidationsList from './validations/ValidationsList';
+import ValidationsActions from '../actions/ValidationsActions';
 
 export default class AuthenticatedContent extends React.Component {
   componentDidMount() {
@@ -21,11 +22,15 @@ export default class AuthenticatedContent extends React.Component {
               global>
         <header>
           <NavBar user={this.props.user}
+                  showValidations={this.props.showValidations}
+                  onShowValidationsToggle={this.props.toggleShowValidations}
                   onLogout={this.props.logoutUser.bind(this)}/>
         </header>
         <div className="wrapper-fixed-body container-fluid">
           <div className="row">
-            <div className="col-sm-12 col-lg-9">{this.props.children}</div>
+            <div className={`col-sm-12 ${this.props.showValidations ? 'col-lg-9' : null}`}>
+              {this.props.children}
+            </div>
             <ValidationsList/>
           </div>
         </div>
@@ -41,13 +46,16 @@ AuthenticatedContent.propTypes = {
   logoutUser: React.PropTypes.func.isRequired,
   noPlans: React.PropTypes.bool,
   plansLoaded: React.PropTypes.bool,
+  showValidations: React.PropTypes.bool,
+  toggleShowValidations: React.PropTypes.func.isRequired,
   user: ImmutablePropTypes.map
 };
 
 const mapDispatchToProps = dispatch => {
   return {
+    fetchPlans: () => dispatch(PlansActions.fetchPlans()),
     logoutUser: () => dispatch(LoginActions.logoutUser()),
-    fetchPlans: () => dispatch(PlansActions.fetchPlans())
+    toggleShowValidations: () => dispatch(ValidationsActions.toggleShowValidations())
   };
 };
 
@@ -56,6 +64,7 @@ const mapStateToProps = state => {
     currentPlanName: state.currentPlan.currentPlanName,
     noPlans: state.plans.get('all').isEmpty(),
     plansLoaded: state.plans.get('plansLoaded'),
+    showValidations: state.validations.get('showValidations'),
     user: state.login.getIn(['keystoneAccess', 'user'])
   };
 };

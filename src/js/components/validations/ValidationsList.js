@@ -70,7 +70,7 @@ class ValidationsList extends React.Component {
       );
     });
 
-    return (
+    return this.props.showValidations ? (
       <div className="col-sm-12 col-lg-3 sidebar-pf sidebar-pf-right">
         <div className="sidebar-header
                         sidebar-header-bleed-left
@@ -103,7 +103,7 @@ class ValidationsList extends React.Component {
           {this.renderValidationDetail()}
         </Loader>
       </div>
-    );
+    ) : null;
   }
 }
 
@@ -113,6 +113,7 @@ ValidationsList.propTypes = {
   isFetchingValidationStages: React.PropTypes.bool.isRequired,
   runValidation: React.PropTypes.func.isRequired,
   runValidationStage: React.PropTypes.func.isRequired,
+  showValidations: React.PropTypes.bool,
   stopValidation: React.PropTypes.func.isRequired,
   toggleValidationStageVisibility: React.PropTypes.func.isRequired,
   validationStages: ImmutablePropTypes.map.isRequired,
@@ -146,6 +147,7 @@ const mapStateToProps = state => {
   return {
     isAuthenticating: state.login.get('isAuthenticating'),
     isFetchingValidationStages: state.validations.get('isFetching'),
+    showValidations: state.validations.get('showValidations'),
     validationStages: getValidationStages(state),
     validationStagesLoaded: state.validations.get('loaded'),
     validations: getValidations(state),

@@ -6,6 +6,7 @@ import { Validation, ValidationResult, ValidationStage } from '../immutableRecor
 const initialState = Map({
   loaded: false,
   isFetching: false,
+  showValidations: false,
   validationStages: Map(),
   validations: Map(),
   validationResults: Map()
@@ -55,6 +56,14 @@ export default function validationsReducer(state = initialState, action) {
 
   case ValidationsConstants.UPDATE_VALIDATION_STATUS: {
     return state.setIn(['validations', action.payload.uuid, 'status'], action.payload.status);
+  }
+
+  case ValidationsConstants.TOGGLE_SHOW_VALIDATIONS: {
+    return state.update('showValidations', oldValue => !oldValue);
+  }
+
+  case ValidationsConstants.SHOW_VALIDATIONS: {
+    return state.set('showValidations', true);
   }
 
   case ValidationsConstants.TOGGLE_VALIDATION_STAGE_VISIBILITY: {

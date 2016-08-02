@@ -47,6 +47,7 @@ export default {
     return dispatch => {
       dispatch(this.updateValidationStageStatus(uuid, 'running'));
       dispatch(this.showValidationStage(uuid));
+      dispatch(this.showValidations());
       ValidationsApiService.runStage(uuid).then((response) => {
       }).catch((error) => {
         console.error('Error in ValidationStage.runStage', error.stack); //eslint-disable-line no-console
@@ -56,6 +57,18 @@ export default {
         });
         dispatch(this.updateValidationStageStatus(uuid, 'error'));
       });
+    };
+  },
+
+  toggleShowValidations() {
+    return {
+      type: ValidationsConstants.TOGGLE_SHOW_VALIDATIONS
+    };
+  },
+
+  showValidations() {
+    return {
+      type: ValidationsConstants.SHOW_VALIDATIONS
     };
   },
 
