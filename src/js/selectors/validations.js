@@ -19,7 +19,7 @@ export const getValidationStages = createSelector(
           return validation.set('latest_result', results.get(validation.get('latest_result')));
         });
       });
-    });
+    }).reverse();
   }
 );
 

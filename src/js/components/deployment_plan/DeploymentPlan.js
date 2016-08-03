@@ -71,10 +71,17 @@ class DeploymentPlan extends React.Component {
     );
   }
 
-  runNetworkValidations(e) {
+  runPrepValidations(e) {
     e.preventDefault();
     const validationStageUuid = getValidationStageUuidByName(
-      this.props.validationStages, 'network-validation');
+      this.props.validationStages, 'prep');
+    this.props.runValidationStage(validationStageUuid);
+  }
+
+  runPreIntrospectionValidations(e) {
+    e.preventDefault();
+    const validationStageUuid = getValidationStageUuidByName(
+      this.props.validationStages, 'pre-introspection');
     this.props.runValidationStage(validationStageUuid);
   }
 
@@ -97,15 +104,15 @@ class DeploymentPlan extends React.Component {
             key="deploymentConfiguration"
             to="/deployment-plan/configuration">
         Edit Configuration
-      </Link>,
-      <p key="networkValidationHint">
-        At this point you
-        should run <a className="link"
-                 onClick={this.runNetworkValidations.bind(this)}>Network Validations</a>.
-      </p>
+      </Link>
     ];
 
     const registerNodesLinks = [
+      <p key="preIntrospectionValidationHint">
+        At this point you
+        should run <a className="link"
+        onClick={this.runPreIntrospectionValidations.bind(this)}>Pre-introspection Validations</a>.
+      </p>,
       <Link className="btn btn-default" key="registerNodes" to="/nodes/registered/register">
         <span className="fa fa-plus"/> Register Nodes
       </Link>
@@ -157,6 +164,11 @@ class DeploymentPlan extends React.Component {
               </h1>
             </div>
             <p>Build out a deployment plan below based on how you want to run OpenStack.</p>
+            <p>
+              At this point you
+              should run <a className="link"
+                            onClick={this.runPrepValidations.bind(this)}>Prep Validations</a>.
+            </p>
             <ol className="deployment-step-list">
               <DeploymentStep title="Register Nodes"
                               links={registerNodesLinks}
