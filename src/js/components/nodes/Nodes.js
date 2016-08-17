@@ -40,6 +40,9 @@ class Nodes extends React.Component {
               </Link>
             </div>
             <h1>Nodes</h1>
+            <Link to="/deployment-plan">
+              &larr; Back to Deployment Plan
+            </Link>
           </div>
           <ul className="nav nav-tabs">
             <NavTab to="/nodes/registered">
