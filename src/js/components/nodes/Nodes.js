@@ -39,6 +39,9 @@ class Nodes extends React.Component {
                 <span className="fa fa-plus"/> Register Nodes
               </Link>
             </div>
+            <Link to="/deployment-plan">
+              &larr; Back to Deployment Plan
+            </Link>
             <h1>Nodes</h1>
           </div>
           <ul className="nav nav-tabs">
