@@ -1,0 +1,9 @@
+Code-Review+1: Florian Fuchs <flfuchs@redhat.com>
+Code-Review+1: Jason E. Rist <jrist@redhat.com>
+Code-Review+2: Jiri Tomasek <jtomasek@redhat.com>
+Verified+1: Jiri Tomasek <jtomasek@redhat.com>
+Submitted-by: Jiri Tomasek <jtomasek@redhat.com>
+Submitted-at: Wed, 17 Aug 2016 09:42:15 -0400
+Reviewed-on: https://review.gerrithub.io/285701
+Project: rdo-management/rdo-director-ui
+Branch: refs/heads/poc2
