@@ -40,6 +40,9 @@ class Nodes extends React.Component {
               </Link>
             </div>
             <h1>Nodes</h1>
+            <Link to="/deployment-plan">
+              &larr; Back to Deployment Plan
+            </Link>
           </div>
           <ul className="nav nav-tabs">
             <NavTab to="/nodes/registered">
@@ -52,9 +55,6 @@ class Nodes extends React.Component {
               Maintenance<span className="badge">{this.props.nodes.get('maintenance').size}</span>
             </NavTab>
           </ul>
-          <Link to="/deployment-plan">
-            &larr; Back to Deployment Plan
-          </Link>
           <div className="tab-pane">
             {this.props.children}
           </div>
