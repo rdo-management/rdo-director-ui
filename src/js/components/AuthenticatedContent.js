@@ -9,7 +9,7 @@ import NavBar from './NavBar';
 import ValidationsList from './validations/ValidationsList';
 import ValidationsActions from '../actions/ValidationsActions';
 
-export default class AuthenticatedContent extends React.Component {
+class AuthenticatedContent extends React.Component {
   componentDidMount() {
     this.props.fetchPlans();
   }
