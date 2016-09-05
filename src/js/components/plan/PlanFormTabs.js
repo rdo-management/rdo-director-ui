@@ -56,16 +56,11 @@ class PlanFormTab extends React.Component {
                          validationError="Please use only alphanumeric characters and
                                           - or _"
                          required />
-        <PlanUploadTypeRadios title="Upload Type"
-                              inputColumnClasses="col-sm-7"
-                              labelColumnClasses="col-sm-3"
-                              setUploadType={this.props.setUploadType}
-                              uploadType={this.props.uploadType}/>
         <PlanFileInput name="planFiles"
                        title="Plan Files"
                        inputColumnClasses="col-sm-7"
                        labelColumnClasses="col-sm-3"
-                       uploadType={this.props.uploadType}
+                       uploadType="folder"
                        multiple
                        required/>
       </div>

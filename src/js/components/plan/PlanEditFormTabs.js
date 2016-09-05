@@ -67,16 +67,11 @@ class PlanFormTab extends React.Component {
                               text={this.props.planName}
                               valueColumnClasses="col-sm-7"
                               labelColumnClasses="col-sm-3"/>
-        <PlanUploadTypeRadios title="Upload Type"
-                              inputColumnClasses="col-sm-7"
-                              labelColumnClasses="col-sm-3"
-                              setUploadType={this.props.setUploadType}
-                              uploadType={this.props.uploadType}/>
         <PlanFileInput name="planFiles"
                        title="Upload Files"
                        inputColumnClasses="col-sm-7"
                        labelColumnClasses="col-sm-3"
-                       uploadType={this.props.uploadType}
+                       uploadType="folder"
                        multiple
                        required/>
       </div>
