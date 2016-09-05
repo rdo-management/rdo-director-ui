@@ -6,6 +6,8 @@ import React from 'react';
 import FormErrorList from '../ui/forms/FormErrorList';
 import PlansActions from '../../actions/PlansActions';
 import PlanFormTabs from './PlanFormTabs';
+import Modal from '../ui/Modal';
+import Loader from '../ui/Loader';
 
 class NewPlan extends React.Component {
 
@@ -17,6 +19,10 @@ class NewPlan extends React.Component {
       canSubmit: false,
       formErrors: []
     };
+  }
+
+  setUploadType(e) {
+    this.setState({ uploadType: e.target.value === 'folder' ? 'folder' : 'tarball' });
   }
 
   onPlanFilesChange(currentValues, isChanged) {
@@ -50,58 +56,71 @@ class NewPlan extends React.Component {
 
   render () {
     return (
-      <div>
-        <div className="modal modal-routed in" role="dialog">
-          <div className="modal-dialog">
-            <div className="modal-content">
-              <Formsy.Form ref="NewPlanForm"
-                           role="form"
-                           className="form-horizontal"
-                           onChange={this.onPlanFilesChange.bind(this)}
-                           onValidSubmit={this.onFormSubmit.bind(this)}
-                           onValid={this.onFormValid.bind(this)}
-                           onInvalid={this.onFormInvalid.bind(this)}>
-                <div className="modal-header">
-                  <Link to="/plans/list"
-                        type="button"
-                        className="close">
-                    <span aria-hidden="true">&times;</span>
-                  </Link>
-                  <h4 className="modal-title">Create New Plan</h4>
-                </div>
-                <div className="modal-body">
-                  <FormErrorList errors={this.state.formErrors}/>
-                  <PlanFormTabs currentTab={this.props.location.query.tab || 'newPlan'}
-                                selectedFiles={this.state.selectedFiles} />
-                </div>
-                <div className="modal-footer">
-                  <button disabled={!this.state.canSubmit}
-                          className="btn btn-primary"
-                          type="submit">
-                    Upload Files and Create Plan
-                  </button>
-                  <Link to="/plans/list" type="button" className="btn btn-default" >Cancel</Link>
-                </div>
-              </Formsy.Form>
-            </div>
+      <Modal dialogClasses="modal-lg">
+        <Formsy.Form ref="NewPlanForm"
+                     role="form"
+                     className="form-horizontal"
+                     onChange={this.onPlanFilesChange.bind(this)}
+                     onValidSubmit={this.onFormSubmit.bind(this)}
+                     onValid={this.onFormValid.bind(this)}
+                     onInvalid={this.onFormInvalid.bind(this)}>
+          <div className="modal-header">
+            <Link to="/plans/list"
+                  type="button"
+                  className="close">
+              <span aria-hidden="true" className="pficon pficon-close"/>
+            </Link>
+            <h4 className="modal-title">Create New Plan</h4>
           </div>
-        </div>
-        <div className="modal-backdrop in"></div>
-      </div>
+
+          <div className="modal-body">
+            <Loader loaded={!this.props.isCreatingPlan}
+                    size="lg"
+                    content="Creating plan...">
+              <FormErrorList errors={this.state.formErrors}/>
+              <PlanFormTabs currentTab={this.props.location.query.tab || 'newPlan'}
+                            selectedFiles={this.state.selectedFiles}
+                            setUploadType={this.setUploadType.bind(this)}
+                            uploadType={this.state.uploadType}/>
+            </Loader>
+          </div>
+
+
+          <div className="modal-footer">
+            <button disabled={!this.state.canSubmit}
+                    className="btn btn-primary"
+                    type="submit">
+              Upload Files and Create Plan
+            </button>
+            <Link to="/plans/list" type="button" className="btn btn-default" >Cancel</Link>
+          </div>
+        </Formsy.Form>
+      </Modal>
     );
   }
 }
 NewPlan.propTypes = {
   createPlan: React.PropTypes.func,
+  createPlanFromTarball: React.PropTypes.func,
+  isCreatingPlan: React.PropTypes.bool,
   location: React.PropTypes.object
 };
+
+function mapStateToProps(state) {
+  return {
+    isCreatingPlan: state.plans.isCreatingPlan
+  };
+}
 
 function mapDispatchToProps(dispatch) {
   return {
     createPlan: (planName, files) => {
       dispatch(PlansActions.createPlan(planName, files));
+    },
+    createPlanFromTarball: (planName, archiveContents) => {
+      dispatch(PlansActions.createPlanFromTarball(planName, archiveContents));
     }
   };
 }
 
-export default connect(null, mapDispatchToProps)(NewPlan);
+export default connect(mapStateToProps, mapDispatchToProps)(NewPlan);
