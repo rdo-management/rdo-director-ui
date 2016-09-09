@@ -175,9 +175,9 @@ function mapDispatchToProps(dispatch) {
     fetchEnvironmentConfiguration: planName => {
       dispatch(EnvironmentConfigurationActions.fetchEnvironmentConfiguration(planName));
     },
-    updateEnvironmentConfiguration: (planName, data, parentPath) => {
+    updateEnvironmentConfiguration: (planName, data, formFields, parentPath) => {
       dispatch(EnvironmentConfigurationActions.updateEnvironmentConfiguration(
-        planName, data, parentPath
+        planName, data, formFields, parentPath
       ));
     }
   };
